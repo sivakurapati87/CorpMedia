@@ -128,10 +128,7 @@ public class TemplateController {// Serves Templates.
 	public String tags() {
 		return "template/tags";
 	}
-	@RequestMapping(value = "/general_payroll_settings")
-	public String general_payroll_settings() {
-		return "template/general_payroll_settings";
-	}
+	
 	@RequestMapping(value = "/welcome_screen")
 	public String welcome_screen() {
 		return "template/welcome_screen";
@@ -150,6 +147,34 @@ public class TemplateController {// Serves Templates.
 	@RequestMapping(value = "/assign_roles")
 	public String assign_roles() {
 		return "template/assign_roles";
+	}
+	
+	@RequestMapping(value = "/general_payroll_settings")
+	public String general_payroll_settings() {
+		return "template/general_payroll_settings";
+	}
+	
+	@RequestMapping(value = "/adhoc_components")
+	public String adhoc_components() {
+		return "template/adhoc_components";
+	}
+	@RequestMapping(value = "/salary_component_structure")
+	public String salary_component_structure() {
+		return "template/salary_component_structure";
+	}
+	
+	@RequestMapping(value = "/provident_fund")
+	public String provident_fund() {
+		return "template/provident_fund";
+	}
+	
+	@RequestMapping(value = "/legal_and_bank")
+	public String legal_and_bank() {
+		return "template/legal_and_bank";
+	}
+	@RequestMapping(value = "/employee_loan_settings")
+	public String employee_loan_settings() {
+		return "template/employee_loan_settings";
 	}
 
 	//

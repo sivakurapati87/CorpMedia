@@ -10,11 +10,13 @@
 								settings <span class="glyphicon glyphicon-menu-right"></span>
 						</span>
 					</a></li>
+					
+					
 					<li ng-class="{'active':(left_state==='payroll')}"><a
-						class="anchor-sm" ng-click="leftMenuAction('general_payroll_settings','payroll')" href="#"> <span
+						class="anchor-sm" ui-sref="general_payroll_settings" href="#"> <span
 							class="subnav-item-title">Payroll</span> <br> <span
-							class="subnav-item-description"> Payroll cycle,salary
-								components etc <span class="glyphicon glyphicon-menu-right"></span>
+							class="subnav-item-description">Payroll cycle, salary components etc
+								 <span class="glyphicon glyphicon-menu-right"></span>
 						</span>
 					</a></li>
 					<li ng-class="{'active':(left_state==='leaves_&_holidays')}"><a

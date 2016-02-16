@@ -1,8 +1,8 @@
 'use strict';
 
-App.controller('general_payroll_settings_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
+App.controller('employee_loan_settings_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
 	 var self = this;
-	 $scope.state="general_payroll_settings";
+	 $scope.state="employee_loan_settings_Controller";
 		$scope.left_state = "payroll";
 		
 //		$scope.state_info_name = $stateParams.legEntity;

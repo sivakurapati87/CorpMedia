@@ -272,18 +272,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	        }
 	})
 	
-	.state('general_payroll_settings', {
-		url: "/general_payroll_settings",
-			views: {
-	            'content': {
-	            	templateUrl: 'general_payroll_settings',
-	        		controller : "general_payroll_settings_Controller"
-	            },
-	            'footer': {
-	                templateUrl: 'footer'
-	            }
-	        }
-	})
+	
 	
 	.state('welcome_screen', {
 		url: "/welcome_screen",
@@ -330,6 +319,84 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	            'content': {
 	            	templateUrl: 'assign_roles',
 	        		controller : "assign_roles_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('general_payroll_settings', {
+		url: "/general_payroll_settings",
+			views: {
+	            'content': {
+	            	templateUrl: 'general_payroll_settings',
+	        		controller : "general_payroll_settings_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('adhoc_components', {
+		url: "/adhoc_components",
+			views: {
+	            'content': {
+	            	templateUrl: 'adhoc_components',
+	        		controller : "adhoc_components_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('salary_component_structure', {
+		url: "/salary_component_structure",
+			views: {
+	            'content': {
+	            	templateUrl: 'salary_component_structure',
+	        		controller : "salary_component_structure_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('provident_fund', {
+		url: "/provident_fund",
+			views: {
+	            'content': {
+	            	templateUrl: 'provident_fund',
+	        		controller : "provident_fund_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('legal_and_bank', {
+		url: "/legal_and_bank",
+			views: {
+	            'content': {
+	            	templateUrl: 'legal_and_bank',
+	        		controller : "legal_and_bank_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('employee_loan_settings', {
+		url: "/employee_loan_settings",
+			views: {
+	            'content': {
+	            	templateUrl: 'employee_loan_settings',
+	        		controller : "employee_loan_settings_Controller"
 	            },
 	            'footer': {
 	                templateUrl: 'footer'

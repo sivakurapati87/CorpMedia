@@ -35,14 +35,13 @@
 					style="width: 100%; background-color: white">
 
 					<tr>
-						<td><a data-toggle="modal" data-target="#addSignatoryPopupId" 
+						<td><a data-toggle="modal" data-target="#myModal" 
 							style="cursor: pointer; font-size: 20px"><span
 								class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add New Signatory</a>
 							<!-- Modal -->
-							<div class="modal fade" id="addSignatoryPopupId" tabindex="-1" role="dialog"
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 								aria-labelledby="myModalLabel">
 								<div class="modal-dialog" role="document">
-								<form ng-submit="addNewSignatory()">
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal"
@@ -52,7 +51,6 @@
 											<h4 class="modal-title" id="myModalLabel">Add Signatory</h4>
 										</div>
 										<div class="modal-body">
-										
 											<table class="table" border="0" width="100%" cellpadding="0"
 												cellspacing="0">
 												<tr>
@@ -64,20 +62,20 @@
 															Designation</label></td>
 												</tr>
 												<tr>
-													<td><input  style="width: 100%"
+													<td><input id="panNumber" style="width: 100%"
 														placeholder="Signatory Name"
 														class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-														type="text" required="" ng-model="signator.signatorName"
+														type="text" required="" data-ng-model="model.panNumber"
 														name="panNumber"></td>
-													<td><input  style="width: 100%"
+													<td><input id="panNumber" style="width: 100%"
 														placeholder="Father's Name"
 														class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-														type="text" required="" ng-model="signator.fatherName"
+														type="text" required="" data-ng-model="model.panNumber"
 														name="panNumber"></td>
-													<td><input  style="width: 100%"
+													<td><input id="panNumber" style="width: 100%"
 														placeholder="Designation"
 														class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-														type="text" required="" ng-model="signator.designation"
+														type="text" required="" data-ng-model="model.panNumber"
 														name="panNumber"></td>
 												</tr>
 												<tr>
@@ -89,9 +87,26 @@
 													<td colspan="2"><table>
 
 															<tr>
-																<td colspan="3">
-																<textarea rows="4" ng-model="signator.address"></textarea>
-																</td>
+																<td colspan="3"><input type="email"
+																	class="form-control" id="exampleInputEmail1"
+																	placeholder="Address Line 1"></td>
+															</tr>
+															<tr height="5px"></tr>
+															<tr>
+																<td colspan="3"><input type="email"
+																	class="form-control" id="exampleInputEmail1"
+																	placeholder="Address Line 2"></td>
+															</tr>
+															<tr height="5px"></tr>
+															<tr>
+																<td><input type="email" class="form-control"
+																	id="exampleInputEmail1" placeholder="City"></td>
+																<td><input type="email" class="form-control"
+																	id="exampleInputEmail1" placeholder="State"></td>
+																<td><input type="email" class="form-control"
+																	id="exampleInputEmail1" placeholder="Pin"></td>
+
+
 															</tr>
 														</table></td>
 
@@ -102,15 +117,15 @@
 													</label></td>
 												</tr>
 												<tr>
-													<td><input  style="width: 100%"
+													<td><input id="panNumber" style="width: 100%"
 														placeholder="Email"
 														class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-														type="text" required="" ng-model="signator.email"
+														type="text" required="" data-ng-model="model.panNumber"
 														name="panNumber"></td>
-													<td><input  style="width: 100%"
+													<td><input id="panNumber" style="width: 100%"
 														placeholder="Pan Number"
 														class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-														type="text" required="" ng-model="signator.panNumber"
+														type="text" required="" data-ng-model="model.panNumber"
 														name="panNumber"></td>
 												</tr>
 
@@ -119,15 +134,15 @@
 
 
 
+
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">Cancel</button>
-											<button type="submit" class="btn btn-primary">Add
+											<button type="button" class="btn btn-primary">Add
 												Signatory</button>
 										</div>
 									</div>
-									</form>
 								</div>
 							</div></td>
 					</tr>
@@ -135,10 +150,10 @@
 
 
 					<tr>
-						<td><a data-toggle="modal" data-target="#addBankPopupId"
+						<td><a data-toggle="modal" data-target="#myModal1"
 							style="cursor: pointer;font-size: 20px"><span
 								class="glyphicon glyphicon-plus-sign"></span>&nbsp; Add Bank Account</a> <!-- Modal -->
-							<div class="modal fade" id="addBankPopupId" role="dialog"
+							<div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
 								aria-labelledby="myModalLabel">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
@@ -160,13 +175,15 @@
 												</tr>
 												<tr>
 
-													<td><select
-													class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-													required 
-													ng-model="selectBank"
-													ng-options="bank.bankName as bank.bankName for bank in  banksList">
-													<option value="" disabled selected>Name of the Bank</option>
-												</select></td>
+													<td><select id="formSignatory" style="width: 100%"
+														class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+														required="" data-ng-model="model.form16SignatoryId"
+														name="formSignatory"
+														data-ng-options="s.employeeId as s.name for s in vm.authorizedSignatories">
+															<option class="" value="" selected="selected">Select
+																Bank</option>
+
+													</select></td>
 													
 												</tr>
 												
@@ -175,10 +192,10 @@
 													
 												</tr>
 												<tr>
-													<td><input  style="width: 100%"
+													<td><input id="panNumber" style="width: 100%"
 														placeholder="Account Number"
 														class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-														type="text" required="" ng-model="model.panNumber"
+														type="text" required="" data-ng-model="model.panNumber"
 														name="panNumber"></td>
 													
 												</tr>
@@ -187,10 +204,10 @@
 													
 												</tr>
 												<tr>
-													<td><input  style="width: 100%"
+													<td><input id="panNumber" style="width: 100%"
 														placeholder="IFSC Code"
 														class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-														type="text" required="" ng-model="model.panNumber"
+														type="text" required="" data-ng-model="model.panNumber"
 														name="panNumber"></td>
 													
 												</tr>
@@ -199,10 +216,10 @@
 													
 												</tr>
 												<tr>
-													<td><input  style="width: 100%"
+													<td><input id="panNumber" style="width: 100%"
 														placeholder="Branch"
 														class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-														type="text" required="" ng-model="model.panNumber"
+														type="text" required="" data-ng-model="model.panNumber"
 														name="panNumber"></td>
 													
 												</tr>

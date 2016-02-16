@@ -51,11 +51,16 @@
 <script src="resources/js/controller/wfh_Controller.js"></script>
 <script src="resources/js/controller/categories_Controller.js"></script>
 <script src="resources/js/controller/tags_Controller.js"></script>
-<script src="resources/js/controller/general_payroll_settings_Controller.js"></script>
 <script src="resources/js/controller/welcome_screen_Controller.js"></script>
 <script src="resources/js/controller/on_boarding_Controller.js"></script>
 <script src="resources/js/controller/exit_settings_Controller.js"></script>
 <script src="resources/js/controller/assign_roles_Controller.js"></script>
+<script src="resources/js/controller/general_payroll_settings_Controller.js"></script>
+<script src="resources/js/controller/adhoc_components_Controller.js"></script>
+<script src="resources/js/controller/salary_component_structure_Controller.js"></script>
+<script src="resources/js/controller/provident_fund_Controller.js"></script>
+<script src="resources/js/controller/legal_and_bank_Controller.js"></script>
+<script src="resources/js/controller/employee_loan_settings_Controller.js"></script>
 
 <script src="resources/js/service/constants.js"></script>
 <script src="resources/js/service/HomeService.js"></script>

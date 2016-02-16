@@ -44,7 +44,7 @@
 <h4>Termination Reasons</h4>
 <p>You can specify different reasons for Employee termination for each of the following three types of Terminations.</p>
 
-<button type="button" class="add-approver" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square"></i>Add New</button>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>Add New</button>
 <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">

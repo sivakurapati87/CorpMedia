@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('HomeController', ['$scope','HomeService','$rootScope', function($scope,HomeService,$rootScope) {
+App.controller('HomeController', ['$scope','HomeService', function($scope,HomeService) {
 	 $scope.loading = true;
 	 var self = this;
 	 $scope.selectedCompany=null;
@@ -10,17 +10,6 @@ App.controller('HomeController', ['$scope','HomeService','$rootScope', function(
               if (selected) {
 //            	  alert(selected.title);
             	  $scope.selectedCompany= selected.title;
-            	  
-            	  
-            	  angular.forEach($scope.companies, function(obj, key){
-		           	   if(obj.companyName == $scope.selectedCompany)
-		           		   {
-		           		$rootScope.selectedCompanyObj = obj;
-		           		}
-		           	     });
-            	  
-            	  
-            	  
 //            	  HomeService.setSelectedCompany($scope.selectedCompany);
             	  HomeService.insertSelectedCompany($scope.selectedCompany);
             	  
