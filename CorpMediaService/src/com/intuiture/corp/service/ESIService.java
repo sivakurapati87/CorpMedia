@@ -1,6 +1,7 @@
 package com.intuiture.corp.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -34,7 +35,7 @@ public class ESIService {
 		try {
 			ESIInfo esiInfo = esiRepository.getESIInfo_cmpId(companyId);
 
-			List<CompanySignator> companySignators = companyRepository.getCompanySignatorsByCompanyId(new ArrayList<Integer>(companyId));
+			List<CompanySignator> companySignators = companyRepository.getCompanySignatorsByCompanyId(new ArrayList<Integer>(Arrays.asList(companyId)));
 			esiInfoJson = TransformDomainToJson.getesiInfoJson(esiInfo);
 			if (companySignators != null && companySignators.size() > 0) {
 				List<CompanySignatorJson> signatorJsonList = new ArrayList<CompanySignatorJson>();
