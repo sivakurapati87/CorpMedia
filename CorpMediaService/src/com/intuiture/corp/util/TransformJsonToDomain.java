@@ -10,15 +10,23 @@ import org.apache.log4j.Logger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.intuiture.corp.entity.Banks;
 import com.intuiture.corp.entity.Company;
+import com.intuiture.corp.entity.CompanyBanks;
 import com.intuiture.corp.entity.CompanyInfo;
+import com.intuiture.corp.entity.CompanyLocation;
 import com.intuiture.corp.entity.CompanySignator;
+import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
+import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
+import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.PFInfo;
+import com.intuiture.corp.json.CompanyBankJson;
+import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanySignatorJson;
+import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
+import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.PFInfoJson;
 
@@ -46,16 +54,17 @@ public class TransformJsonToDomain {
 		return companiesList;
 	}
 
-	public static List<Banks> getBanksJson() {
-		List<Banks> banksList = new ArrayList<Banks>();
+	public static List<LookUpDetails> getLookup() {
+		List<LookUpDetails> banksList = new ArrayList<LookUpDetails>();
 		JsonParser parser = new JsonParser();
 		try {
-			Object obj = parser.parse(new FileReader(Constants.BANKJSONFILE));
+			Object obj = parser.parse(new FileReader(Constants.STATESJSONFILE));
 			JsonArray mainArray = (JsonArray) obj;
 			for (int i = 0; i < mainArray.size(); i++) {
-				Banks bank = new Banks();
+				LookUpDetails bank = new LookUpDetails();
 				JsonObject bankObj = (JsonObject) mainArray.get(i);
-				bank.setBankName(bankObj.get("name").getAsString());
+				bank.setLookupMasterId(9);
+				bank.setDescription(bankObj.get("name").getAsString());
 				banksList.add(bank);
 			}
 		} catch (Exception e) {
@@ -185,7 +194,38 @@ public class TransformJsonToDomain {
 		companySignator.setPanNumber(companySignatorJson.getPanNumber());
 		companySignator.setPhone(companySignatorJson.getPhone());
 		companySignator.setSignatorName(companySignatorJson.getSignatorName());
+	}
 
+	public static void getCmpBanksByJson(CompanyBanks companyBanks, CompanyBankJson companyBankJson) {
+		companyBanks.setAccountNumber(companyBankJson.getAccountNumber());
+		companyBanks.setBankId(companyBankJson.getBankId());
+		companyBanks.setBranch(companyBankJson.getBranch());
+		companyBanks.setIfscCode(companyBankJson.getIfscCode());
+		companyBanks.setCreateOn(new Date());
+		companyBanks.setCompanyId(companyBankJson.getCompanyId());
+	}
+
+	public static void getDepartment(Department department, DepartmentJson departmentJson) {
+		department.setCreatedOn(new Date());
+		department.setCompanyId(departmentJson.getCompanyId());
+		department.setDepartmentName(departmentJson.getDepartmentName());
+	}
+
+	public static void getCompanyLocation(CompanyLocation companyLocation, CompanyLocationJson companyLocationJson) {
+		companyLocation.setAddress(companyLocationJson.getAddress());
+		companyLocation.setCity(companyLocationJson.getCity());
+		companyLocation.setCompanyId(companyLocationJson.getCompanyId());
+		companyLocation.setCreatedOn(new Date());
+		companyLocation.setLocationName(companyLocationJson.getLocationName());
+		companyLocation.setStateId(companyLocationJson.getStateId());
+		companyLocation.setZipcode(companyLocationJson.getZipcode());
+	}
+
+	public static void getTimeSheetGeneralSettings(GeneralSettings generalSettings, GeneralSettingsJson generalSettingsJson) {
+		generalSettings.setCompanyId(generalSettingsJson.getCompanyId());
+		generalSettings.setCreatedOn(new Date());
+		generalSettings.setHoursPerMonth(generalSettingsJson.getHoursPerMonth());
+		generalSettings.setHoursPerWeek(generalSettingsJson.getHoursPerWeek());
 	}
 
 }

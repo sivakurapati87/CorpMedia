@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('cmpInfo_Controller', ['$scope', '$rootScope','CompanyInfoService','$stateParams', function($scope,$rootScope,CompanyInfoService,$stateParams) {
+App.controller('cmpInfo_Controller', ['$scope','$http', '$rootScope','CompanyInfoService','$stateParams', function($scope,$http,$rootScope,CompanyInfoService,$stateParams) {
 	 var self = this;
 	 $scope.state="legalentities";
 		$scope.left_state = "company_settings";
@@ -12,24 +12,17 @@ App.controller('cmpInfo_Controller', ['$scope', '$rootScope','CompanyInfoService
           //Json for the auto complete
           self.getCompanyInfoInit = function(){
         	 
-//        	  $scope.$watch(function () { return  HomeService.getSelectedCompany(); }, function (newValue, oldValue) {
-//      	        if (newValue != null) {
-//      	            //update Controller2's xxx value
-//      	            $scope.selectedCompany=newValue;
-//      	          CompanyInfoService.getCompanyInfo($scope.selectedCompany)
-//             	 .then(
-//     				       function(d) {
-//     				    	 $scope.companyInfo = d;
-//     				       },
-//       					function(errResponse){
-//       						console.error('Error while fetching Currencies');
-//       					}
-//     		       );
-//      	        }
-//      	    }, true);
         	  CompanyInfoService.getSelectedCompany()
          	 .then(
  				       function(d) {
+ 				    	   //Inserting the all lookup
+ 				    	  $http.get(constants.localhost_port+"/"+constants.web_context+'/'+constants.LookUpController+'/lookupInit').success(function(data){
+ 				    	   	  if(data){
+ 				    	   		$rootScope.lookup = data;
+ 				    	   	  }
+ 				    	     });
+ 				    	   
+ 				    	   
 				    	  $scope.selectedCompany=d.selectedCompName;
  				    	 CompanyInfoService.getCompanyInfo($scope.selectedCompany)
  			          	 .then(
@@ -48,10 +41,6 @@ App.controller('cmpInfo_Controller', ['$scope', '$rootScope','CompanyInfoService
    						console.error('Error while fetching Currencies');
    					}
  		       );
-        	  
-        	  
-        	 
-        	 
           };
           self.getCompanyInfoInit();
           

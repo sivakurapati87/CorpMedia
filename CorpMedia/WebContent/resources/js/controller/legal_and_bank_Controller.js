@@ -2,7 +2,7 @@
 
 App.controller('legal_and_bank_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
 	 var self = this;
-	 $scope.state="legal_and_bank_Controller";
+	 $scope.state="legal_and_bank";
 		$scope.left_state = "payroll";
 		
 //		$scope.state_info_name = $stateParams.legEntity;

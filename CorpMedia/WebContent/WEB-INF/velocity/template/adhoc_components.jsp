@@ -26,11 +26,11 @@
 									<li ng-class="{'active':(state==='salary_component_structure')}"><a
 										class="anchor-sm" ui-sref="salary_component_structure">Salary Structure</a></li>
 									<li ng-class="{'active':(state==='provident_fund')}"><a
-										class="anchor-sm" ui-sref="provident_fund">Provident Fund</a></li>	
+										class="anchor-sm" ui-sref="provident_fund">Provident Fund</a></li>
 									<li ng-class="{'active':(state==='legal_and_bank')}"><a
-										class="anchor-sm" ui-sref="legal_and_bank">Legal and Bank</a></li>
+										class="anchor-sm" ui-sref="legal_and_bank">Legal and Bank</a></li>	
 									<li ng-class="{'active':(state==='employee_loan_settings')}"><a
-										class="anchor-sm" ui-sref="employee_loan_settings">Loan Settings</a></li>				
+										class="anchor-sm" ui-sref="employee_loan_settings">Loan Settings</a></li>			
 										
 										
 									

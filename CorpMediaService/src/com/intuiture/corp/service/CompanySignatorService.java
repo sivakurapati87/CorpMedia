@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.intuiture.corp.dao.CmpSignatorRepository;
+import com.intuiture.corp.dao.CompanySignatorRepository;
 import com.intuiture.corp.dao.CommonRepository;
 import com.intuiture.corp.entity.CompanySignator;
 import com.intuiture.corp.json.CompanySignatorJson;
@@ -12,11 +12,11 @@ import com.intuiture.corp.util.TransformJsonToDomain;
 
 @Service
 @Transactional
-public class CmpSignatorService {
+public class CompanySignatorService {
 	@Autowired
 	private CommonRepository commonRepository;
 	@Autowired
-	private CmpSignatorRepository cmpSignatorRepository;
+	private CompanySignatorRepository cmpSignatorRepository;
 
 	public Boolean saveSignatory(CompanySignatorJson companySignatorJson) {
 		CompanySignator companySignator = null;

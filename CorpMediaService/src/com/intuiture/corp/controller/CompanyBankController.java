@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.intuiture.corp.json.CompanySignatorJson;
-import com.intuiture.corp.service.CmpSignatorService;
+import com.intuiture.corp.json.CompanyBankJson;
+import com.intuiture.corp.service.CompanyBankService;
 
 @Controller
-@RequestMapping("/CmpSignatorController")
-public class CmpSignatorController {
+@RequestMapping("/BankController")
+public class CompanyBankController {
 	@Autowired
-	private CmpSignatorService cmpSignatorService;
+	private CompanyBankService bankService;
 
-	@RequestMapping(value = "/saveSignatory", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveBank", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveSignatory(HttpServletRequest request, HttpServletResponse response, @RequestBody CompanySignatorJson companySignatorJson) {
-		return cmpSignatorService.saveSignatory(companySignatorJson);
+	public Boolean saveBank(HttpServletRequest request, HttpServletResponse response, @RequestBody CompanyBankJson companyBankJson) {
+		return bankService.saveBank(companyBankJson);
 	}
 }
