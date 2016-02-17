@@ -1110,3 +1110,198 @@ user agent stylesheetdiv {
 }
 
 
+.btn {
+    border: none;
+    outline: none;
+    border-radius: 0px;
+}
+.btn-submit {
+    min-width: 120px;
+    background-color: #84bf48;
+    box-shadow: 0 4px 0 #6a9d37;
+    font-size: 12px;
+    margin-right: 10px;
+    padding: 10px 15px 10px 15px;
+}
+
+.approver-hierarchy .add-new a {
+    padding: 5px 11px 5px 11px;
+    display: inline-block;
+    width: 165px;
+}
+.add-new a {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 14px;
+    padding: 7px 14px 7px 14px;
+}
+a {
+    text-decoration: none!important;
+    outline: none!important;
+}
+a {
+    color: #52b8e9;
+    text-decoration: none;
+}
+a {
+    background: transparent;
+    color: #52b9e9;
+    text-decoration: none;
+}
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+Inherited from div.col-lg-2.col-md-4.col-sm-4.col-xs-12.clear-side-padding
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div.col-lg-12.col-md-12.col-sm-12.col-xs-12.clear-side-padding
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div.add-new
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div.ng-scope
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div.col-lg-12.col-md-12.col-sm-12.col-xs-12.approver-hierarchy
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div.row.ng-scope
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div.ng-scope
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div.col-lg-12.col-md-12.col-sm-12.sub-page-container.content-container
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div#general-settings.row.ng-scope
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div.ng-scope
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div.col-lg-12.col-md-12.col-sm-12
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+Inherited from div.details-container
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+
+Inherited from div.col-lg-12.col-md-12.col-sm-12.settings-container.ng-scope
+* {
+    list-style: none;
+    font-family: "Roboto",Helvetica,Arial,sans-serif;
+}
+
+
+
+
+
+.vertical-margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.clear-side-padding {
+    padding-left: 0;
+    padding-right: 0;
+}
+.col-md-8 {
+    width: 66.666666667%;
+}
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: left;
+}
+.col-sm-7 {
+    width: 58.333333333%;
+}
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+    float: left;
+}
+.col-xs-12 {
+    width: 100%;
+}
+
+.add-approver:hover {
+    background-color:  #0081ff;
+}
+.approver-hierarchy .btn-submit {
+    margin-right: 0;
+}
+.content-container .btn {
+    border: none;
+    outline: none;
+    border-radius: 2px;
+}
+.content-container .btn-submit {
+    min-width: 120px;
+    background-color: #84bf48;
+    box-shadow: 0 4px 0 #6a9d37;
+    font-size: 12px;
+    margin-right: 10px;
+    padding: 10px 15px 10px 15px;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+.pull-right {
+    float: right;
+}
+.btn-submit {
+    color: #fff;
+    background-color: #85b200;
+    border-color: #729900;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    /*text-align: center;*/
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+
