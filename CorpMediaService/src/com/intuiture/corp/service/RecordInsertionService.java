@@ -2,8 +2,6 @@ package com.intuiture.corp.service;
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +16,7 @@ public class RecordInsertionService {
 	private CommonRepository commonRepository;
 
 	public void insertData() {
-		List<?> list = TransformJsonToDomain.getBanksJson();
+		List<?> list = TransformJsonToDomain.getLookup();
 		for (Object object : list) {
 			commonRepository.persist(object);
 		}

@@ -1,11 +1,11 @@
 <div class="container-fluid" style="width: 100%;">
 	<table>
-		<tr style="height: 120px;background-image:url('resources/images/bgimg3.png');">
+		<tr
+			style="height: 120px; background-image: url('resources/images/bgimg3.png');">
 			<td class="lable50_blue" align="center" colspan="3">{{companyName}}</td>
 		</tr>
 		<tr>
-			<td width="20%" valign="top" bgcolor="white">
-				<left-menu></left-menu>
+			<td width="20%" valign="top" bgcolor="white"><left-menu></left-menu>
 			</td>
 			<td width="1%"></td>
 			<td valign="top">
@@ -31,7 +31,8 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0" style="width: 100%; background-color: white">
+				<table class="table" border="0"
+					style="width: 100%; background-color: white">
 					<tr>
 						<td><h2>Departments</h2></td>
 					</tr>
@@ -46,32 +47,33 @@
 							</button>
 
 							<div id="demo" class="collapse">
-								<table border="0">
-								<tr height="10px"></tr>
-									<tr>
-										<td><label> Add Department</label></td>
-									</tr>
-									<tr height="30px"></tr>
-									<tr>
-										<td><label> Department Name</label></td>
-									</tr>
-									<tr>
-										<td><input id="panNumber" style="width: 200%"
-											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-											type="text" required="" data-ng-model="model.panNumber"
-											name="panNumber"></td>
-									</tr>
-									<tr height="30px"></tr>
-																		<tr>
+								<form ng-submit="saveDepartment()">
+									<table border="0">
+										<tr height="10px"></tr>
+										<tr>
+											<td><label> Add Department</label></td>
+										</tr>
+										<tr height="30px"></tr>
+										<tr>
+											<td><label> Department Name</label></td>
+										</tr>
+										<tr>
+											<td><input id="panNumber" style="width: 200%"
+												class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+												type="text" required="" ng-model="department.departmentName"
+												name="panNumber"></td>
+										</tr>
+										<tr height="30px"></tr>
+										<tr>
 
-										<td>
+											<td>
 
-											<button class="btn btn-success" style="width: 100px">Save</button>&nbsp;
-											<button class="btn btn-cancel" style="width: 100px">Cancel</button>
-										</td>
-									</tr>
-								</table>
-
+												<button class="btn btn-success" type="submit" style="width: 100px">Save</button>&nbsp;
+												<button class="btn btn-cancel" style="width: 100px">Cancel</button>
+											</td>
+										</tr>
+									</table>
+								</form>
 							</div></td>
 					</tr>
 				</table>
@@ -79,5 +81,13 @@
 		</tr>
 	</table>
 </div>
-
+<div class="snaker animated fadeIn high-index loading">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+            <div class="circle5"></div>
+            <div class="circle6"></div>
+            <h6>LOADING</h6>
+</div>
 

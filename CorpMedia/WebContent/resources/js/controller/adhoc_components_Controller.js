@@ -2,7 +2,7 @@
 
 App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
 	 var self = this;
-	 $scope.state="adhoc_components_Controller";
+	 $scope.state="adhoc_components";
 		$scope.left_state = "payroll";
 		
 //		$scope.state_info_name = $stateParams.legEntity;

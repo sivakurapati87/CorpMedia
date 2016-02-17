@@ -2,12 +2,12 @@
 
 <div class="container-fluid" style="width: 100%;">
 	<table>
-		<tr style="height: 120px;background-image:url('resources/images/bgimg3.png');">
+		<tr
+			style="height: 120px; background-image: url('resources/images/bgimg3.png');">
 			<td class="lable50_blue" align="center" colspan="3">{{companyName}}</td>
 		</tr>
 		<tr>
-			<td width="20%" valign="top" bgcolor="white">
-				<left-menu></left-menu>
+			<td width="20%" valign="top" bgcolor="white"><left-menu></left-menu>
 			</td>
 			<td width="1%"></td>
 			<td valign="top">
@@ -32,7 +32,8 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0" style="width: 100%;background-color: white">
+				<table class="table" border="0"
+					style="width: 100%; background-color: white">
 					<tr>
 						<td><h2>Locations</h2></td>
 					</tr>
@@ -49,100 +50,95 @@
 							</button>
 
 							<div id="demo" class="collapse">
-								<table border="0">
-									<tr height="10px"></tr>
-									<tr>
-										<td><label> Add Location</label></td>
-									</tr>
-									<tr height="30px"></tr>
-									<tr>
-										<td><label> Location Name</label></td>
-									</tr>
-									<tr>
-										<td><input id="panNumber" style="width: 200%"
-											placeholder="Location Name"
-											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-											type="text" required="" data-ng-model="model.panNumber"
-											name="panNumber"></td>
-									</tr>
+								<form ng-submit="saveDepartment()">
+									<table border="0">
+										<tr height="10px"></tr>
+										<tr>
+											<td><label> Add Location</label></td>
+										</tr>
+										<tr height="30px"></tr>
+										<tr>
+											<td><label> Location Name</label></td>
+										</tr>
+										<tr>
+											<td><input style="width: 200%"
+												placeholder="Location Name"
+												class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+												type="text" required=""
+												ng-model="companyLocationJson.locationName"></td>
+										</tr>
 
-									<tr height="30px"></tr>
+										<tr height="30px"></tr>
 
-									<tr>
-										<td><label>Country</label></td>
-										<td>State</td>
-									</tr>
-									<tr>
-										<td width="50%"><select class="form-control"
-											id="exampleInputEmail1">
-												<option>Select Country</option>
-										</select></td>
-										<td><select class="form-control" id="exampleInputEmail1">
-												<option>Select State</option>
-										</select></td>
-									</tr>
-									<tr height="30px"></tr>
-									<tr>
-										<td><label>Time Zone</label></td>
-									</tr>
-									<tr>
-										<td><select class="form-control" id="exampleInputEmail1" style="width: 200%">
-												<option>Select Time Zone</option>
-										</select></td>
-									</tr>
-									<tr height="30px"></tr>
-									<tr>
-										<td><label> Address Line 1</label></td>
-									</tr>
-									<tr>
-										<td><input id="panNumber" style="width: 200%"
-											placeholder="Address Line 1"
-											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-											type="text" required="" data-ng-model="model.panNumber"
-											name="panNumber"></td>
-									</tr>
-									<tr height="30px"></tr>
-									<tr>
-										<td><label>Address Line 2</label></td>
-									</tr>
-									<tr>
-										<td><input id="panNumber" style="width: 200%"
-											placeholder="Address Line 2"
-											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-											type="text" required="" data-ng-model="model.panNumber"
-											name="panNumber"></td>
-									</tr>
-									<tr height="30px"></tr>
+										<tr>
+											<td><label>Country</label></td>
+											<td>State</td>
+										</tr>
+										<tr>
+											<td width="50%"><select class="form-control"
+												disabled="disabled">
+													<option value="" disabled selected>India</option>
+											</select></td>
+											<td><select
+												class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+												required ng-model="companyLocationJson.stateId"
+												ng-options="bank.lookupDetailId as bank.description for bank in  lookup.statesList">
+													<option value="" disabled selected>Name of the
+														State</option>
+											</select></td>
+										</tr>
+										<tr height="30px"></tr>
+										<tr>
+											<td><label>Time Zone</label></td>
+										</tr>
+										<tr>
+											<td><select
+												class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+												disabled="disabled">
+													<option value="" disabled selected>(UTC+05:30)
+														Chennai, Kolkata, Mumbai, New Delhi</option>
+											</select></td>
+										</tr>
+										<tr height="30px"></tr>
+										<tr>
+											<td><label> Address</label></td>
+										</tr>
+										<tr>
+											<td><input style="width: 200%"
+												placeholder="Address"
+												class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+												type="text" required=""
+												ng-model="companyLocationJson.address"></td>
+										</tr>
+										<tr height="30px"></tr>
 
-									<tr>
-										<td><label>City</label></td>
-										<td>ZipCode</td>
-									</tr>
-									<tr>
-										<td width="50%"><input id="panNumber" 
-											placeholder="City"
-											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-											type="text" required="" data-ng-model="model.panNumber"
-											name="panNumber"></td>
-										<td width="50%"><input id="panNumber"
-											placeholder="ZipCode"
-											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-											type="text" required="" data-ng-model="model.panNumber"
-											name="panNumber"></td>
-									</tr>
+										<tr>
+											<td><label>City</label></td>
+											<td>ZipCode</td>
+										</tr>
+										<tr>
+											<td width="50%"><input placeholder="City"
+												class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+												type="text" required="" ng-model="companyLocationJson.city"></td>
+											<td width="50%"><input placeholder="ZipCode"
+												class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+												type="text" required=""
+												ng-model="companyLocationJson.zipcode"></td>
+										</tr>
 
 
-									<tr height="30px"></tr>
-									<tr>
+										<tr height="30px"></tr>
+										<tr>
 
-										<td>
+											<td>
 
-											<button class="btn btn-success" style="width: 100px">Save</button>&nbsp;
-											<button class="btn btn-cancel" style="width: 100px">Cancel</button>
-										</td>
-									</tr>
-								</table>
-
+												<button class="btn btn-success" style="width: 100px"
+													type="submit">Save</button>&nbsp;
+												<button class="btn btn-cancel" style="width: 100px">Cancel</button>
+											</td>
+										</tr>
+									</table>
+								</form>
 							</div></td>
 					</tr>
 

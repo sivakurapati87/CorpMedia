@@ -16,13 +16,11 @@
 				type="text" required="" data-ng-model="model.panNumber"
 				name="panNumber"></td>
 
-			<td><select id="formSignatory" style="width: 58%"
+			<td><select
 				class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-				required="" data-ng-model="model.form16SignatoryId"
-				name="formSignatory"
-				data-ng-options="s.employeeId as s.name for s in vm.authorizedSignatories">
-					<option class="" value="" selected="selected">Select Type</option>
-
+				required ng-model="companyBank.bankId"
+				ng-options="bank.lookupDetailId as bank.description for bank in  lookup.typeOfBusinessList">
+					<option value="" disabled selected>Name of the Bank</option>
 			</select></td>
 
 		</tr>

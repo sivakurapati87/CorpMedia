@@ -2,7 +2,7 @@
 
 App.controller('salary_component_structure_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
 	 var self = this;
-	 $scope.state="salary_component_structure_Controller";
+	 $scope.state="salary_component_structure";
 		$scope.left_state = "payroll";
 		
 //		$scope.state_info_name = $stateParams.legEntity;
