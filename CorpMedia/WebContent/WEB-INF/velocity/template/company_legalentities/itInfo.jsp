@@ -38,7 +38,7 @@
 			<td colspan="3"><select id="formSignatory" style="width: 32%"
 				class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
 				required="" data-ng-model="itinfo.companySignatorId"
-				
+				ng-change="selectedSignatorInfo()"
 				data-ng-options="signator.companySignatorId as signator.signatorName for signator in  itinfo.companySignatorJsonList">
 					
 			</select></td>
