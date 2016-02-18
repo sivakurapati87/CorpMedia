@@ -176,6 +176,19 @@ public class TemplateController {// Serves Templates.
 	public String employee_loan_settings() {
 		return "template/employee_loan_settings";
 	}
+	@RequestMapping(value = "/job_titles")
+	public String job_titles() {
+		return "template/job_titles";
+	}
+	
+	@RequestMapping(value = "/employee_defaults")
+	public String employee_defaults() {
+		return "template/employee_defaults";
+	}
+	@RequestMapping(value = "/add_employee")
+	public String add_employee() {
+		return "template/add_employee";
+	}
 
 	//
 	// @RequestMapping(value="/category/Phones")

@@ -10,8 +10,11 @@ COMP_SIGNATOR : 'CmpSignatorController',
 LookUpController :'LookUpController',
 BankController : 'BankController',
 DepartmentController : 'DepartmentController',
-TimeSheetApprovalChainController : 'TimeSheetApprovalChainController'
+TimeSheetApprovalChainController : 'TimeSheetApprovalChainController',
 CompanyLocationController : 'CompanyLocationController',
-GeneralSettingsController : 'GeneralSettingsController'
+GeneralSettingsController : 'GeneralSettingsController',
+TagsController : 'TagsController',
+CategoriesController : 'CategoriesController',
+JobTitlesController : 'JobTitlesController'
 
 };

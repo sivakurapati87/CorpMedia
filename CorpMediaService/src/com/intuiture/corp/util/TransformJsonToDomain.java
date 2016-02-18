@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.intuiture.corp.entity.Categories;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
 import com.intuiture.corp.entity.CompanyInfo;
@@ -19,8 +20,11 @@ import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
+import com.intuiture.corp.entity.JobTitles;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.PFInfo;
+import com.intuiture.corp.entity.Tags;
+import com.intuiture.corp.json.CategoriesJson;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanySignatorJson;
@@ -28,7 +32,9 @@ import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
+import com.intuiture.corp.json.JobTitlesJson;
 import com.intuiture.corp.json.PFInfoJson;
+import com.intuiture.corp.json.TagsJson;
 
 public class TransformJsonToDomain {
 	private static Logger LOG = Logger.getLogger(TransformJsonToDomain.class);
@@ -226,6 +232,26 @@ public class TransformJsonToDomain {
 		generalSettings.setCreatedOn(new Date());
 		generalSettings.setHoursPerMonth(generalSettingsJson.getHoursPerMonth());
 		generalSettings.setHoursPerWeek(generalSettingsJson.getHoursPerWeek());
+	}
+	
+	public static void getTags(Tags tags, TagsJson tagsJson) {
+		tags.setCreatedOn(new Date());
+		tags.setCompanyId(tagsJson.getCompanyId());
+		tags.setTagName(tagsJson.getTagName());
+	}
+	
+	public static void getCategories(Categories categories, CategoriesJson categoriesJson) {
+		categories.setCreatedOn(new Date());
+		categories.setCompanyId(categoriesJson.getCompanyId());
+		categories.setExpenseName(categoriesJson.getExpenseName());
+		categories.setDescription(categoriesJson.getDescription());
+	}
+	
+	public static void getJobTitles(JobTitles jobTitles , JobTitlesJson jobTitlesJson) {
+		jobTitles.setCreatedOn(new Date());
+		jobTitles.setJobtitle(jobTitlesJson.getJobtitle());
+		jobTitles.setCompanyId(jobTitlesJson.getCompanyId());
+		jobTitles.setDescription(jobTitlesJson.getDescription());
 	}
 
 }

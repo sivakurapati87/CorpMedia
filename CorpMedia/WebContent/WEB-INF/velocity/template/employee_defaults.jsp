@@ -32,7 +32,9 @@
 									<li ng-class="{'active':(state==='job_titles')}"><a
 										class="anchor-sm" ui-sref="job_titles">Job Titles</a></li>
 									<li ng-class="{'active':(state==='employee_defaults')}"><a
-										class="anchor-sm" ui-sref="employee_defaults">Employee Defaults</a></li>	
+										class="anchor-sm" ui-sref="employee_defaults">Employee Defaults</a></li>
+									<li ng-class="{'active':(state==='add_employee')}"><a
+										class="anchor-sm" ui-sref="add_employee">Add Employee</a></li>		
 													
 										
 										

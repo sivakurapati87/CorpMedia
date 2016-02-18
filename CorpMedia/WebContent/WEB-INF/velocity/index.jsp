@@ -61,6 +61,9 @@
 <script src="resources/js/controller/provident_fund_Controller.js"></script>
 <script src="resources/js/controller/legal_and_bank_Controller.js"></script>
 <script src="resources/js/controller/employee_loan_settings_Controller.js"></script>
+<script src="resources/js/controller/job_titles_Controller.js"></script>
+<script src="resources/js/controller/employee_defaults_Controller.js"></script>
+<script src="resources/js/controller/add_employee_Controller.js"></script>
 
 <script src="resources/js/service/constants.js"></script>
 <script src="resources/js/service/HomeService.js"></script>
