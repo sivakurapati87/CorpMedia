@@ -1423,4 +1423,9 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     50%  {top:-10px;}
     100% {top: 0px;}
 	}
-
+.even{
+	background-color: #fff;
+}
+.odd{
+	background-color: #ecf9fd;
+}
