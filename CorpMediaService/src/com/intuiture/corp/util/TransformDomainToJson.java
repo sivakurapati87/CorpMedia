@@ -18,19 +18,23 @@ import org.apache.log4j.Logger;
 
 import com.intuiture.corp.entity.Banks;
 import com.intuiture.corp.entity.Company;
+import com.intuiture.corp.entity.CompanyBanks;
 import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
 import com.intuiture.corp.entity.ESIInfo;
+import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.PFInfo;
 import com.intuiture.corp.entity.TimeSheetApprovers;
 import com.intuiture.corp.json.BankJson;
+import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyJson;
 import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.json.ESIInfoJson;
+import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.LookUpDetailJson;
@@ -63,9 +67,17 @@ public class TransformDomainToJson {
 		Date date = null;
 		try {
 			if (str != null && str.length() > 9) {
-				SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-				String s1 = str.subSequence(0, 10).toString();
-				date = dateformat.parse(s1);
+				// SimpleDateFormat dateformat = null;
+				String s1 = null;
+				if (str.length() == 11) {
+					// dateformat = new SimpleDateFormat("dd-MMM-yyyy");
+					s1 = str.subSequence(0, 11).toString();
+				} else {
+					// dateformat = new SimpleDateFormat("yyyy-MM-dd");
+					s1 = str.subSequence(0, 10).toString();
+				}
+
+				date = sdf.parse(s1);
 				date = convertStringToDate(convertDateToString(date));
 			}
 		} catch (Exception e) {
@@ -86,12 +98,12 @@ public class TransformDomainToJson {
 		return json;
 	}
 
-	public static BankJson getBankJson(Banks banks) {
-		BankJson json = new BankJson();
-		json.setBankId(banks.getBankId());
-		json.setBankName(banks.getBankName());
-		return json;
-	}
+	// public static BankJson getBankJson(Banks banks) {
+	// BankJson json = new BankJson();
+	// json.setBankId(banks.getBankId());
+	// json.setBankName(banks.getBankName());
+	// return json;
+	// }
 
 	public static String convertDoubleToMoney(Double dbl) {
 		String str = null;
@@ -316,5 +328,31 @@ public class TransformDomainToJson {
 		generalSettingsJson.setHoursPerWeek(generalSettings.getHoursPerWeek());
 		return generalSettingsJson;
 	}
+
+	public static EmployeeJson getEmployeeJson(Employee employee) {
+		EmployeeJson employeeJson = new EmployeeJson();
+		employeeJson.setCompanyId(employee.getCompanyId());
+		employeeJson.setDisplayName(employee.getDisplayName());
+		employeeJson.setEmail(employee.getEmail());
+		employeeJson.setEmployeeId(employee.getEmployeeId());
+		employeeJson.setFirstName(employee.getFirstName());
+		employeeJson.setLastName(employee.getLastName());
+		employeeJson.setLocationId(employee.getLocationId());
+		employeeJson.setMiddleName(employee.getMiddleName());
+		employeeJson.setRoleId(employee.getRoleId());
+		employeeJson.setStrDateOfJoining(convertDateToString(employee.getDateOfJoining()));
+		return employeeJson;
+	}
+
+//	public static CompanyBankJson getEmployeeJson(CompanyBanks companyBanks) {
+//		CompanyBankJson companyBankJson = new CompanyBankJson();
+//		companyBankJson.setCompanyId(companyBanks.getCompanyId());
+//		companyBankJson.setAccountNumber(companyBanks.getAccountNumber());
+//		companyBankJson.setBankId(companyBanks.getBankId());
+//		companyBankJson.setBranch(companyBanks.getBranch());
+//		companyBankJson.setCompanyBankId(companyBanks.getCompanyBankId());
+//		companyBankJson.setStrDateOfJoining(convertDateToString(companyBanks.getDateOfJoining()));
+//		return companyBankJson;
+//	}
 
 }
