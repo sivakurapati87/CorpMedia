@@ -69,7 +69,7 @@
 											<td>
 
 												<button class="btn btn-success" type="submit" style="width: 100px">Save</button>&nbsp;
-												<button class="btn btn-cancel" style="width: 100px">Cancel</button>
+												<button class="btn btn-cancel" style="width: 100px" type="button">Cancel</button>
 											</td>
 										</tr>
 									</table>

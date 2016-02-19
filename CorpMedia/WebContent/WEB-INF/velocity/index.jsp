@@ -64,6 +64,10 @@
 <script src="resources/js/controller/job_titles_Controller.js"></script>
 <script src="resources/js/controller/employee_defaults_Controller.js"></script>
 <script src="resources/js/controller/add_employee_Controller.js"></script>
+<script src="resources/js/controller/employee_professional_Controller.js"></script>
+<script src="resources/js/controller/employee_personal_Controller.js"></script>
+<script src="resources/js/controller/employee_job_Controller.js"></script>
+
 
 <script src="resources/js/service/constants.js"></script>
 <script src="resources/js/service/HomeService.js"></script>

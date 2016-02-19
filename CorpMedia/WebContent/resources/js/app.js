@@ -443,6 +443,46 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	        }
 	})
 	
+	.state('employee_professional', {
+		url: "/employee_professional",
+			views: {
+	            'content': {
+	            	templateUrl: 'employee_professional',
+	        		controller : "employee_professional_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	.state('employee_personal', {
+		url: "/employee_personal",
+			views: {
+	            'content': {
+	            	templateUrl: 'employee_personal',
+	        		controller : "employee_personal_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('employee_job', {
+		url: "/employee_job",
+			views: {
+	            'content': {
+	            	templateUrl: 'employee_job',
+	        		controller : "employee_job_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	
+	
 	
 	
 }]);
