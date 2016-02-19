@@ -26,7 +26,7 @@ public class CompanyRolesService {
 		CompanyRoles companyRoles = null;
 		try {
 			if (companyRolesJson.getRoleId() != null) {
-				companyRoles = companyRolesRepository.findById(companyRolesJson.getRoleId());
+				companyRoles = (CompanyRoles) commonRepository.findById(companyRolesJson.getRoleId(), CompanyRoles.class);
 			} else {
 				companyRoles = new CompanyRoles();
 			}
@@ -42,10 +42,11 @@ public class CompanyRolesService {
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<CompanyRolesJson> getAllRoles(Integer companyId) {
 		List<CompanyRolesJson> companyRolesJsonsList = null;
 		try {
-			List<CompanyRoles> companyRolesList = companyRolesRepository.getAllRoles(companyId);
+			List<CompanyRoles> companyRolesList = (List<CompanyRoles>) commonRepository.getAllRecordsByCompanyId(companyId, CompanyRoles.class);
 			if (companyRolesList != null && companyRolesList.size() > 0) {
 				companyRolesJsonsList = new ArrayList<CompanyRolesJson>();
 				for (CompanyRoles companyRoles : companyRolesList) {

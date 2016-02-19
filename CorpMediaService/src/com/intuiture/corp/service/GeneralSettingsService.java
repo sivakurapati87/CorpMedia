@@ -23,7 +23,7 @@ public class GeneralSettingsService {
 		GeneralSettings generalSettings = null;
 		try {
 			if (generalSettingsJson.getGeneralsettingsId() != null) {
-				generalSettings = generalSettingsRepository.findbyId(generalSettingsJson.getGeneralsettingsId());
+				generalSettings = (GeneralSettings) commonRepository.findById(generalSettingsJson.getGeneralsettingsId(), GeneralSettings.class);
 			} else {
 				generalSettings = new GeneralSettings();
 			}
@@ -42,7 +42,7 @@ public class GeneralSettingsService {
 	public GeneralSettingsJson getCompanyGeneralSetting(Integer companyId) {
 		GeneralSettingsJson generalSettingsJson = null;
 		try {
-			GeneralSettings generalSettings = generalSettingsRepository.getGeneralSettingsByCompanyId(companyId);
+			GeneralSettings generalSettings = (GeneralSettings) commonRepository.getRecordByCompanyId(companyId, GeneralSettings.class);
 			if (generalSettings != null) {
 				generalSettingsJson = TransformDomainToJson.getGeneralSettingsJson(generalSettings);
 			}

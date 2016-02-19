@@ -28,7 +28,7 @@ public class TimeSheetApproverChainService {
 			if (timeSheetApproverJsonList != null && timeSheetApproverJsonList.size() > 0) {
 				for (TimeSheetApproverJson timeSheetApproverJson : timeSheetApproverJsonList) {
 					if (timeSheetApproverJson.getTimeSheetApproverId() != null) {
-						timeSheetApprovers = timeSheetApproverRepository.findById(timeSheetApproverJson.getTimeSheetApproverId());
+						timeSheetApprovers = (TimeSheetApprovers) commonRepository.findById(timeSheetApproverJson.getTimeSheetApproverId(), TimeSheetApprovers.class);
 					} else {
 						timeSheetApprovers = new TimeSheetApprovers();
 					}
@@ -46,10 +46,11 @@ public class TimeSheetApproverChainService {
 		return true;
 	}
 
-	public List<TimeSheetApproverJson> getAllRoles(Integer companyId) {
+	@SuppressWarnings("unchecked")
+	public List<TimeSheetApproverJson> getAllApproversList(Integer companyId) {
 		List<TimeSheetApproverJson> timeSheetApproverJsonList = null;
 		try {
-			List<TimeSheetApprovers> timeSheetApproverList = timeSheetApproverRepository.getAllTimeSheetApprovers(companyId);
+			List<TimeSheetApprovers> timeSheetApproverList = (List<TimeSheetApprovers>) commonRepository.getAllRecordsByCompanyId(companyId, TimeSheetApprovers.class);
 			if (timeSheetApproverList != null && timeSheetApproverList.size() > 0) {
 				timeSheetApproverJsonList = new ArrayList<TimeSheetApproverJson>();
 				for (TimeSheetApprovers timeSheetApprovers : timeSheetApproverList) {

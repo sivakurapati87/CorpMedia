@@ -19,32 +19,29 @@ import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
 import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
+import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.PFInfo;
-<<<<<<< HEAD
-import com.intuiture.corp.entity.TimeSheetApprovers;
-=======
 import com.intuiture.corp.entity.Tags;
+import com.intuiture.corp.entity.TimeSheetApprovers;
+import com.intuiture.corp.json.CompanySignatorJson;
+import com.intuiture.corp.json.ESIInfoJson;
+import com.intuiture.corp.json.EmployeeJson;
+import com.intuiture.corp.json.ITInfoJson;
+import com.intuiture.corp.json.PFInfoJson;
+//github.com/sivakurapati87/CorpMedia.git
 import com.intuiture.corp.json.CategoriesJson;
->>>>>>> branch 'master' of https://github.com/sivakurapati87/CorpMedia.git
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanyRolesJson;
-import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.json.DepartmentJson;
-import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
-import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
-import com.intuiture.corp.json.PFInfoJson;
-<<<<<<< HEAD
-import com.intuiture.corp.json.TimeSheetApproverJson;
-=======
 import com.intuiture.corp.json.TagsJson;
->>>>>>> branch 'master' of https://github.com/sivakurapati87/CorpMedia.git
+import com.intuiture.corp.json.TimeSheetApproverJson;
 
 public class TransformJsonToDomain {
 	private static Logger LOG = Logger.getLogger(TransformJsonToDomain.class);
@@ -244,6 +241,26 @@ public class TransformJsonToDomain {
 		generalSettings.setHoursPerWeek(generalSettingsJson.getHoursPerWeek());
 	}
 
+	public static void getTags(Tags tags, TagsJson tagsJson) {
+		tags.setCreatedOn(new Date());
+		tags.setCompanyId(tagsJson.getCompanyId());
+		tags.setTagName(tagsJson.getTagName());
+	}
+
+	public static void getCategories(Categories categories, CategoriesJson categoriesJson) {
+		categories.setCreatedOn(new Date());
+		categories.setCompanyId(categoriesJson.getCompanyId());
+		categories.setExpenseName(categoriesJson.getExpenseName());
+		categories.setDescription(categoriesJson.getDescription());
+	}
+
+	public static void getJobTitles(JobTitles jobTitles, JobTitlesJson jobTitlesJson) {
+		jobTitles.setCreatedOn(new Date());
+		jobTitles.setJobtitle(jobTitlesJson.getJobtitle());
+		jobTitles.setCompanyId(jobTitlesJson.getCompanyId());
+		jobTitles.setDescription(jobTitlesJson.getDescription());
+	}
+
 	public static void getCompanyRoles(CompanyRoles companyRoles, CompanyRolesJson companyRolesJson) {
 		companyRoles.setCompanyId(companyRolesJson.getCompanyId());
 		if (companyRolesJson.getRoleId() != null) {
@@ -264,23 +281,22 @@ public class TransformJsonToDomain {
 		timeSheetApprovers.setEmployeeId(timeSheetApproverJson.getEmployeeId());
 		timeSheetApprovers.setRoleId(timeSheetApproverJson.getRoleId());
 	}
-public static void getTags(Tags tags, TagsJson tagsJson) {
-		tags.setCreatedOn(new Date());
-		tags.setCompanyId(tagsJson.getCompanyId());
-		tags.setTagName(tagsJson.getTagName());
+
+	public static void getEmployee(Employee employee, EmployeeJson employeeJson) {
+		employee.setCompanyId(employeeJson.getCompanyId());
+		if (employeeJson.getEmployeeId() != null) {
+			employee.setUpdatedOn(new Date());
+		} else {
+			employee.setCreatedOn(new Date());
+		}
+		employee.setRoleId(employeeJson.getRoleId());
+		employee.setDateOfJoining(employeeJson.getDateOfJoining());
+		employee.setDisplayName(employeeJson.getDisplayName());
+		employee.setEmail(employeeJson.getEmail());
+		employee.setFirstName(employeeJson.getFirstName());
+		employee.setLastName(employeeJson.getLastName());
+		employee.setLocationId(employeeJson.getLocationId());
+		employee.setMiddleName(employeeJson.getMiddleName());
 	}
-	
-	public static void getCategories(Categories categories, CategoriesJson categoriesJson) {
-		categories.setCreatedOn(new Date());
-		categories.setCompanyId(categoriesJson.getCompanyId());
-		categories.setExpenseName(categoriesJson.getExpenseName());
-		categories.setDescription(categoriesJson.getDescription());
-	}
-	
-	public static void getJobTitles(JobTitles jobTitles , JobTitlesJson jobTitlesJson) {
-		jobTitles.setCreatedOn(new Date());
-		jobTitles.setJobtitle(jobTitlesJson.getJobtitle());
-		jobTitles.setCompanyId(jobTitlesJson.getCompanyId());
-		jobTitles.setDescription(jobTitlesJson.getDescription());
-	}
+
 }

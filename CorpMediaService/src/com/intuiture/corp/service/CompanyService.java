@@ -10,9 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.intuiture.corp.dao.CommonRepository;
 import com.intuiture.corp.dao.CompanyRepository;
 import com.intuiture.corp.entity.Company;
-import com.intuiture.corp.entity.CompanySignator;
 import com.intuiture.corp.json.CompanyJson;
-import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.util.TransformDomainToJson;
 
 @Service
@@ -23,7 +21,6 @@ public class CompanyService {
 	@Autowired
 	private CompanyRepository companyRepository;
 
-	@SuppressWarnings("unchecked")
 	public List<CompanyJson> findAllCompanies() {
 		List<CompanyJson> companyJsonList = new ArrayList<CompanyJson>();
 		List<Company> companiesList = (List<Company>) companyRepository.getAllRecords();
@@ -44,18 +41,22 @@ public class CompanyService {
 			for (Company company : companiesList) {
 				companyIds.add(company.getCompanyId());
 			}
-			List<CompanySignator> companySignatorList = companyRepository.getCompanySignatorsByCompanyId(companyIds);
+			// List<CompanySignator> companySignatorList =
+			// companyRepository.getCompanySignatorsByCompanyId(companyIds);
 
 			for (Company company : companiesList) {
 				CompanyJson companyJson = TransformDomainToJson.getAllCompanyJsonByCompany(company);
-				if (companySignatorList != null && companySignatorList.size() > 0) {
-					List<CompanySignatorJson> companySignatorJsonsList = new ArrayList<CompanySignatorJson>();
-					for (CompanySignator signator : companySignatorList) {
-						CompanySignatorJson companySignatorJson = TransformDomainToJson.getCompanySignatorJson(signator);
-						companySignatorJsonsList.add(companySignatorJson);
-					}
-					companyJson.setCompanySignatorJsonsList(companySignatorJsonsList);
-				}
+				// if (companySignatorList != null && companySignatorList.size()
+				// > 0) {
+				// List<CompanySignatorJson> companySignatorJsonsList = new
+				// ArrayList<CompanySignatorJson>();
+				// for (CompanySignator signator : companySignatorList) {
+				// CompanySignatorJson companySignatorJson =
+				// TransformDomainToJson.getCompanySignatorJson(signator);
+				// companySignatorJsonsList.add(companySignatorJson);
+				// }
+				// companyJson.setCompanySignatorJsonsList(companySignatorJsonsList);
+				// }
 				companyJsonList.add(companyJson);
 			}
 		}

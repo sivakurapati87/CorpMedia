@@ -31,6 +31,6 @@ public class TimeSheetApproverChainController {
 	@RequestMapping(value = "/getAllApproversList/{companyId}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<TimeSheetApproverJson> getAllApproversList(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer companyId) {
-		return timeSheetApproverChainService.getAllRoles(companyId);
+		return timeSheetApproverChainService.getAllApproversList(companyId);
 	}
 }

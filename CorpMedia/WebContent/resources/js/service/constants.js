@@ -6,16 +6,17 @@ web_context : 'CorpMedia',
 service_context : 'CorpMediaService',
 
 // controllers
-COMP_SIGNATOR : 'CmpSignatorController',
+COMP_SIGNATOR : 'CompanySignatorController',
 LookUpController :'LookUpController',
-BankController : 'BankController',
+CompanyBankController : 'CompanyBankController',
 DepartmentController : 'DepartmentController',
 TimeSheetApprovalChainController : 'TimeSheetApprovalChainController',
 CompanyLocationController : 'CompanyLocationController',
 GeneralSettingsController : 'GeneralSettingsController',
 CompanyRolesController : 'CompanyRolesController',
-TimeSheetApproverChainController : 'TimeSheetApproverChainController'
+TimeSheetApproverChainController : 'TimeSheetApproverChainController',
 TagsController : 'TagsController',
 CategoriesController : 'CategoriesController',
-JobTitlesController : 'JobTitlesController'
+JobTitlesController : 'JobTitlesController',
+EmployeeController : 'EmployeeController'
 };
