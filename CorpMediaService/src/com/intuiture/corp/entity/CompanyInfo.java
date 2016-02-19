@@ -50,6 +50,7 @@ public class CompanyInfo {
 	@OneToOne
 	@JoinColumn(name = "companyId", insertable = false, updatable = false)
 	private Company company;
+	private Boolean isDeleted;
 
 	// @ManyToOne
 	// @JoinColumn(name = "companyTypeId", insertable = false, updatable =
@@ -302,6 +303,14 @@ public class CompanyInfo {
 
 	public void setDateOfBalanceSheet(Date dateOfBalanceSheet) {
 		this.dateOfBalanceSheet = dateOfBalanceSheet;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

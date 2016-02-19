@@ -24,6 +24,7 @@ public class TimeSheetApprovers {
 	@ManyToOne
 	@JoinColumn(name = "roleId", insertable = false, updatable = false)
 	private CompanyRoles companyRoles;
+	private Boolean isDeleted;
 
 	public Integer getTimeSheetApproverId() {
 		return timeSheetApproverId;
@@ -65,7 +66,6 @@ public class TimeSheetApprovers {
 		this.createdOn = createdOn;
 	}
 
-
 	public CompanyRoles getCompanyRoles() {
 		return companyRoles;
 	}
@@ -80,6 +80,14 @@ public class TimeSheetApprovers {
 
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

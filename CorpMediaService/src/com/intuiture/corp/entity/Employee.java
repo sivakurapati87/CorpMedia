@@ -25,6 +25,7 @@ public class Employee {
 	private Date createdOn;
 	private Date updatedOn;
 	private Integer companyId;
+	private Boolean isDeleted;
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -120,6 +121,14 @@ public class Employee {
 
 	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

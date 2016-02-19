@@ -36,7 +36,7 @@ public class CommonRepository extends BaseRepository {
 		List<?> list = null;
 		try {
 			Criteria criteria = getSession().createCriteria(classType);
-			criteria.add(Restrictions.eq("companyId", companyId));
+			criteria.add(Restrictions.and(Restrictions.eq("companyId", companyId), Restrictions.or(Restrictions.eq("isDeleted", Boolean.FALSE), Restrictions.isNull("isDeleted"))));
 			list = criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,18 @@ public class CompanyLocation {
 	private Long zipcode;
 	private String locationName;
 	private Date createdOn;
+	private Boolean isDeleted;
+	@ManyToOne
+	@JoinColumn(name = "stateId", insertable = false, updatable = false)
+	private LookUpDetails state;
+
+	public LookUpDetails getState() {
+		return state;
+	}
+
+	public void setState(LookUpDetails state) {
+		this.state = state;
+	}
 
 	public Integer getCompanyLocationId() {
 		return companyLocationId;
@@ -84,6 +98,14 @@ public class CompanyLocation {
 
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

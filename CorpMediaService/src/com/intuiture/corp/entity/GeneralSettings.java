@@ -18,6 +18,7 @@ public class GeneralSettings {
 	private Integer hoursPerMonth;
 	private Integer companyId;
 	private Date createdOn;
+	private Boolean isDeleted;
 
 	public Integer getCompanyId() {
 		return companyId;
@@ -57,6 +58,14 @@ public class GeneralSettings {
 
 	public void setHoursPerMonth(Integer hoursPerMonth) {
 		this.hoursPerMonth = hoursPerMonth;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

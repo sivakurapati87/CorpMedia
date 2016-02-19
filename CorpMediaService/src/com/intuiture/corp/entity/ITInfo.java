@@ -10,7 +10,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "itinfo")
-//@NamedQueries({ @NamedQuery(name = "ITInfo.findBycompanyId", query = "select it from ITInfo it where it.companyId = ?1") })
 public class ITInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +22,7 @@ public class ITInfo {
 	private Integer companyId;
 	private Date createdOn;
 	private Date updatedOn;
+	private Boolean isDeleted;
 
 	public Integer getItInfoId() {
 		return itInfoId;
@@ -94,6 +94,14 @@ public class ITInfo {
 
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

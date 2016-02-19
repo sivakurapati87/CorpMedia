@@ -8,6 +8,7 @@ public class CompanyBankJson {
 	private String branch;
 	private String bankName;
 	private Integer companyId;
+	private Boolean isDeleted;
 
 	public Integer getCompanyBankId() {
 		return companyBankId;
@@ -63,6 +64,14 @@ public class CompanyBankJson {
 
 	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

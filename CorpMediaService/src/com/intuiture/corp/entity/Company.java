@@ -11,7 +11,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "company")
-//@NamedQueries({ @NamedQuery(name = "Company.findBycompanyName", query = "select c from Company c where c.companyName = ?1") })
 public class Company {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +23,7 @@ public class Company {
 	private Date updatedOn;
 	@OneToOne(mappedBy = "company")
 	private CompanyInfo companyInfo;
+	private Boolean isDeleted;
 
 	public Integer getCompanyId() {
 		return companyId;
@@ -87,6 +87,14 @@ public class Company {
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

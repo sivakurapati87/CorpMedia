@@ -81,18 +81,13 @@
 															name="panNumber"></td>
 													</tr>
 													<tr>
-														<td colspan="2"><label class="lable16_Regular">Address
+														<td colspan="3"><label class="lable16_Regular">Address
 														</label></td>
 
 													</tr>
 													<tr>
-														<td colspan="2"><table>
-
-																<tr>
-																	<td colspan="3"><textarea rows="4"
-																			ng-model="signator.address"></textarea></td>
-																</tr>
-															</table></td>
+														<td colspan="3"><textarea rows="4" style="width: 80%"
+																ng-model="signator.address"></textarea></td>
 
 													</tr>
 													<tr>
@@ -132,11 +127,19 @@
 					<tr>
 						<td><table style="width: 100%" border="0">
 								<tr style="height: 20px"></tr>
-								<tr ng-repeat="signator in signatorsList"
-									ng-class-odd="'odd'" ng-class-even="'even'">
-									<td><div>{{signator.signatorName}}</div><div>{{signator.designation}}</div></td>
-									<td><i class="fa fa-pencil-square-o"></i></td>
-									<td><i class="fa fa-trash"></i></td>
+								<tr ng-repeat="signator in signatorsList" ng-class-odd="'odd'"
+									ng-class-even="'even'">
+									<td><div>{{signator.signatorName}}</div>
+										<div>{{signator.designation}}</div></td>
+									<td><a data-toggle="modal"
+										data-target="#addSignatoryPopupId"
+										ng-click="editSignator(signator)"
+										style="cursor: pointer; font-size: 12px"><i
+											class="fa fa-pencil-square-o"></i></a></td>
+									<td><a
+										ng-click="deleteSignator(signator.companySignatorId)"
+										style="cursor: pointer; font-size: 12px"><i
+											class="fa fa-trash"></i></a></td>
 								</tr>
 							</table></td>
 					</tr>
@@ -236,7 +239,23 @@
 								</div>
 							</div></td>
 					</tr>
-
+					<tr>
+						<td><table style="width: 100%" border="0">
+								<tr style="height: 20px"></tr>
+								<tr ng-repeat="bank in companyBanksList" ng-class-odd="'odd'"
+									ng-class-even="'even'">
+									<td><div>{{bank.bankName}}</div>
+										<div>{{bank.branch}}</div></td>
+									<td><a data-toggle="modal" data-target="#addBankPopupId"
+										ng-click="editBank(bank)"
+										style="cursor: pointer; font-size: 12px"><i
+											class="fa fa-pencil-square-o"></i></a></td>
+									<td><a ng-click="deleteBank(bank.companyBankId)"
+										style="cursor: pointer; font-size: 12px"><i
+											class="fa fa-trash"></i></a></td>
+								</tr>
+							</table></td>
+					</tr>
 					<tr>
 						<td>
 							<div

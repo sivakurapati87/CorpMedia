@@ -27,19 +27,19 @@ import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.PFInfo;
 import com.intuiture.corp.entity.Tags;
 import com.intuiture.corp.entity.TimeSheetApprovers;
-import com.intuiture.corp.json.CompanySignatorJson;
-import com.intuiture.corp.json.ESIInfoJson;
-import com.intuiture.corp.json.EmployeeJson;
-import com.intuiture.corp.json.ITInfoJson;
-import com.intuiture.corp.json.PFInfoJson;
 //github.com/sivakurapati87/CorpMedia.git
 import com.intuiture.corp.json.CategoriesJson;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanyRolesJson;
+import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.json.DepartmentJson;
+import com.intuiture.corp.json.ESIInfoJson;
+import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
+import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
+import com.intuiture.corp.json.PFInfoJson;
 import com.intuiture.corp.json.TagsJson;
 import com.intuiture.corp.json.TimeSheetApproverJson;
 
@@ -207,6 +207,7 @@ public class TransformJsonToDomain {
 		companySignator.setPanNumber(companySignatorJson.getPanNumber());
 		companySignator.setPhone(companySignatorJson.getPhone());
 		companySignator.setSignatorName(companySignatorJson.getSignatorName());
+		companySignator.setIsDeleted(Boolean.FALSE);
 	}
 
 	public static void getCmpBanksByJson(CompanyBanks companyBanks, CompanyBankJson companyBankJson) {
@@ -216,6 +217,7 @@ public class TransformJsonToDomain {
 		companyBanks.setIfscCode(companyBankJson.getIfscCode());
 		companyBanks.setCreateOn(new Date());
 		companyBanks.setCompanyId(companyBankJson.getCompanyId());
+		companyBanks.setIsDeleted(Boolean.FALSE);
 	}
 
 	public static void getDepartment(Department department, DepartmentJson departmentJson) {

@@ -7,8 +7,8 @@ import com.intuiture.corp.entity.CompanyLocation;
 @Repository
 public class CompanyLocationRepository extends BaseRepository {
 
-	public CompanyLocation findById(Integer companyLocationId) {
-		return (CompanyLocation) getSession().get(CompanyLocation.class, companyLocationId);
-	}
+//	public CompanyLocation findById(Integer companyLocationId) {
+//		return (CompanyLocation) getSession().get(CompanyLocation.class, companyLocationId);
+//	}
 
 }

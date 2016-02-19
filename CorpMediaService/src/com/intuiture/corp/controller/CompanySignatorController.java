@@ -33,4 +33,10 @@ public class CompanySignatorController {
 	public List<CompanySignatorJson> getAllSignatoriesList(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer companyId) {
 		return companySignatorService.getAllSignatoriesList(companyId);
 	}
+
+	@RequestMapping(value = "/deleteSignator/{companySignatorId}", method = RequestMethod.GET)
+	@ResponseBody
+	public Boolean deleteSignator(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer companySignatorId) {
+		return companySignatorService.deleteSignator(companySignatorId);
+	}
 }

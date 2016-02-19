@@ -6,14 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "companysignator")
-//@NamedQueries({ @NamedQuery(name = "CompanySignator.findByCompanyIds", query = "select c from CompanySignator c where c.companyId in ?1"),
-//		@NamedQuery(name = "CompanySignator.findByCompanyId", query = "select c from CompanySignator c where c.companyId = ?1") })
 public class CompanySignator {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +29,7 @@ public class CompanySignator {
 	private String designation;
 	private String fatherName;
 	private String panNumber;
+	private Boolean isDeleted;
 
 	public String getFatherName() {
 		return fatherName;
@@ -144,6 +141,14 @@ public class CompanySignator {
 
 	public void setDesignation(String designation) {
 		this.designation = designation;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

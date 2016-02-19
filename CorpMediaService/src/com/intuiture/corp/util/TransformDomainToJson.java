@@ -16,9 +16,9 @@ import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
-import com.intuiture.corp.entity.Banks;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
+import com.intuiture.corp.entity.CompanyLocation;
 import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
 import com.intuiture.corp.entity.ESIInfo;
@@ -28,9 +28,9 @@ import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.PFInfo;
 import com.intuiture.corp.entity.TimeSheetApprovers;
-import com.intuiture.corp.json.BankJson;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyJson;
+import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.json.ESIInfoJson;
@@ -249,6 +249,10 @@ public class TransformDomainToJson {
 		json.setIsSecretory(companySignator.getIsSecretory());
 		json.setPhone(companySignator.getPhone());
 		json.setCompanySignatorId(companySignator.getCompanySignatorId());
+		json.setIsDeleted(companySignator.getIsDeleted());
+		json.setFatherName(companySignator.getFatherName());
+		json.setEmail(companySignator.getEmail());
+		json.setPanNumber(companySignator.getPanNumber());
 		return json;
 	}
 
@@ -344,15 +348,34 @@ public class TransformDomainToJson {
 		return employeeJson;
 	}
 
-//	public static CompanyBankJson getEmployeeJson(CompanyBanks companyBanks) {
-//		CompanyBankJson companyBankJson = new CompanyBankJson();
-//		companyBankJson.setCompanyId(companyBanks.getCompanyId());
-//		companyBankJson.setAccountNumber(companyBanks.getAccountNumber());
-//		companyBankJson.setBankId(companyBanks.getBankId());
-//		companyBankJson.setBranch(companyBanks.getBranch());
-//		companyBankJson.setCompanyBankId(companyBanks.getCompanyBankId());
-//		companyBankJson.setStrDateOfJoining(convertDateToString(companyBanks.getDateOfJoining()));
-//		return companyBankJson;
-//	}
+	public static CompanyBankJson getCompanyBankJson(CompanyBanks companyBanks) {
+		CompanyBankJson companyBankJson = new CompanyBankJson();
+		companyBankJson.setCompanyId(companyBanks.getCompanyId());
+		companyBankJson.setAccountNumber(companyBanks.getAccountNumber());
+		companyBankJson.setBankId(companyBanks.getBankId());
+		companyBankJson.setBranch(companyBanks.getBranch());
+		companyBankJson.setCompanyBankId(companyBanks.getCompanyBankId());
+		companyBankJson.setIfscCode(companyBanks.getIfscCode());
+		companyBankJson.setIsDeleted(companyBanks.getIsDeleted());
+		if (companyBanks.getBank() != null) {
+			companyBankJson.setBankName(companyBanks.getBank().getDescription());
+		}
+		return companyBankJson;
+	}
+
+	public static CompanyLocationJson getCompanyLocationJson(CompanyLocation companyLocation) {
+		CompanyLocationJson companyLocationJson = new CompanyLocationJson();
+		companyLocationJson.setCompanyId(companyLocation.getCompanyId());
+		companyLocationJson.setAddress(companyLocation.getAddress());
+		companyLocationJson.setCity(companyLocation.getCity());
+		companyLocationJson.setCompanyLocationId(companyLocation.getCompanyLocationId());
+		companyLocationJson.setLocationName(companyLocation.getLocationName());
+		companyLocationJson.setStateId(companyLocation.getStateId());
+		companyLocationJson.setZipcode(companyLocation.getZipcode());
+		if (companyLocation.getState() != null) {
+			companyLocationJson.setState(companyLocation.getState().getDescription());
+		}
+		return companyLocationJson;
+	}
 
 }

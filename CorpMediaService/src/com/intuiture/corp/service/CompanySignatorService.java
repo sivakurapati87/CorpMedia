@@ -58,4 +58,17 @@ public class CompanySignatorService {
 		}
 		return signatorJsonList;
 	}
+
+	public Boolean deleteSignator(Integer companySignatorId) {
+		try {
+			CompanySignator companySignator = cmpSignatorRepository.findById(companySignatorId);
+			if (companySignator != null) {
+				companySignator.setIsDeleted(Boolean.TRUE);
+				commonRepository.update(companySignator);
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 }
