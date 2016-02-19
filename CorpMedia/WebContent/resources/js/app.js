@@ -404,6 +404,45 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	        }
 	})
 	
+	.state('job_titles', {
+		url: "/job_titles",
+			views: {
+	            'content': {
+	            	templateUrl: 'job_titles',
+	        		controller : "job_titles_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('employee_defaults', {
+		url: "/employee_defaults",
+			views: {
+	            'content': {
+	            	templateUrl: 'employee_defaults',
+	        		controller : "employee_defaults_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('add_employee', {
+		url: "/add_employee",
+			views: {
+	            'content': {
+	            	templateUrl: 'add_employee',
+	        		controller : "add_employee_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
 	
 	
 }]);

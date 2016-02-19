@@ -102,8 +102,7 @@
 																Category</h4>
 														</div>
 
-														<form id="newCategory" name="vm.newCategory"
-															class="ng-pristine ng-invalid ng-invalid-required">
+														<form ng-submit="saveCategories()">
 
 															<div
 																class="col-md-6 col-lg-6 col-sm-12 clear-side-padding">
@@ -112,52 +111,25 @@
 																		data-set-focus="true"
 																		class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
 																		type="text" placeholder="Expense"
-																		data-ng-model="model.name" id="name" name="name"
-																		data-ng-model-options="vm.modelOptions" required="">
-																	<div data-validation-messages=""
-																		data-model-controller="vm.newCategory.name"
-																		data-required-error="Expense Name is required"
-																		data-form-submit="submitted" class="ng-isolate-scope">
-																		<div>
-																			<!-- ngRepeat: message in errorMessages -->
-																			<small class="error ng-binding ng-scope ng-hide"
-																				>Expense
-																				Name is required</small>
-																			<!-- end ngRepeat: message in errorMessages -->
-																		</div>
-																	</div>
+																		ng-model="categories.expenseName">
+																	
 																</div>
 																<div class="form-group">
 																	<label>Description</label>
 																	<textarea cols="40" name="description"
 																		class="form-control no-resize ng-pristine ng-untouched ng-invalid ng-invalid-required"
-																		data-ng-model="model.description"
-																		data-ng-model-options="vm.modelOptions" required=""></textarea>
-																	<div data-validation-messages=""
-																		data-model-controller="vm.newCategory.description"
-																		data-required-error="Expense description is required"
-																		data-form-submit="submitted" class="ng-isolate-scope">
-																		<div>
-																			<!-- ngRepeat: message in errorMessages -->
-																			<small class="error ng-binding ng-scope ng-hide"
-																				ng-repeat="message in errorMessages"
-																				ng-show="(!modelController.$pristine &amp;&amp; $first) || formSubmit">Expense
-																				description is required</small>
-																			<!-- end ngRepeat: message in errorMessages -->
-																		</div>
-																	</div>
+																		ng-model="categories.description"
+																		 required=""></textarea>
+																	
 																</div>
 																<div class="pull-right">
-																	<!-- ngIf: !model.id -->
-																	<input data-ng-if="!model.id" type="button"
-																		class="btn btn-submit ng-scope"
-																		data-ng-click="saveCategory(model);" value="Save">
-																	<!-- end ngIf: !model.id -->
-																	<!-- ngIf: model.id -->
-																	<input type="button"
-																		class="btn btn-cancel"
-																		data-ng-click="cancel()" value="Cancel">
-																</div>
+																					<!-- ngIf: !model.id -->
+																					<button class="btn btn-success" type="submit"
+																						style="width: 100px">Save</button>
+																					&nbsp;
+																					<button class="btn btn-cancel" style="width: 100px"
+																						type="button">Cancel</button>
+																				</div>
 															</div>
 														</form>
 

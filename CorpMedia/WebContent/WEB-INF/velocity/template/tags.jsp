@@ -63,8 +63,7 @@
 															<div
 																class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-side-padding">
 																<div
-																	class="col-lg-2 col-md-4 col-sm-4 col-xs-12 clear-side-padding"
-																	>
+																	class="col-lg-2 col-md-4 col-sm-4 col-xs-12 clear-side-padding">
 
 																	<button type="button" class="btn btn-info"
 																		data-toggle="collapse" data-target="#tags">
@@ -72,7 +71,7 @@
 																	</button>
 
 
-																	
+
 
 
 
@@ -94,6 +93,8 @@
 												</div>
 												<!-- This is our div we need to hide. -->
 												<div id="tags" class="collapse">
+
+
 													<!-- Here is your tag form -->
 
 
@@ -117,14 +118,12 @@
 																			<div>
 																				<!-- ngIf: model.id -->
 																				<!-- ngIf: !model.id -->
-																				<h4 
-																					class="branded-heading ng-scope">Add Expense
-																					Tag</h4>
+																				<h4 class="branded-heading ng-scope">Add
+																					Expense Tag</h4>
 																				<!-- end ngIf: !model.id -->
 																			</div>
 																		</div>
-																		<form id="newTag" name="vm.newTag"
-																			class="ng-pristine ng-invalid ng-invalid-required">
+																		<form ng-submit="saveTags()">
 
 																			<div
 																				class="col-md-6 col-lg-6 col-sm-12 clear-side-padding">
@@ -133,35 +132,16 @@
 																						data-set-focus="true" data-show="true"
 																						class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
 																						type="text" placeholder="Tag Name"
-																						data-ng-model="model.name" id="name" name="name"
-																						data-ng-model-options="vm.modelOptions"
-																						required="">
-																					<div data-validation-messages=""
-																						data-model-controller="vm.newTag.name"
-																						data-required-error="Tag Name is required"
-																						data-form-submit="submitted"
-																						class="ng-isolate-scope">
-																						<div>
-																							<!-- ngRepeat: message in errorMessages -->
-																							<small class="error ng-binding ng-scope ng-hide"
-																								ng-repeat="message in errorMessages"
-																								ng-show="(!modelController.$pristine &amp;&amp; $first) || formSubmit">Tag
-																								Name is required</small>
-																							<!-- end ngRepeat: message in errorMessages -->
-																						</div>
-																					</div>
+																						ng-model="tags.tagName" required="">
+
 																				</div>
 																				<div class="pull-right">
 																					<!-- ngIf: !model.id -->
-																					<input data-ng-if="!model.id" type="button"
-																						class="btn btn-submit ng-scope"
-																						data-ng-click="submitted=true; saveTag(model);"
-																						value="Save">
-																					<!-- end ngIf: !model.id -->
-																					<!-- ngIf: model.id -->
-																					<input type="button"
-																						class="btn btn-cancel"
-																						data-ng-click="cancel()" value="Cancel">
+																					<button class="btn btn-success" type="submit"
+																						style="width: 100px">Save</button>
+																					&nbsp;
+																					<button class="btn btn-cancel" style="width: 100px"
+																						type="button">Cancel</button>
 																				</div>
 																			</div>
 																		</form>

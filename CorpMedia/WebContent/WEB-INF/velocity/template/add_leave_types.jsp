@@ -1,19 +1,4 @@
-<script>
-	(function($) {
-		$('.spinner .btn:first-of-type').on(
-				'click',
-				function() {
-					$('.spinner input').val(
-							parseInt($('.spinner input').val(), 10) + 1);
-				});
-		$('.spinner .btn:last-of-type').on(
-				'click',
-				function() {
-					$('.spinner input').val(
-							parseInt($('.spinner input').val(), 10) - 1);
-				});
-	})(jQuery);
-</script>
+
 
 
 <div class="container-fluid" style="width: 100%;">
@@ -29,12 +14,13 @@
 		<tr height="30px"></tr>
 		<tr>
 			<td width="40%" class="leaves">Leave type</td>
-			<td><select id="formSignatory" style="width: 30%"
+			<td><select style="width: 30%"
 				class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-				required="" data-ng-model="model.form16SignatoryId"
-				name="formSignatory"
-				data-ng-options="s.employeeId as s.name for s in vm.authorizedSignatories">
-					<option class="" value="" selected="selected">Select a leave plan</option>
+				required="">
+
+
+					<option class="" value="" selected="selected">Select a
+						leave plan</option>
 
 					<option>Floater Leave</option>
 					<option>Special Leave</option>
@@ -44,100 +30,58 @@
 					<option>Casual Leave</option>
 					<option>Compoff</option>
 
-			</select> </td>
+			</select></td>
 		</tr>
 		<tr height="10px"></tr>
 		<tr>
 			<td width="30%" class="leaves">Annual Quota</td>
-			<td> <input type="radio"
-					name="optradio"> <label class="input-group spinner">
-					<input type="text" class="form-control" value="42"> <label
-					class="input-group-btn-vertical">
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-up"></i>
-						</button>
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-down"></i>
-						</button>
-				</label>
-			</label> days <br /> <br /> <label>Prorate</label><br /> <br /> <label
-				class="checkbox-inline"> <input type="checkbox"
-					id="inlineCheckbox1" value="option1">Prorate based on
-					joining date. Prorate from
-					<div class="input-group spinner">
-						<input type="text" class="form-control" value="42">
-						<div class="input-group-btn-vertical">
-							<button class="btn btn-default" type="button">
-								<i class="fa fa-caret-up"></i>
-							</button>
-							<button class="btn btn-default" type="button">
-								<i class="fa fa-caret-down"></i>
-							</button>
-						</div>
-					</div> day of joining month<br /> <br /> <label class="radio">
-						<input type="radio" name="optradio">
-				</label>Unlimited</td>
+			<td><label><input type="radio"></label>&nbsp;<input
+				type="number" style="width: 60px">&nbsp;days <br /> <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>Prorate</label><br />
+				<div class="input-group">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="checkbox">&nbsp;Prorate
+					based on joining date. Prorate from<input type="number"
+						style="width: 60px">&nbsp; st day of joining month
+				</div> <br /> <label> <input type="radio"></label>Unlimited</td>
+
+
 		</tr>
 		<tr height="15px"></tr>
 		<tr>
 			<td class="leaves">Leaves can be Availed after</td>
-			<td><label class="radio"> <input type="radio"
-					name="optradio">
-			</label>Employee Probation Period<br /> <label class="radio"> <input
-					type="radio" name="optradio"></label>
-				<div class="input-group spinner">
-					<input type="text" class="form-control" value="42">
-					<div class="input-group-btn-vertical">
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-up"></i>
-						</button>
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-down"></i>
-						</button>
-					</div>
-				</div> days from joining date</td>
+			<td><label> <input type="radio"></label>&nbsp;Employee
+				Probation Period <br /> <label> <input type="radio"></label>
+				<input type="number" style="width: 60px">&nbsp; days from
+				joining date</td>
 		</tr>
 		<tr height="15px"></tr>
 		<tr>
 			<td class="leaves">Leave Availability</td>
-			<td><label class="radio"> <input type="radio"
-					name="optradio">
-			</label>All of the annual quota leaves are available.<br /> <label
-				class="radio"> <input type="radio" name="optradio">
-			</label>Accrued balance<br /> <br /> <label> Accrual rate</label><br /> <br />
-				<select style="width: 100px; height: 30px"><option>monthly</option></select>on
-				<div class="input-group spinner">
-					<input type="text" class="form-control" value="42">
-					<div class="input-group-btn-vertical">
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-up"></i>
-						</button>
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-down"></i>
-						</button>
-					</div>
-				</div>day of the month<br /> <br /> <label> Accrual Starts</label><br />
-				<label class="radio"> <input type="radio" name="optradio">
+			<td><label> <input type="radio"></label>All of the
+				annual quota leaves are available. <br /> <label> <input
+					type="radio">
+			</label>Accrued balance<br /> <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>
+					Accrual rate</label><br /> <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select
+				style="width: 100px; height: 30px">
+					<option>Monthly</option>
+					<option>Quarterly</option>
+					<option>Half Yearly</option>
+					<option>Semi Monthly</option>
+			</select>on <input type="number" style="width: 60px">&nbsp;day of the
+				month<br /> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>
+					Accrual Starts</label><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
+					<input type="radio">
 
-			</label>From joining date<br /> <label class="radio"> <input
-					type="radio" name="optradio">
-			</label>After completion of employee probation period<br /> <br /> <label>
-					Accrue leave lapse behaviour</label><br /> <label class="radio"> <input
-					type="radio" name="optradio">
-			</label> Does not lapse<br /> <label class="radio"> <input
-					type="radio" name="optradio">
-			</label>Lapses after
-				<div class="input-group spinner">
-					<input type="text" class="form-control" value="42">
-					<div class="input-group-btn-vertical">
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-up"></i>
-						</button>
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-down"></i>
-						</button>
-					</div>
-				</div> days from the date of accrual <br /> <label
+			</label>From joining date<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>
+					<input type="radio">
+			</label>After completion of employee probation period<br /> <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label> Accrue leave lapse
+					behaviour</label><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
+					type="radio">
+			</label> Does not lapse<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label>
+					<input type="radio">
+			</label>Lapses after <input type="number" style="width: 60px"> days
+				from the date of accrual <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label
 				class="checkbox-inline"> <input type="checkbox"
 					id="inlineCheckbox1" value="option1"> Allow utilization of
 					leaves beyond accrued balance
@@ -147,115 +91,46 @@
 		<tr>
 			<td class="leaves">Frequency of Leaves</td>
 			<td><label class="checkbox-inline"> <input
-					type="checkbox" id="inlineCheckbox1" value="option1">Limit
-					to
-					<div class="input-group spinner">
-						<input type="text" class="form-control" value="42">
-						<div class="input-group-btn-vertical">
-							<button class="btn btn-default" type="button">
-								<i class="fa fa-caret-up"></i>
-							</button>
-							<button class="btn btn-default" type="button">
-								<i class="fa fa-caret-down"></i>
-							</button>
-						</div>
-					</div>Consecutive days
+					type="checkbox">Limit
+					to <input type="number" style="width: 60px">Consecutive
+					days
 			</label><br /> <label class="checkbox-inline"> <input
 					type="checkbox" id="inlineCheckbox1" value="option1">Limit
-					to
-					<div class="input-group spinner">
-						<input type="text" class="form-control" value="42">
-						<div class="input-group-btn-vertical">
-							<button class="btn btn-default" type="button">
-								<i class="fa fa-caret-up"></i>
-							</button>
-							<button class="btn btn-default" type="button">
-								<i class="fa fa-caret-down"></i>
-							</button>
-						</div>
-					</div>Occurances in
-					<div class="input-group spinner">
-						<input type="text" class="form-control" value="42">
-						<div class="input-group-btn-vertical">
-							<button class="btn btn-default" type="button">
-								<i class="fa fa-caret-up"></i>
-							</button>
-							<button class="btn btn-default" type="button">
-								<i class="fa fa-caret-down"></i>
-							</button>
-						</div>
-					</div> <select style="width: 100px; height: 30px"><option>Select</option></select>
+					to <input type="number" style="width: 60px">Occurances in <input
+					type="number" style="width: 60px"> <select
+					style="width: 100px; height: 30px"><option>Select</option>
+						<option>Weeks</option>
+						<option>Months</option>
+				</select>
 			</label></td>
 		</tr>
 		<tr height="15px"></tr>
 		<tr>
 			<td class="leaves">Holidays & Week Offs</td>
 			<td><label> Holiday between two consecutive paid leave
-					dates is considered as</label><br /> <label class="radio"> <input
-					type="radio" name="optradio">
-			</label>Leave<br /> <label class="radio"> <input type="radio"
-					name="optradio">
+					dates is considered as</label><br /> <label> <input type="radio">
+			</label>Leave<br /> <label> <input type="radio">
+
 			</label>Holiday<br /> <br /> <label> Weekoff days between two
-					consecutive paid leave dates is considered as</label><br /> <label
-				class="radio"> <input type="radio" name="optradio">
-			</label>Leave<br /> <label class="radio"> <input type="radio"
-					name="optradio">
+					consecutive paid leave dates is considered as</label><br /> <label>
+					<input type="radio">
+			</label>Leave<br /> <label> <input type="radio">
+
 			</label> Holiday</td>
 		</tr>
 		<tr height="15px"></tr>
 		<tr>
 			<td class="leaves">End of Leave Calendar</td>
-			<td><label class="radio"> <input type="radio"
-					name="optradio">
-			</label> All Leave Balance Expires<br /> <label class="radio"> <input
-					type="radio" name="optradio"></label> Pay maximum of
+			<td><label> <input type="radio">
 
-				<div class="input-group spinner">
-					<input type="text" class="form-control" value="42">
-					<div class="input-group-btn-vertical">
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-up"></i>
-						</button>
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-down"></i>
-						</button>
-					</div>
-				</div> days first and then carry forward a maximum of
-				<div class="input-group spinner">
-					<input type="text" class="form-control" value="42">
-					<div class="input-group-btn-vertical">
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-up"></i>
-						</button>
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-down"></i>
-						</button>
-					</div>
-				</div>days <br /> <label class="radio"> <input type="radio"
-					name="optradio"></label> Carry forward a maximum of
-
-				<div class="input-group spinner">
-					<input type="text" class="form-control" value="42">
-					<div class="input-group-btn-vertical">
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-up"></i>
-						</button>
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-down"></i>
-						</button>
-					</div>
-				</div> days first and then pay maximum of
-				<div class="input-group spinner">
-					<input type="text" class="form-control" value="42">
-					<div class="input-group-btn-vertical">
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-up"></i>
-						</button>
-						<button class="btn btn-default" type="button">
-							<i class="fa fa-caret-down"></i>
-						</button>
-					</div>
-				</div>days</td>
+			</label> All Leave Balance Expires<br /> <label> <input type="radio"></label>
+				Pay maximum of <input type="number" style="width: 60px">
+				days first and then carry forward a maximum of <input type="number"
+				style="width: 60px">days <br /> <label> <input
+					type="radio">
+			</label> Carry forward a maximum of <input type="number" style="width: 60px">
+				days first and then pay maximum of <input type="number"
+				style="width: 60px">days</td>
 		</tr>
 		<tr height="10px"></tr>
 		<tr>
@@ -269,6 +144,33 @@
 
 	</table>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

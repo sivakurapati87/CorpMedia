@@ -14,8 +14,8 @@
 					class="input-group-field form-control datepicking ng-pristine ng-untouched ng-valid ng-isolate-scope ng-valid-required ng-valid-date"
 					type="text" required="" date-only=""
 					data-ng-click="esiRegDate=true" data-is-open="esiRegDate"
-					data-show-weeks="false" data-datepicker-popup="mediumDate"
-					data-ng-model="esiinfo.registrationDate" name="registrationDate1"></td>
+					data-show-weeks="false" data-datepicker-popup="dd/MM/yyyy"
+					data-ng-model="esiinfo.strRegistrationDate"></td>
 			</tr>
 			<tr>
 				<td><label class="lable16_Regular">Signatory </label></td>

@@ -7,8 +7,9 @@ App.controller('Company_Department_Controller', ['$scope','$rootScope','$http', 
 	
 	$scope.department = {};
 	
-	//Save New Bank
+	//Save New Department
 	$scope.saveDepartment = function(){
+		alert($rootScope.selectedCompanyObj.companyId);
 		if($rootScope.selectedCompanyObj){
 			$scope.department.companyId = $rootScope.selectedCompanyObj.companyId;
 		$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.DepartmentController+'/saveDepartment', $scope.department).success(function(data) {
