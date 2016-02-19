@@ -1,30 +1,3 @@
-<script>
-	$(document).ready(function() {
-		$(btn1).click(function() {
-
-			$(fadeout1).fadeOut("slow");
-			$(fadein1).fadeIn("slow");
-		});
-		$(btn2).click(function() {
-
-			$(fadeout2).fadeOut("slow");
-			$(fadein2).fadeIn("slow");
-		});
-		$(btn3).click(function() {
-
-			$(fadeout3).fadeOut("slow");
-			$(fadein3).fadeIn("slow");
-		});
-		$(btn4).click(function() {
-
-			$(fadeout4).fadeOut("slow");
-			$(fadein4).fadeIn("slow");
-		});
-
-	});
-</script>
-
-
 <div class="container-fluid" style="width: 100%;">
 	<table>
 		<tr
@@ -44,7 +17,7 @@
 								<ul>
 
 									<li ng-class="{'active':(state==='assign_roles')}"><a
-										class="anchor-sm" ui-sref="assign_roles">Assign Roles</a></li>
+										class="anchor-sm" ui-sref="assign_roles">Company Roles</a></li>
 
 
 
@@ -56,188 +29,62 @@
 				<table class="table" border="0"
 					style="width: 100%; background-color: white">
 					<tr>
-						<td>
+						<td><div class="panel-body">
 
-							<h4>System Roles</h4>
-							<p>Define your employees role here.</p>
-							<article class="w3-container w3-border">
-								<div class="row">
-									<div class="col-md-4">
-										<!-- first half of the row -->
-										<p>
-											<b>Global Admin</b>
-										</p>
-										<p>A global admin has all permissions across the system
-											including finances and executive dashboards.</p>
-									</div>
-									<div class="col-md-8">
-										<!-- this is the right part of row -->
-										<br> <br>
-										<!-- just aligning  the button to the text -->
-										<div id="fadeout1">
-											<button id="btn1" class="btn btn-info">
-													<span class="glyphicon glyphicon-plus"></span>Add New
-											</button>
-										</div>
-
-										<div id="fadein1" style="display: none">
-											<input type="text" placeholder="Search for employees" />
-										</div>
-										<!-- end of fadein1 -->
+								<div
+									class="col-lg-12 col-md-12 col-sm-12 sub-page-container content-container">
+									<div class="col-lg-12">
+										<h4 class="page-heading">Company Roles</h4>
 									</div>
 								</div>
-								<!-- end of row -->
-								<hr>
-								<!--  first row ends here-->
-								<div class="row">
-									<div class="col-md-4">
-										<!-- first half of the row -->
-										<p>
-											<b>HR Manager</b>
-										</p>
-										<p>This is HR manager role</p>
+
+
+								<form ng-submit="saveOrUpdateRole()">
+									<div class="col-lg-12 clear-left-padding">
+										<div class="form-group">
+											<div class="col-md-6 col-sm-6">
+												<label>Role</label> <input
+													class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+													placeholder="Role" ng-model="companyRolesJson.roleName"
+													required=""> <br>
+											</div>
+										</div>
 									</div>
-									<div class="col-md-8">
-										<!-- this is the right part of row -->
-										<br>
-										<!-- just aligning  the button to the text -->
-										<div id="fadeout2">
-											<button id="btn2" class="btn btn-info">
-												<span class="glyphicon glyphicon-plus"></span>Add New
-											</button>
+									<div class="col-lg-12 clear-left-padding">
+										<div class="form-group">
+											<div class="col-md-6">
+
+												<button class="btn btn-success" type="submit"
+													style="width: 100px">Submit</button>
+												 <br/>
+											</div>
+
 										</div>
-										<div id="fadein2" style="display: none">
-											<input type="text" placeholder="Seach for employees" />
-										</div>
-										<!-- end of fadein2 -->
 									</div>
-								</div>
-								<!-- end of row -->
-								<hr>
-								<div class="row">
-									<div class="col-md-4">
-										<!-- first half of the row -->
-										<p>
-											<b>Billing Manager</b>
-										</p>
-										<p>A billing manager has all permissions across the
-											projects including finances.</p>
-									</div>
-									<div class="col-md-8">
-										<!-- this is the right part of row -->
-										<br>
-										<!-- just aligning  the button to the text -->
-										<div id="fadeout3">
-											<button id="btn3" class="btn btn-info">
-												<span class="glyphicon glyphicon-plus"></span>Add New
-											</button>
-										</div>
-										<div id="fadein3" style="display: none">
-											<input type="text" placeholder="Seach for employees" />
-										</div>
-										<!-- end of fadein3 -->
+								</form>
+								<div ng-show="companyRolesJsonList"
+									class="col-lg-12 col-md-12 col-sm-12 sub-page-container content-container"
+									style="width: 40%">
+									<div class="col-lg-12" style="width: 100%">
+										<table style="width: 100%" border="0">
+										<tr style="height: 20px"></tr>
+											<tr>
+												<th  width="35%">Edit</th>
+												<th>Role</th>
+											</tr>
+											<tr ng-repeat="role in companyRolesJsonList"
+												ng-class-odd="'odd'" ng-class-even="'even'">
+												<td>
+													<button type="button" class="btn btn-danger"
+														ng-click="editRole(role)">Edit</button>
+												</td>
+												<td>{{role.roleName}}</td>
+											</tr>
+										</table>
 									</div>
 								</div>
-								<!-- end of row -->
-								<hr>
-								<div class="row">
-									<div class="col-md-4">
-										<!-- first half of the row -->
-										<p>
-											<b>Project Admin</b> 
-										</p>
-										<p>A project administrator has all permissions across the
-											project including team, tasks and billing.</p>
-									</div>
-									<div class="col-md-8">
-										<!-- this is the right part of row -->
-										<br>
-										<!-- just aligning  the button to the text -->
-										<div id="fadeout4">
-											<button id="btn4" class="btn btn-info">
-												<span class="glyphicon glyphicon-plus"></span>Add New
-											</button>
-										</div>
-										<div id="fadein4" style="display: none">
-											<input type="text" placeholder="Seach for employees" />
-										</div>
-										<!-- end of fadein4 -->
-									</div>
-								</div>
-								<!-- end of row -->
-							</article>
-
-							<h4>Contexual Roles</h4>
-							<p>A context role is automatically assigned to an employee as
-								part of system functionality. These can not be assigned here.
-								They are assigned as part of their job fuction or workflow as
-								defined below.</p>
-							<div class="row">
-								<div class="col-md-4">
-									<p>
-										<b>REPORTING MANAGER</b>
-									</p>
-								</div>
-								<div class="col-md-8">
-									<p>An employee can be assigned as a reporting manager for
-										any other employees.</p>
-								</div>
-								<div class="col-md-4">
-									<p>
-										<b>PROJECT MANAGER</b>
-									</p>
-								</div>
-								<div class="col-md-8">
-									<p>An employee can be assigned as project manager for a
-										specific project and permissions assigned in the project
-										settings. The scope is limitted to that specific project. He
-										can manage tasks and task assignments to a project.</p>
-								</div>
-								<div class="col-md-4">
-									<p>
-										<b>CLIENT MANAGER</b>
-									</p>
-								</div>
-								<div class="col-md-8">
-									<p>An employee can be assigned as client manager for
-										specific client and he can manage projects and client.</p>
-								</div>
-							</div> <!-- end of row for manager-->
-
-
-
-
-
-
-
-						</td>
+							</div></td>
 					</tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 				</table>
 			</td>
 		</tr>

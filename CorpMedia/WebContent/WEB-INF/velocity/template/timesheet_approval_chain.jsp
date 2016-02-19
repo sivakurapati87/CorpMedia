@@ -90,29 +90,33 @@
 														</div>
 													</div>
 													<!-- this is the end of row -->
+													<form ng-submit="saveOrUpdateApproversList()">
 													<div>
-														<table ng-repeat="approver in approverList">
+														<table ng-repeat="approver in TimeSheetApproverJsonList"
+															style="width: 100%">
 															<tr>
-																<td width="500px">
-																<div angucomplete-alt id="customerId" class="lable16"
-																	placeholder="Customer ID" pause="100"
-																	selected-object="selectedCustomerIdAction"
-																	local-data="lookupbean.customersList"
-																	search-fields="customerId" title-field="customerId"
-																	minlength="2" initial-value="approver.approver"
-																	input-class="search-control height34 "
-																	match-class="highlight"></div>
-																
-																
-																<input style="width: 58%"
-																	class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-																	type="text" required="" ng-model="approver.approver"></td>
+																<td width="40%"><select
+																	class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+																	required ng-model="approver.roleId"
+																	ng-options="role.roleId as role.roleName for role in  companyRolesJsonList">
+																		<option value="" disabled selected>Name of
+																			the Role</option>
+																</select></td>
+																<td style="width: 30px"></td>
+																<td><select
+																	class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+																	required ng-model="approver.employeeId"
+																	ng-options="role.roleId as role.roleName for role in  companyRolesJsonList">
+																		<option value="" disabled selected>Name of
+																			the Employee</option>
+																</select></td>
 															</tr>
 															<tr height="20px"></tr>
 														</table>
 													</div>
-													<br> <input type=button class='btn btn-submit'
+													<br> <input type="submit" class='btn btn-submit'
 														value=Update> <br> <br> <br>
+														</form>
 												</div>
 											</div>
 										</div>
@@ -129,44 +133,39 @@
 	</table>
 </div>
 
+<!-- <div class="main1"> -->
+<!-- 	<div class="div1"> -->
+<!-- 		<div class="div4"></div> -->
+<!-- 		<div class="div3"></div> -->
+<!-- 		<div class="div2"></div> -->
+<!-- 		<div class="div3"></div> -->
+<!-- 		<div class="div4"></div> -->
+<!-- 		<div class="div3"></div> -->
+<!-- 		<div class="div2"></div> -->
+<!-- 		<div class="div3"></div> -->
+<!-- 		<div class="div4"></div> -->
+<!-- 		<div class="div3"></div> -->
+<!-- 		<div class="div2"></div> -->
+<!-- 		<div class="div3"></div> -->
+<!-- 		<div class="div4"></div> -->
+
+
+
+
+
+
+<!-- 	</div> -->
+<!-- 	<div class="loading"> -->
+<!-- 		<h5>Loading..</h5> -->
+<!-- 	</div> -->
+<!-- </div> -->
+
 <div class="main1">
 	<div class="div1">
-    	<div class="div4">
-        </div>
-        <div class="div3">
-        </div>
-        <div class="div2">
-        </div>
-         <div class="div3">
-        </div>
-         <div class="div4">
-        </div>
-        <div class="div3">
-        </div>
-        <div class="div2">
-        </div>
-        <div class="div3">
-        </div>
-         <div class="div4">
-        </div>
-        <div class="div3">
-        </div>
-        <div class="div2">
-        </div>
-        <div class="div3">
-        </div>
-        <div class="div4">
-        </div>
-        
-        
-        
-       
-        
-         
-    </div>
-    <div class="loading"><h5>Loading..</h5></div>
+		<i
+					class="fa fa-spinner fa-spin " style="font-size: 60px"></i>
+	</div>
 </div>
-
 
 
 

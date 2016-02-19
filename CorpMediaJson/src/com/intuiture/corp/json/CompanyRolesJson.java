@@ -1,16 +1,7 @@
-package com.intuiture.corp.entity;
+package com.intuiture.corp.json;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "companyroles")
-public class Roles {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CompanyRolesJson {
 	private Integer roleId;
 	private String roleName;
 	private Integer companyId;

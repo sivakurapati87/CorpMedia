@@ -8,6 +8,7 @@ import com.intuiture.corp.dao.CommonRepository;
 import com.intuiture.corp.dao.GeneralSettingsRepository;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.json.GeneralSettingsJson;
+import com.intuiture.corp.util.TransformDomainToJson;
 import com.intuiture.corp.util.TransformJsonToDomain;
 
 @Service
@@ -36,5 +37,18 @@ public class GeneralSettingsService {
 			return false;
 		}
 		return true;
+	}
+
+	public GeneralSettingsJson getCompanyGeneralSetting(Integer companyId) {
+		GeneralSettingsJson generalSettingsJson = null;
+		try {
+			GeneralSettings generalSettings = generalSettingsRepository.getGeneralSettingsByCompanyId(companyId);
+			if (generalSettings != null) {
+				generalSettingsJson = TransformDomainToJson.getGeneralSettingsJson(generalSettings);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return generalSettingsJson;
 	}
 }

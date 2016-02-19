@@ -18,18 +18,24 @@ import org.apache.log4j.Logger;
 
 import com.intuiture.corp.entity.Banks;
 import com.intuiture.corp.entity.Company;
+import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
 import com.intuiture.corp.entity.ESIInfo;
+import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.PFInfo;
+import com.intuiture.corp.entity.TimeSheetApprovers;
 import com.intuiture.corp.json.BankJson;
 import com.intuiture.corp.json.CompanyJson;
+import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.json.ESIInfoJson;
+import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.LookUpDetailJson;
 import com.intuiture.corp.json.PFInfoJson;
+import com.intuiture.corp.json.TimeSheetApproverJson;
 
 public class TransformDomainToJson {
 	private static Logger LOG = Logger.getLogger(TransformDomainToJson.class);
@@ -283,6 +289,32 @@ public class TransformDomainToJson {
 
 		}
 		return esiInfoJson;
+	}
+
+	public static CompanyRolesJson getCompanyRolesJson(CompanyRoles companyRoles) {
+		CompanyRolesJson companyRolesJson = new CompanyRolesJson();
+		companyRolesJson.setCompanyId(companyRoles.getCompanyId());
+		companyRolesJson.setRoleId(companyRoles.getRoleId());
+		companyRolesJson.setRoleName(companyRoles.getRoleName());
+		return companyRolesJson;
+	}
+
+	public static TimeSheetApproverJson getTimeSheetApproverJson(TimeSheetApprovers timeSheetApprovers) {
+		TimeSheetApproverJson timeSheetApproverJson = new TimeSheetApproverJson();
+		timeSheetApproverJson.setCompanyId(timeSheetApprovers.getCompanyId());
+		timeSheetApproverJson.setRoleId(timeSheetApprovers.getRoleId());
+		timeSheetApproverJson.setEmployeeId(timeSheetApprovers.getEmployeeId());
+		timeSheetApproverJson.setTimeSheetApproverId(timeSheetApprovers.getTimeSheetApproverId());
+		return timeSheetApproverJson;
+	}
+
+	public static GeneralSettingsJson getGeneralSettingsJson(GeneralSettings generalSettings) {
+		GeneralSettingsJson generalSettingsJson = new GeneralSettingsJson();
+		generalSettingsJson.setCompanyId(generalSettings.getCompanyId());
+		generalSettingsJson.setGeneralsettingsId(generalSettings.getGeneralsettingsId());
+		generalSettingsJson.setHoursPerMonth(generalSettings.getHoursPerMonth());
+		generalSettingsJson.setHoursPerWeek(generalSettings.getHoursPerWeek());
+		return generalSettingsJson;
 	}
 
 }

@@ -11,5 +11,7 @@ LookUpController :'LookUpController',
 BankController : 'BankController',
 DepartmentController : 'DepartmentController',
 CompanyLocationController : 'CompanyLocationController',
-GeneralSettingsController : 'GeneralSettingsController'
+GeneralSettingsController : 'GeneralSettingsController',
+CompanyRolesController : 'CompanyRolesController',
+TimeSheetApproverChainController : 'TimeSheetApproverChainController'
 };

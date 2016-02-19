@@ -31,6 +31,7 @@ App.controller('cmpInfo_Controller', ['$scope','$http', '$rootScope','CompanyInf
  			  				    	 $scope.$parent.companyName = d[0].companyName;
  			  				    	$rootScope.companyName = d[0].companyName;
  			  				    	$rootScope.companyId = d[0].companyId;
+ 			  				    	$rootScope.selectedCompanyObj = d[0];
  			  				       },
  			    					function(errResponse){
  			    						console.error('Error while fetching Currencies');

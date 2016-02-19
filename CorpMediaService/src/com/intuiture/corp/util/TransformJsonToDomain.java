@@ -14,6 +14,7 @@ import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
 import com.intuiture.corp.entity.CompanyInfo;
 import com.intuiture.corp.entity.CompanyLocation;
+import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
 import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
@@ -21,14 +22,17 @@ import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.PFInfo;
+import com.intuiture.corp.entity.TimeSheetApprovers;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyLocationJson;
+import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.PFInfoJson;
+import com.intuiture.corp.json.TimeSheetApproverJson;
 
 public class TransformJsonToDomain {
 	private static Logger LOG = Logger.getLogger(TransformJsonToDomain.class);
@@ -226,6 +230,27 @@ public class TransformJsonToDomain {
 		generalSettings.setCreatedOn(new Date());
 		generalSettings.setHoursPerMonth(generalSettingsJson.getHoursPerMonth());
 		generalSettings.setHoursPerWeek(generalSettingsJson.getHoursPerWeek());
+	}
+
+	public static void getCompanyRoles(CompanyRoles companyRoles, CompanyRolesJson companyRolesJson) {
+		companyRoles.setCompanyId(companyRolesJson.getCompanyId());
+		if (companyRolesJson.getRoleId() != null) {
+			companyRoles.setUpdatedOn(new Date());
+		} else {
+			companyRoles.setCreatedOn(new Date());
+		}
+		companyRoles.setRoleName(companyRolesJson.getRoleName());
+	}
+
+	public static void getTimeSheetApprover(TimeSheetApprovers timeSheetApprovers, TimeSheetApproverJson timeSheetApproverJson) {
+		timeSheetApprovers.setCompanyId(timeSheetApproverJson.getCompanyId());
+		if (timeSheetApproverJson.getTimeSheetApproverId() != null) {
+			timeSheetApprovers.setUpdatedOn(new Date());
+		} else {
+			timeSheetApprovers.setCreatedOn(new Date());
+		}
+		timeSheetApprovers.setEmployeeId(timeSheetApproverJson.getEmployeeId());
+		timeSheetApprovers.setRoleId(timeSheetApproverJson.getRoleId());
 	}
 
 }
