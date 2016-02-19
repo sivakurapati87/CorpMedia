@@ -14,6 +14,7 @@ public class CompanySignatorJson {
 	private String designation;
 	private String fatherName;
 	private String panNumber;
+	private Boolean isDeleted;
 
 	public String getFatherName() {
 		return fatherName;
@@ -117,6 +118,14 @@ public class CompanySignatorJson {
 
 	public void setDesignation(String designation) {
 		this.designation = designation;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

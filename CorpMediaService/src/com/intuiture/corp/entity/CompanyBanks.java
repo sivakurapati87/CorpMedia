@@ -23,8 +23,9 @@ public class CompanyBanks {
 	private Integer companyId;
 	@ManyToOne
 	@JoinColumn(name = "bankId", insertable = false, updatable = false)
-	private LookUpDetails lookUpDetails;
+	private LookUpDetails bank;
 	private Date createOn;
+	private Boolean isDeleted;
 
 	public Integer getCompanyBankId() {
 		return companyBankId;
@@ -66,12 +67,12 @@ public class CompanyBanks {
 		this.branch = branch;
 	}
 
-	public LookUpDetails getLookUpDetails() {
-		return lookUpDetails;
+	public LookUpDetails getBank() {
+		return bank;
 	}
 
-	public void setLookUpDetails(LookUpDetails lookUpDetails) {
-		this.lookUpDetails = lookUpDetails;
+	public void setBank(LookUpDetails bank) {
+		this.bank = bank;
 	}
 
 	public Integer getCompanyId() {
@@ -88,6 +89,14 @@ public class CompanyBanks {
 
 	public void setCreateOn(Date createOn) {
 		this.createOn = createOn;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

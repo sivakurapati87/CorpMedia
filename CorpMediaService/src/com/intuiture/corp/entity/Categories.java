@@ -19,8 +19,8 @@ public class Categories {
 	private Date createdOn;
 	private Date updatedOn;
 	private Integer companyId;
+	private Boolean isDeleted;
 
-	
 	public Integer getCategoriesId() {
 		return categoriesId;
 	}
@@ -67,6 +67,14 @@ public class Categories {
 
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

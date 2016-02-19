@@ -11,11 +11,23 @@ App.controller('timesheet_general_Controller', ['$scope','$location','$rootScope
 			if($rootScope.selectedCompanyObj){
 				$scope.generalSettingsJson.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.GeneralSettingsController+'/saveGeneralSettings', $scope.generalSettingsJson).success(function(data) {
-	        }).error(function() {
+				$scope.getCompanyGeneralSetting();
+			}).error(function() {
 	      	  console.error('Could not save or update saveTimeSheet_GeneralInfo');
 	        });}
 		};
-		
+		// get all the approvers list
+		$scope.getCompanyGeneralSetting = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.GeneralSettingsController+'/getCompanyGeneralSetting/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.generalSettingsJson = data;
+			}).error(function() {
+	      	  console.error('Could not getCompanyGeneralSetting');
+	        });}
+		};
+
+
+		$scope.getCompanyGeneralSetting();
 		
           
 

@@ -10,7 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "pfinfo")
-//@NamedQueries({ @NamedQuery(name = "PFInfo.findBycompanyId", query = "select pf from PFInfo pf where pf.companyId = ?1") })
+// @NamedQueries({ @NamedQuery(name = "PFInfo.findBycompanyId", query =
+// "select pf from PFInfo pf where pf.companyId = ?1") })
 public class PFInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +23,7 @@ public class PFInfo {
 	private Date createdOn;
 	private Date updatedOn;
 	private Boolean isSameForAll;
+	private Boolean isDeleted;
 
 	public Integer getPfInfoId() {
 		return pfInfoId;
@@ -85,6 +87,14 @@ public class PFInfo {
 
 	public void setIsSameForAll(Boolean isSameForAll) {
 		this.isSameForAll = isSameForAll;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

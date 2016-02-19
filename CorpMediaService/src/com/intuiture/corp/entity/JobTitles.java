@@ -19,44 +19,62 @@ public class JobTitles {
 	private Integer companyId;
 	private String jobtitle;
 	private String description;
-	
-	
-	
+	private Boolean isDeleted;
+
 	public Integer getJobtitlesId() {
 		return jobtitlesId;
 	}
+
 	public void setJobtitlesId(Integer jobtitlesId) {
 		this.jobtitlesId = jobtitlesId;
 	}
+
 	public Date getCreatedOn() {
 		return createdOn;
 	}
+
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
+
 	public Date getUpdatedOn() {
 		return updatedOn;
 	}
+
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
 	}
+
 	public Integer getCompanyId() {
 		return companyId;
 	}
+
 	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
+
 	public String getJobtitle() {
 		return jobtitle;
 	}
+
 	public void setJobtitle(String jobtitle) {
 		this.jobtitle = jobtitle;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

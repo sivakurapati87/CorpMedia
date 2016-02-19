@@ -8,6 +8,7 @@ public class CompanyLocationJson {
 	private String city;
 	private Long zipcode;
 	private String locationName;
+	private String state;
 
 	public Integer getCompanyLocationId() {
 		return companyLocationId;
@@ -63,6 +64,14 @@ public class CompanyLocationJson {
 
 	public void setLocationName(String locationName) {
 		this.locationName = locationName;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }

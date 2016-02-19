@@ -22,6 +22,7 @@ public class PTInfo {
 	private Integer companyId;
 	private Date createdOn;
 	private Date updatedOn;
+	private Boolean isDeleted;
 
 	public Integer getPtInfoId() {
 		return ptInfoId;
@@ -77,6 +78,14 @@ public class PTInfo {
 
 	public void setUpdatedOn(Date updatedOn) {
 		this.updatedOn = updatedOn;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 }

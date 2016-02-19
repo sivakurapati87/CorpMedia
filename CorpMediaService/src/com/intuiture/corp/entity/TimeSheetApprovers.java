@@ -6,52 +6,48 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "esiinfo")
-public class ESIInfo {
+@Table(name = "timesheetapprovers")
+public class TimeSheetApprovers {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer esiInfoId;
-	private String esiNumber;
-	private Date registrationDate;
-	private Integer companySignatorId;
+	private Integer timeSheetApproverId;
+	private Integer roleId;
+	private Integer employeeId;
 	private Integer companyId;
 	private Date createdOn;
 	private Date updatedOn;
+	@ManyToOne
+	@JoinColumn(name = "roleId", insertable = false, updatable = false)
+	private CompanyRoles companyRoles;
 	private Boolean isDeleted;
 
-	public Integer getEsiInfoId() {
-		return esiInfoId;
+	public Integer getTimeSheetApproverId() {
+		return timeSheetApproverId;
 	}
 
-	public void setEsiInfoId(Integer esiInfoId) {
-		this.esiInfoId = esiInfoId;
+	public void setTimeSheetApproverId(Integer timeSheetApproverId) {
+		this.timeSheetApproverId = timeSheetApproverId;
 	}
 
-	public String getEsiNumber() {
-		return esiNumber;
+	public Integer getRoleId() {
+		return roleId;
 	}
 
-	public void setEsiNumber(String esiNumber) {
-		this.esiNumber = esiNumber;
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
 
-	public Date getRegistrationDate() {
-		return registrationDate;
+	public Integer getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setRegistrationDate(Date registrationDate) {
-		this.registrationDate = registrationDate;
-	}
-
-	public Integer getCompanySignatorId() {
-		return companySignatorId;
-	}
-
-	public void setCompanySignatorId(Integer companySignatorId) {
-		this.companySignatorId = companySignatorId;
+	public void setEmployeeId(Integer employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public Integer getCompanyId() {
@@ -68,6 +64,14 @@ public class ESIInfo {
 
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
+	}
+
+	public CompanyRoles getCompanyRoles() {
+		return companyRoles;
+	}
+
+	public void setCompanyRoles(CompanyRoles companyRoles) {
+		this.companyRoles = companyRoles;
 	}
 
 	public Date getUpdatedOn() {

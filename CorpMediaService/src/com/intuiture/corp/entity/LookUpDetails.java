@@ -6,18 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "lookupdetails")
-//@NamedQueries({ @NamedQuery(name = "LookUpDetails.lookupDetailsByType", query = "select l from LookUpDetails l where l.lookUpMaster.lookupType = ?1"),
-//		@NamedQuery(name = "LookUpDetails.lookupDetailsByParent", query = "select l from LookUpDetails l where l.parent = ?1"),
-//		@NamedQuery(name = "LookUpDetails.lookupDetailsByDetailIds", query = "select l from LookUpDetails l where l.lookupDetailId in ?1"),
-//		@NamedQuery(name = "LookUpDetails.lookupDetailsByPrevDetailId", query = "select l from LookUpDetails l where l.lookUpMaster.lookupType = ?1 and l.lookupDetailId >= ?2"),
-//		@NamedQuery(name = "LookUpDetails.decLookupDetailsByPrevDetailId", query = "select l from LookUpDetails l where l.lookUpMaster.lookupType = ?1 and l.lookupDetailId <= ?2"),
-//		@NamedQuery(name = "LookUpDetails.lookupDetailsByTypeList", query = "select l from LookUpDetails l where l.lookUpMaster.lookupType in ?1") })
 public class LookUpDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

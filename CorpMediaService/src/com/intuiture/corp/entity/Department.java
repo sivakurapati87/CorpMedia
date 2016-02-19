@@ -17,6 +17,7 @@ public class Department {
 	private String departmentName;
 	private Date createdOn;
 	private Integer companyId;
+	private Boolean isDeleted;
 
 	public Integer getDepartmentId() {
 		return departmentId;
@@ -48,5 +49,13 @@ public class Department {
 
 	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 }

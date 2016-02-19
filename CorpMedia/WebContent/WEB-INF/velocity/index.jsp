@@ -8,8 +8,8 @@
 <script src="webjars/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
     <script src="resources/js/typed.js" type="text/javascript"></script>
 <link rel="stylesheet" href="resources/css/angucomplete-alt.css" />
-<!-- <link rel="stylesheet" -->
-<!-- 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+<link rel="stylesheet"
+	href="webjars/font-awesome/4.3.0/css/font-awesome.css">
 <link rel="stylesheet"
 	href="webjars/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/app.css" />
