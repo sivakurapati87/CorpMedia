@@ -20,20 +20,25 @@
 								<ul>
 
 									<li ng-class="{'active':(state==='general_payroll_settings')}"><a
-										class="anchor-sm" ui-sref="general_payroll_settings">Payroll settings</a></li>
+										class="anchor-sm" ui-sref="general_payroll_settings">Payroll
+											settings</a></li>
 									<li ng-class="{'active':(state==='adhoc_components')}"><a
-										class="anchor-sm" ui-sref="adhoc_components">Adhoc Components</a></li>	
-									<li ng-class="{'active':(state==='salary_component_structure')}"><a
-										class="anchor-sm" ui-sref="salary_component_structure">Salary Structure</a></li>
+										class="anchor-sm" ui-sref="adhoc_components">Adhoc
+											Components</a></li>
+									<li
+										ng-class="{'active':(state==='salary_component_structure')}"><a
+										class="anchor-sm" ui-sref="salary_component_structure">Salary
+											Structure</a></li>
 									<li ng-class="{'active':(state==='provident_fund')}"><a
 										class="anchor-sm" ui-sref="provident_fund">Provident Fund</a></li>
 									<li ng-class="{'active':(state==='legal_and_bank')}"><a
-										class="anchor-sm" ui-sref="legal_and_bank">Legal and Bank</a></li>	
+										class="anchor-sm" ui-sref="legal_and_bank">Legal and Bank</a></li>
 									<li ng-class="{'active':(state==='employee_loan_settings')}"><a
-										class="anchor-sm" ui-sref="employee_loan_settings">Loan Settings</a></li>			
-										
-										
-									
+										class="anchor-sm" ui-sref="employee_loan_settings">Loan
+											Settings</a></li>
+
+
+
 
 								</ul>
 							</div>
@@ -45,290 +50,293 @@
 					<tr>
 						<td>
 
-							 
-            
-  <div class="row">
-    
-    
-    <div class="col-md-8">
-        <p><font size="3">Adhoc components</font></p>
-        <p><font size="2">Adhoc components are salary components that are
-            added to an employee for a given payroll month and are typically not
-            paid as regular monthly components. Examples are - Joining bonus,
-            Performance Bonus, Reimbursements, Leave Encashment at the end of an year,
-            Penalty for late arrival etc.
-            
-            </font></p>
-        
-        </div>
-    
-    
-<!--these two columns are empty because we want to make some space-->      
-    <div class="col-md-2">
-        </div>
 
-<!--third part of the row-->
-    <div class="col-md-2">
-        <button type="button" class="btn btn-primary">Continue</button>
-        </div>
-    
-</div>
-        
-        
-        <br>
-        
-        
-        <!--second row-->
-        <div class="row">
-            
-            <div class="col-md-4">
-                <p><b><font size="3">ADHOC ALLOWANCES</b></font></p>
-        <p><font size="2">These are components that can be configured to be taxable or tax-exempt </font></p>   
-        <a href="" data-toggle="modal" data-target="#myModal_adhoc"><p><font size="3"><i class="fa fa-plus"></i>&nbsp;Add Alowaance</font></p></a>
-            </div>
-            
-            
-           
- 
-            
-            
-             <div class="col-md-2">
-            </div>
-            
-            
-            <div class="col-md-4">
-               
-                <p><b><font size="3">DEDUCTIONS</font></b></p>
-        <p><font size="2">Deductions are components used to deduct from net 
-            salary of an employee in a month. Ex: Laptop Damage charges etc.
-            
-            </font></p>
-        <a href="" data-toggle="modal" data-target="#myModal_deduction"><p><font size="3"><i class="fa fa-plus"></i>&nbsp;Add Deduction</font></p></a>
-            </div>
-            
-             <div class="col-md-2">
-            </div>
-            
-            </div>
-        
-        <!-- Modal for adhoc allowances -->
-  <div class="modal fade" id="myModal_adhoc" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Create Adhoc Allowance</h4>
-        </div>
-        <div class="modal-body">
-            
-          <form role="form">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" maxlength="50"/>
-    </div>
-              <br>
-              <div class="form-group">
-      <label for="description">Description</label>
-      <textarea id="name" rows="3"  class="form-control">  </textarea>
-    </div>
-              <br>
-              <div class="form-group">
-              <label for="tax">Has Tax Benefits</label>
-              <select class="form-control" id="tax">
-                  <option>Yes</option>
-                  <option>No</option>
-              </select>
-               </div>
-  </form>
-          
-          
-        </div>
-        <div class="modal-footer">
-            <p>
-                 <button type="button" class="btn btn-primary">Save</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </p>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-        
-        
-  <!--modal for deductions-->
-<div class="modal fade" id="myModal_deduction" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Create Deduction</h4>
-        </div>
-        <div class="modal-body">
-            
-          <form role="form">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" maxlength="50"/>
-    </div>
-              <br>
-              <div class="form-group">
-      <label for="description">Description</label>
-      <textarea id="name" rows="3"  class="form-control">  </textarea>
-    </div>
-              <br>
-             
-  </form>
-          
-          
-        </div>
-        <div class="modal-footer">
-            <p>
-                 <button type="button" class="btn btn-primary">Save</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </p>
-        </div>
-      </div>
-      
-    </div>
-  </div>    
-  
-  
-        <br>
-        <br>
-        
-        
-        <!--third row-->
-         <div class="row">
-            
-            <div class="col-md-4">
-                <p><b><font size="3">REIMBURSEMENTS</font></b></p>
-        <p><font size="2">Reimbursements are expense claim payments and are not taxed,
-            as they are reimbursements against employeer's expenses.
-            
-            </font></p>
-        <a href=""  data-toggle="modal" data-target="#myModal_reimburse"><p><font size="3"><i class="fa fa-plus"></i>&nbsp;Add Reimbursement</font></p></a>
-            </div>
-            
-            
-             <div class="col-md-2">
-            </div>
-            
-            
-            <div class="col-md-4">
-               
-                <p><b><font size="3">BONUSES</font></b></p>
-        <p><font size="2">Bonuses are one time payments made to an employee and are taxable.
-            
-            </font></p>
-        <a href="" data-toggle="modal" data-target="#myModal_bonus"><p><font size="3"><i class="fa fa-plus"></i>&nbsp;ADD BONUSES</font></p></a>
-            </div>
-            
-             <div class="col-md-2">
-            </div>
-            </div>
-        
-        
-        
-        <!--bootstrap for reimbursement-->
-<div class="modal fade" id="myModal_reimburse" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Create Reimbursement</h4>
-        </div>
-        <div class="modal-body">
-            
-          <form role="form">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" maxlength="50"/>
-    </div>
-              <br>
-              <div class="form-group">
-      <label for="description">Description</label>
-      <textarea id="name" rows="3"  class="form-control">  </textarea>
-    </div>
-              <br>
-             
-  </form>
-          
-          
-        </div>
-        <div class="modal-footer">
-            <p>
-                 <button type="button" class="btn btn-primary">Save</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </p>
-        </div>
-      </div>
-      
-    </div>
-  </div>  
-        
-        
-        <!--bootstrap modal for bonuses-->
-<div class="modal fade" id="myModal_bonus" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Create Bonus</h4>
-        </div>
-        <div class="modal-body">
-            
-          <form role="form">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" maxlength="50"/>
-    </div>
-              <br>
-              <div class="form-group">
-      <label for="description">Description</label>
-      <textarea id="name" rows="3"  class="form-control">  </textarea>
-    </div>
-              <br>
-             
-  </form>
-          
-          
-        </div>
-        <div class="modal-footer">
-            <p>
-                 <button type="button" class="btn btn-primary">Save</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </p>
-        </div>
-      </div>
-      
-    </div>
-  </div> 
-        
-        
-        
-        
-             
-        
-        
-        
-        <!--fourth row-->
-        <div class="row">
-            
-            <div class="col-md-10">
-            </div>
-            
-            <div class="col-md-2">
-              <button type="button" class="btn btn-primary">Continue</button>  
-                </div>
-                </div>
+
+							<div class="row">
+
+
+								<div class="col-md-8">
+									<p>
+										<font size="3">Adhoc components</font>
+									</p>
+									<p>
+										<font size="2">Adhoc components are salary components
+											that are added to an employee for a given payroll month and
+											are typically not paid as regular monthly components.
+											Examples are - Joining bonus, Performance Bonus,
+											Reimbursements, Leave Encashment at the end of an year,
+											Penalty for late arrival etc. </font>
+									</p>
+
+								</div>
+
+
+								<!--these two columns are empty because we want to make some space-->
+								<div class="col-md-2"></div>
+
+								<!--third part of the row-->
+								<div class="col-md-2">
+									<button type="button" class="btn btn-primary">Continue</button>
+								</div>
+
+							</div> <br> <!--second row-->
+							<div class="row">
+
+								<div class="col-md-4">
+									<p>
+										<b><font size="3">ADHOC ALLOWANCES</b></font>
+									</p>
+									<p>
+										<font size="2">These are components that can be
+											configured to be taxable or tax-exempt </font>
+									</p>
+									<a href="" data-toggle="modal" data-target="#myModal_adhoc"><p>
+											<font size="3"><i class="fa fa-plus"></i>&nbsp;Add
+												Allowances</font>
+										</p></a>
+								</div>
+
+
+
+
+
+
+								<div class="col-md-2"></div>
+
+
+								<div class="col-md-4">
+
+									<p>
+										<b><font size="3">DEDUCTIONS</font></b>
+									</p>
+									<p>
+										<font size="2">Deductions are components used to deduct
+											from net salary of an employee in a month. Ex: Laptop Damage
+											charges etc. </font>
+									</p>
+									<a href="" data-toggle="modal" data-target="#myModal_deduction"><p>
+											<font size="3"><i class="fa fa-plus"></i>&nbsp;Add
+												Deduction</font>
+										</p></a>
+								</div>
+
+								<div class="col-md-2"></div>
+
+							</div> <!-- Modal for adhoc allowances -->
+							<div class="modal fade" id="myModal_adhoc" role="dialog">
+								<div class="modal-dialog">
+                                     <form ng-submit="saveAllowances()">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Create Adhoc Allowance</h4>
+										</div>
+										<div class="modal-body">
+
+											
+												<div class="form-group">
+													<label for="name">Name</label> <input type="text"
+														class="form-control" id="name" maxlength="50" ng-model="allowances.allowancesName" />
+												</div>
+												<br>
+												<div class="form-group">
+													<label for="description">Description</label>
+													<textarea id="name" rows="3" class="form-control" ng-model="allowances.allowancesDescription">  </textarea>
+												</div>
+												<br>
+												<div class="form-group">
+													<label for="tax">Has Tax Benefits</label> <select
+														class="form-control" id="tax" ng-model="allowances.hasTaxBenefits">
+														<option>Yes</option>
+														<option>No</option>
+													</select>
+												</div>
+											
+
+
+										</div>
+										<div class="modal-footer">
+											<p>
+												<button type="submit" class="btn btn-primary">Save</button>
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Close</button>
+											</p>
+										</div>
+									</div>
+									</form>
+
+								</div>
+							</div> <!--modal for deductions-->
+							<div class="modal fade" id="myModal_deduction" role="dialog">
+								<div class="modal-dialog">
+									<form ng-submit="saveDeductions()">
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Create Deduction</h4>
+											</div>
+											<div class="modal-body">
+
+
+												<div class="form-group">
+													<label for="name">Name</label> <input type="text"
+														class="form-control" id="name" maxlength="50"
+														ng-model="deductions.deductionName" />
+												</div>
+												<br>
+												<div class="form-group">
+													<label for="description">Description</label>
+													<textarea id="name" rows="3" class="form-control"
+														ng-model="deductions.deductionDescription">  </textarea>
+												</div>
+												<br>
+
+
+
+
+											</div>
+											<div class="modal-footer">
+												<p>
+													<button type="submit" class="btn btn-primary">Save</button>
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">Close</button>
+												</p>
+											</div>
+										</div>
+									</form>
+
+								</div>
+							</div> <br> <br> <!--third row-->
+							<div class="row">
+
+								<div class="col-md-4">
+									<p>
+										<b><font size="3">REIMBURSEMENTS</font></b>
+									</p>
+									<p>
+										<font size="2">Reimbursements are expense claim
+											payments and are not taxed, as they are reimbursements
+											against employeer's expenses. </font>
+									</p>
+									<a href="" data-toggle="modal" data-target="#myModal_reimburse"><p>
+											<font size="3"><i class="fa fa-plus"></i>&nbsp;Add
+												Reimbursement</font>
+										</p></a>
+								</div>
+
+
+								<div class="col-md-2"></div>
+
+
+								<div class="col-md-4">
+
+									<p>
+										<b><font size="3">BONUSES</font></b>
+									</p>
+									<p>
+										<font size="2">Bonuses are one time payments made to an
+											employee and are taxable. </font>
+									</p>
+									<a href="" data-toggle="modal" data-target="#myModal_bonus"><p>
+											<font size="3"><i class="fa fa-plus"></i>&nbsp;Add
+												Bonuses</font>
+										</p></a>
+								</div>
+
+								<div class="col-md-2"></div>
+							</div> <!--bootstrap for reimbursement-->
+							<div class="modal fade" id="myModal_reimburse" role="dialog">
+								<div class="modal-dialog">
+									<form ng-submit="saveReimbursement()">
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Create Reimbursement</h4>
+											</div>
+											<div class="modal-body">
+
+
+												<div class="form-group">
+													<label for="name">Name</label> <input type="text"
+														class="form-control" id="name" maxlength="50"
+														ng-model="reimbursement.reimbursementName" />
+												</div>
+												<br>
+												<div class="form-group">
+													<label for="description">Description</label>
+													<textarea id="name" rows="3" class="form-control"
+														ng-model="reimbursement.reimbursementDescription">  </textarea>
+												</div>
+												<br>
+
+
+
+
+											</div>
+											<div class="modal-footer">
+												<p>
+													<button type="submit" class="btn btn-primary">Save</button>
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">Close</button>
+												</p>
+											</div>
+										</div>
+									</form>
+
+								</div>
+							</div> <!--bootstrap modal for bonuses-->
+							<div class="modal fade" id="myModal_bonus" role="dialog">
+								<div class="modal-dialog">
+									<form ng-submit="saveBonuses()">
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Create Bonus</h4>
+											</div>
+											<div class="modal-body">
+
+
+												<div class="form-group">
+													<label for="name">Name</label> <input type="text"
+														class="form-control" id="name" maxlength="50"
+														ng-model="bonuses.bonusesName" />
+												</div>
+												<br>
+												<div class="form-group">
+													<label for="description">Description</label>
+													<textarea id="name" rows="3" class="form-control"
+														ng-model="bonuses.bonusesDescription">  </textarea>
+												</div>
+												<br>
+
+
+
+
+											</div>
+											<div class="modal-footer">
+												<p>
+													<button type="submit" class="btn btn-primary">Save</button>
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">Close</button>
+												</p>
+											</div>
+										</div>
+									</form>
+
+								</div>
+							</div> <!--fourth row-->
+							<div class="row">
+
+								<div class="col-md-10"></div>
+
+								<div class="col-md-2">
+									<button type="button" class="btn btn-primary">Continue</button>
+								</div>
+							</div>
 
 
 

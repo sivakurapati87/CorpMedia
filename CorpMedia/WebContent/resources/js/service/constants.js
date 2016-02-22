@@ -18,5 +18,10 @@ TimeSheetApproverChainController : 'TimeSheetApproverChainController',
 TagsController : 'TagsController',
 CategoriesController : 'CategoriesController',
 JobTitlesController : 'JobTitlesController',
-EmployeeController : 'EmployeeController'
+EmployeeController : 'EmployeeController',
+DeductionsController :'DeductionsController',
+ReimbursementController : 'ReimbursementController',
+BonusesController : 'BonusesController',
+AllowancesController : 'AllowancesController',
+MedicalReimbursementController : 'MedicalReimbursementController'
 };
