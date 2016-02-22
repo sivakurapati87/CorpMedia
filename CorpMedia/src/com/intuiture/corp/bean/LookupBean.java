@@ -9,6 +9,33 @@ public class LookupBean {
 	private List<LookUpDetailJson> banksList;
 	private List<LookUpDetailJson> typeOfBusinessList;
 	private List<LookUpDetailJson> statesList;
+	private List<LookUpDetailJson> daysWeeksMonthsList;
+	private List<LookUpDetailJson> workerTypeList;
+	private List<LookUpDetailJson> timeTypeList;
+
+	public List<LookUpDetailJson> getDaysWeeksMonthsList() {
+		return daysWeeksMonthsList;
+	}
+
+	public void setDaysWeeksMonthsList(List<LookUpDetailJson> daysWeeksMonthsList) {
+		this.daysWeeksMonthsList = daysWeeksMonthsList;
+	}
+
+	public List<LookUpDetailJson> getWorkerTypeList() {
+		return workerTypeList;
+	}
+
+	public void setWorkerTypeList(List<LookUpDetailJson> workerTypeList) {
+		this.workerTypeList = workerTypeList;
+	}
+
+	public List<LookUpDetailJson> getTimeTypeList() {
+		return timeTypeList;
+	}
+
+	public void setTimeTypeList(List<LookUpDetailJson> timeTypeList) {
+		this.timeTypeList = timeTypeList;
+	}
 
 	public List<LookUpDetailJson> getBanksList() {
 		return banksList;

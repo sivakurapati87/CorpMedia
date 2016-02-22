@@ -42,52 +42,63 @@
 					</tr>
 					<tr>
 						<td><button type="button" class="btn btn-info"
-								data-toggle="collapse" data-target="#demo">
+								ng-click="isCollapse = !isCollapse">
 								<span class="glyphicon glyphicon-plus"></span> Add New
 							</button>
 
-							<div id="demo" class="collapse">
-								<form ng-submit="saveDepartment()">
-									<table border="0">
-										<tr height="10px"></tr>
-										<tr>
-											<td><label> Add Department</label></td>
-										</tr>
-										<tr height="30px"></tr>
-										<tr>
-											<td><label> Department Name</label></td>
-										</tr>
-										<tr>
-											<td><input id="panNumber" style="width: 200%"
-												class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-												type="text" required="" ng-model="department.departmentName"
-												name="panNumber"></td>
-										</tr>
-										<tr height="30px"></tr>
-										<tr>
+							<div class="row">
+								<div class="col-lg-8" collapse="isCollapse">
+									<form ng-submit="saveDepartment()">
+										<table border="0">
+											<tr height="10px"></tr>
+											<tr>
+												<td><label> Add Department</label></td>
+											</tr>
+											<tr height="30px"></tr>
+											<tr>
+												<td><label> Department Name</label></td>
+											</tr>
+											<tr>
+												<td><input id="panNumber" style="width: 200%"
+													class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+													type="text" required=""
+													ng-model="department.departmentName" name="panNumber"></td>
+											</tr>
+											<tr height="30px"></tr>
+											<tr>
 
-											<td>
+												<td>
 
-												<button class="btn btn-success" type="submit" style="width: 100px">Save</button>&nbsp;
-												<button class="btn btn-cancel" style="width: 100px" type="button">Cancel</button>
-											</td>
+													<button class="btn btn-success" type="submit"
+														style="width: 100px">Save</button>&nbsp;
+													<button class="btn btn-cancel" style="width: 100px"
+														type="button">Cancel</button>
+												</td>
+											</tr>
+										</table>
+									</form>
+								</div>
+								<div class="col-lg-8">
+									<table style="width: 100%" border="0">
+										<tr style="height: 20px"></tr>
+										<tr ng-repeat="department in companyDepartmentList"
+											ng-class-odd="'odd'" ng-class-even="'even'" style="height: 30px">
+											<td>{{department.departmentName}}</td>
+											<td><a ng-click="editCompanyDepartment(department)"
+												style="cursor: pointer; font-size: 12px"><i
+													class="fa fa-pencil-square-o"></i></a></td>
+											<td><a
+												ng-click="deleteCompanyDepartment(department.departmentId)"
+												style="cursor: pointer; font-size: 12px"><i
+													class="fa fa-trash"></i></a></td>
 										</tr>
 									</table>
-								</form>
+								</div>
 							</div></td>
 					</tr>
 				</table>
 			</td>
 		</tr>
 	</table>
-</div>
-<div class="snaker animated fadeIn high-index loading">
-            <div class="circle1"></div>
-            <div class="circle2"></div>
-            <div class="circle3"></div>
-            <div class="circle4"></div>
-            <div class="circle5"></div>
-            <div class="circle6"></div>
-            <h6>LOADING</h6>
 </div>
 

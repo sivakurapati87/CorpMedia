@@ -24,4 +24,6 @@ ReimbursementController : 'ReimbursementController',
 BonusesController : 'BonusesController',
 AllowancesController : 'AllowancesController',
 MedicalReimbursementController : 'MedicalReimbursementController'
+CompanyEmpDefaultController: 'CompanyEmpDefaultController'
+
 };

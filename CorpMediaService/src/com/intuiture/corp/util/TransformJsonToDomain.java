@@ -15,6 +15,7 @@ import com.intuiture.corp.entity.Bonuses;
 import com.intuiture.corp.entity.Categories;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
+import com.intuiture.corp.entity.CompanyEmployeeDefaults;
 import com.intuiture.corp.entity.CompanyInfo;
 import com.intuiture.corp.entity.CompanyLocation;
 import com.intuiture.corp.entity.CompanyRoles;
@@ -37,6 +38,7 @@ import com.intuiture.corp.json.BonusesJson;
 //github.com/sivakurapati87/CorpMedia.git
 import com.intuiture.corp.json.CategoriesJson;
 import com.intuiture.corp.json.CompanyBankJson;
+import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
 import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
@@ -346,4 +348,21 @@ public class TransformJsonToDomain {
 		medicalReimbursement.setRequireSubmission(medicalReimbursementJson.getRequireSubmission());
 	}
 
+	public static void getCompanyEmployeeDefaults(CompanyEmployeeDefaults companyEmployeeDefaults, CompanyEmployeeDefaultsJson companyEmployeeDefaultsJson) {
+		companyEmployeeDefaults.setCompanyId(companyEmployeeDefaultsJson.getCompanyId());
+		if (companyEmployeeDefaultsJson.getCompanyEmployeeDefaultsId() != null) {
+			companyEmployeeDefaults.setUpdatedOn(new Date());
+		} else {
+			companyEmployeeDefaults.setCreatedOn(new Date());
+		}
+		companyEmployeeDefaults.setIsDeleted(Boolean.FALSE);
+		companyEmployeeDefaults.setIsEmpAllowedToUpdate(companyEmployeeDefaultsJson.getIsEmpAllowedToUpdate());
+		companyEmployeeDefaults.setIsDeleted(companyEmployeeDefaultsJson.getIsDeleted());
+		companyEmployeeDefaults.setNoticePeriod(companyEmployeeDefaultsJson.getNoticePeriod());
+		companyEmployeeDefaults.setNoticePeriodId(companyEmployeeDefaultsJson.getNoticePeriodId());
+		companyEmployeeDefaults.setProbationPeriod(companyEmployeeDefaultsJson.getProbationPeriod());
+		companyEmployeeDefaults.setProbatioPeriodTypeId(companyEmployeeDefaultsJson.getProbatioPeriodTypeId());
+		companyEmployeeDefaults.setTimeTypeId(companyEmployeeDefaultsJson.getTimeTypeId());
+		companyEmployeeDefaults.setWorkerTypeId(companyEmployeeDefaultsJson.getWorkerTypeId());
+	}
 }

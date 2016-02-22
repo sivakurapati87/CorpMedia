@@ -56,7 +56,7 @@
 
 												<button class="btn btn-success" type="submit"
 													style="width: 100px">Submit</button>
-												 <br/>
+												<br />
 											</div>
 
 										</div>
@@ -67,17 +67,16 @@
 									style="width: 40%">
 									<div class="col-lg-12" style="width: 100%">
 										<table style="width: 100%" border="0">
-										<tr style="height: 20px"></tr>
+											<tr style="height: 20px"></tr>
 											<tr>
-												<th  width="35%">Edit</th>
+												<th width="35%">Edit</th>
 												<th>Role</th>
 											</tr>
 											<tr ng-repeat="role in companyRolesJsonList"
 												ng-class-odd="'odd'" ng-class-even="'even'">
-												<td>
-													<button type="button" class="btn btn-danger"
-														ng-click="editRole(role)">Edit</button>
-												</td>
+												<td><a ng-click="editRole(role)" tooltip="edit"
+													style="cursor: pointer; font-size: 20px"><i
+														class="fa fa-pencil-square-o"></i></a></td>
 												<td>{{role.roleName}}</td>
 											</tr>
 										</table>

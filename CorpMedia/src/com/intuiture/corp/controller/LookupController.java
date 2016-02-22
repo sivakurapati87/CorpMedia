@@ -21,12 +21,15 @@ public class LookupController {
 	@ResponseBody
 	public LookupBean lookupInit() {
 		LookupBean lookupBean = new LookupBean();
-		String[] lookUpTypes = { Constants.TYPEOFBUSINESS, Constants.BANKS, Constants.STATES };
+		String[] lookUpTypes = { Constants.TYPEOFBUSINESS, Constants.BANKS, Constants.STATES, Constants.DMW, Constants.WORKERTYPE, Constants.TIMETYPE };
 		List<String> typesList = Arrays.asList(lookUpTypes);
 		Map<String, List<LookUpDetailJson>> lookUpMap = CommonUtil.getLookupDetailsListByTypeList(Constants.LookUp.GETLOOKUPDETAILSBYTYPELIST, typesList);
 		lookupBean.setBanksList(lookUpMap.get(Constants.BANKS));
 		lookupBean.setTypeOfBusinessList(lookUpMap.get(Constants.TYPEOFBUSINESS));
 		lookupBean.setStatesList(lookUpMap.get(Constants.STATES));
+		lookupBean.setDaysWeeksMonthsList(lookUpMap.get(Constants.DMW));
+		lookupBean.setWorkerTypeList(lookUpMap.get(Constants.WORKERTYPE));
+		lookupBean.setTimeTypeList(lookUpMap.get(Constants.TIMETYPE));
 		return lookupBean;
 	}
 }
