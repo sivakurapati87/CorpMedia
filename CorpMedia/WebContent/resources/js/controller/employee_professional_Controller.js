@@ -1,69 +1,148 @@
 'use strict';
 
-App.controller('employee_professional_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
+App.controller('employee_professional_Controller', ['$scope','$location','$rootScope','$http','$stateParams', function($scope,$location,$rootScope,$http,$stateParams) {
 	 var self = this;
 	 $scope.state="employee_professional";
 		$scope.left_state = "employee";
-		
-//		$scope.state_info_name = $stateParams.legEntity;
-//		$scope.$parent.state_info_name = $stateParams.legEntity;
-//        $scope.selectedCompany=null;
-//        $scope.companyInfo=[];
-//      
-//          //Json for the auto complete
-//          self.getCompanyInfoInit = function(){
-//        	 
-////        	  $scope.$watch(function () { return  HomeService.getSelectedCompany(); }, function (newValue, oldValue) {
-////      	        if (newValue != null) {
-////      	            //update Controller2's xxx value
-////      	            $scope.selectedCompany=newValue;
-////      	          CompanyInfoService.getCompanyInfo($scope.selectedCompany)
-////             	 .then(
-////     				       function(d) {
-////     				    	 $scope.companyInfo = d;
-////     				       },
-////       					function(errResponse){
-////       						console.error('Error while fetching Currencies');
-////       					}
-////     		       );
-////      	        }
-////      	    }, true);
-//        	  CompanyInfoService.getSelectedCompany()
-//         	 .then(
-// 				       function(d) {
-//				    	  $scope.selectedCompany=d.selectedCompName;
-// 				    	 CompanyInfoService.getCompanyInfo($scope.selectedCompany)
-// 			          	 .then(
-// 			  				       function(d) {
-// 			  				    	 $scope.companyInfo = d;
-// 			  				    	 $scope.$parent.companyName = d[0].companyName;
-// 			  				    	$rootScope.companyName = d[0].companyName;
-// 			  				    	$rootScope.companyId = d[0].companyId;
-// 			  				       },
-// 			    					function(errResponse){
-// 			    						console.error('Error while fetching Currencies');
-// 			    					}
-// 			  		       );
-// 				       },
-//   					function(errResponse){
-//   						console.error('Error while fetching Currencies');
-//   					}
-// 		       );
-//        	  
-//        	  
-//        	 
-//        	 
-//          };
-//          self.getCompanyInfoInit();
+		$scope.employeeProfessionalInfoJson = {};
+		$scope.employeeEducationalInfoJson = {};
+		$scope.employeeExperienceInfoJson = {};
+		$scope.isExpCollapse = true;//To hide and display the experience block
 		
 		
+		//Save/update employee Professional Info
+		$scope.saveOrUpdateEmployeeProfessionalInfo = function(){
+			if($rootScope.selectedCompanyObj){
+				$scope.employeeProfessionalInfoJson.companyId = $rootScope.selectedCompanyObj.companyId;
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployeeProfessionalInfo', $scope.employeeProfessionalInfoJson).success(function(data) {
+				$scope.employeeProfessionalInfoJson = {};
+			}).error(function() {
+	      	  console.error('Could not save or update Employee Professional Info');
+	        });}
+		};
 		
+		//This function is to save family information
+		$scope.saveOrUpdateEmployeeExperienceInfo = function(){
+			if($scope.employeeExperienceInfoJson.strFromDate){//converting the date format
+				$scope.employeeExperienceInfoJson.strFromDate = $scope.formatteddate($scope.employeeExperienceInfoJson.strFromDate);
+			}
+			if($scope.employeeExperienceInfoJson.strToDate){//converting the date format
+				$scope.employeeExperienceInfoJson.strToDate = $scope.formatteddate($scope.employeeExperienceInfoJson.strToDate);
+			}
+			if($rootScope.selectedCompanyObj){
+				$scope.employeeExperienceInfoJson.companyId = $rootScope.selectedCompanyObj.companyId;
+				$scope.employeeExperienceInfoJson.employeeId = $scope.employeeProfessionalInfoJson.employeeId;
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployeeExperienceInfo', $scope.employeeExperienceInfoJson).success(function(data) {
+				$scope.isExpCollapse = true;
+				$scope.getEmployeeExperienceInfo();
+				$scope.employeeExperienceInfoJson = {};
+			}).error(function() {
+	      	  console.error('Could not save or update Employee Experience Info');
+	        });}
+		};
 		
+		//This function is to save family information
+		$scope.saveOrUpdateEmployeeEducationalInfo = function(){
+			if($scope.employeeEducationalInfoJson.strFromDate){//converting the date format
+				$scope.employeeEducationalInfoJson.strFromDate = $scope.formatteddate($scope.employeeEducationalInfoJson.strFromDate);
+			}
+			if($scope.employeeEducationalInfoJson.strToDate){//converting the date format
+				$scope.employeeEducationalInfoJson.strToDate = $scope.formatteddate($scope.employeeEducationalInfoJson.strToDate);
+			}
+			if($rootScope.selectedCompanyObj){
+				$scope.employeeEducationalInfoJson.companyId = $rootScope.selectedCompanyObj.companyId;
+				$scope.employeeEducationalInfoJson.employeeId = $scope.employeeProfessionalInfoJson.employeeId;
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployeeEducationalInfo', $scope.employeeEducationalInfoJson).success(function(data) {
+//				$scope.isCollapse = true;
+				$scope.employeeEducationalInfoJson = {};
+			}).error(function() {
+	      	  console.error('Could not save or update Employee Experience Info');
+	        });}
+		};
 		
-          
-
-
-          
-
-          
+		//This is to formate dates
+		 $scope.formatteddate = function(date){
+	      	  var expDate = new Date(date);
+	      	 var month = '' + (expDate.getMonth() + 1);
+	           var day = '' + expDate.getDate();
+	          var  year = expDate.getFullYear();
+	      	  if (month.length < 2) month = '0' + month;
+	      	    if (day.length < 2) day = '0' + day;
+	      	    return [year, month, day].join('-');
+	        };
+	        
+	    	// get all the Employees list
+			$scope.getAllEmployeesList = function(){
+				if($rootScope.selectedCompanyObj){
+				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getAllEmployeesByCompanyId/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+					$scope.EmployeeJsonList = data;
+				}).error(function() {
+		      	  console.error('Could not get All Employees List');
+		        });}
+			};
+			
+			//onchange employee combo box
+			$scope.onChangeEmployeeId = function(){
+				angular.forEach($scope.EmployeeJsonList, function(obj, key){
+					if(obj.employeeId == $scope.employeeProfessionalInfoJson.employeeId){
+					$scope.employeeJson = obj;
+					}
+		          });
+				$scope.getEmployeeProfessionalInfo();//getting employee personal info
+				$scope.getEmployeeExperienceInfo();//getting employee family info
+				$scope.getEmployeeEducationalInfo();//getting educational info
+			}
+			
+			//This function is to get all the employee experience list
+			$scope.getEmployeeExperienceInfo = function(){
+				if($scope.employeeProfessionalInfoJson.employeeId){
+				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeExperienceInfo/'+ $scope.employeeProfessionalInfoJson.employeeId).success(function(data) {
+					$scope.EmployeeExperienceJsonList = data;
+				}).error(function() {
+		      	  console.error('Could not get All Employee Experience List');
+		        });}
+			};
+			
+			//This function is to get all the employee educational info list
+			$scope.getEmployeeEducationalInfo = function(){
+				if($scope.employeeProfessionalInfoJson.employeeId){
+				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeEducationalInfo/'+ $scope.employeeProfessionalInfoJson.employeeId).success(function(data) {
+					$scope.EmployeeEducationalJsonList = data;
+				}).error(function() {
+		      	  console.error('Could not get All Employee Educational List');
+		        });}
+			};
+			
+			//This function is to get the personal information of an employee
+			$scope.getEmployeeProfessionalInfo = function(){
+				if($scope.employeeProfessionalInfoJson.employeeId){
+				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeProfessionalInfo/'+ $scope.employeeProfessionalInfoJson.employeeId).success(function(data) {
+					if(data){
+					$scope.employeeProfessionalInfoJson = data;
+					}else{
+						$scope.employeeProfessionalInfoJson = {};
+					}
+					$scope.employeeProfessionalInfoJson.employeeId = $scope.employeeJson.employeeId;//assigning employee Id
+				}).error(function() {
+		      	  console.error('Could not get Employee Professional Information');
+		        });}
+			};
+			
+			
+			// This function is to edit family information
+			$scope.editExperienceInfo = function(employeeExperienceInfoJson){
+				$scope.employeeExperienceInfoJson = employeeExperienceInfoJson;
+				$scope.isExpCollapse = false;
+			};
+			
+			//delete companylocation
+			$scope.deleteEmployeeExperienceInfo = function(employeeExperienceId){
+				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/deleteEmployeeExperienceInfo/'+ employeeExperienceId).success(function(data) {
+					$scope.getEmployeeExperienceInfo();
+				}).error(function() {
+		      	  console.error('Could not deleteEmployee Family Info');
+		        });
+			};
+			
+			$scope.getAllEmployeesList();
 }]);

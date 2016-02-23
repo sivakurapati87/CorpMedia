@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.intuiture.corp.json.EmployeeEducationalInfoJson;
+import com.intuiture.corp.json.EmployeeExperienceInfoJson;
 import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
+import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
 import com.intuiture.corp.service.EmployeeService;
 import com.intuiture.corp.util.TransformDomainToJson;
 
@@ -72,4 +75,54 @@ public class EmployeeController {
 	public EmployeePersonalInfoJson getEmployeePersonalInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
 		return employeeService.getEmployeePersonalInfo(employeeId);
 	}
+
+	@RequestMapping(value = "/saveOrUpdateEmployeeProfessionalInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public Boolean saveOrUpdateEmployeeProfessionalInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeProfessionalInfoJson employeeProfessionalInfoJson) {
+		return employeeService.saveOrUpdateEmployeeProfessionalInfo(employeeProfessionalInfoJson);
+	}
+
+	@RequestMapping(value = "/saveOrUpdateEmployeeExperienceInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public Boolean saveOrUpdateEmployeeExperienceInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeExperienceInfoJson employeeExperienceInfoJson) {
+		if (employeeExperienceInfoJson != null && employeeExperienceInfoJson.getStrFromDate() != null && employeeExperienceInfoJson.getStrToDate() != null) {
+			employeeExperienceInfoJson.setFromDate(TransformDomainToJson.convertDiffferentFormatString(employeeExperienceInfoJson.getStrFromDate()));
+			employeeExperienceInfoJson.setToDate(TransformDomainToJson.convertDiffferentFormatString(employeeExperienceInfoJson.getStrToDate()));
+		}
+		return employeeService.saveOrUpdateEmployeeExperienceInfo(employeeExperienceInfoJson);
+	}
+
+	@RequestMapping(value = "/saveOrUpdateEmployeeEducationalInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public Boolean saveOrUpdateEmployeeEducationalInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeEducationalInfoJson employeeEducationalInfoJson) {
+		if (employeeEducationalInfoJson != null && employeeEducationalInfoJson.getStrFromDate() != null && employeeEducationalInfoJson.getStrToDate() != null) {
+			employeeEducationalInfoJson.setFromDate(TransformDomainToJson.convertDiffferentFormatString(employeeEducationalInfoJson.getStrFromDate()));
+			employeeEducationalInfoJson.setToDate(TransformDomainToJson.convertDiffferentFormatString(employeeEducationalInfoJson.getStrToDate()));
+		}
+		return employeeService.saveOrUpdateEmployeeEducationalInfo(employeeEducationalInfoJson);
+	}
+
+	@RequestMapping(value = "/getEmployeeProfessionalInfo/{employeeId}", method = RequestMethod.GET)
+	@ResponseBody
+	public EmployeeProfessionalInfoJson getEmployeeProfessionalInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+		return employeeService.getEmployeeProfessionalInfo(employeeId);
+	}
+
+	@RequestMapping(value = "/getEmployeeExperienceInfo/{employeeId}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<EmployeeExperienceInfoJson> getEmployeeExperienceInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+		return employeeService.getEmployeeExperienceInfo(employeeId);
+	}
+
+	@RequestMapping(value = "/getEmployeeEducationalInfo/{employeeId}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<EmployeeEducationalInfoJson> getEmployeeEducationalInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+		return employeeService.getEmployeeEducationalInfo(employeeId);
+	}
+	@RequestMapping(value = "/deleteEmployeeExperienceInfo/{departmentId}", method = RequestMethod.GET)
+	@ResponseBody
+	public Boolean deleteEmployeeExperienceInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeExperienceId) {
+		return employeeService.deleteEmployeeExperienceInfo(employeeExperienceId);
+	}
+
 }
