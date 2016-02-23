@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.service.EmployeeService;
@@ -48,4 +49,27 @@ public class EmployeeController {
 		return employeeService.saveOrUpdateEmployeePersonalInfo(employeePersonalInfoJson);
 	}
 
+	@RequestMapping(value = "/saveOrUpdateEmployeeFamilyInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public Boolean saveOrUpdateEmployeeFamilyInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeFamilyInfoJson employeeFamilyInfoJson) {
+		return employeeService.saveOrUpdateEmployeeFamilyInfo(employeeFamilyInfoJson);
+	}
+
+	@RequestMapping(value = "/getAllEmployeeFamilyList/{employeeId}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<EmployeeFamilyInfoJson> getAllEmployeeFamilyList(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+		return employeeService.getAllEmployeeFamilyList(employeeId);
+	}
+
+	@RequestMapping(value = "/deleteEmployeeFamilyInfo/{departmentId}", method = RequestMethod.GET)
+	@ResponseBody
+	public Boolean deleteEmployeeFamilyInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeFamilyInfoId) {
+		return employeeService.deleteEmployeeFamilyInfo(employeeFamilyInfoId);
+	}
+
+	@RequestMapping(value = "/getEmployeePersonalInfo/{employeeId}", method = RequestMethod.GET)
+	@ResponseBody
+	public EmployeePersonalInfoJson getEmployeePersonalInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+		return employeeService.getEmployeePersonalInfo(employeeId);
+	}
 }

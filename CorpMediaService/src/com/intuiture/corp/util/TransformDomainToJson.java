@@ -25,6 +25,9 @@ import com.intuiture.corp.entity.CompanySignator;
 import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
+import com.intuiture.corp.entity.EmployeeAddressInfo;
+import com.intuiture.corp.entity.EmployeeFamilyInfo;
+import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
@@ -39,7 +42,9 @@ import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
+import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
+import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
@@ -422,5 +427,48 @@ public class TransformDomainToJson {
 		if (companyEmployeeDefaults.getNoticePeriodType() != null)
 			companyEmployeeDefaultsJson.setNoticePeriodType(companyEmployeeDefaults.getNoticePeriodType().getDescription());
 		return companyEmployeeDefaultsJson;
+	}
+
+	public static EmployeeFamilyInfoJson getEmployeeFamilyJson(EmployeeFamilyInfo employeeFamilyInfo) {
+		EmployeeFamilyInfoJson employeeFamilyInfoJson = new EmployeeFamilyInfoJson();
+		employeeFamilyInfoJson.setCompanyId(employeeFamilyInfo.getCompanyId());
+		employeeFamilyInfoJson.setEmail(employeeFamilyInfo.getEmail());
+		employeeFamilyInfoJson.setEmployeeId(employeeFamilyInfo.getEmployeeId());
+		employeeFamilyInfoJson.setFirstName(employeeFamilyInfo.getFirstName());
+		employeeFamilyInfoJson.setLastName(employeeFamilyInfo.getLastName());
+		employeeFamilyInfoJson.setEmployeeFamilyInfoId(employeeFamilyInfo.getEmployeeFamilyInfoId());
+		employeeFamilyInfoJson.setMobileNumber(employeeFamilyInfo.getMobileNumber());
+		employeeFamilyInfoJson.setRelationId(employeeFamilyInfo.getRelationId());
+		if (employeeFamilyInfo.getRelation() != null) {
+			employeeFamilyInfoJson.setRelation(employeeFamilyInfo.getRelation().getDescription());
+		}
+		return employeeFamilyInfoJson;
+	}
+
+	public static EmployeePersonalInfoJson getEmployeePersonalInfoJson(EmployeeAddressInfo employeeAddressInfo, EmployeePersonalInfo employeePersonalInfo) {
+		EmployeePersonalInfoJson employeePersonalInfoJson = new EmployeePersonalInfoJson();
+		employeePersonalInfoJson.setCompanyId(employeePersonalInfo.getCompanyId());
+		employeePersonalInfoJson.setEmployeeId(employeePersonalInfo.getEmployeeId());
+		employeePersonalInfoJson.setMobileNumber(employeePersonalInfo.getMobileNumber());
+		employeePersonalInfoJson.setGenderId(employeePersonalInfo.getGenderId());
+		employeePersonalInfoJson.setEmployeePersonalInfoId(employeePersonalInfo.getEmployeePersonalInfoId());
+		employeePersonalInfoJson.setStrDateOfBirth(convertDateToString(employeePersonalInfo.getDateOfBirth()));
+		employeePersonalInfoJson.setMaritalStatusId(employeePersonalInfo.getMaritalStatusId());
+		employeePersonalInfoJson.setBloodGroupId(employeePersonalInfo.getBloodGroupId());
+		employeePersonalInfoJson.setWorkNumber(employeePersonalInfo.getWorkNumber());
+		employeePersonalInfoJson.setResidenceNumber(employeePersonalInfo.getResidenceNumber());
+		employeePersonalInfoJson.setPersonalEmail(employeePersonalInfo.getPersonalEmail());
+		employeePersonalInfoJson.setSkypeId(employeePersonalInfo.getSkypeId());
+		employeePersonalInfoJson.setEmployeeAddressInfoId(employeeAddressInfo.getEmployeeAddressInfoId());
+		employeePersonalInfoJson.setIsPermSameAsCurr(employeeAddressInfo.getIsPermSameAsCurr());
+		employeePersonalInfoJson.setCurrAddress(employeeAddressInfo.getCurrAddress());
+		employeePersonalInfoJson.setCurrCity(employeeAddressInfo.getCurrCity());
+		employeePersonalInfoJson.setCurrCountry(employeeAddressInfo.getCurrCountry());
+		employeePersonalInfoJson.setCurrState(employeeAddressInfo.getCurrState());
+		employeePersonalInfoJson.setPermAddress(employeeAddressInfo.getPermAddress());
+		employeePersonalInfoJson.setPermCity(employeeAddressInfo.getPermCity());
+		employeePersonalInfoJson.setPermCountry(employeeAddressInfo.getPermCountry());
+		employeePersonalInfoJson.setPermState(employeeAddressInfo.getPermState());
+		return employeePersonalInfoJson;
 	}
 }

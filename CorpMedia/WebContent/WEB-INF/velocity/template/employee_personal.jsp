@@ -52,7 +52,7 @@
 								<!--first part of the form-->
 								<div class="row">
 									<div class="col-md-12" align="center">
-										<select
+										<select ng-change="onChangeEmployeeId()"
 											class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
 											required ng-model="employeePersonalInfoJson.employeeId"
 											ng-options="emp.employeeId as emp.displayName for emp in  EmployeeJsonList">
@@ -66,8 +66,8 @@
 
 										<div class="form-group">
 											<label for="first_name">First Name</label> <input type="text"
-												class="form-control" id="first_name"
-												placeholder="First name">
+												class="form-control" id="first_name" disabled="disabled"
+												ng-model="employeeJson.firstName" placeholder="First name">
 										</div>
 
 
@@ -77,6 +77,7 @@
 										<div class="form-group">
 											<label for="middle_name">Middle Name</label> <input
 												type="text" class="form-control" id="middle_name"
+												disabled="disabled" ng-model="employeeJson.middleName"
 												placeholder="Middle Name">
 										</div>
 										<br>
@@ -84,6 +85,7 @@
 
 										<div class="form-group">
 											<label for="last_name">Last Name</label> <input type="text"
+												disabled="disabled" ng-model="employeeJson.lastName"
 												class="form-control" id="last_name" placeholder="Last Name">
 										</div>
 
@@ -101,6 +103,7 @@
 
 										<div class="form-group">
 											<label for="display_name">Display Name</label> <input
+												disabled="disabled" ng-model="employeeJson.displayName"
 												type="text" class="form-control" id="display_name">
 										</div>
 
@@ -108,6 +111,7 @@
 
 										<div class="form-group">
 											<label for="email">Email</label> <input type="email"
+												disabled="disabled" ng-model="employeeJson.email"
 												class="form-control" id="email" placeholder="Email">
 										</div>
 
@@ -234,7 +238,7 @@
 										<br>
 
 										<div class="form-group">
-											<label for="skype_id">Skype ID</label> <input type='email'
+											<label for="skype_id">Skype ID</label> <input
 												ng-model="employeePersonalInfoJson.skypeId"
 												class="form-control" id='skype_id'>
 										</div>
@@ -396,7 +400,7 @@
 							</p>
 							<hr> <br>
 
-							<div id="fade_out">
+							<div>
 								<p>
 									<font size="3">Add Relation</font>&nbsp;&nbsp;
 									<button type="button" class="btn btn-info"
@@ -406,12 +410,32 @@
 								</p>
 								<hr>
 								<br>
-								<p>
-									<b>No data available.</b>
-								</p>
-								<br>
 							</div>
-
+							<div class="col-lg-8">
+								<table style="width: 100%" border="0"
+									class="table table-bordered">
+									<tr>
+										<th>Relation</th>
+										<th>Full Name</th>
+										<th>Email</th>
+										<th>Mobile Number</th>
+									</tr>
+									<tr ng-repeat="empFamily in EmployeeFamilyJsonList"
+										ng-class-odd="'odd'" ng-class-even="'even'"
+										style="height: 30px">
+										<td>{{empFamily.relation}}</td>
+										<td>{{empFamily.firstName}} {{empFamily.lastName}}</td>
+										<td>{{empFamily.email}}</td>
+										<td><a ng-click="editFamilyInfo(empFamily)"
+											tooltip="edit" style="cursor: pointer; font-size: 12px"><i
+												class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+											tooltip="delete"
+											ng-click="deleteEmployeeFamilyInfo(empFamily.employeeFamilyInfoId)"
+											style="cursor: pointer; font-size: 12px"><i
+												class="fa fa-trash"></i></a></td>
+									</tr>
+								</table>
+							</div>
 
 							<div collapse="isCollapse">
 								<br>
@@ -421,15 +445,14 @@
 								<hr>
 								<br>
 
-								<form role='form'>
-
+								<form ng-submit="saveOrUpdateEmployeeFamilyInfo()">
 									<div class='row'>
 										<!--this remains empty-->
 										<div class='col-md-4'>
 											<div class="form-group">
 												<label for="select_relation">Relation</label> <select
 													class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-													required ng-model="employeePersonalInfoJson.genderId"
+													required ng-model="employeeFamilyInfoJson.relationId"
 													ng-options="relation.lookupDetailId as relation.description for relation in  lookup.relationsList">
 													<option value="" disabled selected>Select</option>
 												</select>
@@ -439,12 +462,14 @@
 
 											<div class="form-group">
 												<label for="first_name">First Name</label> <input
-													type="text" class="form-control" id="first_name">
+													ng-model="employeeFamilyInfoJson.firstName" type="text"
+													class="form-control" id="first_name">
 											</div>
 											<br>
 
 											<div class="form-group">
 												<label for="last_name">Last Name</label> <input type="text"
+													ng-model="employeeFamilyInfoJson.lastName"
 													class="form-control" id="Last_name">
 											</div>
 
@@ -455,12 +480,14 @@
 										<div class='col-md-4'>
 											<div class="form-group">
 												<label for="email">Email</label> <input type="email"
+													ng-model="employeeFamilyInfoJson.email"
 													class="form-control" id="email" placeholder="Email">
 											</div>
 											<br>
 											<div class="form-group">
 												<label for="mobile_number">Mobile Number</label> <input
-													type="text" class="form-control" id="mobile_number">
+													ng-model="employeeFamilyInfoJson.mobileNumber" type="text"
+													class="form-control" id="mobile_number">
 											</div>
 
 										</div>
@@ -473,7 +500,7 @@
 										<div class='col-md-10'></div>
 										<div class='col-md-2'>
 											<p>
-												<button type="button" class="btn btn-success">Save</button>
+												<button type="submit" class="btn btn-success">Save</button>
 												<button type="button" class="btn btn-default">Cancel</button>
 											</p>
 										</div>

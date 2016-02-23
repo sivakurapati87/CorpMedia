@@ -25,6 +25,7 @@ import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.EmployeeAddressInfo;
+import com.intuiture.corp.entity.EmployeeFamilyInfo;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
@@ -47,6 +48,7 @@ import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.json.DeductionsJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
+import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
@@ -249,6 +251,7 @@ public class TransformJsonToDomain {
 		companyLocation.setLocationName(companyLocationJson.getLocationName());
 		companyLocation.setStateId(companyLocationJson.getStateId());
 		companyLocation.setZipcode(companyLocationJson.getZipcode());
+		companyLocation.setIsDeleted(Boolean.FALSE);
 	}
 
 	public static void getTimeSheetGeneralSettings(GeneralSettings generalSettings, GeneralSettingsJson generalSettingsJson) {
@@ -315,36 +318,37 @@ public class TransformJsonToDomain {
 		employee.setLocationId(employeeJson.getLocationId());
 		employee.setMiddleName(employeeJson.getMiddleName());
 	}
-	
+
 	public static void getDeductions(Deductions deductions, DeductionsJson deductionsJson) {
 		deductions.setCreatedOn(new Date());
 		deductions.setCompanyId(deductionsJson.getCompanyId());
 		deductions.setDeductionName(deductionsJson.getDeductionName());
 		deductions.setDeductionDescription(deductionsJson.getDeductionDescription());
 	}
-	
-	public static void getReimbursement(Reimbursement reimbursement , ReimbursementJson reimbursementJson) {
+
+	public static void getReimbursement(Reimbursement reimbursement, ReimbursementJson reimbursementJson) {
 		reimbursement.setCreatedOn(new Date());
 		reimbursement.setCompanyId(reimbursementJson.getCompanyId());
 		reimbursement.setReimbursementName(reimbursementJson.getReimbursementName());
 		reimbursement.setReimbursementDescription(reimbursementJson.getReimbursementDescription());
 	}
-	
-	public static void getBonuses(Bonuses bonuses , BonusesJson bonusesJson) {
+
+	public static void getBonuses(Bonuses bonuses, BonusesJson bonusesJson) {
 		bonuses.setCreatedOn(new Date());
 		bonuses.setCompanyId(bonusesJson.getCompanyId());
 		bonuses.setBonusesName(bonusesJson.getBonusesName());
 		bonuses.setBonusesDescription(bonusesJson.getBonusesDescription());
 	}
-	public static void getAllowances(Allowances allowances , AllowancesJson allowancesJson) {
+
+	public static void getAllowances(Allowances allowances, AllowancesJson allowancesJson) {
 		allowances.setCreatedOn(new Date());
 		allowances.setCompanyId(allowancesJson.getCompanyId());
 		allowances.setAllowancesName(allowancesJson.getAllowancesName());
 		allowances.setAllowancesDescription(allowancesJson.getAllowancesDescription());
 		allowances.setHasTaxBenefits(allowancesJson.getHasTaxBenefits());
 	}
-	
-	public static void getMedicalReimbursement(MedicalReimbursement medicalReimbursement , MedicalReimbursementJson medicalReimbursementJson) {
+
+	public static void getMedicalReimbursement(MedicalReimbursement medicalReimbursement, MedicalReimbursementJson medicalReimbursementJson) {
 		medicalReimbursement.setCreatedOn(new Date());
 		medicalReimbursement.setCompanyId(medicalReimbursementJson.getCompanyId());
 		medicalReimbursement.setMaxAnnualLimit(medicalReimbursementJson.getMaxAnnualLimit());
@@ -407,5 +411,22 @@ public class TransformJsonToDomain {
 		employeeAddressInfo.setPermCity(employeePersonalInfoJson.getPermCity());
 		employeeAddressInfo.setPermCountry(employeePersonalInfoJson.getPermCountry());
 		employeeAddressInfo.setPermState(employeePersonalInfoJson.getPermState());
+	}
+
+	public static void getEmployeeFamilyInfo(EmployeeFamilyInfo employeeFamilyInfo, EmployeeFamilyInfoJson employeeFamilyInfoJson) {
+		employeeFamilyInfo.setCompanyId(employeeFamilyInfoJson.getCompanyId());
+		if (employeeFamilyInfoJson.getEmployeeFamilyInfoId() != null) {
+			employeeFamilyInfo.setUpdatedOn(new Date());
+		} else {
+			employeeFamilyInfo.setCreatedOn(new Date());
+		}
+		employeeFamilyInfo.setIsDeleted(Boolean.FALSE);
+		employeeFamilyInfo.setEmployeeId(employeeFamilyInfoJson.getEmployeeId());
+		employeeFamilyInfo.setEmail(employeeFamilyInfoJson.getEmail());
+		employeeFamilyInfo.setFirstName(employeeFamilyInfoJson.getFirstName());
+		employeeFamilyInfo.setIsDeleted(Boolean.FALSE);
+		employeeFamilyInfo.setLastName(employeeFamilyInfoJson.getLastName());
+		employeeFamilyInfo.setMobileNumber(employeeFamilyInfoJson.getMobileNumber());
+		employeeFamilyInfo.setRelationId(employeeFamilyInfoJson.getRelationId());
 	}
 }
