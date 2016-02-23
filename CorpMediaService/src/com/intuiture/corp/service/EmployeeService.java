@@ -10,7 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.intuiture.corp.dao.CommonRepository;
 import com.intuiture.corp.dao.TimeSheetApproverRepository;
 import com.intuiture.corp.entity.Employee;
+import com.intuiture.corp.entity.EmployeeAddressInfo;
+import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.json.EmployeeJson;
+import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.util.TransformDomainToJson;
 import com.intuiture.corp.util.TransformJsonToDomain;
 
@@ -59,5 +62,41 @@ public class EmployeeService {
 			e.printStackTrace();
 		}
 		return employeeJsonList;
+	}
+
+	public Boolean saveOrUpdateEmployeePersonalInfo(EmployeePersonalInfoJson employeePersonalInfoJson) {
+		EmployeePersonalInfo employeePersonalInfo = null;
+		EmployeeAddressInfo employeeAddressInfo = null;
+		try {
+			if (employeePersonalInfoJson != null) {
+				// This is to insert the data to Personal Info Table
+				if (employeePersonalInfoJson.getEmployeePersonalInfoId() != null) {
+					employeePersonalInfo = (EmployeePersonalInfo) commonRepository.findById(employeePersonalInfoJson.getEmployeePersonalInfoId(), EmployeePersonalInfo.class);
+				} else {
+					employeePersonalInfo = new EmployeePersonalInfo();
+				}
+				TransformJsonToDomain.getEmployeePersonalInfo(employeePersonalInfo, employeePersonalInfoJson);
+				if (employeePersonalInfoJson.getEmployeePersonalInfoId() != null) {
+					commonRepository.update(employeePersonalInfo);
+				} else {
+					commonRepository.persist(employeePersonalInfo);
+				}
+				// This is to insert the data to Address Info Table
+				if (employeePersonalInfoJson.getEmployeeAddressInfoId() != null) {
+					employeeAddressInfo = (EmployeeAddressInfo) commonRepository.findById(employeePersonalInfoJson.getEmployeeAddressInfoId(), EmployeeAddressInfo.class);
+				} else {
+					employeeAddressInfo = new EmployeeAddressInfo();
+				}
+				TransformJsonToDomain.getEmployeeAddressInfo(employeeAddressInfo, employeePersonalInfoJson);
+				if (employeePersonalInfoJson.getEmployeeAddressInfoId() != null) {
+					commonRepository.update(employeeAddressInfo);
+				} else {
+					commonRepository.persist(employeeAddressInfo);
+				}
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
 	}
 }

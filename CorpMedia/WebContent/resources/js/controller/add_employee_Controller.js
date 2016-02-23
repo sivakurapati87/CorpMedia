@@ -40,6 +40,17 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 	      	  console.error('Could not getAllRoles');
 	        });}
 		};
+		
+		// get all the locations based on company id
+		$scope.getAllCompanyLocations = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyLocationController+'/getAllLocationList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.companyLocations = data;//all the location of the company
+			}).error(function() {
+	      	  console.error('Could not getAllRoles');
+	        });}
+		};
+		
 		 //This is the function to get the formatted date
         $scope.formatteddate = function(){
       	  var expDate = new Date($scope.EmployeeJson.strDateOfJoining);
@@ -50,5 +61,6 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
       	    if (day.length < 2) day = '0' + day;
       	    $scope.EmployeeJson.strDateOfJoining =  [year, month, day].join('-');
         };
-		$scope.getAllEmployeesList();    
+		$scope.getAllRoles();    
+		$scope.getAllCompanyLocations();    
 }]);

@@ -9,6 +9,10 @@ public class Constants {
 	public static final String DMW = "DWM";
 	public static final String WORKERTYPE = "WORKERTYPE";
 	public static final String TIMETYPE = "TIMETYPE";
+	public static final String GENDER = "GENDER";
+	public static final String MARITALSTATUS = "MARITALSTATUS";
+	public static final String BLOODGROUP = "BLOODGROUP";
+	public static final String RELATION = "RELATION";
 
 	public static final ResourceBundle RB = ResourceBundle.getBundle("config");
 	public static final String SERVICEURL = RB.getString("RESTWebServiceUrl");

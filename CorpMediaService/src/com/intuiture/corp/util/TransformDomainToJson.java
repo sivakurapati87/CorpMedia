@@ -49,7 +49,7 @@ import com.intuiture.corp.json.TimeSheetApproverJson;
 
 public class TransformDomainToJson {
 	private static Logger LOG = Logger.getLogger(TransformDomainToJson.class);
-	private static SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	public static List<Integer> splitStringInList(String idsInString) {
 		Integer[] ids = splitString(idsInString);

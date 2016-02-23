@@ -24,6 +24,8 @@ import com.intuiture.corp.entity.Deductions;
 import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
+import com.intuiture.corp.entity.EmployeeAddressInfo;
+import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
@@ -46,6 +48,7 @@ import com.intuiture.corp.json.DeductionsJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
+import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
@@ -364,5 +367,45 @@ public class TransformJsonToDomain {
 		companyEmployeeDefaults.setProbatioPeriodTypeId(companyEmployeeDefaultsJson.getProbatioPeriodTypeId());
 		companyEmployeeDefaults.setTimeTypeId(companyEmployeeDefaultsJson.getTimeTypeId());
 		companyEmployeeDefaults.setWorkerTypeId(companyEmployeeDefaultsJson.getWorkerTypeId());
+	}
+
+	public static void getEmployeePersonalInfo(EmployeePersonalInfo employeePersonalInfo, EmployeePersonalInfoJson employeePersonalInfoJson) {
+		employeePersonalInfo.setCompanyId(employeePersonalInfoJson.getCompanyId());
+		if (employeePersonalInfoJson.getEmployeePersonalInfoId() != null) {
+			employeePersonalInfo.setUpdatedOn(new Date());
+		} else {
+			employeePersonalInfo.setCreatedOn(new Date());
+		}
+		employeePersonalInfo.setDateOfBirth(employeePersonalInfoJson.getDateOfBirth());
+		employeePersonalInfo.setBloodGroupId(employeePersonalInfoJson.getBloodGroupId());
+		employeePersonalInfo.setEmployeeId(employeePersonalInfoJson.getEmployeeId());
+		employeePersonalInfo.setGenderId(employeePersonalInfoJson.getGenderId());
+		employeePersonalInfo.setIsDeleted(Boolean.FALSE);
+		employeePersonalInfo.setMaritalStatusId(employeePersonalInfoJson.getMaritalStatusId());
+		employeePersonalInfo.setMobileNumber(employeePersonalInfoJson.getMobileNumber());
+		employeePersonalInfo.setPersonalEmail(employeePersonalInfoJson.getPersonalEmail());
+		employeePersonalInfo.setResidenceNumber(employeePersonalInfoJson.getResidenceNumber());
+		employeePersonalInfo.setSkypeId(employeePersonalInfoJson.getSkypeId());
+		employeePersonalInfo.setWorkNumber(employeePersonalInfoJson.getWorkNumber());
+	}
+
+	public static void getEmployeeAddressInfo(EmployeeAddressInfo employeeAddressInfo, EmployeePersonalInfoJson employeePersonalInfoJson) {
+		employeeAddressInfo.setCompanyId(employeePersonalInfoJson.getCompanyId());
+		if (employeePersonalInfoJson.getEmployeePersonalInfoId() != null) {
+			employeeAddressInfo.setUpdatedOn(new Date());
+		} else {
+			employeeAddressInfo.setCreatedOn(new Date());
+		}
+		employeeAddressInfo.setIsDeleted(Boolean.FALSE);
+		employeeAddressInfo.setIsPermSameAsCurr(employeePersonalInfoJson.getIsPermSameAsCurr());
+		employeeAddressInfo.setCurrAddress(employeePersonalInfoJson.getCurrAddress());
+		employeeAddressInfo.setCurrCity(employeePersonalInfoJson.getCurrCity());
+		employeeAddressInfo.setCurrCountry(employeePersonalInfoJson.getCurrCountry());
+		employeeAddressInfo.setCurrState(employeePersonalInfoJson.getCurrState());
+		employeeAddressInfo.setEmployeeId(employeePersonalInfoJson.getEmployeeId());
+		employeeAddressInfo.setPermAddress(employeePersonalInfoJson.getPermAddress());
+		employeeAddressInfo.setPermCity(employeePersonalInfoJson.getPermCity());
+		employeeAddressInfo.setPermCountry(employeePersonalInfoJson.getPermCountry());
+		employeeAddressInfo.setPermState(employeePersonalInfoJson.getPermState());
 	}
 }

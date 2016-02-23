@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.intuiture.corp.json.EmployeeJson;
+import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.service.EmployeeService;
 import com.intuiture.corp.util.TransformDomainToJson;
 
@@ -37,4 +38,14 @@ public class EmployeeController {
 	public List<EmployeeJson> getAllEmployeesByCompanyId(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer companyId) {
 		return employeeService.getAllEmployeesByCompanyId(companyId);
 	}
+
+	@RequestMapping(value = "/saveOrUpdateEmployeePersonalInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public Boolean saveOrUpdateEmployeePersonalInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeePersonalInfoJson employeePersonalInfoJson) {
+		if (employeePersonalInfoJson != null && employeePersonalInfoJson.getStrDateOfBirth() != null) {
+			employeePersonalInfoJson.setDateOfBirth(TransformDomainToJson.convertDiffferentFormatString(employeePersonalInfoJson.getStrDateOfBirth()));
+		}
+		return employeeService.saveOrUpdateEmployeePersonalInfo(employeePersonalInfoJson);
+	}
+
 }
