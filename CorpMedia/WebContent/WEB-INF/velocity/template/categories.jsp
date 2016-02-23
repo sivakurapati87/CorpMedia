@@ -20,8 +20,8 @@
 
 									<li ng-class="{'active':(state==='categories')}"><a
 										class="anchor-sm" ui-sref="categories">Categories</a></li>
-								    <li ng-class="{'active':(state==='tags')}"><a
-										class="anchor-sm" ui-sref="tags">Tags</a></li>			
+									<li ng-class="{'active':(state==='tags')}"><a
+										class="anchor-sm" ui-sref="tags">Tags</a></li>
 
 
 								</ul>
@@ -65,13 +65,14 @@
 																	class="col-lg-2 col-md-4 col-sm-4 col-xs-12 clear-side-padding"
 																	ng-app="approver">
 
-																	<button type="button" class="btn btn-info"
-																		data-toggle="collapse" data-target="#categories">
-																		<span class="glyphicon glyphicon-plus"></span>Add New
-																	</button>
+																	<div class="col-md-2">
+																		<button type="button" class="btn btn-info"
+																			ng-click="isCollapse = !isCollapse">
+																			<span class="glyphicon glyphicon-plus"></span>Add New
+																		</button>
+																	</div>
 
 
-																	
 
 
 
@@ -92,13 +93,12 @@
 													</div>
 												</div>
 												<!-- This is our div we need to hide. -->
-												<div id="categories" class="collapse">
+												<div collapse="isCollapse">
 
 
 													<div>
 														<div>
-															<h4 
-																class="branded-heading ng-scope">Add Expense
+															<h4 class="branded-heading ng-scope">Add Expense
 																Category</h4>
 														</div>
 
@@ -112,24 +112,23 @@
 																		class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
 																		type="text" placeholder="Expense"
 																		ng-model="categories.expenseName">
-																	
+
 																</div>
 																<div class="form-group">
 																	<label>Description</label>
 																	<textarea cols="40" name="description"
 																		class="form-control no-resize ng-pristine ng-untouched ng-invalid ng-invalid-required"
-																		ng-model="categories.description"
-																		 required=""></textarea>
-																	
+																		ng-model="categories.description" required=""></textarea>
+
 																</div>
 																<div class="pull-right">
-																					<!-- ngIf: !model.id -->
-																					<button class="btn btn-success" type="submit"
-																						style="width: 100px">Save</button>
-																					&nbsp;
-																					<button class="btn btn-cancel" style="width: 100px"
-																						type="button">Cancel</button>
-																				</div>
+																	<!-- ngIf: !model.id -->
+																	<button class="btn btn-success" type="submit"
+																		style="width: 100px">Save</button>
+																	&nbsp;
+																	<button class="btn btn-cancel" style="width: 100px"
+																		ng-click="cancelCategories()" type="button">Cancel</button>
+																</div>
 															</div>
 														</form>
 
@@ -148,6 +147,33 @@
 									</div>
 								</div>
 								<!-- this is plug and chug. -->
+							</div>
+
+
+
+
+							<div class="col-lg-8">
+								<table style="width: 100%" border="0"
+									class="table table-bordered">
+									<tr>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Actions</th>
+									</tr>
+									<tr ng-repeat="categories in categoriesList"
+										ng-class-odd="'odd'" ng-class-even="'even'"
+										style="height: 30px">
+										<td>{{categories.expenseName}}</td>
+										<td>{{categories.description}}</td>
+										<td><a ng-click="editCategories(categories)"
+											tooltip="edit" style="cursor: pointer; font-size: 12px"><i
+												class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+											tooltip="delete"
+											ng-click="deleteCategories(categories.categoriesId)"
+											style="cursor: pointer; font-size: 12px"><i
+												class="fa fa-trash"></i></a></td>
+									</tr>
+								</table>
 							</div>
 
 

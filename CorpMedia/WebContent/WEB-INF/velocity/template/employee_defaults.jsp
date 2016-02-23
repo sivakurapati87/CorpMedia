@@ -73,7 +73,7 @@
 								<div class="row">
 									<div class="col-md-2">
 										<button id="fader" class="btn btn-primary">
-											<i class="fa fa-pencil-square fa-5"></i>&nbsp;&nbsp;&nbsp;
+											<i class="fa fa-pencil-square fa-2x"></i>&nbsp;&nbsp;&nbsp;
 										</button>
 									</div>
 									<div class="col-md-10"></div>
@@ -84,19 +84,19 @@
 
 
 								<div class="row">
-									<div class="col-md-4">
+									<div class="col-md-8">
 
 
 										<div class="row">
-											<div class="col-md-5">
+											<div class="col-md-8">
 												<p>
-													<b><font size="3">Probation Period</font></b>
+													<font size="3">Probation Period</font>
 												</p>
 											</div>
 											<div class="col-md-1">
 												<p>-</p>
 											</div>
-											<div class="col-md-6">
+											<div class="col-md-3">
 												<p>
 													<b><font size="3">{{companyEmployeeDefaultsJson.probationPeriod}}&nbsp;{{companyEmployeeDefaultsJson.probationPeriodType}}</font></b>
 												</p>
@@ -106,15 +106,15 @@
 										<br>
 
 										<div class="row">
-											<div class="col-md-5">
+											<div class="col-md-8">
 												<p>
-													<b><font size="3">Worker Type</font></b>
+													<font size="3">Worker Type</font>
 												</p>
 											</div>
 											<div class="col-md-1">
 												<p>-</p>
 											</div>
-											<div class="col-md-6">
+											<div class="col-md-3">
 												<p>
 													<b><font size="3">{{companyEmployeeDefaultsJson.workerType}}</font></b>
 												</p>
@@ -124,16 +124,16 @@
 										<br>
 
 										<div class="row">
-											<div class="col-md-5">
+											<div class="col-md-8">
 												<p>
-													<b><font size="3">Time Type</font></b>
+													<font size="3">Time Type</font>
 												</p>
 											</div>
 											<div class="col-md-1">
 												<p>-</p>
 											</div>
 
-											<div class="col-md-6">
+											<div class="col-md-3">
 												<p>
 													<b><font size="3">{{companyEmployeeDefaultsJson.timeType}}</font></b>
 												</p>
@@ -143,16 +143,16 @@
 										<br>
 
 										<div class="row">
-											<div class="col-md-5">
+											<div class="col-md-8">
 												<p>
-													<b><font size="3">Notice Period</font></b>
+												<font size="3">Notice Period</font>
 												</p>
 											</div>
 											<div class="col-md-1">
 												<p>-</p>
 											</div>
 
-											<div class="col-md-6">
+											<div class="col-md-3">
 												<p>
 													<b><font size="3">
 															{{companyEmployeeDefaultsJson.noticePeriod}}&nbsp;{{companyEmployeeDefaultsJson.noticePeriodType}}</font></b>
@@ -163,17 +163,17 @@
 										<br>
 
 										<div class="row">
-											<div class="col-md-5">
+											<div class="col-md-8">
 												<p>
-													<b><font size="3">Allow employee to edit
-															Personal Details</font></b>
+													<font size="3">Allow employee to edit
+															Personal Details</font>
 												</p>
 											</div>
 											<div class="col-md-1">
 												<p>-</p>
 											</div>
 
-											<div class="col-md-6">
+											<div class="col-md-3">
 												<p>
 													<b><font size="3"> {{companyEmployeeDefaultsJson.isEmpAllowedToUpdate}}</font></b>
 												</p>

@@ -115,4 +115,9 @@ App.controller('employee_personal_Controller', ['$scope','$location','$rootScope
 			
 			$scope.getAllEmployeesList();
 			
+			//cancel
+			$scope.cancelFamilyInfo = function() {
+				$scope.isCollapse = true;
+			};
+			
 }]);

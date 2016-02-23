@@ -16,6 +16,7 @@ import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
+import com.intuiture.corp.entity.Categories;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
 import com.intuiture.corp.entity.CompanyEmployeeDefaults;
@@ -34,6 +35,7 @@ import com.intuiture.corp.entity.JobTitles;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.PFInfo;
 import com.intuiture.corp.entity.TimeSheetApprovers;
+import com.intuiture.corp.json.CategoriesJson;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
 import com.intuiture.corp.json.CompanyJson;
@@ -470,5 +472,15 @@ public class TransformDomainToJson {
 		employeePersonalInfoJson.setPermCountry(employeeAddressInfo.getPermCountry());
 		employeePersonalInfoJson.setPermState(employeeAddressInfo.getPermState());
 		return employeePersonalInfoJson;
+	}
+	
+	
+	public static CategoriesJson getCategoriesJson(Categories categories) {
+		CategoriesJson categoriesJson = new CategoriesJson();
+		categoriesJson.setCompanyId(categories.getCompanyId());
+		categoriesJson.setDescription(categories.getDescription());
+		categoriesJson.setExpenseName(categories.getExpenseName());
+		categoriesJson.setCategoriesId(categories.getCategoriesId());
+		return categoriesJson;
 	}
 }
