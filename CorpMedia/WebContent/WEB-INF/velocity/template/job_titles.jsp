@@ -95,7 +95,7 @@
 													<button class="btn btn-success" type="submit"
 														style="width: 100px">Save</button>
 													&nbsp;
-													<button class="btn btn-cancel" style="width: 100px"
+													<button class="btn btn-cancel" style="width: 100px" ng-click="cancelJobTitle()"
 														type="button">Cancel</button>
 												</p>
 											</div>

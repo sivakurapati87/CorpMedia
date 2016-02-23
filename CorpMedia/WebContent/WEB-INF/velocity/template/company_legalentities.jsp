@@ -240,17 +240,17 @@
 							</div></td>
 					</tr>
 					<tr>
-						<td><table style="width: 100%" border="0">
-								<tr style="height: 20px"></tr>
+						<td align="center"><table style="width: 80%;text-align: center" border="0" class="table table-bordered">
+								
 								<tr ng-repeat="bank in companyBanksList" ng-class-odd="'odd'"
 									ng-class-even="'even'">
-									<td><div>{{bank.bankName}}</div>
+									<td><div><b>{{bank.bankName}}</b></div>
 										<div>{{bank.branch}}</div></td>
 									<td><a data-toggle="modal" data-target="#addBankPopupId"
 										ng-click="editBank(bank)"
 										style="cursor: pointer; font-size: 12px"><i
-											class="fa fa-pencil-square-o"></i></a></td>
-									<td><a ng-click="deleteBank(bank.companyBankId)"
+											class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a ng-click="deleteBank(bank.companyBankId)"
 										style="cursor: pointer; font-size: 12px"><i
 											class="fa fa-trash"></i></a></td>
 								</tr>

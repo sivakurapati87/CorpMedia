@@ -47,4 +47,11 @@ App.controller('Company_Department_Controller', ['$scope','$rootScope','$http', 
 	//init functions
 	$scope.getAllDepartmentsList();
 	
+	
+	//cancel
+	
+	$scope.cancelCompanyDepartment = function() {
+		$scope.isCollapse = true;
+	};
+	
 }]);
