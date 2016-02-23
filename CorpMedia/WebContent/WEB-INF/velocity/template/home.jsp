@@ -83,7 +83,7 @@
 								
 								<tr style="height: 15px"></tr>
 									<tr>
-										<td style="height: 30px;" width="80%">
+										<td style="height: 30px; padding-left: 25px" width="80%" >
 											<div angucomplete-alt id="companiesId" class="lable16"
 												placeholder="Enter a company to search " pause="100"
 												selected-object="selectedCompanyAction"
