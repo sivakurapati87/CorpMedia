@@ -18,5 +18,6 @@ TimeSheetApproverChainController : 'TimeSheetApproverChainController',
 TagsController : 'TagsController',
 CategoriesController : 'CategoriesController',
 JobTitlesController : 'JobTitlesController',
-EmployeeController : 'EmployeeController'
+EmployeeController : 'EmployeeController',
+CompanyEmpDefaultController: 'CompanyEmpDefaultController'
 };

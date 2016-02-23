@@ -1,13 +1,4 @@
 
-<script>
-	$(document).ready(function() {
-		$(fader).click(function() {
-			$(fade_out).fadeOut();
-			$(fade_in).fadeIn();
-		});
-	});
-</script>
-
 
 <div class="container-fluid" style="width: 100%;">
 	<table>
@@ -35,11 +26,11 @@
 									<li ng-class="{'active':(state==='add_employee')}"><a
 										class="anchor-sm" ui-sref="add_employee">Add Employee</a></li>
 									<li ng-class="{'active':(state==='employee_professional')}"><a
-										class="anchor-sm" ui-sref="employee_professional">Professional</a></li>	
+										class="anchor-sm" ui-sref="employee_professional">Professional</a></li>
 									<li ng-class="{'active':(state==='employee_personal')}"><a
-										class="anchor-sm" ui-sref="employee_personal">Personal</a></li>	
+										class="anchor-sm" ui-sref="employee_personal">Personal</a></li>
 									<li ng-class="{'active':(state==='employee_job')}"><a
-										class="anchor-sm" ui-sref="employee_job">Job</a></li>		
+										class="anchor-sm" ui-sref="employee_job">Job</a></li>
 
 
 
@@ -57,7 +48,7 @@
 
 
 
-							<div id="fade_out">
+							<div>
 								<p>
 									<font size="4">Job Titles</font>
 								</p>
@@ -68,60 +59,72 @@
 
 								<div class="row">
 									<div class="col-md-2">
-										<button id="fader" class="btn btn-primary">
-											<i class="fa fa-plus-square">&nbsp;&nbsp;&nbsp;</i>Add New
+										<button type="button" class="btn btn-info"
+											ng-click="isCollapse = !isCollapse">
+											<span class="glyphicon glyphicon-plus"></span>Add New
 										</button>
 									</div>
 									<div class="col-md-10"></div>
 
 								</div>
 								<br>
-								<table class="table">
+
+								<div collapse="isCollapse">
+
+									<h4 class="branded-heading">Add Job title</h4>
+
+									<form ng-submit="saveJobTitles()">
+										<div class="row">
+											<div class="col-md-5">
+
+												<div class="form-group">
+													<label for="job_title">Job Title</label> <input
+														class="form-control" type="text" id="job_title"
+														ng-model="jobtitles.jobtitle">
+												</div>
+
+												<br>
+
+												<div class="form-group">
+													<label for="description">Description</label>
+													<textarea class="form-control" id="description"
+														ng-model="jobtitles.description"></textarea>
+												</div>
+
+												<p>
+													<button class="btn btn-success" type="submit"
+														style="width: 100px">Save</button>
+													&nbsp;
+													<button class="btn btn-cancel" style="width: 100px"
+														type="button">Cancel</button>
+												</p>
+											</div>
+
+											<div class="col-md-7"></div>
+									</form>
+								</div>
+
+							</div>
+							<div class="col-lg-8">
+								<table style="width: 100%" border="0">
+									<tr style="height: 20px"></tr>
 									<tr>
 										<th>Name</th>
-										<th>Applies To</th>
+										<th>Description</th>
 										<th>Actions</th>
 									</tr>
+									<tr ng-repeat="jobTitle in jobtitlesList" ng-class-odd="'odd'"
+										ng-class-even="'even'" style="height: 30px">
+										<td>{{jobTitle.jobtitle}}</td>
+										<td>{{jobTitle.description}}</td>
+										<td><a ng-click="editJobTitle(jobTitle)" tooltip="edit"
+											style="cursor: pointer; font-size: 12px"><i
+												class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a tooltip="delete"
+											ng-click="deleteJobTitle(jobTitle.jobtitlesId)"
+											style="cursor: pointer; font-size: 12px"><i
+												class="fa fa-trash"></i></a></td>
+									</tr>
 								</table>
-
-							</div>
-
-
-							<div id="fade_in" style="display: none">
-
-								<h4 class="branded-heading">Add Job title</h4>
-
-								<form ng-submit="saveJobTitles()">
-									<div class="row">
-										<div class="col-md-5">
-
-											<div class="form-group">
-												<label for="job_title">Job Title</label> <input
-													class="form-control" type="text" id="job_title"
-													ng-model="jobtitles.jobtitle">
-											</div>
-
-											<br>
-
-											<div class="form-group">
-												<label for="description">Description</label>
-												<textarea class="form-control" id="description"
-													ng-model="jobtitles.description"></textarea>
-											</div>
-
-											<p>
-												<button class="btn btn-success" type="submit"
-													style="width: 100px">Save</button>
-												&nbsp;
-												<button class="btn btn-cancel" style="width: 100px"
-													type="button">Cancel</button>
-											</p>
-										</div>
-
-										<div class="col-md-7"></div>
-								</form>
-							</div>
-
 							</div>
 
 

@@ -18,25 +18,31 @@ import org.apache.log4j.Logger;
 
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
+import com.intuiture.corp.entity.CompanyEmployeeDefaults;
 import com.intuiture.corp.entity.CompanyLocation;
 import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
+import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
+import com.intuiture.corp.entity.JobTitles;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.PFInfo;
 import com.intuiture.corp.entity.TimeSheetApprovers;
 import com.intuiture.corp.json.CompanyBankJson;
+import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
 import com.intuiture.corp.json.CompanyJson;
 import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
+import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
+import com.intuiture.corp.json.JobTitlesJson;
 import com.intuiture.corp.json.LookUpDetailJson;
 import com.intuiture.corp.json.PFInfoJson;
 import com.intuiture.corp.json.TimeSheetApproverJson;
@@ -378,4 +384,43 @@ public class TransformDomainToJson {
 		return companyLocationJson;
 	}
 
+	public static DepartmentJson getDepartmentJson(Department department) {
+		DepartmentJson departmentJson = new DepartmentJson();
+		departmentJson.setCompanyId(department.getCompanyId());
+		departmentJson.setDepartmentId(department.getDepartmentId());
+		departmentJson.setDepartmentName(department.getDepartmentName());
+		return departmentJson;
+	}
+
+	public static JobTitlesJson getJobTitlesJson(JobTitles jobTitles) {
+		JobTitlesJson jobTitlesJson = new JobTitlesJson();
+		jobTitlesJson.setCompanyId(jobTitles.getCompanyId());
+		jobTitlesJson.setDescription(jobTitles.getDescription());
+		jobTitlesJson.setJobtitle(jobTitles.getJobtitle());
+		jobTitlesJson.setJobtitlesId(jobTitles.getJobtitlesId());
+		return jobTitlesJson;
+	}
+
+	public static CompanyEmployeeDefaultsJson getCompanyEmployeeDefaults(CompanyEmployeeDefaults companyEmployeeDefaults) {
+		CompanyEmployeeDefaultsJson companyEmployeeDefaultsJson = new CompanyEmployeeDefaultsJson();
+		companyEmployeeDefaultsJson.setCompanyId(companyEmployeeDefaults.getCompanyId());
+		companyEmployeeDefaultsJson.setIsDeleted(companyEmployeeDefaults.getIsDeleted());
+		companyEmployeeDefaultsJson.setIsEmpAllowedToUpdate(companyEmployeeDefaults.getIsEmpAllowedToUpdate());
+		companyEmployeeDefaultsJson.setCompanyEmployeeDefaultsId(companyEmployeeDefaults.getCompanyEmployeeDefaultsId());
+		companyEmployeeDefaultsJson.setNoticePeriod(companyEmployeeDefaults.getNoticePeriod());
+		companyEmployeeDefaultsJson.setNoticePeriodId(companyEmployeeDefaults.getNoticePeriodId());
+		companyEmployeeDefaultsJson.setProbationPeriod(companyEmployeeDefaults.getProbationPeriod());
+		companyEmployeeDefaultsJson.setProbatioPeriodTypeId(companyEmployeeDefaults.getProbatioPeriodTypeId());
+		companyEmployeeDefaultsJson.setTimeTypeId(companyEmployeeDefaults.getTimeTypeId());
+		companyEmployeeDefaultsJson.setWorkerTypeId(companyEmployeeDefaults.getWorkerTypeId());
+		if (companyEmployeeDefaults.getProbationPeriodType() != null)
+			companyEmployeeDefaultsJson.setProbationPeriodType(companyEmployeeDefaults.getProbationPeriodType().getDescription());
+		if (companyEmployeeDefaults.getWorkerType() != null)
+			companyEmployeeDefaultsJson.setWorkerType(companyEmployeeDefaults.getWorkerType().getDescription());
+		if (companyEmployeeDefaults.getTimeType() != null)
+			companyEmployeeDefaultsJson.setTimeType(companyEmployeeDefaults.getTimeType().getDescription());
+		if (companyEmployeeDefaults.getNoticePeriodType() != null)
+			companyEmployeeDefaultsJson.setNoticePeriodType(companyEmployeeDefaults.getNoticePeriodType().getDescription());
+		return companyEmployeeDefaultsJson;
+	}
 }
