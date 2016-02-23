@@ -122,16 +122,16 @@
                         <p></p>
 
                         <h>Medical reimbursement</h>
-                        <p><font size="1">Tax Free, Max Limit Rs. 15,000</font>&nbsp;&nbsp;&nbsp;<a data-toggle="modal" data-target="#myModal"><i class="fa fa-cog"></i>
+                        <p><font size="1">Tax Free, Max Limit Rs. 15,000</font>&nbsp;&nbsp;&nbsp;<a data-toggle="modal" data-target="#medical"><i class="fa fa-cog"></i>
                             </a></p>
  </div>
                     
                     
 
                    <!--bootstrap modal for the first box-->
-                   <div class="modal fade" id="myModal" role="dialog">
+                   <div class="modal fade" id="medical" role="dialog">
     <div class="modal-dialog">
-    
+    <form ng-submit="saveMedicalReimbursement()">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -140,17 +140,11 @@
         </div>
         <div class="modal-body">
             <div class="form-group">
-  <label for="medical_sel1">Enable this component:</label>
-  <select class="form-control" id="medical_sel1">
-    <option>Yes</option>
-    <option>No</option>
-    
-  </select>
+  
+  <p class="form-controll">Maximum annual limit Rs.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" ng-model="medicalreimbursement.maxAnnualLimit"></p>
   <br>
-  <p class="form-controll">Maximum annual limit Rs.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" ></p>
-  <br>
-   <label for="medical_sel2">Enable this component:</label>
-  <select class="form-control" id="medical_sel2">
+   <label for="medical_sel2">Require submission of bills to claim this allowance:</label>
+  <select class="form-control" id="medical_sel2" ng-model="medicalreimbursement.requireSubmission">
     <option>Yes</option>
     <option>No</option>
     
@@ -159,11 +153,12 @@
         </div>
         <div class="modal-footer">
             <p>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Save</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </p>
         </div>
       </div>
+      </form>
       
     </div>
   </div>

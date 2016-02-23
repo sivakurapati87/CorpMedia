@@ -106,8 +106,7 @@
 
 							</div>
 							<div class="col-lg-8">
-								<table style="width: 100%" border="0">
-									<tr style="height: 20px"></tr>
+								<table style="width: 100%" border="0" class="table table-bordered">
 									<tr>
 										<th>Name</th>
 										<th>Description</th>

@@ -125,18 +125,18 @@
 							</div></td>
 					</tr>
 					<tr>
-						<td><table style="width: 100%" border="0">
-								<tr style="height: 20px"></tr>
+						<td align="center"><table style="width: 80%;text-align: center" border="0" class="table table-bordered">
+								
 								<tr ng-repeat="signator in signatorsList" ng-class-odd="'odd'"
 									ng-class-even="'even'">
-									<td><div>{{signator.signatorName}}</div>
+									<td><div><b>{{signator.signatorName}}</b></div>
 										<div>{{signator.designation}}</div></td>
 									<td><a data-toggle="modal"
 										data-target="#addSignatoryPopupId"
 										ng-click="editSignator(signator)"
 										style="cursor: pointer; font-size: 12px"><i
-											class="fa fa-pencil-square-o"></i></a></td>
-									<td><a
+											class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<a
 										ng-click="deleteSignator(signator.companySignatorId)"
 										style="cursor: pointer; font-size: 12px"><i
 											class="fa fa-trash"></i></a></td>

@@ -10,6 +10,8 @@ import org.apache.log4j.Logger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.intuiture.corp.entity.Allowances;
+import com.intuiture.corp.entity.Bonuses;
 import com.intuiture.corp.entity.Categories;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
@@ -18,6 +20,7 @@ import com.intuiture.corp.entity.CompanyInfo;
 import com.intuiture.corp.entity.CompanyLocation;
 import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
+import com.intuiture.corp.entity.Deductions;
 import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
@@ -27,9 +30,13 @@ import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
 import com.intuiture.corp.entity.LookUpDetails;
+import com.intuiture.corp.entity.MedicalReimbursement;
 import com.intuiture.corp.entity.PFInfo;
+import com.intuiture.corp.entity.Reimbursement;
 import com.intuiture.corp.entity.Tags;
 import com.intuiture.corp.entity.TimeSheetApprovers;
+import com.intuiture.corp.json.AllowancesJson;
+import com.intuiture.corp.json.BonusesJson;
 //github.com/sivakurapati87/CorpMedia.git
 import com.intuiture.corp.json.CategoriesJson;
 import com.intuiture.corp.json.CompanyBankJson;
@@ -37,6 +44,7 @@ import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
 import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
+import com.intuiture.corp.json.DeductionsJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
@@ -44,7 +52,9 @@ import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
+import com.intuiture.corp.json.MedicalReimbursementJson;
 import com.intuiture.corp.json.PFInfoJson;
+import com.intuiture.corp.json.ReimbursementJson;
 import com.intuiture.corp.json.TagsJson;
 import com.intuiture.corp.json.TimeSheetApproverJson;
 
@@ -304,6 +314,41 @@ public class TransformJsonToDomain {
 		employee.setLastName(employeeJson.getLastName());
 		employee.setLocationId(employeeJson.getLocationId());
 		employee.setMiddleName(employeeJson.getMiddleName());
+	}
+	
+	public static void getDeductions(Deductions deductions, DeductionsJson deductionsJson) {
+		deductions.setCreatedOn(new Date());
+		deductions.setCompanyId(deductionsJson.getCompanyId());
+		deductions.setDeductionName(deductionsJson.getDeductionName());
+		deductions.setDeductionDescription(deductionsJson.getDeductionDescription());
+	}
+	
+	public static void getReimbursement(Reimbursement reimbursement , ReimbursementJson reimbursementJson) {
+		reimbursement.setCreatedOn(new Date());
+		reimbursement.setCompanyId(reimbursementJson.getCompanyId());
+		reimbursement.setReimbursementName(reimbursementJson.getReimbursementName());
+		reimbursement.setReimbursementDescription(reimbursementJson.getReimbursementDescription());
+	}
+	
+	public static void getBonuses(Bonuses bonuses , BonusesJson bonusesJson) {
+		bonuses.setCreatedOn(new Date());
+		bonuses.setCompanyId(bonusesJson.getCompanyId());
+		bonuses.setBonusesName(bonusesJson.getBonusesName());
+		bonuses.setBonusesDescription(bonusesJson.getBonusesDescription());
+	}
+	public static void getAllowances(Allowances allowances , AllowancesJson allowancesJson) {
+		allowances.setCreatedOn(new Date());
+		allowances.setCompanyId(allowancesJson.getCompanyId());
+		allowances.setAllowancesName(allowancesJson.getAllowancesName());
+		allowances.setAllowancesDescription(allowancesJson.getAllowancesDescription());
+		allowances.setHasTaxBenefits(allowancesJson.getHasTaxBenefits());
+	}
+	
+	public static void getMedicalReimbursement(MedicalReimbursement medicalReimbursement , MedicalReimbursementJson medicalReimbursementJson) {
+		medicalReimbursement.setCreatedOn(new Date());
+		medicalReimbursement.setCompanyId(medicalReimbursementJson.getCompanyId());
+		medicalReimbursement.setMaxAnnualLimit(medicalReimbursementJson.getMaxAnnualLimit());
+		medicalReimbursement.setRequireSubmission(medicalReimbursementJson.getRequireSubmission());
 	}
 
 	public static void getCompanyEmployeeDefaults(CompanyEmployeeDefaults companyEmployeeDefaults, CompanyEmployeeDefaultsJson companyEmployeeDefaultsJson) {
