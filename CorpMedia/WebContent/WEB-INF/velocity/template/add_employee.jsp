@@ -1,4 +1,4 @@
- 
+
 
 <div class="container-fluid" style="width: 100%;">
 	<table>
@@ -21,130 +21,113 @@
 									<li ng-class="{'active':(state==='job_titles')}"><a
 										class="anchor-sm" ui-sref="job_titles">Job Titles</a></li>
 									<li ng-class="{'active':(state==='employee_defaults')}"><a
-										class="anchor-sm" ui-sref="employee_defaults">Employee Defaults</a></li>
+										class="anchor-sm" ui-sref="employee_defaults">Employee
+											Defaults</a></li>
 									<li ng-class="{'active':(state==='add_employee')}"><a
 										class="anchor-sm" ui-sref="add_employee">Add Employee</a></li>
 									<li ng-class="{'active':(state==='employee_professional')}"><a
-										class="anchor-sm" ui-sref="employee_professional">Professional</a></li>	
+										class="anchor-sm" ui-sref="employee_professional">Professional</a></li>
 									<li ng-class="{'active':(state==='employee_personal')}"><a
-										class="anchor-sm" ui-sref="employee_personal">Personal</a></li>	
+										class="anchor-sm" ui-sref="employee_personal">Personal</a></li>
 									<li ng-class="{'active':(state==='employee_job')}"><a
-										class="anchor-sm" ui-sref="employee_job">Job</a></li>				
-													
-										
-										
-									
+										class="anchor-sm" ui-sref="employee_job">Job</a></li>
+
+
+
+
 
 								</ul>
 							</div>
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
-					style="width: 100%; background-color: white">
-					<tr>
-				<td><label class="lable16_Regular">First Name </label></td>
-				<td><label class="lable16_Regular">Middle Name</label></td>
-			</tr>
-			<tr>
-				<td><input style="width: 58%"
-					class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-					type="text" required="">
-					</td>
-				<td><input style="width: 58%"
-					class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-					type="text" required="">
-					</td>	
-				
-			</tr>
-			<tr>
-				<td><label class="lable16_Regular">Last Name </label></td>
-				<td><label class="lable16_Regular">Display Name</label></td>
-			</tr>
-			<tr>
-				<td><input style="width: 58%"
-					class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-					type="text" required="">
-					</td>
-				<td><input style="width: 58%"
-					class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-					type="text" required="">
-					</td>	
-				
-			</tr>
-			
-			<tr>
-				<td><label class="lable16_Regular">Email </label></td>
-				<td><label class="lable16_Regular">Location</label></td>
-			</tr>
-			<tr>
-				<td><input style="width: 58%"
-					class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-					type="text" required="">
-					</td>
-				<td><select style="width: 58%"
-					class="form-control ng-pristine ng-valid ng-valid-required ng-touched">
-					 
-				</select> </td>
-				
-			</tr>
-			<tr>
-				<td><label class="lable16_Regular">Date of joining </label></td>
-				<td><label class="lable16_Regular">Employee Role </label></td>
-			</tr>
-			<tr>
-				<td><input style="width: 58%"
-				class="input-group-field form-control datepicking ng-pristine ng-untouched ng-valid ng-isolate-scope ng-valid-required ng-valid-date"
-				type="text" required="" date-only="" data-ng-click="ptRegDate=true"
-				data-is-open="ptRegDate" data-show-weeks="false"
-				data-datepicker-popup="mediumDate"
-				data-ng-model="" name="registrationDate0"></td>
-				<td><select style="width: 58%"
-					class="form-control ng-pristine ng-valid ng-valid-required ng-touched">
-					 
-				</select> </td>
-					 
-				
-			</tr>
-			<tr>
-			<td colspan="2"><input type="checkbox">&nbsp;&nbsp;Invite employee to access keka application. Employee can manage and update profile </td>
-			</tr>
-			<tr>
-			<td colspan="2" align="right">
-				
-					
-						<button class="btn btn-success" style="width: 100px">Add</button>
-						<button class="btn btn-cancel" style="width: 100px">Cancel</button>
-					
-			</td>
-		</tr>
+				<form ng-submit="saveOrUpdateEmployee()">
+					<table class="table" border="0"
+						style="width: 100%; background-color: white">
+						<tr>
+							<td><label class="lable16_Regular">First Name </label></td>
+							<td><label class="lable16_Regular">Middle Name</label></td>
+						</tr>
+						<tr>
+							<td><input style="width: 58%"
+								ng-model="EmployeeJson.firstName"
+								class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+								type="text" required=""></td>
+							<td><input style="width: 58%"
+								ng-model="EmployeeJson.middleName"
+								class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+								type="text" required=""></td>
+
+						</tr>
+						<tr>
+							<td><label class="lable16_Regular">Last Name </label></td>
+							<td><label class="lable16_Regular">Display Name</label></td>
+						</tr>
+						<tr>
+							<td><input style="width: 58%"
+								ng-model="EmployeeJson.lastName"
+								class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+								type="text" required=""></td>
+							<td><input style="width: 58%"
+								ng-model="EmployeeJson.displayName"
+								class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+								type="text" required=""></td>
+
+						</tr>
+
+						<tr>
+							<td><label class="lable16_Regular">Email </label></td>
+							<td><label class="lable16_Regular">Location</label></td>
+						</tr>
+						<tr>
+							<td><input style="width: 58%" ng-model="EmployeeJson.email"
+								class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+								type="text" required=""></td>
+							<td><select
+								class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+								required ng-model="EmployeeJson.locationId"
+								ng-options="location.companyLocationId as location.locationName for location in  companyLocations">
+									<option value="" disabled selected>Select</option>
+							</select></td>
+
+						</tr>
+						<tr>
+							<td><label class="lable16_Regular">Date of joining </label></td>
+							<td><label class="lable16_Regular">Employee Role </label></td>
+						</tr>
+						<tr>
+							<td><div class="input-group">
+									<input type="text" class="form-control"
+										ng-model="EmployeeJson.strDateOfJoining"
+										datepicker-popup="dd-MMM-yyyy" is-open="Opened"
+										ng-click="Opened=true"> <span class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											ng-click="Opened=true;$event.stopPropagation();">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
+								</div></td>
+							<td><select
+								class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+								required ng-model="EmployeeJson.roleId"
+								ng-options="role.roleId as role.roleName for role in  companyRolesJsonList">
+									<option value="" disabled selected>Select</option>
+							</select></td>
 
 
+						</tr>
+						<td colspan="2" align="right">
 
 
+							<button class="btn btn-success" style="width: 100px"
+								type="submit">Add</button>
+							<button class="btn btn-cancel" style="width: 100px" type="button">Cancel</button>
 
+						</td>
+						</tr>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				</table>
+					</table>
+				</form>
 			</td>
 		</tr>
 	</table>

@@ -12,6 +12,33 @@ public class LookupBean {
 	private List<LookUpDetailJson> daysWeeksMonthsList;
 	private List<LookUpDetailJson> workerTypeList;
 	private List<LookUpDetailJson> timeTypeList;
+	private List<LookUpDetailJson> genderList;
+	private List<LookUpDetailJson> maritalStatusList;
+	private List<LookUpDetailJson> bloodGroupList;
+
+	public List<LookUpDetailJson> getGenderList() {
+		return genderList;
+	}
+
+	public void setGenderList(List<LookUpDetailJson> genderList) {
+		this.genderList = genderList;
+	}
+
+	public List<LookUpDetailJson> getMaritalStatusList() {
+		return maritalStatusList;
+	}
+
+	public void setMaritalStatusList(List<LookUpDetailJson> maritalStatusList) {
+		this.maritalStatusList = maritalStatusList;
+	}
+
+	public List<LookUpDetailJson> getBloodGroupList() {
+		return bloodGroupList;
+	}
+
+	public void setBloodGroupList(List<LookUpDetailJson> bloodGroupList) {
+		this.bloodGroupList = bloodGroupList;
+	}
 
 	public List<LookUpDetailJson> getDaysWeeksMonthsList() {
 		return daysWeeksMonthsList;
