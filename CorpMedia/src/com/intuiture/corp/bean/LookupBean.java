@@ -15,6 +15,7 @@ public class LookupBean {
 	private List<LookUpDetailJson> genderList;
 	private List<LookUpDetailJson> maritalStatusList;
 	private List<LookUpDetailJson> bloodGroupList;
+	private List<LookUpDetailJson> relationsList;
 
 	public List<LookUpDetailJson> getGenderList() {
 		return genderList;
@@ -86,5 +87,13 @@ public class LookupBean {
 
 	public void setStatesList(List<LookUpDetailJson> statesList) {
 		this.statesList = statesList;
+	}
+
+	public List<LookUpDetailJson> getRelationsList() {
+		return relationsList;
+	}
+
+	public void setRelationsList(List<LookUpDetailJson> relationsList) {
+		this.relationsList = relationsList;
 	}
 }

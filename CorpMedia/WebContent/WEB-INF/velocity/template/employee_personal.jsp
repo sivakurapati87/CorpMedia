@@ -399,7 +399,10 @@
 							<div id="fade_out">
 								<p>
 									<font size="3">Add Relation</font>&nbsp;&nbsp;
-									<button class="btn btn-primary" id="family">ADD FAMILY</button>
+									<button type="button" class="btn btn-info"
+										ng-click="isCollapse = !isCollapse">
+										<span class="glyphicon glyphicon-plus"></span>Add New
+									</button>
 								</p>
 								<hr>
 								<br>
@@ -410,7 +413,7 @@
 							</div>
 
 
-							<div id='fade_in' style="display: none">
+							<div collapse="isCollapse">
 								<br>
 								<p>
 									<font size="5">Add Relation</font>
@@ -425,14 +428,10 @@
 										<div class='col-md-4'>
 											<div class="form-group">
 												<label for="select_relation">Relation</label> <select
-													class="form-control" id="select_relation">
-													<option>Select Relation</option>
-													<option>Spouse</option>
-													<option>Mother</option>
-													<option>Father</option>
-													<option>Child</option>
-													<option>Sibling</option>
-													<option>Other</option>
+													class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+													required ng-model="employeePersonalInfoJson.genderId"
+													ng-options="relation.lookupDetailId as relation.description for relation in  lookup.relationsList">
+													<option value="" disabled selected>Select</option>
 												</select>
 											</div>
 

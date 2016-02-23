@@ -68,7 +68,7 @@ public class EmployeeService {
 		EmployeePersonalInfo employeePersonalInfo = null;
 		EmployeeAddressInfo employeeAddressInfo = null;
 		try {
-			if (employeePersonalInfoJson.getEmployeePersonalInfoId() != null) {
+			if (employeePersonalInfoJson != null) {
 				// This is to insert the data to Personal Info Table
 				if (employeePersonalInfoJson.getEmployeePersonalInfoId() != null) {
 					employeePersonalInfo = (EmployeePersonalInfo) commonRepository.findById(employeePersonalInfoJson.getEmployeePersonalInfoId(), EmployeePersonalInfo.class);

@@ -5,7 +5,7 @@ App.controller('employee_personal_Controller', ['$scope','$location','$rootScope
 	 $scope.state="employee_personal";
 		$scope.left_state = "employee";
 	$scope.employeePersonalInfoJson = {};
-		
+	$scope.isCollapse = true;//To hide and display the address block
 		//Save/update employee
 		$scope.saveOrUpdateEmployeePersonalInfo = function(){
 			alert('');
