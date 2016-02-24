@@ -25,8 +25,11 @@ import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.EmployeeAddressInfo;
+import com.intuiture.corp.entity.EmployeeEducationalInfo;
+import com.intuiture.corp.entity.EmployeeExperienceInfo;
 import com.intuiture.corp.entity.EmployeeFamilyInfo;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
+import com.intuiture.corp.entity.EmployeeProfessionalInfo;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
@@ -48,9 +51,12 @@ import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.json.DeductionsJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
+import com.intuiture.corp.json.EmployeeEducationalInfoJson;
+import com.intuiture.corp.json.EmployeeExperienceInfoJson;
 import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
+import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
@@ -424,9 +430,54 @@ public class TransformJsonToDomain {
 		employeeFamilyInfo.setEmployeeId(employeeFamilyInfoJson.getEmployeeId());
 		employeeFamilyInfo.setEmail(employeeFamilyInfoJson.getEmail());
 		employeeFamilyInfo.setFirstName(employeeFamilyInfoJson.getFirstName());
-		employeeFamilyInfo.setIsDeleted(Boolean.FALSE);
 		employeeFamilyInfo.setLastName(employeeFamilyInfoJson.getLastName());
 		employeeFamilyInfo.setMobileNumber(employeeFamilyInfoJson.getMobileNumber());
 		employeeFamilyInfo.setRelationId(employeeFamilyInfoJson.getRelationId());
+	}
+
+	public static void getEmployeeProfessionalInfo(EmployeeProfessionalInfo employeeProfessionalInfo, EmployeeProfessionalInfoJson employeeProfessionalInfoJson) {
+		employeeProfessionalInfo.setCompanyId(employeeProfessionalInfoJson.getCompanyId());
+		if (employeeProfessionalInfoJson.getEmployeeProfessionalInfoId() != null) {
+			employeeProfessionalInfo.setUpdatedOn(new Date());
+		} else {
+			employeeProfessionalInfo.setCreatedOn(new Date());
+		}
+		employeeProfessionalInfo.setIsDeleted(Boolean.FALSE);
+		employeeProfessionalInfo.setEmployeeId(employeeProfessionalInfoJson.getEmployeeId());
+		employeeProfessionalInfo.setProfessionalSummery(employeeProfessionalInfoJson.getProfessionalSummery());
+		employeeProfessionalInfo.setStatusMessage(employeeProfessionalInfoJson.getStatusMessage());
+	}
+
+	public static void getEmployeeExperienceInfo(EmployeeExperienceInfo employeeExperienceInfo, EmployeeExperienceInfoJson employeeExperienceInfoJson) {
+		employeeExperienceInfo.setCompanyId(employeeExperienceInfoJson.getCompanyId());
+		if (employeeExperienceInfoJson.getEmployeeExperienceInfoId() != null) {
+			employeeExperienceInfo.setUpdatedOn(new Date());
+		} else {
+			employeeExperienceInfo.setCreatedOn(new Date());
+		}
+		employeeExperienceInfo.setIsDeleted(Boolean.FALSE);
+		employeeExperienceInfo.setEmployeeId(employeeExperienceInfoJson.getEmployeeId());
+		employeeExperienceInfo.setCompanyName(employeeExperienceInfoJson.getCompanyName());
+		employeeExperienceInfo.setJobTitle(employeeExperienceInfoJson.getJobTitle());
+		employeeExperienceInfo.setLocation(employeeExperienceInfoJson.getLocation());
+		employeeExperienceInfo.setFromDate(employeeExperienceInfoJson.getFromDate());
+		employeeExperienceInfo.setToDate(employeeExperienceInfoJson.getToDate());
+		employeeExperienceInfo.setDescription(employeeExperienceInfoJson.getDescription());
+	}
+
+	public static void getEmployeeEducationalInfo(EmployeeEducationalInfo employeeEducationalInfo, EmployeeEducationalInfoJson employeeEducationalInfoJson) {
+		employeeEducationalInfo.setCompanyId(employeeEducationalInfoJson.getCompanyId());
+		if (employeeEducationalInfoJson.getEmployeeEducationalInfoId() != null) {
+			employeeEducationalInfo.setUpdatedOn(new Date());
+		} else {
+			employeeEducationalInfo.setCreatedOn(new Date());
+		}
+		employeeEducationalInfo.setIsDeleted(Boolean.FALSE);
+		employeeEducationalInfo.setEmployeeId(employeeEducationalInfoJson.getEmployeeId());
+		employeeEducationalInfo.setFromDate(employeeEducationalInfoJson.getFromDate());
+		employeeEducationalInfo.setToDate(employeeEducationalInfoJson.getToDate());
+		employeeEducationalInfo.setDegree(employeeEducationalInfoJson.getDegree());
+		employeeEducationalInfo.setSpecialization(employeeEducationalInfoJson.getSpecialization());
+		employeeEducationalInfo.setUniversity(employeeEducationalInfoJson.getUniversity());
 	}
 }

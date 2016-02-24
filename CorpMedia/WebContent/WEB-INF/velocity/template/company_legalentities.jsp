@@ -25,7 +25,6 @@
 										class="anchor-sm" ui-sref="company_locations">Locations</a></li>
 									<li ng-class="{'active':(state==='department')}"><a
 										class="anchor-sm" ui-sref="company_department">Departments</a></li>
-
 								</ul>
 							</div>
 						</td>

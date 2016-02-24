@@ -26,8 +26,11 @@ import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.EmployeeAddressInfo;
+import com.intuiture.corp.entity.EmployeeEducationalInfo;
+import com.intuiture.corp.entity.EmployeeExperienceInfo;
 import com.intuiture.corp.entity.EmployeeFamilyInfo;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
+import com.intuiture.corp.entity.EmployeeProfessionalInfo;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
@@ -42,9 +45,12 @@ import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
+import com.intuiture.corp.json.EmployeeEducationalInfoJson;
+import com.intuiture.corp.json.EmployeeExperienceInfoJson;
 import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
+import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
@@ -470,5 +476,42 @@ public class TransformDomainToJson {
 		employeePersonalInfoJson.setPermCountry(employeeAddressInfo.getPermCountry());
 		employeePersonalInfoJson.setPermState(employeeAddressInfo.getPermState());
 		return employeePersonalInfoJson;
+	}
+
+	public static EmployeeProfessionalInfoJson getEmployeeProfessionalInfoJson(EmployeeProfessionalInfo employeeProfessionalInfo) {
+		EmployeeProfessionalInfoJson employeeProfessionalInfoJson = new EmployeeProfessionalInfoJson();
+		employeeProfessionalInfoJson.setCompanyId(employeeProfessionalInfo.getCompanyId());
+		employeeProfessionalInfoJson.setEmployeeId(employeeProfessionalInfo.getEmployeeId());
+		employeeProfessionalInfoJson.setEmployeeProfessionalInfoId(employeeProfessionalInfo.getEmployeeProfessionalInfoId());
+		employeeProfessionalInfoJson.setProfessionalSummery(employeeProfessionalInfo.getProfessionalSummery());
+		employeeProfessionalInfoJson.setStatusMessage(employeeProfessionalInfo.getStatusMessage());
+		return employeeProfessionalInfoJson;
+	}
+
+	public static EmployeeExperienceInfoJson getEmployeeExperienceInfoJson(EmployeeExperienceInfo employeeExperienceInfo) {
+		EmployeeExperienceInfoJson employeeExperienceInfoJson = new EmployeeExperienceInfoJson();
+		employeeExperienceInfoJson.setCompanyId(employeeExperienceInfo.getCompanyId());
+		employeeExperienceInfoJson.setEmployeeId(employeeExperienceInfo.getEmployeeId());
+		employeeExperienceInfoJson.setCompanyName(employeeExperienceInfo.getCompanyName());
+		employeeExperienceInfoJson.setJobTitle(employeeExperienceInfo.getJobTitle());
+		employeeExperienceInfoJson.setLocation(employeeExperienceInfo.getLocation());
+		employeeExperienceInfoJson.setStrFromDate(convertDateToString(employeeExperienceInfo.getFromDate()));
+		employeeExperienceInfoJson.setStrToDate(convertDateToString(employeeExperienceInfo.getToDate()));
+		employeeExperienceInfoJson.setDescription(employeeExperienceInfo.getDescription());
+		employeeExperienceInfoJson.setEmployeeExperienceInfoId(employeeExperienceInfo.getEmployeeExperienceInfoId());
+		return employeeExperienceInfoJson;
+	}
+
+	public static EmployeeEducationalInfoJson getEmployeeEducationalInfoJson(EmployeeEducationalInfo employeeEducationalInfo) {
+		EmployeeEducationalInfoJson employeeEducationalInfoJson = new EmployeeEducationalInfoJson();
+		employeeEducationalInfoJson.setCompanyId(employeeEducationalInfo.getCompanyId());
+		employeeEducationalInfoJson.setEmployeeId(employeeEducationalInfo.getEmployeeId());
+		employeeEducationalInfoJson.setStrFromDate(convertDateToString(employeeEducationalInfo.getFromDate()));
+		employeeEducationalInfoJson.setStrToDate(convertDateToString(employeeEducationalInfo.getToDate()));
+		employeeEducationalInfoJson.setDegree(employeeEducationalInfo.getDegree());
+		employeeEducationalInfoJson.setSpecialization(employeeEducationalInfo.getSpecialization());
+		employeeEducationalInfoJson.setUniversity(employeeEducationalInfo.getUniversity());
+		employeeEducationalInfoJson.setEmployeeEducationalInfoId(employeeEducationalInfo.getEmployeeEducationalInfoId());
+		return employeeEducationalInfoJson;
 	}
 }
