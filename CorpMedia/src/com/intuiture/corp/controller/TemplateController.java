@@ -202,6 +202,50 @@ public class TemplateController {// Serves Templates.
 	public String employee_job() {
 		return "template/employee_job";
 	}
+	@RequestMapping(value = "/projects")
+	public String projects() {
+		return "template/projects";
+	}
+	@RequestMapping(value = "/billing")
+	public String billing() {
+		return "template/billing";
+	}
+	@RequestMapping(value = "/clients")
+	public String clients() {
+		return "template/clients";
+	}
+	@RequestMapping(value = "/billing_rates")
+	public String billing_rates() {
+		return "template/billing_rates";
+	}
+	@RequestMapping(value = "/reports")
+	public String reports() {
+		return "template/reports";
+	}
+	@RequestMapping(value = "/project_details")
+	public String project_details() {
+		return "template/project_details";
+	}
+	@RequestMapping(value = "/task_billing")
+	public String task_billing() {
+		return "template/task_billing";
+	}
+	@RequestMapping(value = "/dpt_work_hrs")
+	public String dpt_work_hrs() {
+		return "template/dpt_work_hrs";
+	}
+	@RequestMapping(value = "/project_work_hrs")
+	public String project_work_hrs() {
+		return "template/project_work_hrs";
+	}
+	@RequestMapping(value = "/client_work_hrs")
+	public String client_work_hrs() {
+		return "template/client_work_hrs";
+	}
+	@RequestMapping(value = "/employee_timesheets")
+	public String employee_timesheets() {
+		return "template/employee_timesheets";
+	}
 	
 	
 
