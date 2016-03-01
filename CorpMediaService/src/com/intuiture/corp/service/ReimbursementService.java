@@ -1,5 +1,8 @@
 package com.intuiture.corp.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,6 +11,7 @@ import com.intuiture.corp.dao.CommonRepository;
 import com.intuiture.corp.dao.ReimbursementRepository;
 import com.intuiture.corp.entity.Reimbursement;
 import com.intuiture.corp.json.ReimbursementJson;
+import com.intuiture.corp.util.TransformDomainToJson;
 import com.intuiture.corp.util.TransformJsonToDomain;
 
 @Service
@@ -40,6 +44,23 @@ public class ReimbursementService {
 			return false;
 		}
 		return true;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ReimbursementJson> getAllReimbursementList(Integer companyId) {
+		List<ReimbursementJson> reimbursementJsonList = null;
+		try {
+			List<Reimbursement> reimbursementList = (List<Reimbursement>) commonRepository.getAllRecordsByCompanyId(companyId, Reimbursement.class);
+			if (reimbursementList != null && reimbursementList.size() > 0) {
+				reimbursementJsonList = new ArrayList<ReimbursementJson>();
+				for (Reimbursement reimbursement : reimbursementList) {
+					reimbursementJsonList.add(TransformDomainToJson.getReimbursementJson(reimbursement));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return reimbursementJsonList;
 	}
 
 }

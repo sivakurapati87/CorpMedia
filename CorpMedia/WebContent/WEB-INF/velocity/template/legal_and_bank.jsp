@@ -52,7 +52,7 @@
 
 
 <!-- angular js application -->
-<div ng-app="selectapp">
+<div>
 <div class="row">
 <div class="col-sm-4">
 <div class="form-group">

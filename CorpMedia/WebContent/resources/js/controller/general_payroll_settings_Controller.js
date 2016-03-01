@@ -1,60 +1,40 @@
 'use strict';
 
-App.controller('general_payroll_settings_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
+App.controller('general_payroll_settings_Controller', ['$scope','$location','$rootScope','$http','$stateParams', function($scope,$location,$rootScope,$http,$stateParams) {
 	 var self = this;
 	 $scope.state="general_payroll_settings";
 		$scope.left_state = "payroll";
+		$scope.payrollcyclesettings = {};
+		$scope.payrollperiodcalculation = {};
 		
-//		$scope.state_info_name = $stateParams.legEntity;
-//		$scope.$parent.state_info_name = $stateParams.legEntity;
-//        $scope.selectedCompany=null;
-//        $scope.companyInfo=[];
-//      
-//          //Json for the auto complete
-//          self.getCompanyInfoInit = function(){
-//        	 
-////        	  $scope.$watch(function () { return  HomeService.getSelectedCompany(); }, function (newValue, oldValue) {
-////      	        if (newValue != null) {
-////      	            //update Controller2's xxx value
-////      	            $scope.selectedCompany=newValue;
-////      	          CompanyInfoService.getCompanyInfo($scope.selectedCompany)
-////             	 .then(
-////     				       function(d) {
-////     				    	 $scope.companyInfo = d;
-////     				       },
-////       					function(errResponse){
-////       						console.error('Error while fetching Currencies');
-////       					}
-////     		       );
-////      	        }
-////      	    }, true);
-//        	  CompanyInfoService.getSelectedCompany()
-//         	 .then(
-// 				       function(d) {
-//				    	  $scope.selectedCompany=d.selectedCompName;
-// 				    	 CompanyInfoService.getCompanyInfo($scope.selectedCompany)
-// 			          	 .then(
-// 			  				       function(d) {
-// 			  				    	 $scope.companyInfo = d;
-// 			  				    	 $scope.$parent.companyName = d[0].companyName;
-// 			  				    	$rootScope.companyName = d[0].companyName;
-// 			  				    	$rootScope.companyId = d[0].companyId;
-// 			  				       },
-// 			    					function(errResponse){
-// 			    						console.error('Error while fetching Currencies');
-// 			    					}
-// 			  		       );
-// 				       },
-//   					function(errResponse){
-//   						console.error('Error while fetching Currencies');
-//   					}
-// 		       );
-//        	  
-//        	  
-//        	 
-//        	 
-//          };
-//          self.getCompanyInfoInit();
+		
+		
+		
+		
+		
+		//Save payrollcyclesettings
+		$scope.savePayrollCycleSettings = function(){
+			alert($rootScope.selectedCompanyObj.companyId);
+			if($rootScope.selectedCompanyObj){
+				$scope.payrollcyclesettings.companyId = $rootScope.selectedCompanyObj.companyId;
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.PayrollCycleSettingsController+'/savePayrollCycleSettings', $scope.payrollcyclesettings).success(function(data) {
+	        }).error(function() {
+	      	  console.error('Could not save or update payrollcyclesettings');
+	        });}
+		};
+		
+		
+		//Save payrollperiodcalculation
+		$scope.savePayrollPeriodCalculation = function(){
+			alert($rootScope.selectedCompanyObj.companyId);
+			if($rootScope.selectedCompanyObj){
+				$scope.payrollperiodcalculation.companyId = $rootScope.selectedCompanyObj.companyId;
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.PayrollPeriodCalculationController+'/savePayrollPeriodCalculation', $scope.payrollperiodcalculation).success(function(data) {
+	        }).error(function() {
+	      	  console.error('Could not save or update payrollperiodcalculation');
+	        });}
+		};
+
 		
 		
 		

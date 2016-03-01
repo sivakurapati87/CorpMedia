@@ -75,9 +75,7 @@
 								<div class="col-md-2"></div>
 
 								<!--third part of the row-->
-								<div class="col-md-2">
-									<button type="button" class="btn btn-primary">Continue</button>
-								</div>
+								
 
 							</div> <br> <!--second row-->
 							<div class="row">
@@ -95,6 +93,9 @@
 												Allowances</font>
 										</p></a>
 								</div>
+								
+								
+								
 
 
 
@@ -114,11 +115,13 @@
 											from net salary of an employee in a month. Ex: Laptop Damage
 											charges etc. </font>
 									</p>
+
 									<a href="" data-toggle="modal" data-target="#myModal_deduction"><p>
 											<font size="3"><i class="fa fa-plus"></i>&nbsp;Add
 												Deduction</font>
 										</p></a>
 								</div>
+
 
 								<div class="col-md-2"></div>
 
@@ -165,9 +168,17 @@
 										</div>
 									</div>
 									</form>
+									
+									
+									
+									
 
 								</div>
 							</div> <!--modal for deductions-->
+							
+							
+							
+							
 							<div class="modal fade" id="myModal_deduction" role="dialog">
 								<div class="modal-dialog">
 									<form ng-submit="saveDeductions()">
@@ -208,8 +219,53 @@
 									</form>
 
 								</div>
-							</div> <br> <br> <!--third row-->
+							</div>
 							<div class="row">
+							<div class="col-lg-4">
+									<table style="width: 100%" border="0"
+										class="table table-bordered">
+										<tr>
+											<th>Name</th>
+											<th>Actions</th>
+										</tr>
+										<tr ng-repeat="allowances in allowancesList" ng-class-odd="'odd'" 
+											ng-class-even="'even'" style="height: 30px">
+											<td>{{allowances.allowancesName}}</td>
+											<td><a ng-click="" tooltip="edit"
+												style="cursor: pointer; font-size: 12px"><i
+													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+												tooltip="delete" ng-click="deleteAllowances(allowances.allowancesId)"
+												style="cursor: pointer; font-size: 12px"><i
+													class="fa fa-trash"></i></a></td>
+										</tr>
+									</table>
+								</div>
+								<div  class="col-md-2"></div>
+								
+								<div class="col-lg-4">
+									<table style="width: 100%" border="0"
+										class="table table-bordered">
+										<tr>
+											<th>Name</th>
+											<th>Actions</th>
+										</tr>
+										<tr ng-repeat="deductions in deductionsList" ng-class-odd="'odd'" 
+											ng-class-even="'even'" style="height: 30px">
+											<td>{{deductions.deductionName}}</td>
+											<td><a ng-click="" tooltip="edit"
+												style="cursor: pointer; font-size: 12px"><i
+													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+												tooltip="delete" ng-click=""
+												style="cursor: pointer; font-size: 12px"><i
+													class="fa fa-trash"></i></a></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							
+							 <br> <br> <!--third row-->
+							<div class="row">
+							
 
 								<div class="col-md-4">
 									<p>
@@ -329,14 +385,53 @@
 
 								</div>
 							</div> <!--fourth row-->
+							
 							<div class="row">
-
-								<div class="col-md-10"></div>
-
-								<div class="col-md-2">
-									<button type="button" class="btn btn-primary">Continue</button>
+							<div class="col-lg-4">
+									<table style="width: 100%" border="0"
+										class="table table-bordered">
+										<tr>
+											<th>Name</th>
+											<th>Actions</th>
+										</tr>
+										<tr ng-repeat="reimbursement in reimbursementList" ng-class-odd="'odd'" 
+											ng-class-even="'even'" style="height: 30px">
+											<td>{{reimbursement.reimbursementName}}</td>
+											<td><a ng-click="" tooltip="edit"
+												style="cursor: pointer; font-size: 12px"><i
+													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+												tooltip="delete" ng-click=""
+												style="cursor: pointer; font-size: 12px"><i
+													class="fa fa-trash"></i></a></td>
+										</tr>
+									</table>
+								</div>
+								<div  class="col-md-2"></div>
+								
+								<div class="col-lg-4">
+									<table style="width: 100%" border="0"
+										class="table table-bordered">
+										<tr>
+											<th>Name</th>
+											<th>Actions</th>
+										</tr>
+										<tr ng-repeat="bonuses in bonusesList" ng-class-odd="'odd'" 
+											ng-class-even="'even'" style="height: 30px">
+											<td>{{bonuses.bonusesName}}</td>
+											<td><a ng-click="" tooltip="edit"
+												style="cursor: pointer; font-size: 12px"><i
+													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+												tooltip="delete" ng-click=""
+												style="cursor: pointer; font-size: 12px"><i
+													class="fa fa-trash"></i></a></td>
+										</tr>
+									</table>
 								</div>
 							</div>
+							
+							
+							
+							
 
 
 

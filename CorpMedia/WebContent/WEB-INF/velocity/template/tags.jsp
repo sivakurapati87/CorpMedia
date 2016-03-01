@@ -65,10 +65,12 @@
 																<div
 																	class="col-lg-2 col-md-4 col-sm-4 col-xs-12 clear-side-padding">
 
-																	<button type="button" class="btn btn-info"
-																		data-toggle="collapse" data-target="#tags">
-																		<span class="glyphicon glyphicon-plus"></span>Add New
-																	</button>
+																	<div class="col-md-2">
+																		<button type="button" class="btn btn-info"
+																			ng-click="isCollapse = !isCollapse">
+																			<span class="glyphicon glyphicon-plus"></span>Add New
+																		</button>
+																	</div>
 
 
 
@@ -92,7 +94,7 @@
 													</div>
 												</div>
 												<!-- This is our div we need to hide. -->
-												<div id="tags" class="collapse">
+												<div collapse="isCollapse">
 
 
 													<!-- Here is your tag form -->
@@ -140,7 +142,7 @@
 																					<button class="btn btn-success" type="submit"
 																						style="width: 100px">Save</button>
 																					&nbsp;
-																					<button class="btn btn-cancel" style="width: 100px"
+																					<button class="btn btn-cancel" style="width: 100px" ng-click="cancelTags()"
 																						type="button">Cancel</button>
 																				</div>
 																			</div>
@@ -161,6 +163,29 @@
 									</div>
 								</div>
 								<!-- this is plug and chug. -->
+							</div>
+							
+							
+							<div class="col-lg-8">
+								<table style="width: 100%" border="0"
+									class="table table-bordered">
+									<tr>
+										<th>Tag Name</th>
+										<th>Actions</th>
+									</tr>
+									<tr ng-repeat="tags in tagsList"
+										ng-class-odd="'odd'" ng-class-even="'even'"
+										style="height: 30px">
+										<td>{{tags.tagName}}</td>
+										<td><a ng-click="editTags(tags)"
+											tooltip="edit" style="cursor: pointer; font-size: 12px"><i
+												class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+											tooltip="delete"
+											ng-click="deleteTags(tags.tagId)"
+											style="cursor: pointer; font-size: 12px"><i
+												class="fa fa-trash"></i></a></td>
+									</tr>
+								</table>
 							</div>
 
 

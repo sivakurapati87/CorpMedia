@@ -60,7 +60,7 @@
 								<div class="row">
 									<div class="col-md-2">
 										<button type="button" class="btn btn-info"
-											ng-click="isExpCollapse = !isExpCollapse">
+											ng-click="isCollapse = !isCollapse">
 											<span class="glyphicon glyphicon-plus"></span>Add New
 										</button>
 									</div>
@@ -69,7 +69,7 @@
 								</div>
 								<br>
 
-								<div collapse="isExpCollapse">
+								<div collapse="isCollapse">
 
 									<h4 class="branded-heading">Add Job title</h4>
 

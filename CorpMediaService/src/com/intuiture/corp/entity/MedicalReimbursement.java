@@ -16,32 +16,29 @@ public class MedicalReimbursement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
 	private Integer medicalReimbursementId;
-	private String maxAnnualLimit;
-	private String requireSubmission;
+	private Integer maxAnnualLimit;
+	private Integer requireSubmissionId;
 	private Boolean isDeleted;
 	private Date createdOn;
 	private Date updatedOn;
 	private Integer companyId;
 	
-	
+	public Integer getRequireSubmissionId() {
+		return requireSubmissionId;
+	}
+	public void setRequireSubmissionId(Integer requireSubmissionId) {
+		this.requireSubmissionId = requireSubmissionId;
+	}
+	public void setMaxAnnualLimit(Integer maxAnnualLimit) {
+		this.maxAnnualLimit = maxAnnualLimit;
+	}
 	public Integer getMedicalReimbursementId() {
 		return medicalReimbursementId;
 	}
 	public void setMedicalReimbursementId(Integer medicalReimbursementId) {
 		this.medicalReimbursementId = medicalReimbursementId;
 	}
-	public String getMaxAnnualLimit() {
-		return maxAnnualLimit;
-	}
-	public void setMaxAnnualLimit(String maxAnnualLimit) {
-		this.maxAnnualLimit = maxAnnualLimit;
-	}
-	public String getRequireSubmission() {
-		return requireSubmission;
-	}
-	public void setRequireSubmission(String requireSubmission) {
-		this.requireSubmission = requireSubmission;
-	}
+	
 	public Boolean getIsDeleted() {
 		return isDeleted;
 	}
@@ -66,5 +63,9 @@ public class MedicalReimbursement {
 	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
 	}
+	public Integer getMaxAnnualLimit() {
+		return maxAnnualLimit;
+	}
+	
 
 }

@@ -42,6 +42,12 @@ public class EmployeeController {
 	public List<EmployeeJson> getAllEmployeesByCompanyId(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer companyId) {
 		return employeeService.getAllEmployeesByCompanyId(companyId);
 	}
+	
+	@RequestMapping(value = "/deleteEmployee/{employeeId}", method = RequestMethod.GET)
+	@ResponseBody
+	public Boolean deleteEmployee(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+		return employeeService.deleteEmployee(employeeId);
+	}
 
 	@RequestMapping(value = "/saveOrUpdateEmployeePersonalInfo", method = RequestMethod.POST)
 	@ResponseBody

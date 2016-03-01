@@ -55,6 +55,14 @@
 										<td colspan="2"><legend>Summary</legend></td>
 									</tr>
 									<tr height="20px"></tr>
+									<tr>
+										<td colspan="4" align="center"><select ng-change="onChangeEmployeeId()" style="width: 280px"
+											class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+											required ng-model="employeeProfessionalInfoJson.employeeId"
+											ng-options="emp.employeeId as emp.displayName for emp in  EmployeeJsonList">
+												<option value="" disabled selected>Select</option>
+										</select></td>
+									</tr>
 
 									<tr>
 										<td><label class="lable16_Regular">Professional
@@ -62,14 +70,7 @@
 										<td><label class="lable16_Regular">Status Message</label></td>
 									</tr>
 
-									<tr>
-										<td colspan="4"><select ng-change="onChangeEmployeeId()"
-											class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-											required ng-model="employeeProfessionalInfoJson.employeeId"
-											ng-options="emp.employeeId as emp.displayName for emp in  EmployeeJsonList">
-												<option value="" disabled selected>Select</option>
-										</select></td>
-									</tr>
+									
 									<tr style="height: 10px"></tr>
 
 									<tr>
@@ -197,7 +198,7 @@
 
 												<button class="btn btn-success" style="width: 100px"
 													type="submit">Add</button>
-												<button class="btn btn-cancel" style="width: 100px"
+												<button class="btn btn-cancel" style="width: 100px" ng-click="cancelExpInfo()"
 													type="button">Cancel</button>
 
 											</td>
@@ -216,7 +217,7 @@
 									<th>Location</th>
 									<th>Time Period</th>
 									<th>Description</th>
-									<th></th>
+									<th>Actions</th>
 								</tr>
 								<tr ng-repeat="exp in EmployeeExperienceJsonList" ng-class-odd="'odd'"
 									ng-class-even="'even'" style="height: 30px">
@@ -237,13 +238,25 @@
 					</tr>
 					<tr height="50px"></tr>
 
+					
 					<tr>
-						<td colspan="2"><legend>Education</legend></td>
+						<td colspan="2"><legend>Education</legend>
+							<div class="row">
+								<div class="col-md-2">
+									<button type="button" class="btn btn-info"
+										ng-click="isEduCollapse = !isEduCollapse">
+										<span class="glyphicon glyphicon-plus"></span>Add New
+									</button>
+								</div>
+								<div class="col-md-10"></div>
+
+							</div></td>
 					</tr>
 
 					<tr height="20px"></tr>
 					<tr>
 						<td colspan="4" width="100%">
+						   <div collapse="isEduCollapse">
 							<form ng-submit="saveOrUpdateEmployeeEducationalInfo()">
 								<table width="100%">
 									<tr>
@@ -306,15 +319,46 @@
 
 											<button class="btn btn-success" style="width: 100px"
 												type="submit">Add</button>
-											<button class="btn btn-cancel" style="width: 100px"
+											<button class="btn btn-cancel" style="width: 100px" ng-click="cancelEduInfo()"
 												type="button">Cancel</button>
 
 										</td>
 									</tr>
 								</table>
 							</form>
+							</div>
 						</td>
 					</tr>
+					
+					<tr>
+						<td colspan="2"><table style="width: 100%" border="0"
+								class="table table-bordered">
+								<tr>
+									<th>Degree</th>
+									<th>Specialization</th>
+									<th>University/College</th>
+									<th>Time Period</th>
+									<th>Actions</th>
+								</tr>
+								<tr ng-repeat="edu in EmployeeEducationalJsonList" ng-class-odd="'odd'"
+									ng-class-even="'even'" style="height: 30px">
+									<td>{{edu.degree}}</td>
+									<td>{{edu.specialization}}</td>
+									<td>{{edu.university}}</td>
+									<td>{{edu.strFromDate}} &nbsp; to &nbsp;{{edu.strToDate}}</td>
+									<td><a ng-click="editEducationalInfo(employeeEducationalInfoJson)" tooltip="edit"
+										style="cursor: pointer; font-size: 12px"><i
+											class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+										tooltip="delete"
+										ng-click="deleteEducationalInfo(edu.employeeEducationalInfoId)"
+										style="cursor: pointer; font-size: 12px"><i
+											class="fa fa-trash"></i></a></td>
+								</tr>
+							</table></td>
+					</tr>
+					
+					
+					
 				</table>
 			</td>
 		</tr>

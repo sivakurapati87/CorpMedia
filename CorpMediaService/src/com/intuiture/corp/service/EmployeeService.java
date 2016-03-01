@@ -308,4 +308,17 @@ public class EmployeeService {
 		}
 		return true;
 	}
+	
+	public Boolean deleteEmployee(Integer employeeId) {
+		try {
+			Employee employee = (Employee) commonRepository.findById(employeeId, Employee.class);
+			if (employee != null) {
+				employee.setIsDeleted(Boolean.TRUE);
+				commonRepository.update(employee);
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 }

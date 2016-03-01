@@ -66,6 +66,12 @@
 								 <span class="glyphicon glyphicon-menu-right"></span>
 						</span>
 					</a></li>
+					<li ng-class="{'active':(left_state==='project')}"><a
+						class="anchor-sm" ui-sref="projects" href="#"> <span
+							class="subnav-item-title">Project</span> <br> 
+								 
+					
+					</a></li>
 					
 				</ul>
 			</div>

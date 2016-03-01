@@ -8,6 +8,7 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 		$scope.employeeEducationalInfoJson = {};
 		$scope.employeeExperienceInfoJson = {};
 		$scope.isExpCollapse = true;//To hide and display the experience block
+		$scope.isEduCollapse = true;
 		
 		
 		//Save/update employee Professional Info
@@ -21,7 +22,7 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 	        });}
 		};
 		
-		//This function is to save family information
+		//This function is to save experience information
 		$scope.saveOrUpdateEmployeeExperienceInfo = function(){
 			if($scope.employeeExperienceInfoJson.strFromDate){//converting the date format
 				$scope.employeeExperienceInfoJson.strFromDate = $scope.formatteddate($scope.employeeExperienceInfoJson.strFromDate);
@@ -41,7 +42,7 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 	        });}
 		};
 		
-		//This function is to save family information
+		//This function is to save educational information
 		$scope.saveOrUpdateEmployeeEducationalInfo = function(){
 			if($scope.employeeEducationalInfoJson.strFromDate){//converting the date format
 				$scope.employeeEducationalInfoJson.strFromDate = $scope.formatteddate($scope.employeeEducationalInfoJson.strFromDate);
@@ -113,7 +114,7 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 		        });}
 			};
 			
-			//This function is to get the personal information of an employee
+			//This function is to get the professional information of an employee
 			$scope.getEmployeeProfessionalInfo = function(){
 				if($scope.employeeProfessionalInfoJson.employeeId){
 				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeProfessionalInfo/'+ $scope.employeeProfessionalInfoJson.employeeId).success(function(data) {
@@ -129,13 +130,13 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 			};
 			
 			
-			// This function is to edit family information
+			// This function is to edit experience information
 			$scope.editExperienceInfo = function(employeeExperienceInfoJson){
 				$scope.employeeExperienceInfoJson = employeeExperienceInfoJson;
 				$scope.isExpCollapse = false;
 			};
 			
-			//delete companylocation
+			//delete employee experience information
 			$scope.deleteEmployeeExperienceInfo = function(employeeExperienceId){
 				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/deleteEmployeeExperienceInfo/'+ employeeExperienceId).success(function(data) {
 					$scope.getEmployeeExperienceInfo();
@@ -145,4 +146,37 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 			};
 			
 			$scope.getAllEmployeesList();
+			
+			
+			// cancel employee educational information
+			$scope.cancelExpInfo = function() {
+				$scope.isExpCollapse = true;
+			};
+			
+
+			// This function is to edit educational information
+			$scope.editEducationalInfo = function(employeeEducationalInfoJson){
+				$scope.employeeEducationalInfoJson = employeeEducationalInfoJson;
+				$scope.isExpCollapse = false;
+			};
+			
+			// delete employee educational information
+			
+			$scope.deleteEmployeeEducationalInfo = function(employeeEducationalId){
+				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/deleteEmployeeEducationalInfo/'+ employeeEducationalId).success(function(data) {
+					$scope.getEmployeeEducationalInfo();
+				}).error(function() {
+		      	  console.error('Could not deleteEmployee educational Info');
+		        });
+			};
+			
+			// cancel employee educational information
+			$scope.cancelEduInfo = function() {
+				$scope.isEduCollapse = true;
+			};
+			
+			
+			$scope.getEmployeeEducationalInfo();
+			$scope.getEmployeeExperienceInfo();
+			
 }]);

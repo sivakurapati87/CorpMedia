@@ -11,8 +11,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.intuiture.corp.entity.Allowances;
+import com.intuiture.corp.entity.BillingRates;
 import com.intuiture.corp.entity.Bonuses;
 import com.intuiture.corp.entity.Categories;
+import com.intuiture.corp.entity.CityCompensatoryAllowance;
+import com.intuiture.corp.entity.Clients;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
 import com.intuiture.corp.entity.CompanyEmployeeDefaults;
@@ -20,6 +23,8 @@ import com.intuiture.corp.entity.CompanyInfo;
 import com.intuiture.corp.entity.CompanyLocation;
 import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
+import com.intuiture.corp.entity.CustomAllowance;
+import com.intuiture.corp.entity.DailyAllowance;
 import com.intuiture.corp.entity.Deductions;
 import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
@@ -30,24 +35,43 @@ import com.intuiture.corp.entity.EmployeeExperienceInfo;
 import com.intuiture.corp.entity.EmployeeFamilyInfo;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.EmployeeProfessionalInfo;
+import com.intuiture.corp.entity.FoodCoupons;
 import com.intuiture.corp.entity.GeneralSettings;
+import com.intuiture.corp.entity.GratuityContribution;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.MedicalReimbursement;
 import com.intuiture.corp.entity.PFInfo;
+import com.intuiture.corp.entity.PayrollCycleSettings;
+import com.intuiture.corp.entity.PayrollPeriodCalculation;
+import com.intuiture.corp.entity.ProfessionalAllowance;
+import com.intuiture.corp.entity.ProjectDetails;
+import com.intuiture.corp.entity.Projects;
 import com.intuiture.corp.entity.Reimbursement;
+import com.intuiture.corp.entity.Reports;
+import com.intuiture.corp.entity.Shifts;
 import com.intuiture.corp.entity.Tags;
+import com.intuiture.corp.entity.TaskAssignToEmployee;
+import com.intuiture.corp.entity.TaskAssignToHr;
+import com.intuiture.corp.entity.TaskBilling;
 import com.intuiture.corp.entity.TimeSheetApprovers;
+import com.intuiture.corp.entity.TransportAllowance;
+import com.intuiture.corp.entity.TravelReimbursement;
 import com.intuiture.corp.json.AllowancesJson;
+import com.intuiture.corp.json.BillingRatesJson;
 import com.intuiture.corp.json.BonusesJson;
 //github.com/sivakurapati87/CorpMedia.git
 import com.intuiture.corp.json.CategoriesJson;
+import com.intuiture.corp.json.CityCompensatoryAllowanceJson;
+import com.intuiture.corp.json.ClientsJson;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
 import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
+import com.intuiture.corp.json.CustomAllowanceJson;
+import com.intuiture.corp.json.DailyAllowanceJson;
 import com.intuiture.corp.json.DeductionsJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
@@ -57,14 +81,28 @@ import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
+import com.intuiture.corp.json.FoodCouponsJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
+import com.intuiture.corp.json.GratuityContributionJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
 import com.intuiture.corp.json.MedicalReimbursementJson;
 import com.intuiture.corp.json.PFInfoJson;
+import com.intuiture.corp.json.PayrollCycleSettingsJson;
+import com.intuiture.corp.json.PayrollPeriodCalculationJson;
+import com.intuiture.corp.json.ProfessionalAllowanceJson;
+import com.intuiture.corp.json.ProjectDetailsJson;
+import com.intuiture.corp.json.ProjectsJson;
 import com.intuiture.corp.json.ReimbursementJson;
+import com.intuiture.corp.json.ReportsJson;
+import com.intuiture.corp.json.ShiftsJson;
 import com.intuiture.corp.json.TagsJson;
+import com.intuiture.corp.json.TaskAssignToEmployeeJson;
+import com.intuiture.corp.json.TaskAssignToHrJson;
+import com.intuiture.corp.json.TaskBillingJson;
 import com.intuiture.corp.json.TimeSheetApproverJson;
+import com.intuiture.corp.json.TransportAllowanceJson;
+import com.intuiture.corp.json.TravelReimbursementJson;
 
 public class TransformJsonToDomain {
 	private static Logger LOG = Logger.getLogger(TransformJsonToDomain.class);
@@ -337,6 +375,7 @@ public class TransformJsonToDomain {
 		reimbursement.setCompanyId(reimbursementJson.getCompanyId());
 		reimbursement.setReimbursementName(reimbursementJson.getReimbursementName());
 		reimbursement.setReimbursementDescription(reimbursementJson.getReimbursementDescription());
+		reimbursement.setIsDeleted(Boolean.FALSE);
 	}
 
 	public static void getBonuses(Bonuses bonuses, BonusesJson bonusesJson) {
@@ -344,6 +383,7 @@ public class TransformJsonToDomain {
 		bonuses.setCompanyId(bonusesJson.getCompanyId());
 		bonuses.setBonusesName(bonusesJson.getBonusesName());
 		bonuses.setBonusesDescription(bonusesJson.getBonusesDescription());
+		bonuses.setIsDeleted(Boolean.FALSE);
 	}
 
 	public static void getAllowances(Allowances allowances, AllowancesJson allowancesJson) {
@@ -352,13 +392,119 @@ public class TransformJsonToDomain {
 		allowances.setAllowancesName(allowancesJson.getAllowancesName());
 		allowances.setAllowancesDescription(allowancesJson.getAllowancesDescription());
 		allowances.setHasTaxBenefits(allowancesJson.getHasTaxBenefits());
+		allowances.setIsDeleted(Boolean.FALSE);
 	}
 
 	public static void getMedicalReimbursement(MedicalReimbursement medicalReimbursement, MedicalReimbursementJson medicalReimbursementJson) {
 		medicalReimbursement.setCreatedOn(new Date());
 		medicalReimbursement.setCompanyId(medicalReimbursementJson.getCompanyId());
 		medicalReimbursement.setMaxAnnualLimit(medicalReimbursementJson.getMaxAnnualLimit());
-		medicalReimbursement.setRequireSubmission(medicalReimbursementJson.getRequireSubmission());
+		medicalReimbursement.setRequireSubmissionId(medicalReimbursementJson.getRequireSubmissionId());
+		medicalReimbursement.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getTransportAllowance(TransportAllowance transportAllowance, TransportAllowanceJson transportAllowanceJson) {
+		transportAllowance.setCreatedOn(new Date());
+		transportAllowance.setCompanyId(transportAllowanceJson.getCompanyId());
+		transportAllowance.setMaxAnnualLimit(transportAllowanceJson.getMaxAnnualLimit());
+		transportAllowance.setRequireSubmissionId(transportAllowanceJson.getRequireSubmissionId());
+		transportAllowance.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getProfessionalAllowance(ProfessionalAllowance professionalAllowance, ProfessionalAllowanceJson professionalAllowanceJson) {
+		professionalAllowance.setCreatedOn(new Date());
+		professionalAllowance.setCompanyId(professionalAllowanceJson.getCompanyId());
+		professionalAllowance.setMaxAnnualLimit(professionalAllowanceJson.getMaxAnnualLimit());
+		professionalAllowance.setRequireSubmissionId(professionalAllowanceJson.getRequireSubmissionId());
+		professionalAllowance.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getTravelReimbursement(TravelReimbursement travelReimbursement, TravelReimbursementJson travelReimbursementJson) {
+		travelReimbursement.setCreatedOn(new Date());
+		travelReimbursement.setCompanyId(travelReimbursementJson.getCompanyId());
+		travelReimbursement.setMaxAnnualLimit(travelReimbursementJson.getMaxAnnualLimit());
+		travelReimbursement.setRequireSubmissionId(travelReimbursementJson.getRequireSubmissionId());
+		travelReimbursement.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getCityCompensatoryAllowance(CityCompensatoryAllowance cityCompensatoryAllowance, CityCompensatoryAllowanceJson cityCompensatoryAllowanceJson) {
+		cityCompensatoryAllowance.setCreatedOn(new Date());
+		cityCompensatoryAllowance.setCompanyId(cityCompensatoryAllowanceJson.getCompanyId());
+		cityCompensatoryAllowance.setMaxAnnualLimit(cityCompensatoryAllowanceJson.getMaxAnnualLimit());
+		cityCompensatoryAllowance.setRequireSubmissionId(cityCompensatoryAllowanceJson.getRequireSubmissionId());
+		cityCompensatoryAllowance.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getDailyAllowance(DailyAllowance dailyAllowance, DailyAllowanceJson dailyAllowanceJson) {
+		dailyAllowance.setCreatedOn(new Date());
+		dailyAllowance.setCompanyId(dailyAllowanceJson.getCompanyId());
+		dailyAllowance.setMaxAnnualLimit(dailyAllowanceJson.getMaxAnnualLimit());
+		dailyAllowance.setRequireSubmissionId(dailyAllowanceJson.getRequireSubmissionId());
+		dailyAllowance.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getFoodCoupons(FoodCoupons foodCoupons, FoodCouponsJson foodCouponsJson) {
+		foodCoupons.setCreatedOn(new Date());
+		foodCoupons.setCompanyId(foodCouponsJson.getCompanyId());
+		foodCoupons.setMaxAnnualLimit(foodCouponsJson.getMaxAnnualLimit());
+		foodCoupons.setRequireSubmissionId(foodCouponsJson.getRequireSubmissionId());
+		foodCoupons.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getGratuityContribution(GratuityContribution gratuityContribution, GratuityContributionJson gratuityContributionJson) {
+		gratuityContribution.setCreatedOn(new Date());
+		gratuityContribution.setCompanyId(gratuityContributionJson.getCompanyId());
+		gratuityContribution.setMaxAnnualLimit(gratuityContributionJson.getMaxAnnualLimit());
+		gratuityContribution.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getCustomAllowance(CustomAllowance customAllowance, CustomAllowanceJson customAllowanceJson) {
+		customAllowance.setCreatedOn(new Date());
+		customAllowance.setCompanyId(customAllowanceJson.getCompanyId());
+		customAllowance.setName(customAllowanceJson.getName());
+		customAllowance.setMaxAnnualLimit(customAllowanceJson.getMaxAnnualLimit());
+		customAllowance.setSubmitBillId(customAllowanceJson.getSubmitBillId());
+		customAllowance.setTaxBenefitId(customAllowanceJson.getTaxBenefitId());
+		customAllowance.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getPayrollCycleSettings(PayrollCycleSettings payrollCycleSettings, PayrollCycleSettingsJson payrollCycleSettingsJson) {
+		payrollCycleSettings.setCreatedOn(new Date());
+		payrollCycleSettings.setCompanyId(payrollCycleSettingsJson.getCompanyId());
+		payrollCycleSettings.setPayFrequency(payrollCycleSettingsJson.getPayFrequency());
+		payrollCycleSettings.setPayCycleMonthId(payrollCycleSettingsJson.getPayCycleMonthId());
+		payrollCycleSettings.setPayPeriodEndDayId(payrollCycleSettingsJson.getPayPeriodEndDayId());
+		payrollCycleSettings.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getPayrollPeriodCalculation(PayrollPeriodCalculation payrollPeriodCalculation, PayrollPeriodCalculationJson payrollPeriodCalculationJson) {
+		payrollPeriodCalculation.setCreatedOn(new Date());
+		payrollPeriodCalculation.setCompanyId(payrollPeriodCalculationJson.getCompanyId());
+		payrollPeriodCalculation.setPayDaysInAMonthId(payrollPeriodCalculationJson.getPayDaysInAMonthId());
+		payrollPeriodCalculation.setExcludeWeeklyOffsId(payrollPeriodCalculationJson.getExcludeWeeklyOffsId());
+		payrollPeriodCalculation.setExcludeHolidaysId(payrollPeriodCalculationJson.getExcludeHolidaysId());
+		payrollPeriodCalculation.setIsDeleted(Boolean.FALSE);
+	}
+	
+	
+	public static void getClients(Clients clients, ClientsJson clientsJson) {
+		clients.setCreatedOn(new Date());
+		clients.setCompanyId(clientsJson.getCompanyId());
+		clients.setClientName(clientsJson.getClientName());
+		clients.setManagerName(clientsJson.getManagerName());
+		clients.setNotes(clientsJson.getNotes());
+		clients.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getBillingRates(BillingRates billingRates, BillingRatesJson billingRatesJson) {
+		billingRates.setCreatedOn(new Date());
+		billingRates.setCompanyId(billingRatesJson.getCompanyId());
+		billingRates.setBillingCurrencyId(billingRatesJson.getBillingCurrencyId());
+		billingRates.setBillingRole(billingRatesJson.getBillingRole());
+		billingRates.setHourlyRate(billingRatesJson.getHourlyRate());
+		billingRates.setWeeklyRate(billingRatesJson.getWeeklyRate());
+		billingRates.setMonthlyRate(billingRatesJson.getMonthlyRate());
+		billingRates.setIsDeleted(Boolean.FALSE);
 	}
 
 	public static void getCompanyEmployeeDefaults(CompanyEmployeeDefaults companyEmployeeDefaults, CompanyEmployeeDefaultsJson companyEmployeeDefaultsJson) {
@@ -480,4 +626,87 @@ public class TransformJsonToDomain {
 		employeeEducationalInfo.setSpecialization(employeeEducationalInfoJson.getSpecialization());
 		employeeEducationalInfo.setUniversity(employeeEducationalInfoJson.getUniversity());
 	}
+	
+	public static void getReports(Reports reports, ReportsJson reportsJson) {
+		reports.setCompanyId(reportsJson.getCompanyId());
+		if (reports.getReportsId() != null) {
+			reports.setUpdatedOn(new Date());
+		} else {
+			reports.setCreatedOn(new Date());
+		}
+		reports.setIsDeleted(Boolean.FALSE);
+		reports.setFromDate(reportsJson.getFromDate());
+		reports.setToDate(reportsJson.getToDate());
+	}
+	
+	public static void getProjectDetails(ProjectDetails projectDetails, ProjectDetailsJson projectDetailsJson) {
+		projectDetails.setCompanyId(projectDetailsJson.getCompanyId());
+		if (projectDetails.getProjectDetailsId() != null) {
+			projectDetails.setUpdatedOn(new Date());
+		} else {
+			projectDetails.setCreatedOn(new Date());
+		}
+		projectDetails.setIsDeleted(Boolean.FALSE);
+		projectDetails.setFromDate(projectDetailsJson.getFromDate());
+		projectDetails.setToDate(projectDetailsJson.getToDate());
+	}
+	
+	public static void getTaskBilling(TaskBilling taskBilling, TaskBillingJson taskBillingJson) {
+		taskBilling.setCompanyId(taskBillingJson.getCompanyId());
+		if (taskBilling.getTaskBillingId() != null) {
+			taskBilling.setUpdatedOn(new Date());
+		} else {
+			taskBilling.setCreatedOn(new Date());
+		}
+		taskBilling.setIsDeleted(Boolean.FALSE);
+		taskBilling.setFromDate(taskBillingJson.getFromDate());
+		taskBilling.setToDate(taskBillingJson.getToDate());
+	}
+	
+	public static void getShifts(Shifts shifts,ShiftsJson shiftsJson) {
+		  shifts.setCompanyId(shiftsJson.getCompanyId());
+		  if (shiftsJson.getShiftsId() != null) {
+		   shifts.setUpdatedOn(new Date());
+		  } else {
+		   shifts.setCreatedOn(new Date());
+		  }
+		  shifts.setIsDeleted(Boolean.FALSE);
+		  shifts.setBreakDuratation(shiftsJson.getBreakDuratation());
+		  shifts.setShiftName(shiftsJson.getShiftName());
+		  shifts.setStartTimeHrs(shiftsJson.getStartTimeHrs());
+		  shifts.setStartTimeMns(shiftsJson.getStartTimeMns());
+		  shifts.setStartTimeType(shiftsJson.getStartTimeType());
+		  shifts.setToTimeHrs(shiftsJson.getToTimeHrs());
+		  shifts.setToTimeMns(shiftsJson.getToTimeMns());
+		  shifts.setToTimeType(shiftsJson.getToTimeType());
+		 }
+	
+	
+	public static void getTaskAssignToHr(TaskAssignToHr taskAssignToHr, TaskAssignToHrJson taskAssignToHrJson) {
+		taskAssignToHr.setCreatedOn(new Date());
+		taskAssignToHr.setCompanyId(taskAssignToHrJson.getCompanyId());
+		taskAssignToHr.setTaskName(taskAssignToHrJson.getTaskName());
+		taskAssignToHr.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getTaskAssignToEmployee(TaskAssignToEmployee taskAssignToEmployee, TaskAssignToEmployeeJson taskAssignToEmployeeJson) {
+		taskAssignToEmployee.setCreatedOn(new Date());
+		taskAssignToEmployee.setCompanyId(taskAssignToEmployeeJson.getCompanyId());
+		taskAssignToEmployee.setTaskName(taskAssignToEmployeeJson.getTaskName());
+		taskAssignToEmployee.setIsDeleted(Boolean.FALSE);
+	}
+	
+	public static void getProjects(Projects projects , ProjectsJson projectsJson) {
+		projects.setCompanyId(projectsJson.getCompanyId());
+		projects.setCreatedOn(new Date());
+		projects.setIsDeleted(Boolean.FALSE);
+		projects.setProjectName(projectsJson.getProjectName());
+		projects.setClient(projectsJson.getClient());
+		projects.setStartDate(projectsJson.getStartDate());
+		projects.setEndDate(projectsJson.getEndDate());
+		projects.setDescription(projectsJson.getDescription());
+		projects.setIsProjectAssignToAllEmployees(projectsJson.getIsProjectAssignToAllEmployees());
+		projects.setStatusId(projectsJson.getStatusId());
+	}
+
 }

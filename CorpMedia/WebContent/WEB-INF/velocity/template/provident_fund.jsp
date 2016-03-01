@@ -45,7 +45,7 @@
 					<tr>
 						<td>
 
-	<div class="container" ng-app="myapp" >						 
+						 
             
   <div class="row">
     <div class="col-md-9">
@@ -173,7 +173,7 @@
  <div class="col-md-3"></div>
 
             </div>
-            </div>
+            
 
  
 
