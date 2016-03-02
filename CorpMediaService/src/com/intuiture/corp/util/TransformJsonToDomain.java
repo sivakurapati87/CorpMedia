@@ -17,6 +17,7 @@ import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
 import com.intuiture.corp.entity.CompanyEmployeeDefaults;
 import com.intuiture.corp.entity.CompanyInfo;
+import com.intuiture.corp.entity.CompanyLeavePlans;
 import com.intuiture.corp.entity.CompanyLocation;
 import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
@@ -45,6 +46,7 @@ import com.intuiture.corp.json.BonusesJson;
 import com.intuiture.corp.json.CategoriesJson;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
+import com.intuiture.corp.json.CompanyLeavePlansJson;
 import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
@@ -479,5 +481,17 @@ public class TransformJsonToDomain {
 		employeeEducationalInfo.setDegree(employeeEducationalInfoJson.getDegree());
 		employeeEducationalInfo.setSpecialization(employeeEducationalInfoJson.getSpecialization());
 		employeeEducationalInfo.setUniversity(employeeEducationalInfoJson.getUniversity());
+	}
+
+	public static void getCompanyLeavePlans(CompanyLeavePlans companyLeavePlans, CompanyLeavePlansJson companyLeavePlansJson) {
+		companyLeavePlans.setCompanyId(companyLeavePlansJson.getCompanyId());
+		if (companyLeavePlansJson.getCompanyLeavePlansId() != null) {
+			companyLeavePlans.setUpdatedOn(new Date());
+		} else {
+			companyLeavePlans.setCreatedOn(new Date());
+		}
+		companyLeavePlans.setIsDeleted(Boolean.FALSE);
+		companyLeavePlans.setDescription(companyLeavePlansJson.getDescription());
+		companyLeavePlans.setLeavePlanName(companyLeavePlansJson.getLeavePlanName());
 	}
 }

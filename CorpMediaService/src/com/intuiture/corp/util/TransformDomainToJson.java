@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
 import com.intuiture.corp.entity.CompanyEmployeeDefaults;
+import com.intuiture.corp.entity.CompanyLeavePlans;
 import com.intuiture.corp.entity.CompanyLocation;
 import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
@@ -40,6 +41,7 @@ import com.intuiture.corp.entity.TimeSheetApprovers;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
 import com.intuiture.corp.json.CompanyJson;
+import com.intuiture.corp.json.CompanyLeavePlansJson;
 import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
@@ -513,5 +515,14 @@ public class TransformDomainToJson {
 		employeeEducationalInfoJson.setUniversity(employeeEducationalInfo.getUniversity());
 		employeeEducationalInfoJson.setEmployeeEducationalInfoId(employeeEducationalInfo.getEmployeeEducationalInfoId());
 		return employeeEducationalInfoJson;
+	}
+
+	public static CompanyLeavePlansJson getCompanyLeavePlansJson(CompanyLeavePlans companyLeavePlans) {
+		CompanyLeavePlansJson companyLeavePlansJson = new CompanyLeavePlansJson();
+		companyLeavePlansJson.setCompanyId(companyLeavePlans.getCompanyId());
+		companyLeavePlansJson.setCompanyLeavePlansId(companyLeavePlans.getCompanyLeavePlansId());
+		companyLeavePlansJson.setDescription(companyLeavePlans.getDescription());
+		companyLeavePlansJson.setLeavePlanName(companyLeavePlans.getLeavePlanName());
+		return companyLeavePlansJson;
 	}
 }
