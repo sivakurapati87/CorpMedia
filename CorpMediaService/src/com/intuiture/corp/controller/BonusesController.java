@@ -34,5 +34,11 @@ public class BonusesController {
 	public List<BonusesJson> getAllBonusesList(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer companyId) {
 		return bonusesService.getAllBonusesList(companyId);
 	}
+	
+	@RequestMapping(value = "/deleteBonuses/{bonusesId}", method = RequestMethod.GET)
+	@ResponseBody
+	public Boolean deleteBonuses(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer bonusesId) {
+		return bonusesService.deleteBonuses(bonusesId);
+	}
 
 }

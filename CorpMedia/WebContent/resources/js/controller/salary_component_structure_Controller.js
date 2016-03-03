@@ -239,7 +239,7 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		//edit  custom allowance
 		$scope.editCustomAllowance = function(customallowance) {
 			$scope.customallowance = customallowance;
-			$scope.isCollapse = false;
+			
 			
 		};
 		

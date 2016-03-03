@@ -220,18 +220,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	        }
 	})
 	
-	.state('web_clock_in', {
-		url: "/web_clock_in",
-			views: {
-	            'content': {
-	            	templateUrl: 'web_clock_in',
-	        		controller : "web_clock_in_Controller"
-	            },
-	            'footer': {
-	                templateUrl: 'footer'
-	            }
-	        }
-	})
+	
 	
 	.state('wfh', {
 		url: "/wfh",
@@ -274,18 +263,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	
 	
 	
-	.state('welcome_screen', {
-		url: "/welcome_screen",
-			views: {
-	            'content': {
-	            	templateUrl: 'welcome_screen',
-	        		controller : "welcome_screen_Controller"
-	            },
-	            'footer': {
-	                templateUrl: 'footer'
-	            }
-	        }
-	})
+	
 	
 	.state('on_boarding', {
 		url: "/on_boarding",
@@ -378,18 +356,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	        }
 	})
 	
-	.state('legal_and_bank', {
-		url: "/legal_and_bank",
-			views: {
-	            'content': {
-	            	templateUrl: 'legal_and_bank',
-	        		controller : "legal_and_bank_Controller"
-	            },
-	            'footer': {
-	                templateUrl: 'footer'
-	            }
-	        }
-	})
+	
 	
 	.state('employee_loan_settings', {
 		url: "/employee_loan_settings",
@@ -619,6 +586,21 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	            }
 	        }
 	})
+	
+	.state('holidays', {
+		url: "/holidays",
+			views: {
+	            'content': {
+	            	templateUrl: 'holidays',
+	        		controller : "holidays_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	
 	
 	
 	

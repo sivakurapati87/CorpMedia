@@ -4,7 +4,6 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 	 var self = this;
 	 $scope.state="adhoc_components";
 		$scope.left_state = "payroll";
-		$scope.collapsed = false;
 		$scope.deductions = {};
 		$scope.reimbursement = {};
 		$scope.bonuses = {};
@@ -17,6 +16,8 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 			if($rootScope.selectedCompanyObj){
 				$scope.deductions.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.DeductionsController+'/saveDeductions', $scope.deductions).success(function(data) {
+				$scope.getAllDeductionsList();
+				$scope.deductions ={};
 	        }).error(function() {
 	      	  console.error('Could not save or update deductions');
 	        });}
@@ -35,12 +36,28 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		// init 
 		$scope.getAllDeductionsList();
 		
+		// edit deductions
+		$scope.editDeductions = function(deductions){
+			$scope.deductions = deductions;
+		};
+		
+		//delete deductions
+		$scope.deleteDeductions = function(deductionId){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.DeductionsController+'/deleteDeductions/'+ deductionId).success(function(data) {
+				$scope.getAllDeductionsList();
+			}).error(function() {
+	      	  console.error('Could not deleteDeductions');
+	        });
+		};
+		
 		//Save reimbursement
 		$scope.saveReimbursement = function(){
 			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.reimbursement.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.ReimbursementController+'/saveReimbursement', $scope.reimbursement).success(function(data) {
+				$scope.getAllReimbursementList();
+				$scope.reimbursement = {};
 	        }).error(function() {
 	      	  console.error('Could not save or update reimbursement');
 	        });}
@@ -59,6 +76,20 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		// init 
 		$scope.getAllReimbursementList();
 		
+		// edit reimbursement
+		$scope.editReimbursement = function(reimbursement){
+			$scope.reimbursement = reimbursement;
+		};
+		
+		//delete reimbursement
+		$scope.deleteReimbursement = function(reimbursementId){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ReimbursementController+'/deleteReimbursement/'+ reimbursementId).success(function(data) {
+				$scope.getAllReimbursementList();
+			}).error(function() {
+	      	  console.error('Could not deleteDeductions');
+	        });
+		};
+		
 		
 		//Save bonuses
 		$scope.saveBonuses = function(){
@@ -66,6 +97,8 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 			if($rootScope.selectedCompanyObj){
 				$scope.bonuses.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.BonusesController+'/saveBonuses', $scope.bonuses).success(function(data) {
+				$scope.getAllBonusesList();
+				$scope.bonuses = {};
 	        }).error(function() {
 	      	  console.error('Could not save or update bonuses');
 	        });}
@@ -84,6 +117,20 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		// init 
 		$scope.getAllBonusesList();
 		
+		// edit bonuses
+		$scope.editBonuses = function(bonuses){
+			$scope.bonuses = bonuses;
+		};
+		
+		//delete bonuses
+		$scope.deleteBonuses = function(bonusesId){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.BonusesController+'/deleteBonuses/'+ bonusesId).success(function(data) {
+				$scope.getAllBonusesList();
+			}).error(function() {
+	      	  console.error('Could not deleteBonuses');
+	        });
+		};
+		
 		
 		//Save allowances
 		$scope.saveAllowances = function(){
@@ -91,6 +138,8 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 			if($rootScope.selectedCompanyObj){
 				$scope.allowances.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.AllowancesController+'/saveAllowances', $scope.allowances).success(function(data) {
+				$scope.getAllAllowancesList();
+				$scope.allowances = {};
 	        }).error(function() {
 	      	  console.error('Could not save or update allowances');
 	        });}
@@ -108,6 +157,11 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		
 		// init 
 		$scope.getAllAllowancesList();
+		
+		// edit allowances
+		$scope.editAllowances = function(allowances){
+			$scope.allowances = allowances;
+		};
 		
 		//delete allowances
 		$scope.deleteAllowances = function(allowancesId){

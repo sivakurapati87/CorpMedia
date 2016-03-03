@@ -46,6 +46,7 @@ TaskBillingController : 'TaskBillingController',
 ShiftsController : 'ShiftsController',
 TaskAssignToHrController : 'TaskAssignToHrController',
 TaskAssignToEmployeeController : 'TaskAssignToEmployeeController',
-ProjectsController : 'ProjectsController'
+ProjectsController : 'ProjectsController',
+ExitSettingsController : 'ExitSettingsController'
 
 };

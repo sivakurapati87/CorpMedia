@@ -46,7 +46,7 @@
 						</span>
 					</a></li>
 					<li ng-class="{'active':(left_state==='onboarding_&_exit')}"><a
-						class="anchor-sm" ui-sref="welcome_screen" href="#"> <span
+						class="anchor-sm" ui-sref="on_boarding" href="#"> <span
 							class="subnav-item-title">Onboarding & Exit</span> <br> <span
 							class="subnav-item-description">Employee Onboarding and exit process and checklist
 								 <span class="glyphicon glyphicon-menu-right"></span>

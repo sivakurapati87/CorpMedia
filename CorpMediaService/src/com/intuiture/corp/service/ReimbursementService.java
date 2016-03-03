@@ -62,5 +62,19 @@ public class ReimbursementService {
 		}
 		return reimbursementJsonList;
 	}
+	
+	public Boolean deleteReimbursement(Integer reimbursementId) {
+		try {
+			Reimbursement reimbursement = (Reimbursement) commonRepository.findById(reimbursementId, Reimbursement.class);
+			if (reimbursement != null) {
+				reimbursement.setIsDeleted(Boolean.TRUE);
+				commonRepository.update(reimbursement);
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
 
 }

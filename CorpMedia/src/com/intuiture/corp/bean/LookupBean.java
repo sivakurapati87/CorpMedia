@@ -22,6 +22,7 @@ public class LookupBean {
 	private List<LookUpDetailJson> payDAYInAMonthList;
 	private List<LookUpDetailJson> currencyList;
 	private List<LookUpDetailJson> statusList;
+	private List<LookUpDetailJson> reasonTypeList;
 
 	public List<LookUpDetailJson> getGenderList() {
 		return genderList;
@@ -149,5 +150,14 @@ public class LookupBean {
 
 	public void setStatusList(List<LookUpDetailJson> statusList) {
 		this.statusList = statusList;
+	}
+
+	
+	public List<LookUpDetailJson> getReasonTypeList() {
+		return reasonTypeList;
+	}
+
+	public void setReasonTypeList(List<LookUpDetailJson> reasonTypeList) {
+		this.reasonTypeList = reasonTypeList;
 	}
 }

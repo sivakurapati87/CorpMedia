@@ -5,15 +5,15 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 	 $scope.state="add_employee";
 		$scope.left_state = "employee";
 		
-		$scope.EmployeeJson = {};
+		$scope.employeeJson = {};
 		$scope.isEmpCollapse = true;
 		
 		//Save/update employee
 		$scope.saveOrUpdateEmployee = function(){
 			$scope.formatteddate();
 			if($rootScope.selectedCompanyObj){
-				$scope.EmployeeJson.companyId = $rootScope.selectedCompanyObj.companyId;
-			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployee', $scope.EmployeeJson).success(function(data) {
+				$scope.employeeJson.companyId = $rootScope.selectedCompanyObj.companyId;
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployee', $scope.employeeJson).success(function(data) {
 				$scope.getAllEmployeesList();
 			}).error(function() {
 	      	  console.error('Could not save or update Employee');
@@ -68,7 +68,7 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 		
 		
 		// This function is to edit employee information
-		$scope.editEmployee = function(employee){
+		$scope.editEmployee = function(employeeJson){
 			
 			$scope.employee = employee;
 			$scope.isEmpCollapse = false;

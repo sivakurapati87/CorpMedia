@@ -21,7 +21,7 @@ public class LookupController {
 	@ResponseBody
 	public LookupBean lookupInit() {
 		LookupBean lookupBean = new LookupBean();
-		String[] lookUpTypes = { Constants.TYPEOFBUSINESS, Constants.BANKS, Constants.STATES, Constants.DMW, Constants.WORKERTYPE, Constants.TIMETYPE, Constants.GENDER, Constants.MARITALSTATUS, Constants.BLOODGROUP, Constants.RELATION,Constants.TRUEORFALSE,Constants.MONTH,Constants.DAY,Constants.PAYDAYINAMONTH,Constants.CURRENCY,Constants.STATUS };
+		String[] lookUpTypes = { Constants.TYPEOFBUSINESS, Constants.BANKS, Constants.STATES, Constants.DMW, Constants.WORKERTYPE, Constants.TIMETYPE, Constants.GENDER, Constants.MARITALSTATUS, Constants.BLOODGROUP, Constants.RELATION,Constants.TRUEORFALSE,Constants.MONTH,Constants.DAY,Constants.PAYDAYINAMONTH,Constants.CURRENCY,Constants.STATUS,Constants.REASONTYPE };
 		List<String> typesList = Arrays.asList(lookUpTypes);
 		Map<String, List<LookUpDetailJson>> lookUpMap = CommonUtil.getLookupDetailsListByTypeList(Constants.LookUp.GETLOOKUPDETAILSBYTYPELIST, typesList);
 		lookupBean.setBanksList(lookUpMap.get(Constants.BANKS));
@@ -40,6 +40,7 @@ public class LookupController {
 		lookupBean.setPayDAYInAMonthList(lookUpMap.get(Constants.PAYDAYINAMONTH));
 		lookupBean.setCurrencyList(lookUpMap.get(Constants.CURRENCY));
 		lookupBean.setStatusList(lookUpMap.get(Constants.STATUS));
+		lookupBean.setReasonTypeList(lookUpMap.get(Constants.REASONTYPE));
 		return lookupBean;
 	}
 }

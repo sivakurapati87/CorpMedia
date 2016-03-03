@@ -25,8 +25,7 @@
 										class="anchor-sm" ui-sref="shifts">Shifts</a></li>
                                     <li ng-class="{'active':(state==='timing_policies')}"><a
 										class="anchor-sm" ui-sref="timing_policies">Timing Policies</a></li>
-								    <li ng-class="{'active':(state==='web_clock_in')}"><a
-										class="anchor-sm" ui-sref="web_clock_in">Web Clock-in</a></li>
+								    
 									<li ng-class="{'active':(state==='wfh')}"><a
 										class="anchor-sm" ui-sref="wfh">WFH</a></li>				
 
@@ -42,7 +41,7 @@
 						<td>
 
 
-							<div class="container">
+							
 <h4>Create Timing Policy</h4>
 <p>You can specify Timing policies here. These can be assigned to specific location. The default Timing policies applies to a location when not explicitly set.</p>
  </br>
@@ -71,9 +70,9 @@
       </div>
     </div>
   </form>
-</div>
 
-<p sty>
+
+<p>
   <button type="button" class="btn btn-primary">Create</button>
   <button type="button" class="btn btn-default">Cancel</button>
 </p>

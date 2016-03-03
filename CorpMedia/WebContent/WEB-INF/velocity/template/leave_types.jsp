@@ -23,6 +23,8 @@
 											</a></li>
 									<li ng-class="{'active':(state==='leave_types')}"><a
 										class="anchor-sm" ui-sref="leave_types">Leave Types</a></li>
+									<li ng-class="{'active':(state==='holidays')}"><a
+										class="anchor-sm" ui-sref="holidays">Holidays</a></li>		
 									
 								</ul>
 							</div>
