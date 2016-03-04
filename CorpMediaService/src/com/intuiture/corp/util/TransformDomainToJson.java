@@ -705,7 +705,6 @@ public class TransformDomainToJson {
 		return taskAssignToEmployeeJson;
 	}
 
-
 	public static CompanyLeavePlansJson getCompanyLeavePlansJson(CompanyLeavePlans companyLeavePlans) {
 		CompanyLeavePlansJson companyLeavePlansJson = new CompanyLeavePlansJson();
 		companyLeavePlansJson.setCompanyId(companyLeavePlans.getCompanyId());
@@ -767,8 +766,8 @@ public class TransformDomainToJson {
 		companyLeaveTypeJson.setCompanyLeaveTypeId(companyLeaveType.getCompanyLeaveTypeId());
 		return companyLeaveTypeJson;
 
-	
-	
+	}
+
 	public static ExitSettingsJson getExitSettingsJson(ExitSettings exitSettings) {
 		ExitSettingsJson exitSettingsJson = new ExitSettingsJson();
 		exitSettingsJson.setCompanyId(exitSettings.getCompanyId());

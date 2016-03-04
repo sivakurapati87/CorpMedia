@@ -28,29 +28,28 @@ public class LookupBean {
 
 	private List<LookUpDetailJson> reasonTypeList;
 
-
-	public List<LookUpDetailJson> getGenderList() {
-		return genderList;
+	public List<LookUpDetailJson> getBanksList() {
+		return banksList;
 	}
 
-	public void setGenderList(List<LookUpDetailJson> genderList) {
-		this.genderList = genderList;
+	public void setBanksList(List<LookUpDetailJson> banksList) {
+		this.banksList = banksList;
 	}
 
-	public List<LookUpDetailJson> getMaritalStatusList() {
-		return maritalStatusList;
+	public List<LookUpDetailJson> getTypeOfBusinessList() {
+		return typeOfBusinessList;
 	}
 
-	public void setMaritalStatusList(List<LookUpDetailJson> maritalStatusList) {
-		this.maritalStatusList = maritalStatusList;
+	public void setTypeOfBusinessList(List<LookUpDetailJson> typeOfBusinessList) {
+		this.typeOfBusinessList = typeOfBusinessList;
 	}
 
-	public List<LookUpDetailJson> getBloodGroupList() {
-		return bloodGroupList;
+	public List<LookUpDetailJson> getStatesList() {
+		return statesList;
 	}
 
-	public void setBloodGroupList(List<LookUpDetailJson> bloodGroupList) {
-		this.bloodGroupList = bloodGroupList;
+	public void setStatesList(List<LookUpDetailJson> statesList) {
+		this.statesList = statesList;
 	}
 
 	public List<LookUpDetailJson> getDaysWeeksMonthsList() {
@@ -77,28 +76,28 @@ public class LookupBean {
 		this.timeTypeList = timeTypeList;
 	}
 
-	public List<LookUpDetailJson> getBanksList() {
-		return banksList;
+	public List<LookUpDetailJson> getGenderList() {
+		return genderList;
 	}
 
-	public void setBanksList(List<LookUpDetailJson> banksList) {
-		this.banksList = banksList;
+	public void setGenderList(List<LookUpDetailJson> genderList) {
+		this.genderList = genderList;
 	}
 
-	public List<LookUpDetailJson> getTypeOfBusinessList() {
-		return typeOfBusinessList;
+	public List<LookUpDetailJson> getMaritalStatusList() {
+		return maritalStatusList;
 	}
 
-	public void setTypeOfBusinessList(List<LookUpDetailJson> typeOfBusinessList) {
-		this.typeOfBusinessList = typeOfBusinessList;
+	public void setMaritalStatusList(List<LookUpDetailJson> maritalStatusList) {
+		this.maritalStatusList = maritalStatusList;
 	}
 
-	public List<LookUpDetailJson> getStatesList() {
-		return statesList;
+	public List<LookUpDetailJson> getBloodGroupList() {
+		return bloodGroupList;
 	}
 
-	public void setStatesList(List<LookUpDetailJson> statesList) {
-		this.statesList = statesList;
+	public void setBloodGroupList(List<LookUpDetailJson> bloodGroupList) {
+		this.bloodGroupList = bloodGroupList;
 	}
 
 	public List<LookUpDetailJson> getRelationsList() {
@@ -157,7 +156,6 @@ public class LookupBean {
 		this.statusList = statusList;
 	}
 
-<<<<<<< HEAD
 	public List<LookUpDetailJson> getLeaveTypeList() {
 		return leaveTypeList;
 	}
@@ -172,14 +170,14 @@ public class LookupBean {
 
 	public void setMonthQuerertyList(List<LookUpDetailJson> monthQuerertyList) {
 		this.monthQuerertyList = monthQuerertyList;
-=======
-	
+	}
+
 	public List<LookUpDetailJson> getReasonTypeList() {
 		return reasonTypeList;
 	}
 
 	public void setReasonTypeList(List<LookUpDetailJson> reasonTypeList) {
 		this.reasonTypeList = reasonTypeList;
->>>>>>> branch 'master' of https://github.com/sivakurapati87/CorpMedia.git
 	}
+
 }

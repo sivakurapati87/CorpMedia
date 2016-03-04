@@ -25,8 +25,6 @@ public class LookupController {
 		String[] lookUpTypes = { Constants.TYPEOFBUSINESS, Constants.MQHS, Constants.BANKS, Constants.STATES, Constants.DMW, Constants.LEAVETYPE, Constants.WORKERTYPE, Constants.TIMETYPE, Constants.GENDER, Constants.MARITALSTATUS, Constants.BLOODGROUP,
 				Constants.RELATION, Constants.TRUEORFALSE, Constants.MONTH, Constants.DAY, Constants.PAYDAYINAMONTH, Constants.CURRENCY, Constants.STATUS };
 
-		String[] lookUpTypes = { Constants.TYPEOFBUSINESS, Constants.BANKS, Constants.STATES, Constants.DMW, Constants.WORKERTYPE, Constants.TIMETYPE, Constants.GENDER, Constants.MARITALSTATUS, Constants.BLOODGROUP, Constants.RELATION,Constants.TRUEORFALSE,Constants.MONTH,Constants.DAY,Constants.PAYDAYINAMONTH,Constants.CURRENCY,Constants.STATUS,Constants.REASONTYPE };
-
 		List<String> typesList = Arrays.asList(lookUpTypes);
 		Map<String, List<LookUpDetailJson>> lookUpMap = CommonUtil.getLookupDetailsListByTypeList(Constants.LookUp.GETLOOKUPDETAILSBYTYPELIST, typesList);
 		lookupBean.setBanksList(lookUpMap.get(Constants.BANKS));

@@ -24,7 +24,6 @@ ReimbursementController : 'ReimbursementController',
 BonusesController : 'BonusesController',
 AllowancesController : 'AllowancesController',
 
-MedicalReimbursementController : 'MedicalReimbursementController',
 
 MedicalReimbursementController : 'MedicalReimbursementController',
 CompanyEmpDefaultController: 'CompanyEmpDefaultController',
@@ -48,8 +47,8 @@ TaskAssignToHrController : 'TaskAssignToHrController',
 TaskAssignToEmployeeController : 'TaskAssignToEmployeeController',
 ProjectsController : 'ProjectsController',
 CompanyLeavePlanController : 'CompanyLeavePlanController',
-	AddLeaveTypeController : 'AddLeaveTypeController',
-	CompanyLeaveTypeController : 'CompanyLeaveTypeController',
+AddLeaveTypeController : 'AddLeaveTypeController',
+CompanyLeaveTypeController : 'CompanyLeaveTypeController',
 ExitSettingsController : 'ExitSettingsController'
 
 
