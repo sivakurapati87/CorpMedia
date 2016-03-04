@@ -1,67 +1,82 @@
 'use strict';
 
-App.controller('on_boarding_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
+App.controller('on_boarding_Controller', ['$scope','$location','$rootScope','$http','$stateParams', function($scope,$location,$rootScope,$http,$stateParams) {
 	 var self = this;
 	 $scope.state="on_boarding";
 		$scope.left_state = "onboarding_&_exit";
+		$scope.taskassigntohr = {};
+		$scope.taskassigntoemployee = {};
 		
-//		$scope.state_info_name = $stateParams.legEntity;
-//		$scope.$parent.state_info_name = $stateParams.legEntity;
-//        $scope.selectedCompany=null;
-//        $scope.companyInfo=[];
-//      
-//          //Json for the auto complete
-//          self.getCompanyInfoInit = function(){
-//        	 
-////        	  $scope.$watch(function () { return  HomeService.getSelectedCompany(); }, function (newValue, oldValue) {
-////      	        if (newValue != null) {
-////      	            //update Controller2's xxx value
-////      	            $scope.selectedCompany=newValue;
-////      	          CompanyInfoService.getCompanyInfo($scope.selectedCompany)
-////             	 .then(
-////     				       function(d) {
-////     				    	 $scope.companyInfo = d;
-////     				       },
-////       					function(errResponse){
-////       						console.error('Error while fetching Currencies');
-////       					}
-////     		       );
-////      	        }
-////      	    }, true);
-//        	  CompanyInfoService.getSelectedCompany()
-//         	 .then(
-// 				       function(d) {
-//				    	  $scope.selectedCompany=d.selectedCompName;
-// 				    	 CompanyInfoService.getCompanyInfo($scope.selectedCompany)
-// 			          	 .then(
-// 			  				       function(d) {
-// 			  				    	 $scope.companyInfo = d;
-// 			  				    	 $scope.$parent.companyName = d[0].companyName;
-// 			  				    	$rootScope.companyName = d[0].companyName;
-// 			  				    	$rootScope.companyId = d[0].companyId;
-// 			  				       },
-// 			    					function(errResponse){
-// 			    						console.error('Error while fetching Currencies');
-// 			    					}
-// 			  		       );
-// 				       },
-//   					function(errResponse){
-//   						console.error('Error while fetching Currencies');
-//   					}
-// 		       );
-//        	  
-//        	  
-//        	 
-//        	 
-//          };
-//          self.getCompanyInfoInit();
+		//Save  Task Assign to Hr
+		$scope.saveTaskAssignToHr = function(){
+			if($rootScope.selectedCompanyObj){
+				$scope.taskassigntohr.companyId = $rootScope.selectedCompanyObj.companyId;
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.TaskAssignToHrController+'/saveTaskAssignToHr', $scope.taskassigntohr).success(function(data) {
+				
+			}).error(function() {
+	      	  console.error('Could not save or update taskassigntohr');
+	        });}
+		};
 		
 		
+		// get Task Assign to Hr list
+		$scope.getAllTaskAssignToHrList = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.TaskAssignToHrController+'/getAllTaskAssignToHrList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.taskAssignToHrList = data;
+			}).error(function() {
+	      	  console.error('Could not getAllTaskAssignToHrList');
+	        });}
+		};
+		
+		// init 
+		
+		$scope.getAllTaskAssignToHrList();
+		
+		//delete Task Assign to Hr
+		$scope.deleteTaskAssignToHr = function(taskAssignToHrId){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.TaskAssignToHrController+'/deleteTaskAssignToHr/'+ taskAssignToHrId).success(function(data) {
+				$scope.getAllTaskAssignToHrList();
+			}).error(function() {
+	      	  console.error('Could not deleteTaskAssignToHr');
+	        });
+		};
 		
 		
+		//Save  Task Assign to Employee
+		$scope.saveTaskAssignToEmployee = function(){
+			if($rootScope.selectedCompanyObj){
+				$scope.taskassigntoemployee.companyId = $rootScope.selectedCompanyObj.companyId;
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.TaskAssignToEmployeeController+'/saveTaskAssignToEmployee', $scope.taskassigntoemployee).success(function(data) {
+				
+			}).error(function() {
+	      	  console.error('Could not save or update taskassigntoemployee');
+	        });}
+		};
 		
-          
+		
+		// get Task Assign to Employee list
+		$scope.getAllTaskAssignToEmployeeList = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.TaskAssignToEmployeeController+'/getAllTaskAssignToEmployeeList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.taskAssignToEmployeeList = data;
+			}).error(function() {
+	      	  console.error('Could not getAllTaskAssignToEmployeeList');
+	        });}
+		};
+		
+		// init 
+		 $scope.getAllTaskAssignToEmployeeList();
+		 
 
+			//delete Task Assign to Employee
+			$scope.deleteTaskAssignToEmployee = function(taskAssignToEmployeeId){
+				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.TaskAssignToEmployeeController+'/deleteTaskAssignToEmployee/'+ taskAssignToEmployeeId).success(function(data) {
+					$scope.getAllTaskAssignToEmployeeList();
+				}).error(function() {
+		      	  console.error('Could not deleteTaskAssignToEmployee');
+		        });
+			};
 
           
 

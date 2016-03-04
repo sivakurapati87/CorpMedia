@@ -16,13 +16,23 @@ import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
+import com.intuiture.corp.entity.AddLeaveType;
+import com.intuiture.corp.entity.Allowances;
+import com.intuiture.corp.entity.Bonuses;
+import com.intuiture.corp.entity.Categories;
+import com.intuiture.corp.entity.CityCompensatoryAllowance;
+import com.intuiture.corp.entity.Clients;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
 import com.intuiture.corp.entity.CompanyEmployeeDefaults;
 import com.intuiture.corp.entity.CompanyLeavePlans;
+import com.intuiture.corp.entity.CompanyLeaveType;
 import com.intuiture.corp.entity.CompanyLocation;
 import com.intuiture.corp.entity.CompanyRoles;
 import com.intuiture.corp.entity.CompanySignator;
+import com.intuiture.corp.entity.CustomAllowance;
+import com.intuiture.corp.entity.DailyAllowance;
+import com.intuiture.corp.entity.Deductions;
 import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
@@ -32,19 +42,38 @@ import com.intuiture.corp.entity.EmployeeExperienceInfo;
 import com.intuiture.corp.entity.EmployeeFamilyInfo;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.EmployeeProfessionalInfo;
+import com.intuiture.corp.entity.FoodCoupons;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
 import com.intuiture.corp.entity.LookUpDetails;
+import com.intuiture.corp.entity.MedicalReimbursement;
 import com.intuiture.corp.entity.PFInfo;
+import com.intuiture.corp.entity.ProfessionalAllowance;
+import com.intuiture.corp.entity.Reimbursement;
+import com.intuiture.corp.entity.Tags;
+import com.intuiture.corp.entity.TaskAssignToEmployee;
+import com.intuiture.corp.entity.TaskAssignToHr;
 import com.intuiture.corp.entity.TimeSheetApprovers;
+import com.intuiture.corp.entity.TransportAllowance;
+import com.intuiture.corp.entity.TravelReimbursement;
+import com.intuiture.corp.json.AddLeaveTypeJson;
+import com.intuiture.corp.json.AllowancesJson;
+import com.intuiture.corp.json.BonusesJson;
+import com.intuiture.corp.json.CategoriesJson;
+import com.intuiture.corp.json.CityCompensatoryAllowanceJson;
+import com.intuiture.corp.json.ClientsJson;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
 import com.intuiture.corp.json.CompanyJson;
 import com.intuiture.corp.json.CompanyLeavePlansJson;
+import com.intuiture.corp.json.CompanyLeaveTypeJson;
 import com.intuiture.corp.json.CompanyLocationJson;
 import com.intuiture.corp.json.CompanyRolesJson;
 import com.intuiture.corp.json.CompanySignatorJson;
+import com.intuiture.corp.json.CustomAllowanceJson;
+import com.intuiture.corp.json.DailyAllowanceJson;
+import com.intuiture.corp.json.DeductionsJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.EmployeeEducationalInfoJson;
@@ -53,12 +82,21 @@ import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
+import com.intuiture.corp.json.FoodCouponsJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
 import com.intuiture.corp.json.LookUpDetailJson;
+import com.intuiture.corp.json.MedicalReimbursementJson;
 import com.intuiture.corp.json.PFInfoJson;
+import com.intuiture.corp.json.ProfessionalAllowanceJson;
+import com.intuiture.corp.json.ReimbursementJson;
+import com.intuiture.corp.json.TagsJson;
+import com.intuiture.corp.json.TaskAssignToEmployeeJson;
+import com.intuiture.corp.json.TaskAssignToHrJson;
 import com.intuiture.corp.json.TimeSheetApproverJson;
+import com.intuiture.corp.json.TransportAllowanceJson;
+import com.intuiture.corp.json.TravelReimbursementJson;
 
 public class TransformDomainToJson {
 	private static Logger LOG = Logger.getLogger(TransformDomainToJson.class);
@@ -480,6 +518,15 @@ public class TransformDomainToJson {
 		return employeePersonalInfoJson;
 	}
 
+	public static CategoriesJson getCategoriesJson(Categories categories) {
+		CategoriesJson categoriesJson = new CategoriesJson();
+		categoriesJson.setCompanyId(categories.getCompanyId());
+		categoriesJson.setDescription(categories.getDescription());
+		categoriesJson.setExpenseName(categories.getExpenseName());
+		categoriesJson.setCategoriesId(categories.getCategoriesId());
+		return categoriesJson;
+	}
+
 	public static EmployeeProfessionalInfoJson getEmployeeProfessionalInfoJson(EmployeeProfessionalInfo employeeProfessionalInfo) {
 		EmployeeProfessionalInfoJson employeeProfessionalInfoJson = new EmployeeProfessionalInfoJson();
 		employeeProfessionalInfoJson.setCompanyId(employeeProfessionalInfo.getCompanyId());
@@ -515,6 +562,145 @@ public class TransformDomainToJson {
 		employeeEducationalInfoJson.setUniversity(employeeEducationalInfo.getUniversity());
 		employeeEducationalInfoJson.setEmployeeEducationalInfoId(employeeEducationalInfo.getEmployeeEducationalInfoId());
 		return employeeEducationalInfoJson;
+
+	}
+
+	public static TagsJson getTagsJson(Tags tags) {
+		TagsJson tagsJson = new TagsJson();
+		tagsJson.setCompanyId(tags.getCompanyId());
+		tagsJson.setTagId(tags.getTagId());
+		tagsJson.setTagName(tags.getTagName());
+		return tagsJson;
+	}
+
+	public static ClientsJson getClientsJson(Clients clients) {
+		ClientsJson clientsJson = new ClientsJson();
+		clientsJson.setCompanyId(clients.getCompanyId());
+		clientsJson.setClientName(clients.getClientName());
+		clientsJson.setClientsId(clients.getClientsId());
+		clientsJson.setManagerName(clients.getManagerName());
+		clientsJson.setNotes(clients.getNotes());
+		return clientsJson;
+	}
+
+	public static MedicalReimbursementJson getMedicalReimbursementJson(MedicalReimbursement medicalReimbursement) {
+		MedicalReimbursementJson medicalReimbursementJson = new MedicalReimbursementJson();
+		medicalReimbursementJson.setCompanyId(medicalReimbursement.getCompanyId());
+		medicalReimbursementJson.setMaxAnnualLimit(medicalReimbursement.getMaxAnnualLimit());
+		medicalReimbursementJson.setRequireSubmissionId(medicalReimbursement.getRequireSubmissionId());
+		return medicalReimbursementJson;
+	}
+
+	public static TransportAllowanceJson getTransportAllowanceJson(TransportAllowance transportAllowance) {
+		TransportAllowanceJson transportAllowanceJson = new TransportAllowanceJson();
+		transportAllowanceJson.setCompanyId(transportAllowance.getCompanyId());
+		transportAllowanceJson.setMaxAnnualLimit(transportAllowance.getMaxAnnualLimit());
+		transportAllowanceJson.setRequireSubmissionId(transportAllowance.getRequireSubmissionId());
+		return transportAllowanceJson;
+	}
+
+	public static ProfessionalAllowanceJson getProfessionalAllowanceJson(ProfessionalAllowance professionalAllowance) {
+		ProfessionalAllowanceJson professionalAllowanceJson = new ProfessionalAllowanceJson();
+		professionalAllowanceJson.setCompanyId(professionalAllowance.getCompanyId());
+		professionalAllowanceJson.setMaxAnnualLimit(professionalAllowance.getMaxAnnualLimit());
+		professionalAllowanceJson.setRequireSubmissionId(professionalAllowance.getRequireSubmissionId());
+		return professionalAllowanceJson;
+	}
+
+	public static TravelReimbursementJson getTravelReimbursementJson(TravelReimbursement travelReimbursement) {
+		TravelReimbursementJson travelReimbursementJson = new TravelReimbursementJson();
+		travelReimbursementJson.setCompanyId(travelReimbursement.getCompanyId());
+		travelReimbursementJson.setMaxAnnualLimit(travelReimbursement.getMaxAnnualLimit());
+		travelReimbursementJson.setRequireSubmissionId(travelReimbursement.getRequireSubmissionId());
+		return travelReimbursementJson;
+	}
+
+	public static FoodCouponsJson getFoodCouponsJson(FoodCoupons foodCoupons) {
+		FoodCouponsJson foodCouponsJson = new FoodCouponsJson();
+		foodCouponsJson.setCompanyId(foodCoupons.getCompanyId());
+		foodCouponsJson.setMaxAnnualLimit(foodCoupons.getMaxAnnualLimit());
+		foodCouponsJson.setRequireSubmissionId(foodCoupons.getRequireSubmissionId());
+		return foodCouponsJson;
+	}
+
+	public static CityCompensatoryAllowanceJson getCityCompensatoryAllowanceJson(CityCompensatoryAllowance cityCompensatoryAllowance) {
+		CityCompensatoryAllowanceJson cityCompensatoryAllowanceJson = new CityCompensatoryAllowanceJson();
+		cityCompensatoryAllowanceJson.setCompanyId(cityCompensatoryAllowance.getCompanyId());
+		cityCompensatoryAllowanceJson.setMaxAnnualLimit(cityCompensatoryAllowance.getMaxAnnualLimit());
+		cityCompensatoryAllowanceJson.setRequireSubmissionId(cityCompensatoryAllowance.getRequireSubmissionId());
+		return cityCompensatoryAllowanceJson;
+	}
+
+	public static DailyAllowanceJson getDailyAllowanceJson(DailyAllowance dailyAllowance) {
+		DailyAllowanceJson dailyAllowanceJson = new DailyAllowanceJson();
+		dailyAllowanceJson.setCompanyId(dailyAllowance.getCompanyId());
+		dailyAllowanceJson.setMaxAnnualLimit(dailyAllowance.getMaxAnnualLimit());
+		dailyAllowanceJson.setRequireSubmissionId(dailyAllowance.getRequireSubmissionId());
+		return dailyAllowanceJson;
+	}
+
+	public static CustomAllowanceJson getCustomAllowanceJson(CustomAllowance customAllowance) {
+		CustomAllowanceJson customAllowanceJson = new CustomAllowanceJson();
+		customAllowanceJson.setCompanyId(customAllowance.getCompanyId());
+		customAllowanceJson.setMaxAnnualLimit(customAllowance.getMaxAnnualLimit());
+		customAllowanceJson.setName(customAllowance.getName());
+		customAllowanceJson.setSubmitBillId(customAllowance.getSubmitBillId());
+		customAllowanceJson.setTaxBenefitId(customAllowance.getTaxBenefitId());
+		customAllowanceJson.setCustomAllowanceId(customAllowance.getCustomAllowanceId());
+		return customAllowanceJson;
+	}
+
+	public static AllowancesJson getAllowancesJson(Allowances allowances) {
+		AllowancesJson allowancesJson = new AllowancesJson();
+		allowancesJson.setCompanyId(allowances.getCompanyId());
+		allowancesJson.setAllowancesName(allowances.getAllowancesName());
+		allowancesJson.setAllowancesDescription(allowances.getAllowancesDescription());
+		allowancesJson.setHasTaxBenefits(allowances.getHasTaxBenefits());
+		allowancesJson.setAllowancesId(allowances.getAllowancesId());
+		return allowancesJson;
+	}
+
+	public static DeductionsJson getDeductionsJson(Deductions deductions) {
+		DeductionsJson deductionsJson = new DeductionsJson();
+		deductionsJson.setCompanyId(deductions.getCompanyId());
+		deductionsJson.setDeductionName(deductions.getDeductionName());
+		deductionsJson.setDeductionDescription(deductions.getDeductionDescription());
+		deductionsJson.setDeductionId(deductions.getDeductionId());
+		return deductionsJson;
+	}
+
+	public static ReimbursementJson getReimbursementJson(Reimbursement reimbursement) {
+		ReimbursementJson reimbursementJson = new ReimbursementJson();
+		reimbursementJson.setCompanyId(reimbursement.getCompanyId());
+		reimbursementJson.setReimbursementName(reimbursement.getReimbursementName());
+		reimbursementJson.setReimbursementDescription(reimbursement.getReimbursementDescription());
+		reimbursementJson.setReimbursementId(reimbursement.getReimbursementId());
+		return reimbursementJson;
+	}
+
+	public static BonusesJson getBonusesJson(Bonuses bonuses) {
+		BonusesJson bonusesJson = new BonusesJson();
+		bonusesJson.setCompanyId(bonuses.getCompanyId());
+		bonusesJson.setBonusesName(bonuses.getBonusesName());
+		bonusesJson.setBonusesDescription(bonuses.getBonusesDescription());
+		bonusesJson.setBonusesId(bonuses.getBonusesId());
+		return bonusesJson;
+	}
+
+	public static TaskAssignToHrJson getTaskAssignToHrJson(TaskAssignToHr taskAssignToHr) {
+		TaskAssignToHrJson taskAssignToHrJson = new TaskAssignToHrJson();
+		taskAssignToHrJson.setCompanyId(taskAssignToHr.getCompanyId());
+		taskAssignToHrJson.setTaskName(taskAssignToHr.getTaskName());
+		taskAssignToHrJson.setTaskAssignToHrId(taskAssignToHr.getTaskAssignToHrId());
+		return taskAssignToHrJson;
+	}
+
+	public static TaskAssignToEmployeeJson getTaskAssignToEmployeeJson(TaskAssignToEmployee taskAssignToEmployee) {
+		TaskAssignToEmployeeJson taskAssignToEmployeeJson = new TaskAssignToEmployeeJson();
+		taskAssignToEmployeeJson.setCompanyId(taskAssignToEmployee.getCompanyId());
+		taskAssignToEmployeeJson.setTaskName(taskAssignToEmployee.getTaskName());
+		taskAssignToEmployeeJson.setTaskAssignToEmployeeId(taskAssignToEmployee.getTaskAssignToEmployeeId());
+		return taskAssignToEmployeeJson;
 	}
 
 	public static CompanyLeavePlansJson getCompanyLeavePlansJson(CompanyLeavePlans companyLeavePlans) {
@@ -524,5 +710,58 @@ public class TransformDomainToJson {
 		companyLeavePlansJson.setDescription(companyLeavePlans.getDescription());
 		companyLeavePlansJson.setLeavePlanName(companyLeavePlans.getLeavePlanName());
 		return companyLeavePlansJson;
+	}
+
+	public static AddLeaveTypeJson getAddLeaveTypeJson(AddLeaveType addLeaveType) {
+		AddLeaveTypeJson addLeaveTypeJson = new AddLeaveTypeJson();
+		addLeaveTypeJson.setCompanyId(addLeaveType.getCompanyId());
+		addLeaveTypeJson.setIsDeleted(addLeaveTypeJson.getIsDeleted());
+		addLeaveTypeJson.setAccrualStartFromTypeId(addLeaveType.getAccrualStartFromTypeId());
+		addLeaveTypeJson.setAccruedLeaveLapseAfter(addLeaveType.getAccruedLeaveLapseAfter());
+		addLeaveTypeJson.setAccruedLeaveLapseTypeId(addLeaveType.getAccruedLeaveLapseTypeId());
+		addLeaveTypeJson.setAccruedRateId(addLeaveType.getAccruedRateId());
+		addLeaveTypeJson.setAccruedRateOn(addLeaveType.getAccruedRateOn());
+		addLeaveTypeJson.setAnnualQuota(addLeaveType.getAnnualQuota());
+		addLeaveTypeJson.setAnnualQuotaTypeId(addLeaveType.getAnnualQuotaTypeId());
+		addLeaveTypeJson.setCarryForwardMaxValue(addLeaveType.getCarryForwardMaxValue());
+		addLeaveTypeJson.setCompanyLeavePlanId(addLeaveType.getCompanyLeavePlanId());
+		addLeaveTypeJson.setConsecutiveBtPaidLeavesHoliday(addLeaveType.getConsecutiveBtPaidLeavesHoliday());
+		addLeaveTypeJson.setConsecutiveBtPaidLeavesWeekOff(addLeaveType.getConsecutiveBtPaidLeavesWeekOff());
+		addLeaveTypeJson.setEndOfLeaveCalenderTypeId(addLeaveType.getEndOfLeaveCalenderTypeId());
+		addLeaveTypeJson.setFrequencyOfLeaves(addLeaveType.getFrequencyOfLeaves());
+		addLeaveTypeJson.setIsAllowUtilizationOfLeaves(addLeaveType.getIsAllowUtilizationOfLeaves());
+		addLeaveTypeJson.setIsProrate(addLeaveType.getIsProrate());
+		addLeaveTypeJson.setLeaveAvailabilityTypeId(addLeaveType.getLeaveAvailabilityTypeId());
+		addLeaveTypeJson.setLeavesAvailedFrom(addLeaveType.getLeavesAvailedFrom());
+		addLeaveTypeJson.setLeavesAvailedFromTypeId(addLeaveType.getLeavesAvailedFromTypeId());
+		addLeaveTypeJson.setLeaveTypeId(addLeaveType.getLeaveTypeId());
+		addLeaveTypeJson.setPayMaximumValue(addLeaveType.getPayMaximumValue());
+		addLeaveTypeJson.setProrateFrom(addLeaveType.getProrateFrom());
+		addLeaveTypeJson.setAddLeaveTypeId(addLeaveType.getAddLeaveTypeId());
+		if (addLeaveType.getCompanyLeaveType() != null)
+			addLeaveTypeJson.setLeaveType(addLeaveType.getCompanyLeaveType().getLeaveTypeName());
+		return addLeaveTypeJson;
+
+	}
+
+	public static CompanyLeaveTypeJson getCompanyLeaveTypeJson(CompanyLeaveType companyLeaveType) {
+		CompanyLeaveTypeJson companyLeaveTypeJson = new CompanyLeaveTypeJson();
+		companyLeaveTypeJson.setCompanyId(companyLeaveType.getCompanyId());
+		companyLeaveTypeJson.setIsDeleted(companyLeaveType.getIsDeleted());
+		companyLeaveTypeJson.setDocumentNeeded_After(companyLeaveType.getDocumentNeeded_After());
+		companyLeaveTypeJson.setIsCommentRequired(companyLeaveType.getIsCommentRequired());
+		companyLeaveTypeJson.setIsDocumentProofRequired(companyLeaveType.getIsDocumentProofRequired());
+		companyLeaveTypeJson.setIsHalfDayLeaveAllowed(companyLeaveType.getIsHalfDayLeaveAllowed());
+		companyLeaveTypeJson.setIsPaidLeave(companyLeaveType.getIsPaidLeave());
+		companyLeaveTypeJson.setIsPriorNoticeRequired(companyLeaveType.getIsPriorNoticeRequired());
+		companyLeaveTypeJson.setIsRestricted(companyLeaveType.getIsRestricted());
+		companyLeaveTypeJson.setIsSickLeave(companyLeaveType.getIsSickLeave());
+		companyLeaveTypeJson.setIsStatutoryLeave(companyLeaveType.getIsStatutoryLeave());
+		companyLeaveTypeJson.setLeaveTypeDescription(companyLeaveType.getLeaveTypeDescription());
+		companyLeaveTypeJson.setLeaveTypeName(companyLeaveType.getLeaveTypeName());
+		companyLeaveTypeJson.setPriorNoticeRequered_After(companyLeaveType.getPriorNoticeRequered_After());
+		companyLeaveTypeJson.setRestrictToId(companyLeaveType.getRestrictToId());
+		companyLeaveTypeJson.setCompanyLeaveTypeId(companyLeaveType.getCompanyLeaveTypeId());
+		return companyLeaveTypeJson;
 	}
 }

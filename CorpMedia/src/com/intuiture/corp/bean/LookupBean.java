@@ -16,6 +16,14 @@ public class LookupBean {
 	private List<LookUpDetailJson> maritalStatusList;
 	private List<LookUpDetailJson> bloodGroupList;
 	private List<LookUpDetailJson> relationsList;
+	private List<LookUpDetailJson> trueorfalseList;
+	private List<LookUpDetailJson> monthList;
+	private List<LookUpDetailJson> dayList;
+	private List<LookUpDetailJson> payDAYInAMonthList;
+	private List<LookUpDetailJson> currencyList;
+	private List<LookUpDetailJson> statusList;
+	private List<LookUpDetailJson> leaveTypeList;
+	private List<LookUpDetailJson> monthQuerertyList;
 
 	public List<LookUpDetailJson> getGenderList() {
 		return genderList;
@@ -95,5 +103,69 @@ public class LookupBean {
 
 	public void setRelationsList(List<LookUpDetailJson> relationsList) {
 		this.relationsList = relationsList;
+	}
+
+	public List<LookUpDetailJson> getTrueorfalseList() {
+		return trueorfalseList;
+	}
+
+	public void setTrueorfalseList(List<LookUpDetailJson> trueorfalseList) {
+		this.trueorfalseList = trueorfalseList;
+	}
+
+	public List<LookUpDetailJson> getMonthList() {
+		return monthList;
+	}
+
+	public void setMonthList(List<LookUpDetailJson> monthList) {
+		this.monthList = monthList;
+	}
+
+	public List<LookUpDetailJson> getDayList() {
+		return dayList;
+	}
+
+	public void setDayList(List<LookUpDetailJson> dayList) {
+		this.dayList = dayList;
+	}
+
+	public List<LookUpDetailJson> getPayDAYInAMonthList() {
+		return payDAYInAMonthList;
+	}
+
+	public void setPayDAYInAMonthList(List<LookUpDetailJson> payDAYInAMonthList) {
+		this.payDAYInAMonthList = payDAYInAMonthList;
+	}
+
+	public List<LookUpDetailJson> getCurrencyList() {
+		return currencyList;
+	}
+
+	public void setCurrencyList(List<LookUpDetailJson> currencyList) {
+		this.currencyList = currencyList;
+	}
+
+	public List<LookUpDetailJson> getStatusList() {
+		return statusList;
+	}
+
+	public void setStatusList(List<LookUpDetailJson> statusList) {
+		this.statusList = statusList;
+	}
+
+	public List<LookUpDetailJson> getLeaveTypeList() {
+		return leaveTypeList;
+	}
+
+	public void setLeaveTypeList(List<LookUpDetailJson> leaveTypeList) {
+		this.leaveTypeList = leaveTypeList;
+	}
+
+	public List<LookUpDetailJson> getMonthQuerertyList() {
+		return monthQuerertyList;
+	}
+
+	public void setMonthQuerertyList(List<LookUpDetailJson> monthQuerertyList) {
+		this.monthQuerertyList = monthQuerertyList;
 	}
 }

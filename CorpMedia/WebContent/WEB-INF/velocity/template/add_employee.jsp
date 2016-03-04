@@ -41,6 +41,23 @@
 						</td>
 					</tr>
 				</table>
+				
+				<table style="width: 100%"><tr><td>
+				<div class="row">
+								<div class="col-md-2">
+									<button type="button" class="btn btn-info"
+										ng-click="isEmpCollapse = !isEmpCollapse">
+										<span class="glyphicon glyphicon-plus"></span>Add New
+									</button>
+								</div>
+								<div class="col-md-10"></div>
+
+							</div>
+							
+							</td></tr>
+							<tr height="20px"></tr>
+				<tr><td>
+				<div collapse="isEmpCollapse">
 				<form ng-submit="saveOrUpdateEmployee()">
 					<table class="table" border="0"
 						style="width: 100%; background-color: white">
@@ -121,15 +138,57 @@
 
 							<button class="btn btn-success" style="width: 100px"
 								type="submit">Add</button>
-							<button class="btn btn-cancel" style="width: 100px" type="button">Cancel</button>
+							<button class="btn btn-cancel" style="width: 100px" type="button" ng-click="cancelEmployee()">Cancel</button>
 
 						</td>
 						</tr>
 
 					</table>
 				</form>
+				</div>
+				
+				</td>
+				</tr>
+				
+				<tr>
+						<td colspan="2"><table style="width: 100%" border="0"
+								class="table table-bordered">
+								<tr>
+									<th>Dispaly Name</th>
+									<th>Email</th>
+									<th>Location</th>
+									<th>Date of Joining</th>
+									<th>Employee Role</th>
+									<th>Actions</th>
+								</tr>
+								<tr ng-repeat="emp in EmployeeJsonList" ng-class-odd="'odd'"
+									ng-class-even="'even'" style="height: 30px">
+									<td>{{emp.displayName}}</td>
+									<td>{{emp.email}}</td>
+									<td>{{emp.locationId}}</td>
+									<td>{{emp.strDateOfJoining}}</td>
+									<td>{{emp.roleId}}</td>
+									<td><a ng-click="editEmployee(employee)" tooltip="edit"
+										style="cursor: pointer; font-size: 12px"><i
+											class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+										tooltip="delete"
+										ng-click="deleteEmployee(emp.employeeId)"
+										style="cursor: pointer; font-size: 12px"><i
+											class="fa fa-trash"></i></a></td>
+								</tr>
+							</table></td>
+					</tr>
+				
+				</table>
+				
+				
+				
+				
+				
 			</td>
 		</tr>
+		
+		
 	</table>
 </div>
 

@@ -133,23 +133,25 @@
 
 													<button class="btn btn-success" style="width: 100px"
 														type="submit">Save</button>&nbsp;
-													<button class="btn btn-cancel" style="width: 100px" type="button">Cancel</button>
+													<button class="btn btn-cancel" style="width: 100px" type="button" ng-click="cancelCompanyLocation()">Cancel</button>
 												</td>
 											</tr>
+											<tr style="height: 20px"></tr>
 										</table>
 									</form>
 								</div>
+								<div style="height: 20px"></div>
 								<div class="col-lg-8">
-									<table style="width: 100%" border="0">
-										<tr style="height: 20px"></tr>
+									<table style="width: 80%;text-align: center" border="0" class="table table-bordered">
+										
 										<tr ng-repeat="location in companyLocationsList"
 											ng-class-odd="'odd'" ng-class-even="'even'">
-											<td><div>{{location.locationName}}</div>
+											<td><div><b>{{location.locationName}}</b></div>
 												<div>{{location.city}}, {{location.state}}</div></td>
 											<td><a ng-click="editCompanyLocation(location)"
 												style="cursor: pointer; font-size: 12px"><i
-													class="fa fa-pencil-square-o"></i></a></td>
-											<td><a
+													class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<a
 												ng-click="deleteCompanyLocation(location.companyLocationId)"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-trash"></i></a></td>

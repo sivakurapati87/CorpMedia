@@ -74,12 +74,12 @@
 																		class="col-lg-2 col-md-4 col-sm-4 col-xs-12 clear-side-padding">
 
 																		<button type="button" class="btn btn-info"
-																		data-toggle="collapse" data-target="#shifts">
-																		<span class="glyphicon glyphicon-plus"></span>Add New
+																			data-toggle="collapse" data-target="#shifts">
+																			<span class="glyphicon glyphicon-plus"></span>Add New
 																		</button>
 
 
-																		
+
 
 
 																	</div>
@@ -107,66 +107,114 @@
 
 																<!-- ngIf: !vm.hideForm -->
 																<div ng-if="!vm.hideForm" class="ng-scope">
+
+																	<!-- ----------------------------------------------------------------------- -->
+
+
+
 																	<div
-																		class="col-lg-12 col-md-12 col-sm-12 clear-side-padding">
-																		<div id="EmployeeRoleController"
-																			class="employee-role-template">
-																			<div>
-																				<div>
-																					<!-- ngIf: model.id -->
-																					<!-- ngIf: !model.id -->
-																					<h4 
-																						class="branded-heading ng-scope">Add Expense
-																						Tag</h4>
-																					<!-- end ngIf: !model.id -->
+																		class="col-sm-9 tab-pane active clear-side-padding">
+																		<form ng-submit="saveShift()">
+																			<div
+																				class="form-group col-lg-12 col-md-12 col-sm-12 clear-side-padding">
+																				<label class="col-sm-4 col-md-3 control-label">Name</label>
+																				<div class="col-sm-5">
+																					<input type="text" class="form-control "
+																						placeholder="Ex: Regular Shift"
+																						ng-model="shifts.shiftName" required="">
+
 																				</div>
 																			</div>
-																			<form id="newTag" name="vm.newTag"
-																				class="ng-pristine ng-invalid ng-invalid-required">
+																			<div
+																				class="form-group col-lg-12 col-md-12 col-sm-12 clear-side-padding">
+																				<label
+																					class="col-sm-4 col-md-3 control-label shift-time">Start
+																					Time</label>
 
-																				<div
-																					class="col-md-6 col-lg-6 col-sm-12 clear-side-padding">
-																					<div class="form-group">
-																						<label>Tag Name</label> <input
-																							data-set-focus="true" data-show="true"
-																							class="form-control ng-pristine ng-invalid ng-invalid-required ng-touched"
-																							type="text" placeholder="Tag Name"
-																							data-ng-model="model.name" id="name" name="name"
-																							data-ng-model-options="vm.modelOptions"
-																							required="">
-																						<div data-validation-messages=""
-																							data-model-controller="vm.newTag.name"
-																							data-required-error="Tag Name is required"
-																							data-form-submit="submitted"
-																							class="ng-isolate-scope">
-																							<div>
-																								<!-- ngRepeat: message in errorMessages -->
-																								<small class="error ng-binding ng-scope ng-hide"
-																									ng-repeat="message in errorMessages"
-																									ng-show="(!modelController.$pristine &amp;&amp; $first) || formSubmit">Tag
-																									Name is required</small>
-																								<!-- end ngRepeat: message in errorMessages -->
-																							</div>
-																						</div>
-																					</div>
-																					<div class="pull-right">
-																						<!-- ngIf: !model.id -->
-																						<input data-ng-if="!model.id" type="button"
-																							class="btn btn-submit ng-scope"
-																							data-ng-click="submitted=true; saveTag(model);"
-																							value="Save">
-																						<!-- end ngIf: !model.id -->
-																						<!-- ngIf: model.id -->
-																						<input type="button"
-																							class="btn btn-default btn-basic btn-cancel"
-																							data-ng-click="cancel()" value="Cancel">
-																					</div>
+																				<div class="col-sm-8 col-md-9">
+																					<table border="0">
+																						<tbody>
+
+																							<tr>
+																								<td class="form-group"><input
+																									style="width: 50px;" type="text"
+																									class="form-control text-center "
+																									ng-model="shifts.startTimeHrs" maxlength="2">
+																								</td>
+																								<td>:</td>
+																								<td class="form-group"><input
+																									style="width: 50px;" type="text"
+																									class="form-control text-center "
+																									ng-model="shifts.startTimeMns" maxlength="2">
+																								</td>
+																								<td><button type="button"
+																										class="btn btn-default text-center ng-binding"
+																										ng-click="changeStartTimeMeridian()">{{StartTimeMaridian}}</button></td>
+																							</tr>
+
+																						</tbody>
+																					</table>
 																				</div>
-																			</form>
-																		</div>
+																			</div>
+																			<div
+																				class="form-group col-lg-12 col-md-12 col-sm-12 clear-side-padding">
+																				<label
+																					class="col-sm-4 col-md-3 control-label shift-time">End
+																					Time</label>
+																				<div class="col-sm-8 col-md-9">
+																					<table border="0">
+																						<tbody>
+
+																							<tr>
+																								<td class="form-group"><input
+																									style="width: 50px;" type="text"
+																									class="form-control text-center "
+																									ng-model="shifts.toTimeHrs" maxlength="2">
+																								</td>
+																								<td>:</td>
+																								<td class="form-group"><input
+																									style="width: 50px;" type="text"
+																									class="form-control text-center "
+																									ng-model="shifts.toTimeMns" maxlength="2">
+																								</td>
+																								<td><button type="button"
+																										class="btn btn-default text-center ng-binding"
+																										ng-click="changeEndTimeMeridian()">{{EndTimeMaridian}}</button></td>
+																							</tr>
+
+																						</tbody>
+																					</table>
+																				</div>
+																			</div>
+																			<div
+																				class="form-group col-lg-12 col-md-12 col-sm-12 clear-side-padding">
+																				<label class="col-sm-4 col-md-3 control-label ">Break
+																					Duration (minutes)</label>
+																				<div class="col-sm-5">
+																					<input type="text" class="form-control "
+																						ng-model="shifts.breakDuratation"
+																						placeholder="Break Duration" required=""
+																						pattern="[0-9]{1,4}"
+																						title="Duration must be number of  Minutes(Integer vlue) ">
+
+																				</div>
+																			</div>
+
+																			<div class="form-group">
+																				<div
+																					class="col-lg-9 col-md-9 col-sm-8 col-sm-offset-4 col-md-offset-3">
+																					<input type="submit"
+																						class="btn btn-submit ng-scope" value="Create">
+
+																					<input type="button"
+																						class="btn btn-default btn-cancel" value="Cancel">
+																				</div>
+																			</div>
+																		</form>
 																	</div>
+
+																	<!-- ----------------------------------------------------------------------- -->
 																</div>
-																<!-- end ngIf: !vm.hideForm -->
 
 															</div>
 														</div>
@@ -186,30 +234,6 @@
 
 						</td>
 					</tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 				</table>

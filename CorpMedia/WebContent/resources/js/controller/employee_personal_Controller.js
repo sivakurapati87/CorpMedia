@@ -80,7 +80,11 @@ App.controller('employee_personal_Controller', ['$scope','$location','$rootScope
 			$scope.getEmployeePersonalInfo = function(){
 				if($scope.employeePersonalInfoJson.employeeId){
 				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeePersonalInfo/'+ $scope.employeePersonalInfoJson.employeeId).success(function(data) {
+					if(data){
 					$scope.employeePersonalInfoJson = data;
+					}else{
+						$scope.employeePersonalInfoJson = {};
+					}
 					$scope.employeePersonalInfoJson.employeeId = $scope.employeeJson.employeeId;//assigning employee Id
 				}).error(function() {
 		      	  console.error('Could not get Employee Personal Information');
@@ -114,5 +118,10 @@ App.controller('employee_personal_Controller', ['$scope','$location','$rootScope
 			};
 			
 			$scope.getAllEmployeesList();
+			
+			//cancel
+			$scope.cancelFamilyInfo = function() {
+				$scope.isCollapse = true;
+			};
 			
 }]);

@@ -148,6 +148,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			views: {
 	            'content': {
 	            	templateUrl: 'add_leave_types',
+	            	controller : "Add_Leave_Type_Controller"
 	            },
 	            'footer': {
 	                templateUrl: 'footer'
@@ -474,6 +475,145 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	            'content': {
 	            	templateUrl: 'employee_job',
 	        		controller : "employee_job_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('projects', {
+		url: "/projects",
+			views: {
+	            'content': {
+	            	templateUrl: 'projects',
+	        		controller : "projects_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('billing', {
+		url: "/billing",
+			views: {
+	            'content': {
+	            	templateUrl: 'billing',
+	        		controller : "billing_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('clients', {
+		url: "/clients",
+			views: {
+	            'content': {
+	            	templateUrl: 'clients',
+	        		controller : "clients_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('billing_rates', {
+		url: "/billing_rates",
+			views: {
+	            'content': {
+	            	templateUrl: 'billing_rates',
+	        		controller : "billing_rates_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('reports', {
+		url: "/reports",
+			views: {
+	            'content': {
+	            	templateUrl: 'reports',
+	        		controller : "reports_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('project_details', {
+		url: "/project_details",
+			views: {
+	            'content': {
+	            	templateUrl: 'project_details',
+	        		controller : "project_details_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	
+	.state('task_billing', {
+		url: "/task_billing",
+			views: {
+	            'content': {
+	            	templateUrl: 'task_billing',
+	        		controller : "task_billing_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	.state('dpt_work_hrs', {
+		url: "/dpt_work_hrs",
+			views: {
+	            'content': {
+	            	templateUrl: 'dpt_work_hrs',
+	        		controller : "dpt_work_hrs_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	.state('project_work_hrs', {
+		url: "/project_work_hrs",
+			views: {
+	            'content': {
+	            	templateUrl: 'project_work_hrs',
+	        		controller : "project_work_hrs_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	.state('client_work_hrs', {
+		url: "/client_work_hrs",
+			views: {
+	            'content': {
+	            	templateUrl: 'client_work_hrs',
+	        		controller : "client_work_hrs_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	.state('employee_timesheets', {
+		url: "/employee_timesheets",
+			views: {
+	            'content': {
+	            	templateUrl: 'employee_timesheets',
+	        		controller : "employee_timesheets_Controller"
 	            },
 	            'footer': {
 	                templateUrl: 'footer'

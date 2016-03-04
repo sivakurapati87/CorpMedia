@@ -62,7 +62,7 @@
 																	class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clear-side-padding">
 																	<div
 																		class="col-lg-2 col-md-4 col-sm-4 col-xs-12 clear-side-padding"
-																		ng-app="approver">
+																		>
 																		<!--  -->
 																		<button id="btn2" class="btn btn-info"
 																			ng-click="addApproverLevel()">
@@ -97,7 +97,7 @@
 																<tr>
 																	<td width="40%"><select
 																		class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-																		required ng-model="approver.roleId"
+																		required ng-model="approver.roleId" ng-change="onChangeRoleAction(approver.roleId,approver)"
 																		ng-options="role.roleId as role.roleName for role in  companyRolesJsonList">
 																			<option value="" disabled selected>Name of
 																				the Role</option>
@@ -106,7 +106,7 @@
 																	<td><select
 																		class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
 																		required ng-model="approver.employeeId"
-																		ng-options="role.roleId as role.roleName for role in  companyRolesJsonList">
+																		ng-options="employee.employeeId as employee.displayName for employee in  approver.employeeJsonList">
 																			<option value="" disabled selected>Name of
 																				the Employee</option>
 																	</select></td>

@@ -5,6 +5,12 @@
 <meta charset="utf-8">
 <title>Service App</title>
 <!--   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+
+  <!--jquery for image-->
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+
+
 <script src="webjars/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
     <script src="resources/js/typed.js" type="text/javascript"></script>
 <link rel="stylesheet" href="resources/css/angucomplete-alt.css" />
@@ -67,7 +73,18 @@
 <script src="resources/js/controller/employee_professional_Controller.js"></script>
 <script src="resources/js/controller/employee_personal_Controller.js"></script>
 <script src="resources/js/controller/employee_job_Controller.js"></script>
-
+<script src="resources/js/controller/projects_Controller.js"></script>
+<script src="resources/js/controller/billing_Controller.js"></script>
+<script src="resources/js/controller/clients_Controller.js"></script>
+<script src="resources/js/controller/billing_rates_Controller.js"></script>
+<script src="resources/js/controller/reports_Controller.js"></script>
+<script src="resources/js/controller/project_details_Controller.js"></script>
+<script src="resources/js/controller/task_billing_Controller.js"></script>
+<script src="resources/js/controller/dpt_work_hrs_Controller.js"></script>
+<script src="resources/js/controller/project_work_hrs_Controller.js"></script>
+<script src="resources/js/controller/client_work_hrs_Controller.js"></script>
+<script src="resources/js/controller/employee_timesheets_Controller.js"></script>
+<script src="resources/js/controller/Add_Leave_Type_Controller.js"></script>
 
 <script src="resources/js/service/constants.js"></script>
 <script src="resources/js/service/HomeService.js"></script>

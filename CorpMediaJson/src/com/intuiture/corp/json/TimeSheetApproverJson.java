@@ -1,11 +1,13 @@
 package com.intuiture.corp.json;
 
+import java.util.List;
 
 public class TimeSheetApproverJson {
 	private Integer timeSheetApproverId;
 	private Integer roleId;
 	private Integer employeeId;
 	private Integer companyId;
+	private List<EmployeeJson> employeeJsonList;
 
 	public Integer getRoleId() {
 		return roleId;
@@ -37,6 +39,14 @@ public class TimeSheetApproverJson {
 
 	public void setTimeSheetApproverId(Integer timeSheetApproverId) {
 		this.timeSheetApproverId = timeSheetApproverId;
+	}
+
+	public List<EmployeeJson> getEmployeeJsonList() {
+		return employeeJsonList;
+	}
+
+	public void setEmployeeJsonList(List<EmployeeJson> employeeJsonList) {
+		this.employeeJsonList = employeeJsonList;
 	}
 
 }

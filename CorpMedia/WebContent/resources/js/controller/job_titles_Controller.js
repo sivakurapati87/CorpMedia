@@ -47,4 +47,9 @@ App.controller('job_titles_Controller', ['$scope','$location','$rootScope','$htt
 		
 		//init functions
 		$scope.getAllJobTitlesList();
+		
+		// cancel
+		$scope.cancelJobTitle = function() {
+			$scope.isCollapse = true;
+		};
 }]);

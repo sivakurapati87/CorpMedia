@@ -6,6 +6,7 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 		$scope.left_state = "employee";
 		
 		$scope.EmployeeJson = {};
+		$scope.isEmpCollapse = true;
 		
 		//Save/update employee
 		$scope.saveOrUpdateEmployee = function(){
@@ -18,7 +19,7 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 	      	  console.error('Could not save or update Employee');
 	        });}
 		};
-		// get all the approvers list
+		// get all the employees list
 		$scope.getAllEmployeesList = function(){
 			if(!$scope.companyRolesJsonList){
 				$scope.getAllRoles();
@@ -30,6 +31,7 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 	      	  console.error('Could not get All Employees List');
 	        });}
 		};
+		
 
 		// get all the roles based on company id
 		$scope.getAllRoles = function(){
@@ -62,5 +64,30 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
       	    $scope.EmployeeJson.strDateOfJoining =  [year, month, day].join('-');
         };
 		$scope.getAllRoles();    
-		$scope.getAllCompanyLocations();    
+		$scope.getAllCompanyLocations();  
+		
+		
+		// This function is to edit employee information
+		$scope.editEmployee = function(employee){
+			
+			$scope.employee = employee;
+			$scope.isEmpCollapse = false;
+		};
+		
+		// delete employee  information
+		
+		$scope.deleteEmployee = function(employeeId){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/deleteEmployee/'+ employeeId).success(function(data) {
+				$scope.getAllEmployeesList();
+			}).error(function() {
+	      	  console.error('Could not deleteEmployee');
+	        });
+			
+			// cancel employee educational information
+			$scope.cancelEmployee = function() {
+				$scope.isEmpCollapse = true;
+			};
+		};
+		
+		$scope.getAllEmployeesList();
 }]);

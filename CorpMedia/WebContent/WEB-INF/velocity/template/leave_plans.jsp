@@ -1,11 +1,11 @@
 <div class="container-fluid" style="width: 100%;">
 	<table border="1">
-		<tr style="height: 120px;background-image:url('resources/images/bgimg3.png');">
+		<tr
+			style="height: 120px; background-image: url('resources/images/bgimg3.png');">
 			<td class="lable50_blue" align="center" colspan="3">{{companyName}}</td>
 		</tr>
 		<tr>
-			<td width="20%" valign="top" bgcolor="white">
-				<left-menu></left-menu>
+			<td width="20%" valign="top" bgcolor="white"><left-menu></left-menu>
 			</td>
 			<td width="1%"></td>
 			<td valign="top">
@@ -15,18 +15,17 @@
 							<div class="sub-page-navigation">
 								<ul>
 									<li ng-class="{'active':(state==='leave_plans')}"><a
-										class="anchor-sm"
-										ui-sref="leave_plans">Leave Plans
-											</a></li>
+										class="anchor-sm" ui-sref="leave_plans">Leave Plans </a></li>
 									<li ng-class="{'active':(state==='leave_types')}"><a
 										class="anchor-sm" ui-sref="leave_types">Leave Types</a></li>
-									
+
 								</ul>
 							</div>
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0" style="width: 100%; background-color: white;">
+				<table class="table" border="0"
+					style="width: 100%; background-color: white;">
 					<tr>
 						<td><h2>Leave Plans</h2></td>
 					</tr>
@@ -44,113 +43,117 @@
 							</button>
 
 							<div id="demo" class="collapse">
-								<table border="0">
-									<tr>
-										<td><label> Add Leave Plan</label></td>
-									</tr>
-									<tr height="30px"></tr>
-									<tr>
-										<td><label>Name</label></td>
-									</tr>
-									<tr>
-										<td><input id="panNumber" style="width: 200%"
-											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
-											type="text" required="" data-ng-model="model.panNumber"
-											name="panNumber"></td>
-									</tr>
-									<tr height="30px"></tr>
-									<tr>
-										<td><label>Description</label></td>
-									</tr>
-									<tr>
-										<td><textarea class="form-control" rows="5" id="comment"
-												style="width: 200%"></textarea></td>
-									</tr>
-									<tr height="30px"></tr>
-									<tr>
+								<form ng-submit="saveLeavePlan()">
+									<table border="0">
+										<tr>
+											<td><label> Add Leave Plan</label></td>
+										</tr>
+										<tr height="30px"></tr>
+										<tr>
+											<td><label>Name</label></td>
+										</tr>
+										<tr>
+											<td><input id="panNumber" style="width: 200%"
+												class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
+												type="text" required="" ng-model="leavePlan.leavePlanName"></td>
+										</tr>
+										<tr height="30px"></tr>
+										<tr>
+											<td><label>Description</label></td>
+										</tr>
+										<tr>
+											<td><textarea class="form-control" rows="5" id="comment"
+													ng-model="leavePlan.description" style="width: 200%"></textarea></td>
+										</tr>
+										<tr height="30px"></tr>
+										<tr>
 
-										<td>
+											<td>
 
-											<button class="btn btn-success" style="width: 100px">Save</button>&nbsp;
-											<button class="btn btn-cancel" style="width: 100px">Cancel</button>
-										</td>
-									</tr>
-								</table>
-
+												<button class="btn btn-success" style="width: 100px"
+													type="submit">Save</button>&nbsp;
+												<button class="btn btn-cancel" style="width: 100px"
+													type="button">Cancel</button>
+											</td>
+										</tr>
+									</table>
+								</form>
 							</div></td>
 					</tr>
 
 					<tr>
+						<td><div
+								class="col-lg-12 col-md-12 col-sm-12 panel panel-default clear-side-padding ng-scope"
+								ng-repeat="leavePlan in companyLeavePlansList">
+								<div class="panel-heading col-lg-12 col-md-12 col-sm-12"
+									ng-click="leavePlan.showGrid = !leavePlan.showGrid">
+									<h4
+										class="panel-title leave-plan-title col-lg-6 col-md-6 col-sm-6 clear-side-padding">
+										<span class="fa fa-sort-asc"
+											ng-class="!leavePlan.showGrid ? 'fa fa-sort-asc' : 'fa fa-sort-desc'"></span>
+										<span class="heading ng-binding">{{leavePlan.leavePlanName}}</span>
+										<br> <span data-ng-if="leavePlan.description != null">
+											<small class="ng-binding">{{leavePlan.description}}</small>
+										</span>
+									</h4>
+									<div class="col-lg-6 col-md-6 col-sm-6 clear-side-padding">
+										<div class="inline-action-menu pull-right vertical-margin">
+											<a class="anchor-sm pull-down"
+												ng-click="editJobTitle(leavePlan)"> <span
+												class="fa fa-pencil-square-o" tooltip-placement="left"
+												tooltip="Edit"></span>
+											</a> <a class="anchor-sm pull-down ng-scope"> <span
+												class="fa fa-trash-o" tooltip-placement="top"
+												tooltip="Delete"></span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div
+									class="panel-collapse ng-scope col-lg-12 col-md-12 col-sm-12"
+									ng-if="leavePlan.showGrid">
+									<table>
+										<tr style="height: 10px"></tr>
+										<tr>
+											<td><button class="btn btn-success"
+													ng-click="addLeaveType(leavePlan,leavePlan.companyLeavePlansId)">Add
+													Leave Type</button></td>
+										</tr>
+										<tr style="height: 10px"></tr>
+										<tr>
+											<td><table style="width: 100%" border="0"
+													class="table table-bordered">
+													<tr>
+														<th>Leave Type</th>
+														<th>Allowance</th>
+														<th>Accrual</th>
+														<th>Carry Over</th>
+														<th>Actions</th>
+													</tr>
+													<tr ng-repeat="leaveType in leavePlan.leaveTypeJsonList"
+														ng-class-odd="'odd'" ng-class-even="'even'"
+														style="height: 30px">
+														<td>{{leaveType.leaveType}}</td>
+														<td>{{leaveType.annualQuota}}</td>
+														<td>{{leaveType.accruedRateOn}}</td>
+														<td>{{leaveType.carryForwardMaxValue}}</td>
+														<td><a ng-click="editLeaveType(leaveType,leavePlan)"
+															tooltip="edit" style="cursor: pointer; font-size: 12px"><i
+																class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+															tooltip="delete"
+															ng-click="deleteJobTitle(leaveType.addLeaveTypeId)"
+															style="cursor: pointer; font-size: 12px"><i
+																class="fa fa-trash"></i></a></td>
+													</tr>
+												</table></td>
+										</tr>
+									</table>
 
-						<td>
-							<button type="button" class="button_bg"
-								style="width: 1000px; height: 60px" data-toggle="collapse"
-								data-target="#demo1">
-								<table border="0" width="100%">
-									<tr>
-										<td align="left"><span
-											class="glyphicon glyphicon-chevron-up"></span>&nbsp;Standard
-											Leave Plan<br /> <small>This is a system generated
-												leave plan for this location.</small></td>
-										<td align="right"><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;&nbsp;<span 
-											class="glyphicon glyphicon-trash"></span></td>
-									</tr>
-								</table>
-							</button>
-							<div id="demo1" class="collapse">
-								<table>
-								<tr height="20px"></tr>
-									<tr>
-										<td><button class="btn btn-success" ng-click="addLeaveType()" >Add Leave Type</button></td>
-									</tr>
-									<tr>
-										<td>
-											<table class=" table table-hover table-striped">
-												<tr>
-													<td><h3>Leave Type</h3></td>
-													<td><h3>Allowance</h3></td>
-													<td><h3>Accrual</h3></td>
-													<td><h3>Carry Over</h3></td>
-													<td><h3>Actions</h3></td>
 
-												</tr>
-												<tr>
-													<td>Paid Leave</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;&nbsp;<span
-														class="glyphicon glyphicon-trash"></span></td>
-												</tr>
-												<tr>
-													<td>Sick Leave</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;&nbsp;<span
-														class="glyphicon glyphicon-trash"></span></td>
-												</tr>
-												<tr>
-													<td>Unpaid Leave</td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td><span class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;&nbsp;<span
-														class="glyphicon glyphicon-trash"></span></td>
-												</tr>
-
-											</table>
-										</td>
-									</tr>
-								</table>
-
-
-							</div>
-						</td>
-
-
-
+								</div>
+							</div></td>
 					</tr>
+
 
 
 

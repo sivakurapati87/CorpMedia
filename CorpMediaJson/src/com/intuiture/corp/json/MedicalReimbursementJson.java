@@ -4,8 +4,8 @@ package com.intuiture.corp.json;
 public class MedicalReimbursementJson {
 	
 	private Integer medicalReimbursementId;
-	private String maxAnnualLimit;
-	private String requireSubmission;
+	private Integer maxAnnualLimit;
+	private Integer requireSubmissionId;
 	private Integer companyId;
 	
 	public Integer getMedicalReimbursementId() {
@@ -14,17 +14,18 @@ public class MedicalReimbursementJson {
 	public void setMedicalReimbursementId(Integer medicalReimbursementId) {
 		this.medicalReimbursementId = medicalReimbursementId;
 	}
-	public String getMaxAnnualLimit() {
+	
+	public Integer getMaxAnnualLimit() {
 		return maxAnnualLimit;
 	}
-	public void setMaxAnnualLimit(String maxAnnualLimit) {
+	public void setMaxAnnualLimit(Integer maxAnnualLimit) {
 		this.maxAnnualLimit = maxAnnualLimit;
 	}
-	public String getRequireSubmission() {
-		return requireSubmission;
+	public Integer getRequireSubmissionId() {
+		return requireSubmissionId;
 	}
-	public void setRequireSubmission(String requireSubmission) {
-		this.requireSubmission = requireSubmission;
+	public void setRequireSubmissionId(Integer requireSubmissionId) {
+		this.requireSubmissionId = requireSubmissionId;
 	}
 	public Integer getCompanyId() {
 		return companyId;

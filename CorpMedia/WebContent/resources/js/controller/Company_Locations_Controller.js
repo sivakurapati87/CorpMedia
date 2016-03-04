@@ -45,4 +45,10 @@ App.controller('Company_Locations_Controller', ['$scope','$http','$rootScope', f
 	
 	//init functions
 	$scope.getAllLocationsList();
+	
+	//cancel
+	$scope.cancelCompanyLocation = function() {
+		$scope.isCollapse = true;
+	};
+	
 }]);

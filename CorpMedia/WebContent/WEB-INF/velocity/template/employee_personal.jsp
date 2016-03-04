@@ -51,13 +51,21 @@
 
 								<!--first part of the form-->
 								<div class="row">
-									<div class="col-md-12" align="center">
+									<div class="col-md-4">
+								<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									    <div class="form-group">
+									    <label for="first_name">Employee Name</label>
 										<select ng-change="onChangeEmployeeId()"
 											class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
 											required ng-model="employeePersonalInfoJson.employeeId"
 											ng-options="emp.employeeId as emp.displayName for emp in  EmployeeJsonList">
 											<option value="" disabled selected>Select</option>
 										</select>
+										</div>
 									</div>
 
 									<!--this is the first half of the form-->
@@ -411,31 +419,7 @@
 								<hr>
 								<br>
 							</div>
-							<div class="col-lg-8">
-								<table style="width: 100%" border="0"
-									class="table table-bordered">
-									<tr>
-										<th>Relation</th>
-										<th>Full Name</th>
-										<th>Email</th>
-										<th>Mobile Number</th>
-									</tr>
-									<tr ng-repeat="empFamily in EmployeeFamilyJsonList"
-										ng-class-odd="'odd'" ng-class-even="'even'"
-										style="height: 30px">
-										<td>{{empFamily.relation}}</td>
-										<td>{{empFamily.firstName}} {{empFamily.lastName}}</td>
-										<td>{{empFamily.email}}</td>
-										<td><a ng-click="editFamilyInfo(empFamily)"
-											tooltip="edit" style="cursor: pointer; font-size: 12px"><i
-												class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
-											tooltip="delete"
-											ng-click="deleteEmployeeFamilyInfo(empFamily.employeeFamilyInfoId)"
-											style="cursor: pointer; font-size: 12px"><i
-												class="fa fa-trash"></i></a></td>
-									</tr>
-								</table>
-							</div>
+							
 
 							<div collapse="isCollapse">
 								<br>
@@ -497,11 +481,11 @@
 
 									<!--OK fields end here so input button follows now-->
 									<div class='row'>
-										<div class='col-md-10'></div>
-										<div class='col-md-2'>
+										<div class='col-md-8'></div>
+										<div class='col-md-4'>
 											<p>
 												<button type="submit" class="btn btn-success">Save</button>
-												<button type="button" class="btn btn-default">Cancel</button>
+												<button type="button" class="btn btn-default" ng-click="cancelFamilyInfo()">Cancel</button>
 											</p>
 										</div>
 
@@ -514,6 +498,34 @@
 
 								<br> <br>
 							</div>
+							
+							<div class="col-lg-8">
+								<table style="width: 100%" border="0"
+									class="table table-bordered">
+									<tr>
+										<th>Relation</th>
+										<th>Full Name</th>
+										<th>Email</th>
+										<th>Mobile Number</th>
+									</tr>
+									<tr ng-repeat="empFamily in EmployeeFamilyJsonList"
+										ng-class-odd="'odd'" ng-class-even="'even'"
+										style="height: 30px">
+										<td>{{empFamily.relation}}</td>
+										<td>{{empFamily.firstName}} {{empFamily.lastName}}</td>
+										<td>{{empFamily.email}}</td>
+										<td><a ng-click="editFamilyInfo(empFamily)"
+											tooltip="edit" style="cursor: pointer; font-size: 12px"><i
+												class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+											tooltip="delete"
+											ng-click="deleteEmployeeFamilyInfo(empFamily.employeeFamilyInfoId)"
+											style="cursor: pointer; font-size: 12px"><i
+												class="fa fa-trash"></i></a></td>
+									</tr>
+								</table>
+							</div>
+							
+							
 						</td>
 					</tr>
 

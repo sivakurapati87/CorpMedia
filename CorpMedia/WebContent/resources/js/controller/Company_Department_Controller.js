@@ -19,7 +19,7 @@ App.controller('Company_Department_Controller', ['$scope','$rootScope','$http', 
         });}
 	};
 	
-	// get all company locations list
+	// get all company Departments list
 	$scope.getAllDepartmentsList = function(){
 		if($rootScope.selectedCompanyObj){
 		$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.DepartmentController+'/getAllDepartmentsList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
@@ -46,5 +46,12 @@ App.controller('Company_Department_Controller', ['$scope','$rootScope','$http', 
 	
 	//init functions
 	$scope.getAllDepartmentsList();
+	
+	
+	//cancel
+	
+	$scope.cancelCompanyDepartment = function() {
+		$scope.isCollapse = true;
+	};
 	
 }]);

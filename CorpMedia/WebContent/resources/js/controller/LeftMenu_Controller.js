@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('LeftMenu_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
+App.controller('LeftMenu_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$state', function($scope,$location,$rootScope,CompanyInfoService,$state) {
         	 
 	$scope.init = function(){
 		if(!$rootScope.companyName){
@@ -30,7 +30,7 @@ App.controller('LeftMenu_Controller', ['$scope','$location','$rootScope','Compan
         	  
         	$scope.leftMenuAction = function(sref,state){
         		$scope.left_state = state;
-        		$location.path("/"+sref);
+        		$state.go(sref);
         	} 
         	 $scope.init();
 //          self.getCompanyInfoInit();

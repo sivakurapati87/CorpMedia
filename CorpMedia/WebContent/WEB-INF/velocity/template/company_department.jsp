@@ -71,23 +71,25 @@
 
 													<button class="btn btn-success" type="submit"
 														style="width: 100px">Save</button>&nbsp;
-													<button class="btn btn-cancel" style="width: 100px"
+													<button class="btn btn-cancel" style="width: 100px" ng-click="cancelCompanyDepartment()"
 														type="button">Cancel</button>
 												</td>
 											</tr>
+											<tr height="20px"></tr>
 										</table>
 									</form>
 								</div>
+								<div style="height: 20px"></div>
 								<div class="col-lg-8">
-									<table style="width: 100%" border="0">
-										<tr style="height: 20px"></tr>
+									<table style="width: 80%;text-align: center" border="0" class="table table-bordered">
+										
 										<tr ng-repeat="department in companyDepartmentList"
 											ng-class-odd="'odd'" ng-class-even="'even'" style="height: 30px">
-											<td>{{department.departmentName}}</td>
+											<td><b>{{department.departmentName}}</b></td>
 											<td><a ng-click="editCompanyDepartment(department)"
 												style="cursor: pointer; font-size: 12px"><i
-													class="fa fa-pencil-square-o"></i></a></td>
-											<td><a
+													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<a
 												ng-click="deleteCompanyDepartment(department.departmentId)"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-trash"></i></a></td>

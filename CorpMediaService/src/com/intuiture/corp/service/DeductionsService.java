@@ -1,5 +1,8 @@
 package com.intuiture.corp.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,6 +11,7 @@ import com.intuiture.corp.dao.CommonRepository;
 import com.intuiture.corp.dao.DeductionsRepository;
 import com.intuiture.corp.entity.Deductions;
 import com.intuiture.corp.json.DeductionsJson;
+import com.intuiture.corp.util.TransformDomainToJson;
 import com.intuiture.corp.util.TransformJsonToDomain;
 
 @Service
@@ -40,6 +44,24 @@ public class DeductionsService {
 			return false;
 		}
 		return true;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<DeductionsJson> getAllDeductionsList(Integer companyId) {
+		List<DeductionsJson> deductionsJsonList = null;
+		try {
+			List<Deductions> deductionsList = (List<Deductions>) commonRepository.getAllRecordsByCompanyId(companyId, Deductions.class);
+			if (deductionsList != null && deductionsList.size() > 0) {
+				deductionsJsonList = new ArrayList<DeductionsJson>();
+				for (Deductions deductions : deductionsList) {
+					deductionsJsonList.add(TransformDomainToJson.getDeductionsJson(deductions));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return deductionsJsonList;
 	}
 	
 

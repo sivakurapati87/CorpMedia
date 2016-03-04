@@ -4,21 +4,21 @@
 			<div class="subnavbar-static-side">
 				<ul class="nav">
 					<li ng-class="{'active':(left_state==='company_settings')}"><a
-						class="anchor-sm" ng-click="leftMenuAction('company_legalentities','company_legalentities')" href="#"> <span class="subnav-item-title">Company
+						class="anchor-sm" ui-sref="company_legalentities.mainInfo({legEntity:'cmpInfo'})" href="#"> <span class="subnav-item-title">Company
 								Settings</span> <br> <span class="subnav-item-description">
 								Company settings, Legal Entities, Locations and Department
 								settings <span class="glyphicon glyphicon-menu-right"></span>
 						</span>
 					</a></li>
 					<li ng-class="{'active':(left_state==='payroll')}"><a
-						class="anchor-sm" ng-click="leftMenuAction('general_payroll_settings','payroll')" href="#"> <span
+						class="anchor-sm" ui-sref="general_payroll_settings" href="#"> <span
 							class="subnav-item-title">Payroll</span> <br> <span
 							class="subnav-item-description"> Payroll cycle,salary
 								components etc <span class="glyphicon glyphicon-menu-right"></span>
 						</span>
 					</a></li>					</a></li>
 					<li ng-class="{'active':(left_state==='leaves_&_holidays')}"><a
-						class="anchor-sm" ng-click="leftMenuAction('leave_plans','leaves_&_holidays')" href="#"> <span
+						class="anchor-sm" ui-sref="leave_plans" href="#"> <span
 							class="subnav-item-title">Leaves & Holidays</span> <br> <span
 							class="subnav-item-description"> Leave plans,types,Holidays and Policies
 								 <span class="glyphicon glyphicon-menu-right"></span>
@@ -65,6 +65,12 @@
 							class="subnav-item-description">Manage the employee settings likejob titles, probation period etc...,.
 								 <span class="glyphicon glyphicon-menu-right"></span>
 						</span>
+					</a></li>
+					<li ng-class="{'active':(left_state==='project')}"><a
+						class="anchor-sm" ui-sref="projects" href="#"> <span
+							class="subnav-item-title">Project</span> <br> 
+								 
+					
 					</a></li>
 					
 				</ul>

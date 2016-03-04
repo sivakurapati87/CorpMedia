@@ -44,20 +44,51 @@ App.controller('timesheet_approval_chain_Controller', ['$scope','$location','$ro
 		$scope.getAllApproversList = function(){
 			if(!$scope.companyRolesJsonList){
 				$scope.getAllRoles();
+				$scope.getAllEmployeesList();
 			}
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.TimeSheetApproverChainController+'/getAllApproversList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.TimeSheetApproverJsonList = data;
-//				angular.forEach($scope.TimeSheetApproverJsonList, function(obj, key){
-//					obj.companyRolesList = $scope.companyRolesJsonList;
-//		           	 });
+				angular.forEach($scope.TimeSheetApproverJsonList, function(obj, key)
+		  				  {
+							obj.employeeJsonList = $scope.EmployeeJsonList;
+		  				  });
 			}).error(function() {
 	      	  console.error('Could not getAllRoles');
 	        });}
 		};
-
+		
+		//On change role id
+		$scope.onChangeRoleAction = function(roleId,approver){
+			$scope.empList = [{}];
+			$scope.empList.splice(0,1);
+			angular.forEach($scope.EmployeeJsonList, function(obj, key)
+  				  {
+						if(obj.roleId == roleId){
+							$scope.empList.push(obj);
+						}
+  				  });
+			approver.employeeJsonList = $scope.empList;
+			angular.forEach($scope.TimeSheetApproverJsonList, function(obj, key)
+	  				  {
+							if(obj.timeSheetApproverId == approver.timeSheetApproverId){
+								obj = approver;
+							}
+	  				  });
+		};
+		
+		// get all the Employees list
+		$scope.getAllEmployeesList = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getAllEmployeesByCompanyId/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.EmployeeJsonList = data;
+			}).error(function() {
+	      	  console.error('Could not get All Employees List');
+	        });}
+		};
 
 		$scope.getAllApproversList();
+		
 
           
 }]);

@@ -1,7 +1,9 @@
 package com.intuiture.corp.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,8 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.intuiture.corp.dao.CommonRepository;
 import com.intuiture.corp.dao.CompanyLocationRepository;
+import com.intuiture.corp.entity.AddLeaveType;
 import com.intuiture.corp.entity.CompanyLeavePlans;
+import com.intuiture.corp.json.AddLeaveTypeJson;
 import com.intuiture.corp.json.CompanyLeavePlansJson;
+import com.intuiture.corp.util.Constants;
 import com.intuiture.corp.util.TransformDomainToJson;
 import com.intuiture.corp.util.TransformJsonToDomain;
 
@@ -49,8 +54,27 @@ public class CompanyLeavePlanService {
 			List<CompanyLeavePlans> companyLeavePlansList = (List<CompanyLeavePlans>) commonRepository.getAllRecordsByCompanyId(companyId, CompanyLeavePlans.class);
 			if (companyLeavePlansList != null && companyLeavePlansList.size() > 0) {
 				companyLeavePlansJsonList = new ArrayList<CompanyLeavePlansJson>();
+				List<Integer> companyLeavePlanIds = new ArrayList<Integer>();
 				for (CompanyLeavePlans companyLeavePlan : companyLeavePlansList) {
-					companyLeavePlansJsonList.add(TransformDomainToJson.getCompanyLeavePlansJson(companyLeavePlan));
+					companyLeavePlanIds.add(companyLeavePlan.getCompanyLeavePlansId());
+				}
+				List<AddLeaveType> addLeaveTypeList = (List<AddLeaveType>) commonRepository.getAllRecordsByList(Constants.companyLeavePlanId, companyLeavePlanIds, AddLeaveType.class);
+				Map<Integer, List<AddLeaveTypeJson>> map = new HashMap<Integer, List<AddLeaveTypeJson>>();
+				if (addLeaveTypeList != null && addLeaveTypeList.size() > 0) {
+					for (AddLeaveType addLeaveType : addLeaveTypeList) {
+						if (map.get(addLeaveType.getCompanyLeavePlanId()) != null) {
+							map.get(addLeaveType.getCompanyLeavePlanId()).add(TransformDomainToJson.getAddLeaveTypeJson(addLeaveType));
+						} else {
+							List<AddLeaveTypeJson> list = new ArrayList<AddLeaveTypeJson>();
+							list.add(TransformDomainToJson.getAddLeaveTypeJson(addLeaveType));
+							map.put(addLeaveType.getCompanyLeavePlanId(), list);
+						}
+					}
+				}
+				for (CompanyLeavePlans companyLeavePlan : companyLeavePlansList) {
+					CompanyLeavePlansJson json = TransformDomainToJson.getCompanyLeavePlansJson(companyLeavePlan);
+					json.setLeaveTypeJsonList(map.get(json.getCompanyLeavePlansId()));
+					companyLeavePlansJsonList.add(json);
 				}
 			}
 		} catch (Exception e) {

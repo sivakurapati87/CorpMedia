@@ -1,6 +1,7 @@
 package com.intuiture.corp.json;
 
 import java.util.Date;
+import java.util.List;
 
 public class CompanyLeavePlansJson {
 	private Integer companyLeavePlansId;
@@ -10,6 +11,8 @@ public class CompanyLeavePlansJson {
 	private Boolean isDeleted;
 	private String leavePlanName;
 	private String description;
+	private Boolean showGrid = Boolean.FALSE;
+	private List<AddLeaveTypeJson> leaveTypeJsonList;
 
 	public Integer getCompanyLeavePlansId() {
 		return companyLeavePlansId;
@@ -65,6 +68,22 @@ public class CompanyLeavePlansJson {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Boolean getShowGrid() {
+		return showGrid;
+	}
+
+	public void setShowGrid(Boolean showGrid) {
+		this.showGrid = showGrid;
+	}
+
+	public List<AddLeaveTypeJson> getLeaveTypeJsonList() {
+		return leaveTypeJsonList;
+	}
+
+	public void setLeaveTypeJsonList(List<AddLeaveTypeJson> leaveTypeJsonList) {
+		this.leaveTypeJsonList = leaveTypeJsonList;
 	}
 
 }

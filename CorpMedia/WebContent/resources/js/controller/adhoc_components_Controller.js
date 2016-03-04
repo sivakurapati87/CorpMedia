@@ -8,6 +8,7 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		$scope.deductions = {};
 		$scope.reimbursement = {};
 		$scope.bonuses = {};
+		$scope.allowances = {};
 		
 
 		//Save deductions
@@ -21,6 +22,19 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 	        });}
 		};
 		
+		// get deductions list
+		$scope.getAllDeductionsList = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.DeductionsController+'/getAllDeductionsList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.deductionsList = data;
+			}).error(function() {
+	      	  console.error('Could not getAllDeductionsList');
+	        });}
+		};
+		
+		// init 
+		$scope.getAllDeductionsList();
+		
 		//Save reimbursement
 		$scope.saveReimbursement = function(){
 			alert($rootScope.selectedCompanyObj.companyId);
@@ -31,6 +45,20 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 	      	  console.error('Could not save or update reimbursement');
 	        });}
 		};
+		
+		// get reimbursement list
+		$scope.getAllReimbursementList = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ReimbursementController+'/getAllReimbursementList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.reimbursementList = data;
+			}).error(function() {
+	      	  console.error('Could not getAllReimbursementList');
+	        });}
+		};
+		
+		// init 
+		$scope.getAllReimbursementList();
+		
 		
 		//Save bonuses
 		$scope.saveBonuses = function(){
@@ -43,6 +71,20 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 	        });}
 		};
 		
+		// get bonuses list
+		$scope.getAllBonusesList = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.BonusesController+'/getAllBonusesList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.bonusesList = data;
+			}).error(function() {
+	      	  console.error('Could not getAllBonusesList');
+	        });}
+		};
+		
+		// init 
+		$scope.getAllBonusesList();
+		
+		
 		//Save allowances
 		$scope.saveAllowances = function(){
 			alert($rootScope.selectedCompanyObj.companyId);
@@ -53,6 +95,29 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 	      	  console.error('Could not save or update allowances');
 	        });}
 		};
+		
+		// get allowances list
+		$scope.getAllAllowancesList = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.AllowancesController+'/getAllAllowancesList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.allowancesList = data;
+			}).error(function() {
+	      	  console.error('Could not getAllAllowancesList');
+	        });}
+		};
+		
+		// init 
+		$scope.getAllAllowancesList();
+		
+		//delete allowances
+		$scope.deleteAllowances = function(allowancesId){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.AllowancesController+'/deleteAllowances/'+ allowancesId).success(function(data) {
+				$scope.getAllAllowancesList();
+			}).error(function() {
+	      	  console.error('Could not deleteAllowances');
+	        });
+		};
+		
 		
 
 		
