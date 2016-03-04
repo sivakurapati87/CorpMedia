@@ -112,10 +112,7 @@ public class TemplateController {// Serves Templates.
 	public String timing_policies() {
 		return "template/timing_policies";
 	}
-	@RequestMapping(value = "/web_clock_in")
-	public String web_clock_in() {
-		return "template/web_clock_in";
-	}
+	
 	@RequestMapping(value = "/wfh")
 	public String wfh() {
 		return "template/wfh";
@@ -129,10 +126,7 @@ public class TemplateController {// Serves Templates.
 		return "template/tags";
 	}
 	
-	@RequestMapping(value = "/welcome_screen")
-	public String welcome_screen() {
-		return "template/welcome_screen";
-	}
+
 	
 	@RequestMapping(value = "/on_boarding")
 	public String on_boarding() {
@@ -168,10 +162,7 @@ public class TemplateController {// Serves Templates.
 		return "template/provident_fund";
 	}
 	
-	@RequestMapping(value = "/legal_and_bank")
-	public String legal_and_bank() {
-		return "template/legal_and_bank";
-	}
+	
 	@RequestMapping(value = "/employee_loan_settings")
 	public String employee_loan_settings() {
 		return "template/employee_loan_settings";
@@ -246,6 +237,13 @@ public class TemplateController {// Serves Templates.
 	public String employee_timesheets() {
 		return "template/employee_timesheets";
 	}
+	
+	@RequestMapping(value = "/holidays")
+	public String holidays() {
+		return "template/holidays";
+	}
+	
+	
 	
 	
 

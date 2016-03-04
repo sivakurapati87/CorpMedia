@@ -19,8 +19,12 @@ public class Constants {
 	public static final String PAYDAYINAMONTH = "PAYDAYINAMONTH";
 	public static final String CURRENCY = "CURRENCY";
 	public static final String STATUS = "STATUS";
+
 	public static final String LEAVETYPE = "LEAVETYPE";
 	public static final String MQHS = "MQHS";
+
+	public static final String REASONTYPE = "REASONTYPE";
+
 
 	public static final ResourceBundle RB = ResourceBundle.getBundle("config");
 	public static final String SERVICEURL = RB.getString("RESTWebServiceUrl");

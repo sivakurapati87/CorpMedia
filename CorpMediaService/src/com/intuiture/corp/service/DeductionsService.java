@@ -64,5 +64,19 @@ public class DeductionsService {
 		return deductionsJsonList;
 	}
 	
+	public Boolean deleteDeductions(Integer deductionId) {
+		try {
+			Deductions deductions = (Deductions) commonRepository.findById(deductionId, Deductions.class);
+			if (deductions != null) {
+				deductions.setIsDeleted(Boolean.TRUE);
+				commonRepository.update(deductions);
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
+	
 
 }

@@ -1,9 +1,9 @@
 'use strict';
 
-App.controller('legal_and_bank_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
+App.controller('holidays_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
 	 var self = this;
-	 $scope.state="legal_and_bank";
-		$scope.left_state = "payroll";
+	 $scope.state="holidays";
+		$scope.left_state = "leaves_&_holidays";
 		
 //		$scope.state_info_name = $stateParams.legEntity;
 //		$scope.$parent.state_info_name = $stateParams.legEntity;

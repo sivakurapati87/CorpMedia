@@ -49,5 +49,8 @@ TaskAssignToEmployeeController : 'TaskAssignToEmployeeController',
 ProjectsController : 'ProjectsController',
 CompanyLeavePlanController : 'CompanyLeavePlanController',
 	AddLeaveTypeController : 'AddLeaveTypeController',
-	CompanyLeaveTypeController : 'CompanyLeaveTypeController'
+	CompanyLeaveTypeController : 'CompanyLeaveTypeController',
+ExitSettingsController : 'ExitSettingsController'
+
+
 };

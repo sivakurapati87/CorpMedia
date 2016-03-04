@@ -168,7 +168,7 @@
 									<td>{{emp.locationId}}</td>
 									<td>{{emp.strDateOfJoining}}</td>
 									<td>{{emp.roleId}}</td>
-									<td><a ng-click="editEmployee(employee)" tooltip="edit"
+									<td><a ng-click="editEmployee(emp)" tooltip="edit"
 										style="cursor: pointer; font-size: 12px"><i
 											class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
 										tooltip="delete"

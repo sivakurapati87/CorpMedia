@@ -53,11 +53,9 @@
 <script src="resources/js/controller/weekly_offs_Controller.js"></script>
 <script src="resources/js/controller/shifts_Controller.js"></script>
 <script src="resources/js/controller/timing_policies_Controller.js"></script>
-<script src="resources/js/controller/web_clock_in_Controller.js"></script>
 <script src="resources/js/controller/wfh_Controller.js"></script>
 <script src="resources/js/controller/categories_Controller.js"></script>
 <script src="resources/js/controller/tags_Controller.js"></script>
-<script src="resources/js/controller/welcome_screen_Controller.js"></script>
 <script src="resources/js/controller/on_boarding_Controller.js"></script>
 <script src="resources/js/controller/exit_settings_Controller.js"></script>
 <script src="resources/js/controller/assign_roles_Controller.js"></script>
@@ -65,7 +63,6 @@
 <script src="resources/js/controller/adhoc_components_Controller.js"></script>
 <script src="resources/js/controller/salary_component_structure_Controller.js"></script>
 <script src="resources/js/controller/provident_fund_Controller.js"></script>
-<script src="resources/js/controller/legal_and_bank_Controller.js"></script>
 <script src="resources/js/controller/employee_loan_settings_Controller.js"></script>
 <script src="resources/js/controller/job_titles_Controller.js"></script>
 <script src="resources/js/controller/employee_defaults_Controller.js"></script>
@@ -85,6 +82,8 @@
 <script src="resources/js/controller/client_work_hrs_Controller.js"></script>
 <script src="resources/js/controller/employee_timesheets_Controller.js"></script>
 <script src="resources/js/controller/Add_Leave_Type_Controller.js"></script>
+<script src="resources/js/controller/holidays_Controller.js"></script>
+
 
 <script src="resources/js/service/constants.js"></script>
 <script src="resources/js/service/HomeService.js"></script>

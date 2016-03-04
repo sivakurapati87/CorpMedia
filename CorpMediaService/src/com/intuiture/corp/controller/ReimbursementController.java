@@ -34,5 +34,11 @@ public class ReimbursementController {
 	public List<ReimbursementJson> getAllReimbursementList(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer companyId) {
 		return reimbursementService.getAllReimbursementList(companyId);
 	}
+	
+	@RequestMapping(value = "/deleteReimbursement/{reimbursementId}", method = RequestMethod.GET)
+	@ResponseBody
+	public Boolean deleteReimbursement(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer reimbursementId) {
+		return reimbursementService.deleteReimbursement(reimbursementId);
+	}
 
 }

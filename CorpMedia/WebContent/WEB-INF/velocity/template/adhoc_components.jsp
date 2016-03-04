@@ -31,8 +31,7 @@
 											Structure</a></li>
 									<li ng-class="{'active':(state==='provident_fund')}"><a
 										class="anchor-sm" ui-sref="provident_fund">Provident Fund</a></li>
-									<li ng-class="{'active':(state==='legal_and_bank')}"><a
-										class="anchor-sm" ui-sref="legal_and_bank">Legal and Bank</a></li>
+									
 									<li ng-class="{'active':(state==='employee_loan_settings')}"><a
 										class="anchor-sm" ui-sref="employee_loan_settings">Loan
 											Settings</a></li>
@@ -231,7 +230,7 @@
 										<tr ng-repeat="allowances in allowancesList" ng-class-odd="'odd'" 
 											ng-class-even="'even'" style="height: 30px">
 											<td>{{allowances.allowancesName}}</td>
-											<td><a ng-click="" tooltip="edit"
+											<td><a  data-toggle="modal" data-target="#myModal_adhoc" ng-click="editAllowances(allowances)" tooltip="edit"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
 												tooltip="delete" ng-click="deleteAllowances(allowances.allowancesId)"
@@ -252,10 +251,10 @@
 										<tr ng-repeat="deductions in deductionsList" ng-class-odd="'odd'" 
 											ng-class-even="'even'" style="height: 30px">
 											<td>{{deductions.deductionName}}</td>
-											<td><a ng-click="" tooltip="edit"
+											<td><a   data-toggle="modal" data-target="#myModal_deduction" ng-click="editDeductions(deductions)" tooltip="edit"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
-												tooltip="delete" ng-click=""
+												tooltip="delete" ng-click="deleteDeductions(deductions.deductionId)"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-trash"></i></a></td>
 										</tr>
@@ -397,10 +396,10 @@
 										<tr ng-repeat="reimbursement in reimbursementList" ng-class-odd="'odd'" 
 											ng-class-even="'even'" style="height: 30px">
 											<td>{{reimbursement.reimbursementName}}</td>
-											<td><a ng-click="" tooltip="edit"
+											<td><a  data-toggle="modal" data-target="#myModal_reimburse" ng-click="editReimbursement(reimbursement)" tooltip="edit"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
-												tooltip="delete" ng-click=""
+												tooltip="delete" ng-click="deleteReimbursement(reimbursement.reimbursementId)"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-trash"></i></a></td>
 										</tr>
@@ -418,10 +417,10 @@
 										<tr ng-repeat="bonuses in bonusesList" ng-class-odd="'odd'" 
 											ng-class-even="'even'" style="height: 30px">
 											<td>{{bonuses.bonusesName}}</td>
-											<td><a ng-click="" tooltip="edit"
+											<td><a   data-toggle="modal" data-target="#myModal_bonus" ng-click="editBonuses(bonuses)" tooltip="edit"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
-												tooltip="delete" ng-click=""
+												tooltip="delete" ng-click="deleteBonuses(bonuses.bonusesId)"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-trash"></i></a></td>
 										</tr>

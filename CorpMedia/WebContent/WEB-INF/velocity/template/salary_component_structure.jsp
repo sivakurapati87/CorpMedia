@@ -31,8 +31,7 @@
 											Structure</a></li>
 									<li ng-class="{'active':(state==='provident_fund')}"><a
 										class="anchor-sm" ui-sref="provident_fund">Provident Fund</a></li>
-									<li ng-class="{'active':(state==='legal_and_bank')}"><a
-										class="anchor-sm" ui-sref="legal_and_bank">Legal and Bank</a></li>
+									
 									<li ng-class="{'active':(state==='employee_loan_settings')}"><a
 										class="anchor-sm" ui-sref="employee_loan_settings">Loan
 											Settings</a></li>
@@ -635,7 +634,7 @@
 										<tr ng-repeat="customallowance in customAllowanceList" ng-class-odd="'odd'" 
 											ng-class-even="'even'" style="height: 30px">
 											<td>{{customallowance.Name}}</td>
-											<td><a ng-click="editCustomAllowance(customallowance)" tooltip="edit"
+											<td><a  data-toggle="modal" data-target="#custommodelpopupid"  ng-click="editCustomAllowance(customallowance)" tooltip="edit"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
 												tooltip="delete" ng-click="deleteCustomAllowance(customallowance.customAllowanceId)"

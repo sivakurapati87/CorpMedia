@@ -42,6 +42,7 @@ import com.intuiture.corp.entity.EmployeeExperienceInfo;
 import com.intuiture.corp.entity.EmployeeFamilyInfo;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.EmployeeProfessionalInfo;
+import com.intuiture.corp.entity.ExitSettings;
 import com.intuiture.corp.entity.FoodCoupons;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.ITInfo;
@@ -82,6 +83,7 @@ import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
+import com.intuiture.corp.json.ExitSettingsJson;
 import com.intuiture.corp.json.FoodCouponsJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.ITInfoJson;
@@ -703,6 +705,7 @@ public class TransformDomainToJson {
 		return taskAssignToEmployeeJson;
 	}
 
+
 	public static CompanyLeavePlansJson getCompanyLeavePlansJson(CompanyLeavePlans companyLeavePlans) {
 		CompanyLeavePlansJson companyLeavePlansJson = new CompanyLeavePlansJson();
 		companyLeavePlansJson.setCompanyId(companyLeavePlans.getCompanyId());
@@ -763,5 +766,16 @@ public class TransformDomainToJson {
 		companyLeaveTypeJson.setRestrictToId(companyLeaveType.getRestrictToId());
 		companyLeaveTypeJson.setCompanyLeaveTypeId(companyLeaveType.getCompanyLeaveTypeId());
 		return companyLeaveTypeJson;
+
+	
+	
+	public static ExitSettingsJson getExitSettingsJson(ExitSettings exitSettings) {
+		ExitSettingsJson exitSettingsJson = new ExitSettingsJson();
+		exitSettingsJson.setCompanyId(exitSettings.getCompanyId());
+		exitSettingsJson.setReason(exitSettings.getReason());
+		exitSettingsJson.setReasonTypeId(exitSettings.getReasonTypeId());
+		exitSettingsJson.setExitSettingsId(exitSettings.getExitSettingsId());
+		return exitSettingsJson;
+
 	}
 }

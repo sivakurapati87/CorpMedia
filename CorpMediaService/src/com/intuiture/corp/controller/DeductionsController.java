@@ -34,5 +34,11 @@ public class DeductionsController {
 	public List<DeductionsJson> getAllDeductionsList(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer companyId) {
 		return deductionsService.getAllDeductionsList(companyId);
 	}
+	
+	@RequestMapping(value = "/deleteDeductions/{deductionId}", method = RequestMethod.GET)
+	@ResponseBody
+	public Boolean deleteDeductions(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer deductionId) {
+		return deductionsService.deleteDeductions(deductionId);
+	}
 
 }

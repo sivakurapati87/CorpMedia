@@ -19,8 +19,7 @@
 							<div class="sub-page-navigation">
 								<ul>
 
-									<li ng-class="{'active':(state==='welcome_screen')}"><a
-										class="anchor-sm" ui-sref="welcome_screen">Welcome Screen</a></li>
+									
 									<li ng-class="{'active':(state==='on_boarding')}"><a
 										class="anchor-sm" ui-sref="on_boarding">Onboarding</a></li>
 									<li ng-class="{'active':(state==='exit_settings')}"><a

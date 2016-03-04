@@ -62,5 +62,18 @@ public class BonusesService {
 		}
 		return bonusesJsonList;
 	}
+	
+	public Boolean deleteBonuses(Integer bonusesId) {
+		try {
+			Bonuses bonuses = (Bonuses) commonRepository.findById(bonusesId, Bonuses.class);
+			if (bonuses != null) {
+				bonuses.setIsDeleted(Boolean.TRUE);
+				commonRepository.update(bonuses);
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 
 }
