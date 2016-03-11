@@ -1440,16 +1440,31 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 .ngSelectionCheckbox{
   display:none;
 }
+.compo_header{
+ height: 60px; padding-top:15px; background:#dde6f6;
+}
+/* .compo_header:hover{ color: #fff; font-size: px; text-shadow: 0px 0px 5px #000;}
+.compo_leftvalues:hover{ color: #000; font-size: 20px; text-shadow: 0px 0px 1px #fff; text-transform: uppercase;}
+.compo_rightvalues:hover{ color: #000; font-size: 20px; text-shadow: 0px 0px 1px #fff;}
+  */
+.compo_rightvalues{
+ border-left: solid 1px #dde6f6;  height:50px; padding-top:15px;
+}
+.compo_leftvalues{
+ height:50px; padding-top:15px;
+}
+.popup_right {
+	float: left;
+	height: 250px;
+	width: 300px;
+	background: #fff;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.popup_left {
+	float: left;
+	height: 250px;
+	width: 240px;
+	margin-right: 10px;
+	background: #ddd;
+	border-radius: 0px 0px 10px 10px;
+}

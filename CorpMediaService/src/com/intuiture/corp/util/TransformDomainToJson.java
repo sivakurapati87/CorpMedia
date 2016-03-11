@@ -45,6 +45,7 @@ import com.intuiture.corp.entity.EmployeeProfessionalInfo;
 import com.intuiture.corp.entity.ExitSettings;
 import com.intuiture.corp.entity.FoodCoupons;
 import com.intuiture.corp.entity.GeneralSettings;
+import com.intuiture.corp.entity.GratuityContribution;
 import com.intuiture.corp.entity.Holidays;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
@@ -54,7 +55,10 @@ import com.intuiture.corp.entity.MedicalReimbursement;
 import com.intuiture.corp.entity.PFInfo;
 import com.intuiture.corp.entity.PayrollCycleSettings;
 import com.intuiture.corp.entity.ProfessionalAllowance;
+import com.intuiture.corp.entity.Projects;
 import com.intuiture.corp.entity.Reimbursement;
+import com.intuiture.corp.entity.SalaryComponent;
+import com.intuiture.corp.entity.Shifts;
 import com.intuiture.corp.entity.Tags;
 import com.intuiture.corp.entity.TaskAssignToEmployee;
 import com.intuiture.corp.entity.TaskAssignToHr;
@@ -89,6 +93,7 @@ import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
 import com.intuiture.corp.json.ExitSettingsJson;
 import com.intuiture.corp.json.FoodCouponsJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
+import com.intuiture.corp.json.GratuityContributionJson;
 import com.intuiture.corp.json.HolidaysJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
@@ -98,7 +103,10 @@ import com.intuiture.corp.json.MedicalReimbursementJson;
 import com.intuiture.corp.json.PFInfoJson;
 import com.intuiture.corp.json.PayrollCycleSettingsJson;
 import com.intuiture.corp.json.ProfessionalAllowanceJson;
+import com.intuiture.corp.json.ProjectsJson;
 import com.intuiture.corp.json.ReimbursementJson;
+import com.intuiture.corp.json.SalaryComponentJson;
+import com.intuiture.corp.json.ShiftsJson;
 import com.intuiture.corp.json.TagsJson;
 import com.intuiture.corp.json.TaskAssignToEmployeeJson;
 import com.intuiture.corp.json.TaskAssignToHrJson;
@@ -617,6 +625,7 @@ public class TransformDomainToJson {
 		medicalReimbursementJson.setCompanyId(medicalReimbursement.getCompanyId());
 		medicalReimbursementJson.setMaxAnnualLimit(medicalReimbursement.getMaxAnnualLimit());
 		medicalReimbursementJson.setRequireSubmissionId(medicalReimbursement.getRequireSubmissionId());
+		medicalReimbursementJson.setMedicalReimbursementId(medicalReimbursement.getMedicalReimbursementId());
 		return medicalReimbursementJson;
 	}
 
@@ -625,6 +634,7 @@ public class TransformDomainToJson {
 		transportAllowanceJson.setCompanyId(transportAllowance.getCompanyId());
 		transportAllowanceJson.setMaxAnnualLimit(transportAllowance.getMaxAnnualLimit());
 		transportAllowanceJson.setRequireSubmissionId(transportAllowance.getRequireSubmissionId());
+		transportAllowanceJson.setTransportAllowanceId(transportAllowance.getTransportAllowanceId());
 		return transportAllowanceJson;
 	}
 
@@ -633,6 +643,7 @@ public class TransformDomainToJson {
 		professionalAllowanceJson.setCompanyId(professionalAllowance.getCompanyId());
 		professionalAllowanceJson.setMaxAnnualLimit(professionalAllowance.getMaxAnnualLimit());
 		professionalAllowanceJson.setRequireSubmissionId(professionalAllowance.getRequireSubmissionId());
+		professionalAllowanceJson.setProfessionalAllowanceId(professionalAllowance.getProfessionalAllowanceId());
 		return professionalAllowanceJson;
 	}
 
@@ -641,6 +652,7 @@ public class TransformDomainToJson {
 		travelReimbursementJson.setCompanyId(travelReimbursement.getCompanyId());
 		travelReimbursementJson.setMaxAnnualLimit(travelReimbursement.getMaxAnnualLimit());
 		travelReimbursementJson.setRequireSubmissionId(travelReimbursement.getRequireSubmissionId());
+		travelReimbursementJson.setTravelReimbursementId(travelReimbursement.getTravelReimbursementId());
 		return travelReimbursementJson;
 	}
 
@@ -649,6 +661,7 @@ public class TransformDomainToJson {
 		foodCouponsJson.setCompanyId(foodCoupons.getCompanyId());
 		foodCouponsJson.setMaxAnnualLimit(foodCoupons.getMaxAnnualLimit());
 		foodCouponsJson.setRequireSubmissionId(foodCoupons.getRequireSubmissionId());
+		foodCouponsJson.setFoodCouponsId(foodCoupons.getFoodCouponsId());
 		return foodCouponsJson;
 	}
 
@@ -657,6 +670,7 @@ public class TransformDomainToJson {
 		cityCompensatoryAllowanceJson.setCompanyId(cityCompensatoryAllowance.getCompanyId());
 		cityCompensatoryAllowanceJson.setMaxAnnualLimit(cityCompensatoryAllowance.getMaxAnnualLimit());
 		cityCompensatoryAllowanceJson.setRequireSubmissionId(cityCompensatoryAllowance.getRequireSubmissionId());
+		cityCompensatoryAllowanceJson.setCityCompensatoryAllowanceId(cityCompensatoryAllowance.getCityCompensatoryAllowanceId());
 		return cityCompensatoryAllowanceJson;
 	}
 
@@ -665,6 +679,7 @@ public class TransformDomainToJson {
 		dailyAllowanceJson.setCompanyId(dailyAllowance.getCompanyId());
 		dailyAllowanceJson.setMaxAnnualLimit(dailyAllowance.getMaxAnnualLimit());
 		dailyAllowanceJson.setRequireSubmissionId(dailyAllowance.getRequireSubmissionId());
+		dailyAllowanceJson.setDailyAllowanceId(dailyAllowance.getDailyAllowanceId());
 		return dailyAllowanceJson;
 	}
 
@@ -836,5 +851,82 @@ public class TransformDomainToJson {
 		payrollCycleSettingsJson.setPayrollCycleSettingsId(payrollCycleSettings.getPayrollCycleSettingsId());
 		payrollCycleSettingsJson.setStrPayPeriodEndDayId(convertIntegerToString(payrollCycleSettings.getPayPeriodEndDayId()));
 		return payrollCycleSettingsJson;
+	}
+
+	public static ProjectsJson getProjectsJson(Projects projects) {
+		ProjectsJson projectsJson = new ProjectsJson();
+		projectsJson.setCompanyId(projects.getCompanyId());
+		projectsJson.setProjectsId(projects.getProjectsId());
+		projectsJson.setProjectName(projects.getProjectName());
+		projectsJson.setStatusId(projects.getStatusId());
+		projectsJson.setStrEndDate(convertDateToString(projects.getEndDate()));
+		projectsJson.setStrStartDate(convertDateToString(projects.getStartDate()));
+		projectsJson.setDescription(projects.getDescription());
+		projectsJson.setIsProjectAssignToAllEmployees(projects.getIsProjectAssignToAllEmployees());
+		projectsJson.setClientsId(projects.getClientsId());
+		if (projects.getStatus() != null) {
+			projectsJson.setStatus(projects.getStatus().getDescription());
+		}
+		if (projects.getClients() != null) {
+			projectsJson.setClient(projects.getClients().getClientName());
+		}
+		return projectsJson;
+	}
+
+	public static ShiftsJson getShiftsJson(Shifts shifts) {
+		ShiftsJson shiftsJson = new ShiftsJson();
+		shiftsJson.setCompanyId(shifts.getCompanyId());
+		shiftsJson.setShiftsId(shifts.getShiftsId());
+		shiftsJson.setShiftName(shifts.getShiftName());
+		shiftsJson.setStartTimeHrs(shifts.getStartTimeHrs());
+		shiftsJson.setStartTimeMns(shifts.getStartTimeMns());
+		shiftsJson.setStartTimeType(shifts.getStartTimeType());
+		shiftsJson.setToTimeHrs(shifts.getToTimeHrs());
+		shiftsJson.setToTimeMns(shifts.getToTimeMns());
+		shiftsJson.setToTimeType(shifts.getToTimeType());
+		shiftsJson.setBreakDuratation(shifts.getBreakDuratation());
+		return shiftsJson;
+	}
+
+	public static GratuityContributionJson getGratuityContributionJson(GratuityContribution gratuityContribution) {
+		GratuityContributionJson gratuityContributionJson = new GratuityContributionJson();
+		gratuityContributionJson.setCompanyId(gratuityContribution.getCompanyId());
+		gratuityContributionJson.setGratuityContributionId(gratuityContribution.getGratuityContributionId());
+		gratuityContributionJson.setMaxAnnualLimit(gratuityContribution.getMaxAnnualLimit());
+		return gratuityContributionJson;
+	}
+
+	public static SalaryComponentJson getSalaryComponentJson(SalaryComponent salaryComponent) {
+		SalaryComponentJson salaryComponentJson = new SalaryComponentJson();
+		salaryComponentJson.setCompanyId(salaryComponent.getCompanyId());
+		salaryComponentJson.setBasic(salaryComponent.getBasic());
+		salaryComponentJson.setHra(salaryComponent.getHra());
+		if (salaryComponent.getCityCompensatoryAllowance() != null) {
+			salaryComponentJson.setCityCompensatoryAllowance(salaryComponent.getCityCompensatoryAllowance().getMaxAnnualLimit());
+		}
+		if (salaryComponent.getDailyAllowance() != null) {
+			salaryComponentJson.setDailyAllowance(salaryComponent.getDailyAllowance().getMaxAnnualLimit());
+		}
+		if (salaryComponent.getFoodCoupons() != null) {
+			salaryComponentJson.setFoodCoupons(salaryComponent.getFoodCoupons().getMaxAnnualLimit());
+		}
+		if (salaryComponent.getGratuityContribution() != null) {
+			salaryComponentJson.setGratuityContribution(salaryComponent.getGratuityContribution().getMaxAnnualLimit());
+		}
+		if (salaryComponent.getMedicalReimbursement() != null) {
+			salaryComponentJson.setMedicalReimbursement(salaryComponent.getMedicalReimbursement().getMaxAnnualLimit());
+		}
+		if (salaryComponent.getProfessionalAllowance() != null) {
+			salaryComponentJson.setProfessionalAllowance(salaryComponent.getProfessionalAllowance().getMaxAnnualLimit());
+		}
+		if (salaryComponent.getTransportAllowance() != null) {
+			salaryComponentJson.setTransportAllowance(salaryComponent.getTransportAllowance().getMaxAnnualLimit());
+		}
+		if (salaryComponent.getTravelReimbursement() != null) {
+			salaryComponentJson.setTravelReimbursement(salaryComponent.getTravelReimbursement().getMaxAnnualLimit());
+		}
+		salaryComponentJson.setSalaryComponentId(salaryComponent.getSalaryComponentId());
+		salaryComponentJson.setPf(salaryComponent.getPf());
+		return salaryComponentJson;
 	}
 }

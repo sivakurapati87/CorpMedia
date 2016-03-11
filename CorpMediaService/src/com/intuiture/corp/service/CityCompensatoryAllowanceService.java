@@ -1,7 +1,5 @@
 package com.intuiture.corp.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,25 +37,18 @@ public class CityCompensatoryAllowanceService {
 		}
 		return true;
 	}
-	
-	
-	
-	@SuppressWarnings("unchecked")
+
 	public CityCompensatoryAllowanceJson getCityCompensatoryAllowanceList(Integer companyId) {
 		CityCompensatoryAllowanceJson cityCompensatoryAllowanceJson = null;
 		try {
-			List<CityCompensatoryAllowance> cityCompensatoryAllowanceList = (List<CityCompensatoryAllowance>) commonRepository.getAllRecordsByCompanyId(companyId, CityCompensatoryAllowance.class);
-			if (cityCompensatoryAllowanceList != null && cityCompensatoryAllowanceList.size() > 0) {
-				for (CityCompensatoryAllowance cityCompensatoryAllowance : cityCompensatoryAllowanceList) {
-					cityCompensatoryAllowanceJson =TransformDomainToJson.getCityCompensatoryAllowanceJson(cityCompensatoryAllowance);
-				}
+			CityCompensatoryAllowance cityCompensatoryAllowance = (CityCompensatoryAllowance) commonRepository.getRecordByCompanyId(companyId, CityCompensatoryAllowance.class);
+			if (cityCompensatoryAllowance != null) {
+				cityCompensatoryAllowanceJson = TransformDomainToJson.getCityCompensatoryAllowanceJson(cityCompensatoryAllowance);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return cityCompensatoryAllowanceJson;
 	}
-	
-	
 
 }

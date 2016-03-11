@@ -16,21 +16,16 @@ import com.intuiture.corp.util.TransformJsonToDomain;
 @Service
 @Transactional
 public class TravelReimbursementService {
-	
+
 	@Autowired
 	private CommonRepository commonRepository;
-	@Autowired
-	private TravelReimbursementRepository travelReimbursementRepository;
-	
-	
-	
+
 	public Boolean saveTravelReimbursement(TravelReimbursementJson travelReimbursementJson) {
 		TravelReimbursement travelReimbursement = null;
 
-		
 		try {
 			if (travelReimbursementJson.getTravelReimbursementId() != null) {
-				travelReimbursement = travelReimbursementRepository.findbyId(travelReimbursementJson.getTravelReimbursementId());
+				travelReimbursement = (TravelReimbursement) commonRepository.findById(travelReimbursementJson.getTravelReimbursementId(), TravelReimbursement.class);
 			} else {
 				travelReimbursement = new TravelReimbursement();
 			}
@@ -45,23 +40,18 @@ public class TravelReimbursementService {
 		}
 		return true;
 	}
-	
-	@SuppressWarnings("unchecked")
+
 	public TravelReimbursementJson getTravelReimbursementList(Integer companyId) {
 		TravelReimbursementJson travelReimbursementJson = null;
 		try {
-			List<TravelReimbursement> travelReimbursementList = (List<TravelReimbursement>) commonRepository.getAllRecordsByCompanyId(companyId, TravelReimbursement.class);
-			if (travelReimbursementList != null && travelReimbursementList.size() > 0) {
-				for (TravelReimbursement travelReimbursement : travelReimbursementList) {
-					travelReimbursementJson =TransformDomainToJson.getTravelReimbursementJson(travelReimbursement);
-				}
+			TravelReimbursement travelReimbursement = (TravelReimbursement) commonRepository.getRecordByCompanyId(companyId, TravelReimbursement.class);
+			if (travelReimbursement != null) {
+				travelReimbursementJson = TransformDomainToJson.getTravelReimbursementJson(travelReimbursement);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return travelReimbursementJson;
 	}
-	
-	
 
 }

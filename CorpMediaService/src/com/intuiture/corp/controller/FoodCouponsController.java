@@ -17,20 +17,20 @@ import com.intuiture.corp.service.FoodCouponsService;
 @Controller
 @RequestMapping("/FoodCouponsController")
 public class FoodCouponsController {
-	
+
 	@Autowired
 	private FoodCouponsService foodCouponsService;
-	
+
 	@RequestMapping(value = "/saveFoodCoupons", method = RequestMethod.POST)
 	@ResponseBody
 	public Boolean saveFoodCoupons(HttpServletRequest request, HttpServletResponse response, @RequestBody FoodCouponsJson foodCouponsJson) {
 		return foodCouponsService.saveFoodCoupons(foodCouponsJson);
 	}
-	
+
 	@RequestMapping(value = "/getFoodCouponsList/{companyId}", method = RequestMethod.GET)
 	@ResponseBody
 	public FoodCouponsJson getFoodCouponsList(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer companyId) {
-		return foodCouponsService.getFoodCouponsList(companyId);
+		return foodCouponsService.getFoodCouponsJson(companyId);
 	}
 
 }

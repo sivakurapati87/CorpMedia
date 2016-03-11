@@ -31,7 +31,8 @@
 											Structure</a></li>
 									<li ng-class="{'active':(state==='provident_fund')}"><a
 										class="anchor-sm" ui-sref="provident_fund">Provident Fund</a></li>
-									
+									<li ng-class="{'active':(state==='legal_and_bank')}"><a
+										class="anchor-sm" ui-sref="legal_and_bank">Legal and Bank</a></li>
 									<li ng-class="{'active':(state==='employee_loan_settings')}"><a
 										class="anchor-sm" ui-sref="employee_loan_settings">Loan
 											Settings</a></li>
@@ -55,6 +56,7 @@
 								<div class="col-md-10">
 									<p>
 										<font size="3">Salary components</font>
+										<a  ui-sref="Salary_component" href="#">click here </a>
 									</p>
 									<p>
 										<font size="2"><b>In this section,you can set up
@@ -131,7 +133,7 @@
 
 									<!--this is first box for medical allowance-->
 									<div class="w3-container w3-border"
-										style="background-color: #5e6b7c">
+										style="background-color: #ceddde">
 										<p></p>
 
 										<h>Medical reimbursement</h>
@@ -194,7 +196,7 @@
 									<!--this is second box for transport allowance-->
 									<p></p>
 									<div class="w3-container w3-border"
-										style="background-color: #5e6b7c">
+										style="background-color: #ceddde">
 										<p></p>
 										<h>Transport allowance</h>
 										<p>
@@ -255,7 +257,7 @@
 									<!--this is third box for professional allowance-->
 									<p></p>
 									<div class="w3-container w3-border"
-										style="background-color: #5e6b7c">
+										style="background-color: #ceddde">
 										<p></p>
 										<h>Professional allowance</h>
 										<p>
@@ -310,7 +312,7 @@
 									<!--this is fourth box for travel reimbursement-->
 									<p></p>
 									<div class="w3-container w3-border"
-										style="background-color: #5e6b7c">
+										style="background-color: #ceddde">
 										<p></p>
 										<h>Travel reimbursement</h>
 										<p>
@@ -366,7 +368,7 @@
 									<!--this is fifth box for food allowance-->
 									<p></p>
 									<div class="w3-container w3-border"
-										style="background-color: #5e6b7c">
+										style="background-color: #ceddde">
 										<p></p>
 										<h>Food coupons</h>
 										<p>
@@ -419,7 +421,7 @@
 									<!--this is sixth box for compensatory allowance-->
 									<p></p>
 									<div class="w3-container w3-border"
-										style="background-color: #5e6b7c">
+										style="background-color: #ceddde">
 										<p></p>
 										<h>City compensatory allowance</h>
 										<p>
@@ -472,7 +474,7 @@
 									<!--this is seventh box for daily allowance-->
 									<p></p>
 									<div class="w3-container w3-border"
-										style="background-color: #5e6b7c">
+										style="background-color: #ceddde">
 										<p></p>
 										<h>Daily allowance</h>
 										<p>
@@ -634,7 +636,7 @@
 										<tr ng-repeat="customallowance in customAllowanceList" ng-class-odd="'odd'" 
 											ng-class-even="'even'" style="height: 30px">
 											<td>{{customallowance.Name}}</td>
-											<td><a  data-toggle="modal" data-target="#custommodelpopupid"  ng-click="editCustomAllowance(customallowance)" tooltip="edit"
+											<td><a ng-click="editCustomAllowance(customallowance)" tooltip="edit"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
 												tooltip="delete" ng-click="deleteCustomAllowance(customallowance.customAllowanceId)"

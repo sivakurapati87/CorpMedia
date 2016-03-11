@@ -1,6 +1,6 @@
 'use strict';
 
-var App = angular.module('myApp',['ui.router','ui.bootstrap',"angucomplete-alt","ngGrid","ImageCropper"]);
+var App = angular.module('myApp',['ui.router','ui.bootstrap',"angucomplete-alt","ngGrid","ImageCropper","nvd3"]);
 App.directive("autoSubmit", function($timeout) {
     return {
         link: function(scope, element, attrs) {
@@ -650,6 +650,19 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	            }
 	        }
 	})
+	.state('Salary_component', {
+		url : "/Salary_component",
+		views : {
+			'content' : {
+				templateUrl : 'Salary_component',
+				controller : "Salary_component_Controller"
+			},
+			'footer' : {
+				templateUrl : 'footer'
+			}
+		}
+	})
+
 	
 	
 	

@@ -19,6 +19,7 @@ import com.intuiture.corp.entity.CityCompensatoryAllowance;
 import com.intuiture.corp.entity.Clients;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
+import com.intuiture.corp.entity.CompanyClientWorkHours;
 import com.intuiture.corp.entity.CompanyEmployeeDefaults;
 import com.intuiture.corp.entity.CompanyInfo;
 import com.intuiture.corp.entity.CompanyLeavePlans;
@@ -30,6 +31,7 @@ import com.intuiture.corp.entity.CustomAllowance;
 import com.intuiture.corp.entity.DailyAllowance;
 import com.intuiture.corp.entity.Deductions;
 import com.intuiture.corp.entity.Department;
+import com.intuiture.corp.entity.DeptWorkHours;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.EmployeeAddressInfo;
@@ -56,6 +58,7 @@ import com.intuiture.corp.entity.ProjectDetails;
 import com.intuiture.corp.entity.Projects;
 import com.intuiture.corp.entity.Reimbursement;
 import com.intuiture.corp.entity.Reports;
+import com.intuiture.corp.entity.SalaryComponent;
 import com.intuiture.corp.entity.Shifts;
 import com.intuiture.corp.entity.Tags;
 import com.intuiture.corp.entity.TaskAssignToEmployee;
@@ -71,6 +74,7 @@ import com.intuiture.corp.json.BonusesJson;
 //github.com/sivakurapati87/CorpMedia.git
 import com.intuiture.corp.json.CategoriesJson;
 import com.intuiture.corp.json.CityCompensatoryAllowanceJson;
+import com.intuiture.corp.json.ClientWorkHoursJson;
 import com.intuiture.corp.json.ClientsJson;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
@@ -83,6 +87,7 @@ import com.intuiture.corp.json.CustomAllowanceJson;
 import com.intuiture.corp.json.DailyAllowanceJson;
 import com.intuiture.corp.json.DeductionsJson;
 import com.intuiture.corp.json.DepartmentJson;
+import com.intuiture.corp.json.DeptWorkHoursJson;
 import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.EmployeeEducationalInfoJson;
 import com.intuiture.corp.json.EmployeeExperienceInfoJson;
@@ -107,6 +112,7 @@ import com.intuiture.corp.json.ProjectDetailsJson;
 import com.intuiture.corp.json.ProjectsJson;
 import com.intuiture.corp.json.ReimbursementJson;
 import com.intuiture.corp.json.ReportsJson;
+import com.intuiture.corp.json.SalaryComponentJson;
 import com.intuiture.corp.json.ShiftsJson;
 import com.intuiture.corp.json.TagsJson;
 import com.intuiture.corp.json.TaskAssignToEmployeeJson;
@@ -728,7 +734,8 @@ public class TransformJsonToDomain {
 		projects.setCreatedOn(new Date());
 		projects.setIsDeleted(Boolean.FALSE);
 		projects.setProjectName(projectsJson.getProjectName());
-		projects.setClient(projectsJson.getClient());
+		// projects.setClient(projectsJson.getClient());
+		projects.setClientsId(projectsJson.getClientsId());
 		projects.setStartDate(projectsJson.getStartDate());
 		projects.setEndDate(projectsJson.getEndDate());
 		projects.setDescription(projectsJson.getDescription());
@@ -823,4 +830,53 @@ public class TransformJsonToDomain {
 		leavesNotify.setNotifyEmpId(leavesNotifyJson.getNotifyEmpId());
 	}
 
+	public static void getClientWorkHours(CompanyClientWorkHours clientWorkHours, ClientWorkHoursJson clientWorkHoursJson) {
+		if (clientWorkHoursJson.getClientWorkHourId() == null) {
+			clientWorkHours.setCreateOn(new Date());
+		} else {
+			clientWorkHours.setUpdatedOn(new Date());
+		}
+		clientWorkHours.setCompanyId(clientWorkHoursJson.getCompanyId());
+		clientWorkHours.setClientId(clientWorkHoursJson.getClientsId());
+		clientWorkHours.setClientFrom(clientWorkHoursJson.getFrom());
+		clientWorkHours.setClientTo(clientWorkHoursJson.getFrom());
+		clientWorkHours.setIsDeleted(Boolean.FALSE);
+	}
+
+	public static void getDeptWorkHours(DeptWorkHours deptWorkHours, DeptWorkHoursJson deptWorkHoursJson) {
+		if (deptWorkHoursJson.getDeptWorkHourId() == null) {
+			deptWorkHours.setCreateOn(new Date());
+		} else {
+			deptWorkHours.setUpdatedOn(new Date());
+		}
+		deptWorkHours.setCompanyId(deptWorkHoursJson.getCompanyId());
+		deptWorkHours.setDepartmentId(deptWorkHoursJson.getDepartmentId());
+		deptWorkHours.setGroupById(deptWorkHoursJson.getGroupById());
+		deptWorkHours.setDeptFrom(deptWorkHoursJson.getFrom());
+		deptWorkHours.setDeptTo(deptWorkHoursJson.getFrom());
+		deptWorkHours.setIncludeNonbillableHours(deptWorkHoursJson.getIncludeNonbillableHours());
+
+		deptWorkHours.setIsDeleted(Boolean.FALSE);
+	}
+
+	public static void getSalaryComponent(SalaryComponent salaryComponent, SalaryComponentJson salaryComponentJson) {
+		if (salaryComponentJson.getSalaryComponentId() == null) {
+			salaryComponent.setCreatedOn(new Date());
+		} else {
+			salaryComponent.setUpdatedOn(new Date());
+		}
+		salaryComponent.setCompanyId(salaryComponentJson.getCompanyId());
+		salaryComponent.setIsDeleted(Boolean.FALSE);
+		salaryComponent.setBasic(salaryComponentJson.getBasic());
+		salaryComponent.setHra(salaryComponentJson.getHra());
+
+		salaryComponent.getCityCompensatoryAllowance().setMaxAnnualLimit(salaryComponentJson.getCityCompensatoryAllowance());
+		salaryComponent.getDailyAllowance().setMaxAnnualLimit(salaryComponentJson.getDailyAllowance());
+		salaryComponent.getFoodCoupons().setMaxAnnualLimit(salaryComponentJson.getFoodCoupons());
+		salaryComponent.getGratuityContribution().setMaxAnnualLimit(salaryComponentJson.getGratuityContribution());
+		salaryComponent.getMedicalReimbursement().setMaxAnnualLimit(salaryComponentJson.getMedicalReimbursement());
+		salaryComponent.getProfessionalAllowance().setMaxAnnualLimit(salaryComponentJson.getProfessionalAllowance());
+		salaryComponent.getTransportAllowance().setMaxAnnualLimit(salaryComponentJson.getTransportAllowance());
+		salaryComponent.getTravelReimbursement().setMaxAnnualLimit(salaryComponentJson.getTravelReimbursement());
+	}
 }

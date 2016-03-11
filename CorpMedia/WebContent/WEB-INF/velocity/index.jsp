@@ -7,13 +7,16 @@
 <!--   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 
   <!--jquery for image-->
-<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<!-- <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+<!-- <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script> -->
+
+
 
 
 <script src="webjars/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
     <script src="resources/js/typed.js" type="text/javascript"></script>
 <link rel="stylesheet" href="resources/css/angucomplete-alt.css" />
+<link rel="stylesheet" href="resources/css/nv.d3.min.css" />
 <link rel="stylesheet"
 	href="webjars/font-awesome/4.3.0/css/font-awesome.css">
 <link rel="stylesheet"
@@ -28,14 +31,18 @@
 <script
 	src="webjars/angularjs/1.4.4/angular.js"></script>
 <script src="resources/js/angucomplete-alt.js"></script>
+<script src="resources/js/d3.min.js"></script>
+<script src="resources/js/nv.d3.min.js"></script>
+<script src="resources/js/angular-nvd3.js"></script>
+
 
 <!-- <script -->
 <!-- 	src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script> -->
 <script src="resources/js/angular-ui-router.js"></script>
 <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.2/ui-bootstrap-tpls.js"></script>
-	
+<!-- <script -->
+<!-- 	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.2/ui-bootstrap-tpls.js"></script> -->
+	<script src="resources/js/ui-bootstrap-tpls.js"></script>
 	<script src="resources/js/ng-grid.js"></script>
 	 <script src="resources/js/image-crop.js"></script>
 	 
@@ -93,7 +100,7 @@
 <script src="resources/js/controller/Notify_Controller.js"></script>
 <script src="resources/js/controller/All_Employee_Controller.js"></script>
 <script src="resources/js/controller/Employee_Info_Controller.js"></script>
-
+<script src="resources/js/controller/Salary_component_Controller.js"></script>
 
 <script src="resources/js/service/constants.js"></script>
 <script src="resources/js/service/HomeService.js"></script>

@@ -10,6 +10,20 @@ service_context : 'CorpMediaService',
 LastDayOfTheMonth : 'Last Day Of The Month',
 ENDOFDAY : 293,
 MAXENDOF_DAY : "100",
+BASIC : 'Basic',
+HRA : 'HRA',
+PF : 'PF Employee',
+Medical : 'Medical Reimbursement',
+Transport : 'Transport Allowance',
+Special_Allowance : 'Special Allowance',
+Professional_Allowance : 'Professional Allowance',
+Travel_Reimbursement : 'Travel Reimbursement',
+Food_Coupons : 'Food Coupons',
+City_Compensatory_Allowance : 'City Compensatory Allowance',
+Daily_Allowance : 'Daily Allowance',
+Employee_Gratuity_contribution : 'Employee Gratuity contribution',
+
+
 // controllers
 COMP_SIGNATOR : 'CompanySignatorController',
 LookUpController :'LookUpController',
@@ -56,7 +70,9 @@ AddLeaveTypeController : 'AddLeaveTypeController',
 CompanyLeaveTypeController : 'CompanyLeaveTypeController',
 ExitSettingsController : 'ExitSettingsController',
 HolidayController : 'HolidayController',
-NotifyController: 'NotifyController'
-
+NotifyController: 'NotifyController',
+ClientWorkHoursController : 'ClientWorkHoursController',
+DeptWorkHoursController : 'DeptWorkHoursController',
+SalaryComponentController : 'SalaryComponentController'
 
 };

@@ -162,6 +162,11 @@ public class TemplateController {// Serves Templates.
 		return "template/salary_component_structure";
 	}
 
+	@RequestMapping(value = "/Salary_component")
+	public String salary_component() {
+		return "template/Salary_component";
+	}
+
 	@RequestMapping(value = "/provident_fund")
 	public String provident_fund() {
 		return "template/provident_fund";

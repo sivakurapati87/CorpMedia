@@ -16,21 +16,16 @@ import com.intuiture.corp.util.TransformJsonToDomain;
 @Service
 @Transactional
 public class DailyAllowanceService {
-	
+
 	@Autowired
 	private CommonRepository commonRepository;
-	@Autowired
-	private DailyAllowanceRepository dailyAllowanceRepository;
-	
-	
-	
+
 	public Boolean saveDailyAllowance(DailyAllowanceJson dailyAllowanceJson) {
 		DailyAllowance dailyAllowance = null;
 
-		
 		try {
 			if (dailyAllowanceJson.getDailyAllowanceId() != null) {
-				dailyAllowance = dailyAllowanceRepository.findbyId(dailyAllowanceJson.getDailyAllowanceId());
+				dailyAllowance = (DailyAllowance) commonRepository.findById(dailyAllowanceJson.getDailyAllowanceId(), DailyAllowance.class);
 			} else {
 				dailyAllowance = new DailyAllowance();
 			}
@@ -45,24 +40,18 @@ public class DailyAllowanceService {
 		}
 		return true;
 	}
-	
-	
-	@SuppressWarnings("unchecked")
+
 	public DailyAllowanceJson getDailyAllowanceList(Integer companyId) {
 		DailyAllowanceJson dailyAllowanceJson = null;
 		try {
-			List<DailyAllowance> dailyAllowanceList = (List<DailyAllowance>) commonRepository.getAllRecordsByCompanyId(companyId, DailyAllowance.class);
-			if (dailyAllowanceList != null && dailyAllowanceList.size() > 0) {
-				for (DailyAllowance dailyAllowance : dailyAllowanceList) {
-					dailyAllowanceJson =TransformDomainToJson.getDailyAllowanceJson(dailyAllowance);
-				}
+			DailyAllowance dailyAllowance = (DailyAllowance) commonRepository.getRecordByCompanyId(companyId, DailyAllowance.class);
+			if (dailyAllowance != null) {
+				dailyAllowanceJson = TransformDomainToJson.getDailyAllowanceJson(dailyAllowance);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return dailyAllowanceJson;
 	}
-	
-	
 
 }

@@ -19,11 +19,11 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		
 		//Save medicalreimbursement
 		$scope.saveMedicalReimbursement = function(){
-			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.medicalreimbursement.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.MedicalReimbursementController+'/saveMedicalReimbursement', $scope.medicalreimbursement).success(function(data) {
-	        }).error(function() {
+				 $('#medicalmodelpopupid').modal('hide');
+			}).error(function() {
 	      	  console.error('Could not save or update medicalreimbursement');
 	        });}
 		};
@@ -44,11 +44,11 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		
 		//Save transport allowance
 		$scope.saveTransportAllowance = function(){
-			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.transportallowance.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.TransportAllowanceController+'/saveTransportAllowance', $scope.transportallowance).success(function(data) {
-	        }).error(function() {
+				 $('#transportmodelpopupid').modal('hide');
+			}).error(function() {
 	      	  console.error('Could not save or update transportallowance');
 	        });}
 		};
@@ -69,11 +69,11 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		
 		//Save professional allowance
 		$scope.saveProfessionalAllowance = function(){
-			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.professionalallowance.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.ProfessionalAllowanceController+'/saveProfessionalAllowance', $scope.professionalallowance).success(function(data) {
-	        }).error(function() {
+				 $('#professionalmodelpopupid').modal('hide');
+			}).error(function() {
 	      	  console.error('Could not save or update professionalallowance');
 	        });}
 		};
@@ -93,11 +93,11 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		
 		//Save travel reimbursement
 		$scope.saveTravelReimbursement = function(){
-			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.travelreimbursement.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.TravelReimbursementController+'/saveTravelReimbursement', $scope.travelreimbursement).success(function(data) {
-	        }).error(function() {
+				 $('#travelmodelpopupid').modal('hide');
+			}).error(function() {
 	      	  console.error('Could not save or update travelreimbursement');
 	        });}
 		};
@@ -115,24 +115,24 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		// init 
 		$scope.getTravelReimbursementList();
 		
-		//Save travelreimbursement
-		$scope.saveTravelReimbursement = function(){
-			alert($rootScope.selectedCompanyObj.companyId);
-			if($rootScope.selectedCompanyObj){
-				$scope.travelreimbursement.companyId = $rootScope.selectedCompanyObj.companyId;
-			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.TravelReimbursementController+'/saveTravelReimbursement', $scope.travelreimbursement).success(function(data) {
-	        }).error(function() {
-	      	  console.error('Could not save or update travelreimbursement');
-	        });}
-		};
+//		//Save travelreimbursement
+//		$scope.saveTravelReimbursement = function(){
+//			alert($rootScope.selectedCompanyObj.companyId);
+//			if($rootScope.selectedCompanyObj){
+//				$scope.travelreimbursement.companyId = $rootScope.selectedCompanyObj.companyId;
+//			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.TravelReimbursementController+'/saveTravelReimbursement', $scope.travelreimbursement).success(function(data) {
+//	        }).error(function() {
+//	      	  console.error('Could not save or update travelreimbursement');
+//	        });}
+//		};
 		
 		//Save city compensatory allowance
 		$scope.saveCityCompensatoryAllowance = function(){
-			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.citycompensatoryallowance.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.CityCompensatoryAllowanceController+'/saveCityCompensatoryAllowance', $scope.citycompensatoryallowance).success(function(data) {
-	        }).error(function() {
+				$('#citymodelpopupid').modal('hide');
+			}).error(function() {
 	      	  console.error('Could not save or update citycompensatoryallowance');
 	        });}
 		};
@@ -152,11 +152,11 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		
 		//Save daily allowance
 		$scope.saveDailyAllowance = function(){
-			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.dailyallowance.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.DailyAllowanceController+'/saveDailyAllowance', $scope.dailyallowance).success(function(data) {
-	        }).error(function() {
+				$('#dailymodelpopupid').modal('hide');
+			}).error(function() {
 	      	  console.error('Could not save or update dailyallowance');
 	        });}
 		};
@@ -177,11 +177,11 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		
 		//Save food coupons
 		$scope.saveFoodCoupons = function(){
-			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.foodcoupons.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.FoodCouponsController+'/saveFoodCoupons', $scope.foodcoupons).success(function(data) {
-	        }).error(function() {
+				$('#foodmodelpopupid').modal('hide');
+			}).error(function() {
 	      	  console.error('Could not save or update foodcoupons');
 	        });}
 		};
@@ -202,22 +202,23 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		
 		//Save gratuitycontribution
 		$scope.saveGratuityContribution = function(){
-			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.gratuitycontribution.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.GratuityContributionController+'/saveGratuityContribution', $scope.gratuitycontribution).success(function(data) {
-	        }).error(function() {
+				$('#myModal_gratuity').modal('hide');
+			}).error(function() {
 	      	  console.error('Could not save or update gratuitycontribution');
 	        });}
 		};
 		
 		//Save custom allowance
 		$scope.saveCustomAllowance = function(){
-			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.customallowance.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.CustomAllowanceController+'/saveCustomAllowance', $scope.customallowance).success(function(data) {
-	        }).error(function() {
+				$('#custommodelpopupid').modal('hide');
+				$scope.getAllCustomAllowanceList();
+			}).error(function() {
 	      	  console.error('Could not save or update customallowance');
 	        });}
 		};

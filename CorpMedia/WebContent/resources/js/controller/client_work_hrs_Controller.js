@@ -1,72 +1,37 @@
 'use strict';
 
-App.controller('client_work_hrs_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$stateParams', function($scope,$location,$rootScope,CompanyInfoService,$stateParams) {
-	 var self = this;
-	 $scope.state="client_work_hrs";
+App.controller('client_work_hrs_Controller', ['$scope','$location','$rootScope','$http','$stateParams', function($scope,$location,$rootScope,$http,$stateParams) {
+	 
+	$scope.reports_state="client_work_hrs";
 		$scope.left_state = "project";
-//		$scope.state_info_name = $stateParams.legEntity;
-//		$scope.$parent.state_info_name = $stateParams.legEntity;
-//        $scope.selectedCompany=null;
-//        $scope.companyInfo=[];
-//      
-//          //Json for the auto complete
-//          self.getCompanyInfoInit = function(){
-//        	 
-////        	  $scope.$watch(function () { return  HomeService.getSelectedCompany(); }, function (newValue, oldValue) {
-////      	        if (newValue != null) {
-////      	            //update Controller2's xxx value
-////      	            $scope.selectedCompany=newValue;
-////      	          CompanyInfoService.getCompanyInfo($scope.selectedCompany)
-////             	 .then(
-////     				       function(d) {
-////     				    	 $scope.companyInfo = d;
-////     				       },
-////       					function(errResponse){
-////       						console.error('Error while fetching Currencies');
-////       					}
-////     		       );
-////      	        }
-////      	    }, true);
-//        	  CompanyInfoService.getSelectedCompany()
-//         	 .then(
-// 				       function(d) {
-//				    	  $scope.selectedCompany=d.selectedCompName;
-// 				    	 CompanyInfoService.getCompanyInfo($scope.selectedCompany)
-// 			          	 .then(
-// 			  				       function(d) {
-// 			  				    	 $scope.companyInfo = d;
-// 			  				    	 $scope.$parent.companyName = d[0].companyName;
-// 			  				    	$rootScope.companyName = d[0].companyName;
-// 			  				    	$rootScope.companyId = d[0].companyId;
-// 			  				       },
-// 			    					function(errResponse){
-// 			    						console.error('Error while fetching Currencies');
-// 			    					}
-// 			  		       );
-// 				       },
-//   					function(errResponse){
-//   						console.error('Error while fetching Currencies');
-//   					}
-// 		       );
-//        	  
-//        	  
-//        	 
-//        	 
-//          };
-//          self.getCompanyInfoInit();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-          
+		$scope.state = "reports";
 
-
-          
-
-          
+		// get all clients list
+		$scope.getAllClientsList = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ClientsController+'/getAllClientsList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.clientsList = data;
+			}).error(function() {
+	      	  console.error('Could not getclientsList');
+	        });}
+		};
+		
+		// init
+		$scope.getAllClientsList();
+		
+		
+		$scope.clientworkhours={};
+		// save client work hour s
+		$scope.saveClientWorkHours = function(){
+			alert( $rootScope.selectedCompanyObj.companyId);
+			if($rootScope.selectedCompanyObj){
+				$scope.clientworkhours.companyId = $rootScope.selectedCompanyObj.companyId;
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.ClientWorkHoursController+'/saveClientWorkHours/',$scope.clientworkhours).success(function(data) {
+				$scope.getAllClientsList();
+				$scope.clientworkhours = {};
+			}).error(function() {
+	      	  console.error('Could not getclientsList');
+	        });}
+		};
+		
 }]);
