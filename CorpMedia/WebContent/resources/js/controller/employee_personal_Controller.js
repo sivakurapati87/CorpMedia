@@ -15,7 +15,7 @@ App.controller('employee_personal_Controller', ['$scope','$location','$rootScope
 			if($rootScope.selectedCompanyObj){
 				$scope.employeePersonalInfoJson.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployeePersonalInfo', $scope.employeePersonalInfoJson).success(function(data) {
-				$scope.employeePersonalInfoJson = {};
+//				$scope.employeePersonalInfoJson = {};
 			}).error(function() {
 	      	  console.error('Could not save or update EmployeePersonalInfo');
 	        });}
@@ -50,6 +50,8 @@ App.controller('employee_personal_Controller', ['$scope','$location','$rootScope
 				if($rootScope.selectedCompanyObj){
 				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getAllEmployeesByCompanyId/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 					$scope.EmployeeJsonList = data;
+					$scope.employeePersonalInfoJson.employeeId = $rootScope.empId;
+					$scope.onChangeEmployeeId();
 				}).error(function() {
 		      	  console.error('Could not get All Employees List');
 		        });}

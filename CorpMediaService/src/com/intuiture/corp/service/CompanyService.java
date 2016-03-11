@@ -62,4 +62,34 @@ public class CompanyService {
 		}
 		return companyJsonList;
 	}
+
+	public List<CompanyJson> findCompanyByName(String compName) {
+		List<CompanyJson> companyJsonList = new ArrayList<CompanyJson>();
+		List<Company> companiesList = companyRepository.findCompanyByName(compName.trim());
+		if (companiesList != null && companiesList.size() > 0) {
+			List<Integer> companyIds = new ArrayList<Integer>();
+			for (Company company : companiesList) {
+				companyIds.add(company.getCompanyId());
+			}
+			// List<CompanySignator> companySignatorList =
+			// companyRepository.getCompanySignatorsByCompanyId(companyIds);
+
+			for (Company company : companiesList) {
+				CompanyJson companyJson = TransformDomainToJson.getAllCompanyJsonByCompany(company);
+				// if (companySignatorList != null && companySignatorList.size()
+				// > 0) {
+				// List<CompanySignatorJson> companySignatorJsonsList = new
+				// ArrayList<CompanySignatorJson>();
+				// for (CompanySignator signator : companySignatorList) {
+				// CompanySignatorJson companySignatorJson =
+				// TransformDomainToJson.getCompanySignatorJson(signator);
+				// companySignatorJsonsList.add(companySignatorJson);
+				// }
+				// companyJson.setCompanySignatorJsonsList(companySignatorJsonsList);
+				// }
+				companyJsonList.add(companyJson);
+			}
+		}
+		return companyJsonList;
+	}
 }

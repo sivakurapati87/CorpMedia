@@ -133,59 +133,9 @@
 	</table>
 </div>
 
-<!-- <div class="main1"> -->
-<!-- 	<div class="div1"> -->
-<!-- 		<div class="div4"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div2"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div4"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div2"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div4"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div2"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div4"></div> -->
 
-
-
-
-
-
-<!-- 	</div> -->
-<!-- 	<div class="loading"> -->
-<!-- 		<h5>Loading..</h5> -->
-<!-- 	</div> -->
-<!-- </div> -->
-
-<div class="main1">
+<div class="main1" ng-show="isProcessing">
 	<div class="div1">
-<!-- 		<div class="div4"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div2"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div4"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div2"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div4"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div2"></div> -->
-<!-- 		<div class="div3"></div> -->
-<!-- 		<div class="div4"></div> -->
-
-
-
-
-
-
-<!-- 	</div> -->
-<!-- 	<div class="loading"> -->
-<!-- 		<h5>Loading..</h5> -->
-<!-- 	</div> -->
-<!-- </div> -->
 
 <i class="fa fa-spinner fa-spin " style="font-size: 60px"></i>
 </div>

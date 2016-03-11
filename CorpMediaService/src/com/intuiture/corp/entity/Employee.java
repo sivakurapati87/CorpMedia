@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,13 +21,16 @@ public class Employee {
 	private String lastName;
 	private String displayName;
 	private String email;
-	private String locationId;
+	private Integer locationId;
 	private Date dateOfJoining;
-	private String roleId;
+	private Integer roleId;
 	private Date createdOn;
 	private Date updatedOn;
 	private Integer companyId;
 	private Boolean isDeleted;
+	@ManyToOne
+	@JoinColumn(name = "roleId", insertable = false, updatable = false)
+	private CompanyRoles companyRoles;
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -75,11 +80,11 @@ public class Employee {
 		this.email = email;
 	}
 
-	public String getLocationId() {
+	public Integer getLocationId() {
 		return locationId;
 	}
 
-	public void setLocationId(String locationId) {
+	public void setLocationId(Integer locationId) {
 		this.locationId = locationId;
 	}
 
@@ -91,11 +96,11 @@ public class Employee {
 		this.dateOfJoining = dateOfJoining;
 	}
 
-	public String getRoleId() {
+	public Integer getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(String roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 
@@ -129,6 +134,14 @@ public class Employee {
 
 	public void setIsDeleted(Boolean isDeleted) {
 		this.isDeleted = isDeleted;
+	}
+
+	public CompanyRoles getCompanyRoles() {
+		return companyRoles;
+	}
+
+	public void setCompanyRoles(CompanyRoles companyRoles) {
+		this.companyRoles = companyRoles;
 	}
 
 }

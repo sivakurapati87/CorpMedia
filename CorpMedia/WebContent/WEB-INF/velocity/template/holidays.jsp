@@ -31,6 +31,8 @@
 										class="anchor-sm" ui-sref="leave_plans">Leave Plans </a></li>
 									<li ng-class="{'active':(state==='leave_types')}"><a
 										class="anchor-sm" ui-sref="leave_types">Leave Types</a></li>
+									<li ng-class="{'active':(state==='notify')}"><a
+										class="anchor-sm" ui-sref="notify">Notify</a></li>
 									<li ng-class="{'active':(state==='holidays')}"><a
 										class="anchor-sm" ui-sref="holidays">Holidays</a></li>
 
@@ -54,12 +56,11 @@
 										can be assigned to specific location. The default holidays
 										list applies to a location when not explicitly set.</font>
 								</p>
-								<br>
-								<br>
+								<br> <br>
 								<div class="row">
 									<div class="col-md-3">
 										<button class="btn btn-primary"
-											style="background-color: #3697EF" id="add_holiday">
+											style="background-color: #3697EF" ng-click="isCollapse = !isCollapse">
 											<i class="fa fa-plus-circle fa-1x"></i>&nbsp;Add Holiday
 										</button>
 									</div>
@@ -82,7 +83,7 @@
 								</div>
 
 							</div> <!--this is fade in form-->
-							<div id="fade_in" style="display: none">
+							<div collapse="isCollapse">
 								<p>
 									<font size="3">Add Holiday</font>
 								</p>
@@ -90,24 +91,39 @@
 								<br>
 								<div class="row">
 									<div class="col-md-9">
-										<form class="form">
+										<form ng-submit="saveOrUpdateHoliday()">
 
 											<div class="form-group">
 												<label for="name">Name</label> <input type="text"
-													class="form-control" id="name">
+													ng-model="holidayJson.holidayName" class="form-control"
+													id="name">
 											</div>
 											<div class="form-group">
 												<label for="description">Description</label>
-												<textarea id="description" class="form-control" rows="3"></textarea>
+												<textarea id="description" class="form-control" rows="3"
+													ng-model="holidayJson.description"></textarea>
 											</div>
 
 											<div class="form-group">
-												<label for="date">Date</label> <input type="date" id="date">
+												<label for="date">Date</label>
+												<div class="input-group">
+													<input type="text" class="form-control"
+														ng-model="holidayJson.strHolidayDate"
+														datepicker-popup="dd-MMM-yyyy" is-open="Opened"
+														ng-click="Opened=true"> <span
+														class="input-group-btn">
+														<button type="button" class="btn btn-default"
+															ng-click="Opened=true;$event.stopPropagation();">
+															<i class="glyphicon glyphicon-calendar"></i>
+														</button>
+													</span>
+												</div>
 											</div>
 
 											<p>
-												<input type="checkbox">&nbsp;&nbsp;This is a
-												floating holiday
+												<input type="checkbox"
+													ng-model="holidayJson.isFloatingHoliday">&nbsp;&nbsp;This
+												is a floating holiday
 											</p>
 
 											<div class="row">
@@ -116,7 +132,8 @@
 													<p>
 														<button type="submit" class="btn btn-success">
 															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-														<button type="submit" class="btn btn-default">&nbsp;&nbsp;&nbsp;&nbsp;Cancel&nbsp;&nbsp;&nbsp;&nbsp;</button>
+														<button type="button" ng-click="cancel()"
+															class="btn btn-default">&nbsp;&nbsp;&nbsp;&nbsp;Cancel&nbsp;&nbsp;&nbsp;&nbsp;</button>
 													</p>
 												</div>
 
@@ -130,6 +147,7 @@
 										</form>
 									</div>
 									<div class="col-md-3"></div>
+
 								</div>
 							</div>
 
@@ -139,7 +157,12 @@
 
 						</td>
 					</tr>
-
+					<tr>
+						<td>
+							<div class="gridStyle" ng-grid="gridOptions"></div>
+							<div class="selectedItems">{{mySelections}}</div>
+						</td>
+					</tr>
 
 
 

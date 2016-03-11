@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.intuiture.corp.json.LookUpDetailJson;
@@ -28,4 +29,13 @@ public class LookUpController {
 		return jsonMap;
 	}
 
+	@RequestMapping(value = "/getPayCycleList", method = RequestMethod.GET)
+	public @ResponseBody List<LookUpDetailJson> getPayCycleList(HttpServletRequest request, HttpServletResponse response) {
+		return lookUpService.getPayCycleList();
+	}
+
+	@RequestMapping(value = "/findPayDay", method = RequestMethod.GET)
+	public @ResponseBody List<LookUpDetailJson> findPayDay(@RequestParam("payCycleMonth") Integer payCycleMonth, @RequestParam("payPeriodEnd") String strPayPeriodEndDayId) {
+		return lookUpService.findPayDay(payCycleMonth, Integer.parseInt(strPayPeriodEndDayId));
+	}
 }

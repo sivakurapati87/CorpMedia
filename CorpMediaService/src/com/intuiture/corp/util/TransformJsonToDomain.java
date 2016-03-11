@@ -42,8 +42,10 @@ import com.intuiture.corp.entity.ExitSettings;
 import com.intuiture.corp.entity.FoodCoupons;
 import com.intuiture.corp.entity.GeneralSettings;
 import com.intuiture.corp.entity.GratuityContribution;
+import com.intuiture.corp.entity.Holidays;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
+import com.intuiture.corp.entity.LeavesNotify;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.MedicalReimbursement;
 import com.intuiture.corp.entity.PFInfo;
@@ -92,8 +94,10 @@ import com.intuiture.corp.json.ExitSettingsJson;
 import com.intuiture.corp.json.FoodCouponsJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
 import com.intuiture.corp.json.GratuityContributionJson;
+import com.intuiture.corp.json.HolidaysJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
+import com.intuiture.corp.json.LeavesNotifyJson;
 import com.intuiture.corp.json.MedicalReimbursementJson;
 import com.intuiture.corp.json.PFInfoJson;
 import com.intuiture.corp.json.PayrollCycleSettingsJson;
@@ -477,11 +481,16 @@ public class TransformJsonToDomain {
 	}
 
 	public static void getPayrollCycleSettings(PayrollCycleSettings payrollCycleSettings, PayrollCycleSettingsJson payrollCycleSettingsJson) {
-		payrollCycleSettings.setCreatedOn(new Date());
+		if (payrollCycleSettings.getPayrollCycleSettingsId() != null) {
+			payrollCycleSettings.setUpdatedOn(new Date());
+		} else {
+			payrollCycleSettings.setCreatedOn(new Date());
+		}
 		payrollCycleSettings.setCompanyId(payrollCycleSettingsJson.getCompanyId());
 		payrollCycleSettings.setPayFrequency(payrollCycleSettingsJson.getPayFrequency());
 		payrollCycleSettings.setPayCycleMonthId(payrollCycleSettingsJson.getPayCycleMonthId());
-		payrollCycleSettings.setPayPeriodEndDayId(payrollCycleSettingsJson.getPayPeriodEndDayId());
+		payrollCycleSettings.setPayPeriodEndDayId(TransformDomainToJson.convertStringToInteger(payrollCycleSettingsJson.getStrPayPeriodEndDayId()));
+		payrollCycleSettings.setPayDay(payrollCycleSettingsJson.getPayDay());
 		payrollCycleSettings.setIsDeleted(Boolean.FALSE);
 	}
 
@@ -726,8 +735,8 @@ public class TransformJsonToDomain {
 		projects.setIsProjectAssignToAllEmployees(projectsJson.getIsProjectAssignToAllEmployees());
 		projects.setStatusId(projectsJson.getStatusId());
 	}
-	
-	public static void getExitSettings(ExitSettings exitSettings , ExitSettingsJson exitSettingsJson) {
+
+	public static void getExitSettings(ExitSettings exitSettings, ExitSettingsJson exitSettingsJson) {
 		exitSettings.setCreatedOn(new Date());
 		exitSettings.setCompanyId(exitSettingsJson.getCompanyId());
 		exitSettings.setIsDeleted(Boolean.FALSE);
@@ -787,6 +796,31 @@ public class TransformJsonToDomain {
 		companyLeaveType.setLeaveTypeName(companyLeaveTypeJson.getLeaveTypeName());
 		companyLeaveType.setPriorNoticeRequered_After(companyLeaveTypeJson.getPriorNoticeRequered_After());
 		companyLeaveType.setRestrictToId(companyLeaveTypeJson.getRestrictToId());
+	}
+
+	public static void getHolidays(Holidays holidays, HolidaysJson holidaysJson) {
+		holidays.setCompanyId(holidaysJson.getCompanyId());
+		if (holidaysJson.getHolidaysId() != null) {
+			holidays.setUpdatedOn(new Date());
+		} else {
+			holidays.setCreatedOn(new Date());
+		}
+		holidays.setIsDeleted(Boolean.FALSE);
+		holidays.setDescription(holidaysJson.getDescription());
+		holidays.setHolidayDate(holidaysJson.getHolidayDate());
+		holidays.setHolidayName(holidaysJson.getHolidayName());
+		holidays.setIsFloatingHoliday(holidaysJson.getIsFloatingHoliday());
+	}
+
+	public static void getLeavesNotify(LeavesNotify leavesNotify, LeavesNotifyJson leavesNotifyJson) {
+		leavesNotify.setCompanyId(leavesNotifyJson.getCompanyId());
+		if (leavesNotifyJson.getLeavesNotifyId() != null) {
+			leavesNotify.setUpdatedOn(new Date());
+		} else {
+			leavesNotify.setCreatedOn(new Date());
+		}
+		leavesNotify.setIsDeleted(Boolean.FALSE);
+		leavesNotify.setNotifyEmpId(leavesNotifyJson.getNotifyEmpId());
 	}
 
 }

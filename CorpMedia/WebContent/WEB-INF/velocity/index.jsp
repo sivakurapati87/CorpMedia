@@ -19,6 +19,8 @@
 <link rel="stylesheet"
 	href="webjars/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/app.css" />
+<link rel="stylesheet" href="resources/css/ng-grid.css" />
+<link rel="stylesheet" href="resources/css/image-crop-styles.css" />
 <link rel="stylesheet" href="resources/css/corpo_media.css" />
 <!-- <script -->
 <!-- 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script> -->
@@ -33,6 +35,11 @@
 <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.2/ui-bootstrap-tpls.js"></script>
+	
+	<script src="resources/js/ng-grid.js"></script>
+	 <script src="resources/js/image-crop.js"></script>
+	 
+	 
 <script src="resources/js/app.js"></script>
 <script src="resources/js/controller/HomeController.js"></script>
 <script src="resources/js/controller/LeftMenu_Controller.js"></script>
@@ -83,6 +90,9 @@
 <script src="resources/js/controller/employee_timesheets_Controller.js"></script>
 <script src="resources/js/controller/Add_Leave_Type_Controller.js"></script>
 <script src="resources/js/controller/holidays_Controller.js"></script>
+<script src="resources/js/controller/Notify_Controller.js"></script>
+<script src="resources/js/controller/All_Employee_Controller.js"></script>
+<script src="resources/js/controller/Employee_Info_Controller.js"></script>
 
 
 <script src="resources/js/service/constants.js"></script>

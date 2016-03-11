@@ -7,7 +7,6 @@ App.controller('pfInfo_Controller', ['$http','$scope','$rootScope','PFInfoServic
 		$scope.left_state = "company_settings";
 		$scope.state_info_name = $stateParams.legEntity;
 		$scope.$parent.state_info_name = $stateParams.legEntity;
-		
 		// pf info main object
 //		$scope.pfinfo={};
           

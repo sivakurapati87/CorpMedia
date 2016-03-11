@@ -31,7 +31,7 @@
 											Structure</a></li>
 									<li ng-class="{'active':(state==='provident_fund')}"><a
 										class="anchor-sm" ui-sref="provident_fund">Provident Fund</a></li>
-									
+
 									<li ng-class="{'active':(state==='employee_loan_settings')}"><a
 										class="anchor-sm" ui-sref="employee_loan_settings">Loan
 											Settings</a></li>
@@ -56,16 +56,16 @@
 									<p>
 										<font size="4"><b>PAYROLL CYCLE SETTINGS</b></font>
 									</p>
-                                     <form ng-submit="savePayrollCycleSettings()">
-									<div style="background-color: #CECEF6">
-										<!-- this is our container for the first form -->
+									<form ng-submit="savePayrollCycleSettings()">
+										<div>
+											<!-- this is our container for the first form -->
 
 
-										<br>
+											<br>
 
 
 
-										<div class="form-group">
+											<div class="form-group">
 
 
 												<!-- field 1 -->
@@ -77,9 +77,10 @@
 														<label><b>Pay Frequency</b></label>
 													</div>
 													<div class="col-md-5">
-														<select class="form-control" id="sel1" ng-model="payrollcyclesettings.payFrequency">
-														    
-															<option>Monthly</option>
+														<select class="form-control" id="sel1"
+															ng-model="payrollcyclesettings.payFrequency">
+
+															<option value="" disabled selected>Month</option>
 														</select>
 													</div>
 												</div>
@@ -99,10 +100,10 @@
 													<div class="col-md-5">
 														<select
 															class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-															ng-model="payrollcyclesettings.payCycleMonthId"
-															ng-options="bank.lookupDetailId as bank.description for bank in  lookup.monthList">
-																<option value="" disabled selected>Month</option>
-																
+															required ng-model="payrollcyclesettings.payCycleMonthId" ng-change="onChangePayCycleMonth()"
+															ng-options="bank.indexOfTheMonth as bank.description for bank in  payCycleJsonList">
+															<option value="" disabled selected>Pick Pay
+																Cycle</option>
 														</select>
 													</div>
 												</div>
@@ -117,28 +118,48 @@
 														<!-- empty first column to make some room -->
 													</div>
 													<div class="col-md-5">
-														<label><b>Which day did the pay period end 
-																</b></label>
+														<label><b>Which day did the pay period end in {{selectedMonth}}</b></label>
 													</div>
 													<div class="col-md-5">
 														<select
 															class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-															ng-model="payrollcyclesettings.payPeriodEndDayId"
-															ng-options="bank.lookupDetailId as bank.description for bank in  lookup.dayList">
-																<option value="" disabled selected>Day</option>
-																
-														</select>													</div>
+															ng-model="payrollcyclesettings.strPayPeriodEndDayId"
+															ng-change="payPeriodEndComboAction()"
+															ng-options="bank.description as bank.description for bank in  lookup.daysList">
+															<option value="" disabled selected>Day</option>
+
+														</select>
+													</div>
+												</div>
+												<br>
+												<div class="row">
+													<div class="col-md-1">
+														<!-- empty first column to make some room -->
+													</div>
+													<div class="col-md-5">
+														<label><b>The pay day for the period
+																{{payDayPeriod}} </b></label>
+													</div>
+													<div class="col-md-5">
+														<select
+															class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+															ng-model="payrollcyclesettings.payDay"
+															ng-options="bank.description as bank.description for bank in  payDayList">
+															<option value="" disabled selected>Pick Pay Day</option>
+
+														</select>
+													</div>
 												</div>
 												<!-- this is the end of the internal row -->
+											</div>
+											<br>
+											<div style="text-align: center">
+												<button type="submit" class="btn btn-primary active"
+													style="align: center">Complete</button>
+											</div>
+											<br> <br>
 										</div>
-										<br>
-										<div style="text-align: center">
-											<button type="submit" class="btn btn-primary active"
-												style="align: center">Complete</button>
-										</div>
-										<br> <br>
-									</div>
-									<!-- this is the end of the first form -->
+										<!-- this is the end of the first form -->
 									</form>
 
 									<div class="col-md-5">
@@ -153,101 +174,104 @@
 								<br> <br> <br>
 
 							</div> <!--this the end of the first row(form)--> <br> <br> <!--this the the second row(form)-->
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col-md-7">
 									<p>
 										<font size="4"><b>PAYROLL PERIOD CALCULATION</b></font>
 									</p>
-                                     <form ng-submit="savePayrollPeriodCalculation()">
-									<div style="background-color: #CECEF6">
-										<!-- this is our container for the first form -->
+									<form ng-submit="savePayrollPeriodCalculation()">
+										<div style="background-color: #CECEF6">
+											this is our container for the first form
 
 
-										<br>
+											<br>
 
 
 
-										<div class="form-group">
+											<div class="form-group">
 
 
-												<!-- field 1 -->
+												field 1
 												<div class="row">
 													<div class="col-md-1">
-														<!-- empty first column to make some room -->
+														empty first column to make some room
 													</div>
 													<div class="col-md-5">
 														<label><b>Pay Days in a month</b></label>
 													</div>
 													<div class="col-md-5">
-													
-													<select
+
+														<select
 															class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
 															ng-model="payrollperiodcalculation.payDaysInAMonthId"
 															ng-options="bank.lookupDetailId as bank.description for bank in  lookup.payDAYInAMonthList">
-																<option value="" disabled selected>Select working days</option>
-																
+															<option value="" disabled selected>Select
+																working days</option>
+
 														</select>
-														
+
 													</div>
 												</div>
-												<!-- this is the end of the internal row -->
+												this is the end of the internal row
 												<br>
 
 
-												<!-- field 2 -->
+												field 2
 												<div class="row">
 													<div class="col-md-1">
-														<!-- empty first column to make some room -->
+														empty first column to make some room
 													</div>
 													<div class="col-md-5">
 														<label><b>Exclude Weekly offs</b></label>
 													</div>
 													<div class="col-md-5">
-														<select class="form-control" id="sel1"ng-model="payrollperiodcalculation.excludeWeeklyOffsId"
-																ng-options="bank.lookupDetailId as bank.description for bank in  lookup.trueorfalseList">
-																<option value="" disabled selected>Select</option>
+														<select class="form-control" id="sel1"
+															ng-model="payrollperiodcalculation.excludeWeeklyOffsId"
+															ng-options="bank.lookupDetailId as bank.description for bank in  lookup.trueorfalseList">
+															<option value="" disabled selected>Select</option>
 														</select>
 													</div>
 												</div>
-												<!-- this is the end of the internal row -->
+												this is the end of the internal row
 
 
 												<br>
 
-												<!-- field 3 -->
+												field 3
 												<div class="row">
 													<div class="col-md-1">
-														<!-- empty first column to make some room -->
+														empty first column to make some room
 													</div>
 													<div class="col-md-5">
 														<label><b>Exclude Holidays</b></label>
 													</div>
 													<div class="col-md-5">
-														<select class="form-control" id="sel2"ng-model="payrollperiodcalculation.excludeHolidaysId"
-																ng-options="bank.lookupDetailId as bank.description for bank in  lookup.trueorfalseList">
-																<option value="" disabled selected>Select</option>
+														<select class="form-control" id="sel2"
+															ng-model="payrollperiodcalculation.excludeHolidaysId"
+															ng-options="bank.lookupDetailId as bank.description for bank in  lookup.trueorfalseList">
+															<option value="" disabled selected>Select</option>
 
 														</select>
 													</div>
 												</div>
-												<!-- this is the end of the internal row -->
+												this is the end of the internal row
+											</div>
+											<br>
+											<div style="text-align: center">
+												<button type="submit" class="btn btn-primary active"
+													style="align: center">Complete</button>
+											</div>
+											<br> <br>
 										</div>
-										<br>
-										<div style="text-align: center">
-											<button type="submit" class="btn btn-primary active"
-												style="align: center">Complete</button>
-										</div>
-										<br> <br>
-									</div>
-									<!-- this is the end of the first form -->
+										this is the end of the first form
 									</form>
 
 									<div class="col-md-5">
-										<!-- second half of the row -->
+										second half of the row
 									</div>
 
 								</div>
-								<!-- end of first half of row. -->
+								end of first half of row.
 
 								<div class="col-md-5">
 									<p>
@@ -284,7 +308,7 @@
 
 								<br> <br> <br>
 
-							</div> <!--end of second form-->
+							</div> --> <!--end of second form-->
 
 
 

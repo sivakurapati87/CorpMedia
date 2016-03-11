@@ -16,7 +16,7 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 			if($rootScope.selectedCompanyObj){
 				$scope.employeeProfessionalInfoJson.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployeeProfessionalInfo', $scope.employeeProfessionalInfoJson).success(function(data) {
-				$scope.employeeProfessionalInfoJson = {};
+//				$scope.employeeProfessionalInfoJson = {};
 			}).error(function() {
 	      	  console.error('Could not save or update Employee Professional Info');
 	        });}
@@ -56,6 +56,8 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployeeEducationalInfo', $scope.employeeEducationalInfoJson).success(function(data) {
 //				$scope.isCollapse = true;
 				$scope.employeeEducationalInfoJson = {};
+				$scope.isEduCollapse = true;
+				$scope.getEmployeeEducationalInfo();
 			}).error(function() {
 	      	  console.error('Could not save or update Employee Experience Info');
 	        });}
@@ -77,6 +79,8 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 				if($rootScope.selectedCompanyObj){
 				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getAllEmployeesByCompanyId/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 					$scope.EmployeeJsonList = data;
+					$scope.employeeProfessionalInfoJson.employeeId = $rootScope.empId;
+					$scope.onChangeEmployeeId();
 				}).error(function() {
 		      	  console.error('Could not get All Employees List');
 		        });}
@@ -121,7 +125,7 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 					if(data){
 					$scope.employeeProfessionalInfoJson = data;
 					}else{
-						$scope.employeeProfessionalInfoJson = {};
+//						$scope.employeeProfessionalInfoJson = {};
 					}
 					$scope.employeeProfessionalInfoJson.employeeId = $scope.employeeJson.employeeId;//assigning employee Id
 				}).error(function() {
@@ -145,7 +149,7 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 		        });
 			};
 			
-			$scope.getAllEmployeesList();
+			
 			
 			
 			// cancel employee educational information
@@ -157,7 +161,7 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 			// This function is to edit educational information
 			$scope.editEducationalInfo = function(employeeEducationalInfoJson){
 				$scope.employeeEducationalInfoJson = employeeEducationalInfoJson;
-				$scope.isExpCollapse = false;
+				$scope.isEduCollapse = false;
 			};
 			
 			// delete employee educational information
@@ -176,7 +180,9 @@ App.controller('employee_professional_Controller', ['$scope','$location','$rootS
 			};
 			
 			
-			$scope.getEmployeeEducationalInfo();
-			$scope.getEmployeeExperienceInfo();
+//			$scope.getEmployeeEducationalInfo();
+//			$scope.getEmployeeExperienceInfo();
+			
+			$scope.getAllEmployeesList();
 			
 }]);

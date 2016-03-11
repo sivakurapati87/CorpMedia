@@ -11,35 +11,7 @@
 			<td width="1%"></td>
 			<td valign="top">
 
-				<table class="table" border="0" style="width: 100%;">
-					<tr>
-						<td>
-							<div class="sub-page-navigation">
-								<ul>
-
-									<li ng-class="{'active':(state==='job_titles')}"><a
-										class="anchor-sm" ui-sref="job_titles">Job Titles</a></li>
-									<li ng-class="{'active':(state==='employee_defaults')}"><a
-										class="anchor-sm" ui-sref="employee_defaults">Employee
-											Defaults</a></li>
-									<li ng-class="{'active':(state==='add_employee')}"><a
-										class="anchor-sm" ui-sref="add_employee">Add Employee</a></li>
-									<li ng-class="{'active':(state==='employee_professional')}"><a
-										class="anchor-sm" ui-sref="employee_professional">Professional</a></li>
-									<li ng-class="{'active':(state==='employee_personal')}"><a
-										class="anchor-sm" ui-sref="employee_personal">Personal</a></li>
-									<li ng-class="{'active':(state==='employee_job')}"><a
-										class="anchor-sm" ui-sref="employee_job">Job</a></li>
-
-
-
-
-
-								</ul>
-							</div>
-						</td>
-					</tr>
-				</table>
+				<employee-info-top></employee-info-top>
 				<table class="table" border="0"
 					style="width: 100%; background-color: white">
 					<tr>
@@ -51,22 +23,22 @@
 
 								<!--first part of the form-->
 								<div class="row">
-									<div class="col-md-4">
-								<br>
-									<br>
-									<br>
-									<br>
-									<br>
-									    <div class="form-group">
-									    <label for="first_name">Employee Name</label>
-										<select ng-change="onChangeEmployeeId()"
-											class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-											required ng-model="employeePersonalInfoJson.employeeId"
-											ng-options="emp.employeeId as emp.displayName for emp in  EmployeeJsonList">
-											<option value="" disabled selected>Select</option>
-										</select>
-										</div>
-									</div>
+<!-- 									<div class="col-md-4"> -->
+<!-- 								<br> -->
+<!-- 									<br> -->
+<!-- 									<br> -->
+<!-- 									<br> -->
+<!-- 									<br> -->
+<!-- 									    <div class="form-group"> -->
+<!-- 									    <label for="first_name">Employee Name</label> -->
+<!-- 										<select ng-change="onChangeEmployeeId()" -->
+<!-- 											class="form-control ng-pristine ng-valid ng-valid-required ng-touched" -->
+<!-- 											required ng-model="employeePersonalInfoJson.employeeId" -->
+<!-- 											ng-options="emp.employeeId as emp.displayName for emp in  EmployeeJsonList"> -->
+<!-- 											<option value="" disabled selected>Select</option> -->
+<!-- 										</select> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
 
 									<!--this is the first half of the form-->
 									<div class="col-md-4">

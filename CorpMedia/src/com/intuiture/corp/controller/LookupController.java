@@ -22,7 +22,7 @@ public class LookupController {
 	public LookupBean lookupInit() {
 		LookupBean lookupBean = new LookupBean();
 
-		String[] lookUpTypes = { Constants.TYPEOFBUSINESS, Constants.MQHS, Constants.BANKS, Constants.STATES, Constants.DMW, Constants.LEAVETYPE, Constants.WORKERTYPE, Constants.TIMETYPE, Constants.GENDER, Constants.MARITALSTATUS, Constants.BLOODGROUP,
+		String[] lookUpTypes = { Constants.TYPEOFBUSINESS, Constants.MQHS, Constants.BANKS,Constants.DAYS, Constants.STATES, Constants.DMW, Constants.LEAVETYPE, Constants.WORKERTYPE, Constants.TIMETYPE, Constants.GENDER, Constants.MARITALSTATUS, Constants.BLOODGROUP,
 				Constants.RELATION, Constants.TRUEORFALSE, Constants.MONTH, Constants.DAY, Constants.PAYDAYINAMONTH, Constants.CURRENCY, Constants.STATUS };
 
 		List<String> typesList = Arrays.asList(lookUpTypes);
@@ -43,7 +43,7 @@ public class LookupController {
 		lookupBean.setPayDAYInAMonthList(lookUpMap.get(Constants.PAYDAYINAMONTH));
 		lookupBean.setCurrencyList(lookUpMap.get(Constants.CURRENCY));
 		lookupBean.setStatusList(lookUpMap.get(Constants.STATUS));
-
+		lookupBean.setDaysList(lookUpMap.get(Constants.DAYS));
 		lookupBean.setLeaveTypeList(lookUpMap.get(Constants.LEAVETYPE));
 		lookupBean.setMonthQuerertyList(lookUpMap.get(Constants.MQHS));
 

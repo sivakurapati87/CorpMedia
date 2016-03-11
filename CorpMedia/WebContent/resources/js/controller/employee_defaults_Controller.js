@@ -4,7 +4,7 @@ App.controller('employee_defaults_Controller', ['$scope','$location','$rootScope
 	 var self = this;
 	 $scope.state="employee_defaults";
 		$scope.left_state = "employee";
-		
+		$scope.isCollapse = true;
 
 		$scope.companyEmployeeDefaultsJson = {};
 		
@@ -15,10 +15,16 @@ App.controller('employee_defaults_Controller', ['$scope','$location','$rootScope
 				$scope.companyEmployeeDefaultsJson.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyEmpDefaultController+'/saveCompanyEmpDefault', $scope.companyEmployeeDefaultsJson).success(function(data) {
 				$scope.companyEmployeeDefaultsJson = {};
+				$scope.getCompanyEmpDefault();
+				$scope.isCollapse = true;
 			}).error(function() {
 	      	  console.error('Could not save or update addNewSignatory');
 	        });}
 		};
+		
+		$scope.cancel = function(){
+			$scope.isCollapse = true;
+		}
 		
 		// get all company locations list
 		$scope.getCompanyEmpDefault = function(){

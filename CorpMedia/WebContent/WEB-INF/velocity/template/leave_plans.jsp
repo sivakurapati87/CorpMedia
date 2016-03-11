@@ -18,7 +18,10 @@
 										class="anchor-sm" ui-sref="leave_plans">Leave Plans </a></li>
 									<li ng-class="{'active':(state==='leave_types')}"><a
 										class="anchor-sm" ui-sref="leave_types">Leave Types</a></li>
-
+									<li ng-class="{'active':(state==='notify')}"><a
+										class="anchor-sm" ui-sref="notify">Notify</a></li>
+									<li ng-class="{'active':(state==='holidays')}"><a
+										class="anchor-sm" ui-sref="holidays">Holidays</a></li>
 								</ul>
 							</div>
 						</td>

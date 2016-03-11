@@ -5,6 +5,11 @@ localhost_port : 'http://localhost:8080',
 web_context : 'CorpMedia',
 service_context : 'CorpMediaService',
 
+//constants
+
+LastDayOfTheMonth : 'Last Day Of The Month',
+ENDOFDAY : 293,
+MAXENDOF_DAY : "100",
 // controllers
 COMP_SIGNATOR : 'CompanySignatorController',
 LookUpController :'LookUpController',
@@ -49,7 +54,9 @@ ProjectsController : 'ProjectsController',
 CompanyLeavePlanController : 'CompanyLeavePlanController',
 AddLeaveTypeController : 'AddLeaveTypeController',
 CompanyLeaveTypeController : 'CompanyLeaveTypeController',
-ExitSettingsController : 'ExitSettingsController'
+ExitSettingsController : 'ExitSettingsController',
+HolidayController : 'HolidayController',
+NotifyController: 'NotifyController'
 
 
 };

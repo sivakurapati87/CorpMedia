@@ -9,11 +9,12 @@ public class EmployeeJson {
 	private String lastName;
 	private String displayName;
 	private String email;
-	private String locationId;
+	private Integer locationId;
 	private String strDateOfJoining;
-	private String roleId;
+	private Integer roleId;
 	private Integer companyId;
 	private Date dateOfJoining;
+	private String role;
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -63,19 +64,19 @@ public class EmployeeJson {
 		this.email = email;
 	}
 
-	public String getLocationId() {
+	public Integer getLocationId() {
 		return locationId;
 	}
 
-	public void setLocationId(String locationId) {
+	public void setLocationId(Integer locationId) {
 		this.locationId = locationId;
 	}
 
-	public String getRoleId() {
+	public Integer getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(String roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 
@@ -101,6 +102,14 @@ public class EmployeeJson {
 
 	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 }

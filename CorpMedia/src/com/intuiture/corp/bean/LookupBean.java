@@ -22,7 +22,7 @@ public class LookupBean {
 	private List<LookUpDetailJson> payDAYInAMonthList;
 	private List<LookUpDetailJson> currencyList;
 	private List<LookUpDetailJson> statusList;
-
+	private List<LookUpDetailJson> daysList;
 	private List<LookUpDetailJson> leaveTypeList;
 	private List<LookUpDetailJson> monthQuerertyList;
 
@@ -178,6 +178,14 @@ public class LookupBean {
 
 	public void setReasonTypeList(List<LookUpDetailJson> reasonTypeList) {
 		this.reasonTypeList = reasonTypeList;
+	}
+
+	public List<LookUpDetailJson> getDaysList() {
+		return daysList;
+	}
+
+	public void setDaysList(List<LookUpDetailJson> daysList) {
+		this.daysList = daysList;
 	}
 
 }

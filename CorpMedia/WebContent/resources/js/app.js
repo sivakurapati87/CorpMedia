@@ -1,6 +1,6 @@
 'use strict';
 
-var App = angular.module('myApp',['ui.router','ui.bootstrap',"angucomplete-alt"]);
+var App = angular.module('myApp',['ui.router','ui.bootstrap',"angucomplete-alt","ngGrid","ImageCropper"]);
 App.directive("autoSubmit", function($timeout) {
     return {
         link: function(scope, element, attrs) {
@@ -23,6 +23,21 @@ App.directive('leftMenu', function() {
 	      controller : "LeftMenu_Controller"
 	    };
 	});
+
+App.directive('employeeModuleTop', function() {
+	  return {
+	      restrict: 'E',
+	      templateUrl: 'employeeModuleTop'
+	    };
+	});
+
+App.directive('employeeInfoTop', function() {
+	  return {
+	      restrict: 'E',
+	      templateUrl: 'employeeInfoTop'
+	    };
+	});
+
 
 App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 	
@@ -136,6 +151,18 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	            'content': {
 	            	templateUrl: 'leave_types',
 	        		controller : "leave_types_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
+	.state('all_employees', {
+		url: "/all_employees",
+			views: {
+	            'content': {
+	            	templateUrl: 'all_employees',
+	        		controller : "All_Employee_Controller"
 	            },
 	            'footer': {
 	                templateUrl: 'footer'
@@ -261,7 +288,18 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	            }
 	        }
 	})
-	
+	.state('notify', {
+		url: "/notify",
+			views: {
+	            'content': {
+	            	templateUrl: 'notify',
+	        		controller : "Notify_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
 	
 	
 	
@@ -600,7 +638,18 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	            }
 	        }
 	})
-	
+	.state('employee_info', {
+		url: "/employee_info",
+			views: {
+	            'content': {
+	            	templateUrl: 'employee_info',
+	            	controller : 'Employee_Info_Controller'
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
 	
 	
 	

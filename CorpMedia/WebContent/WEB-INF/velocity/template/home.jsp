@@ -87,8 +87,9 @@
 											<div angucomplete-alt id="companiesId" class="lable16"
 												placeholder="Enter a company to search " pause="100"
 												selected-object="selectedCompanyAction"
-												local-data="companies" search-fields="companyName"
+												 search-fields="companyName"
 												title-field="companyName" minlength="2"
+												remote-url = "http://localhost:8080/CorpMediaService/CompanyController/findCompanyByName/"
 												input-class="search-control height46 lable42 "
 												match-class="highlight"></div>
 										</td>

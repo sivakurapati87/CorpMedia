@@ -20,7 +20,10 @@
 											class="anchor-sm" ui-sref="leave_plans">Leave Plans </a></li>
 										<li ng-class="{'active':(state==='leave_types')}"><a
 											class="anchor-sm" ui-sref="leave_types">Leave Types</a></li>
-
+										<li ng-class="{'active':(state==='notify')}"><a
+											class="anchor-sm" ui-sref="notify">Notify</a></li>
+										<li ng-class="{'active':(state==='holidays')}"><a
+											class="anchor-sm" ui-sref="holidays">Holidays</a></li>
 									</ul>
 								</div>
 							</td>
@@ -203,7 +206,7 @@
 
 												<button class="btn btn-success" style="width: 100px"
 													type="submit">Save</button>&nbsp;
-												<button class="btn btn-cancel" style="width: 100px"
+												<button class="btn btn-cancel" style="width: 100px" ng-click="cancel()"
 													type="button">Cancel</button>
 											</td>
 										</tr>

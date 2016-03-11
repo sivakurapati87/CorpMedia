@@ -17,9 +17,27 @@ public class LookUpDetails {
 	private String description;
 	private Integer parent;
 	private Integer lookupMasterId;
+	private Integer indexOfTheMonth;
+	private Integer daysOfTheMonth;
 	@ManyToOne
 	@JoinColumn(name = "lookupMasterId", insertable = false, updatable = false)
 	private LookUpMaster lookUpMaster;
+
+	public Integer getIndexOfTheMonth() {
+		return indexOfTheMonth;
+	}
+
+	public void setIndexOfTheMonth(Integer indexOfTheMonth) {
+		this.indexOfTheMonth = indexOfTheMonth;
+	}
+
+	public Integer getDaysOfTheMonth() {
+		return daysOfTheMonth;
+	}
+
+	public void setDaysOfTheMonth(Integer daysOfTheMonth) {
+		this.daysOfTheMonth = daysOfTheMonth;
+	}
 
 	public Integer getLookupMasterId() {
 		return lookupMasterId;

@@ -14,6 +14,7 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 			if($rootScope.selectedCompanyObj){
 				$scope.employeeJson.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployee', $scope.employeeJson).success(function(data) {
+				$scope.employeeJson = {};
 				$scope.getAllEmployeesList();
 			}).error(function() {
 	      	  console.error('Could not save or update Employee');
@@ -21,12 +22,11 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 		};
 		// get all the employees list
 		$scope.getAllEmployeesList = function(){
-			if(!$scope.companyRolesJsonList){
-				$scope.getAllRoles();
-			}
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getAllEmployeesByCompanyId/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
-				$scope.EmployeeJsonList = data;
+				$scope.employeeJsonList = data;
+				$scope.getAllRoles();    
+				$scope.getAllCompanyLocations();  
 			}).error(function() {
 	      	  console.error('Could not get All Employees List');
 	        });}
@@ -55,22 +55,20 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 		
 		 //This is the function to get the formatted date
         $scope.formatteddate = function(){
-      	  var expDate = new Date($scope.EmployeeJson.strDateOfJoining);
+      	  var expDate = new Date($scope.employeeJson.strDateOfJoining);
       	 var month = '' + (expDate.getMonth() + 1);
            var day = '' + expDate.getDate();
           var  year = expDate.getFullYear();
       	  if (month.length < 2) month = '0' + month;
       	    if (day.length < 2) day = '0' + day;
-      	    $scope.EmployeeJson.strDateOfJoining =  [year, month, day].join('-');
+      	    $scope.employeeJson.strDateOfJoining =  [year, month, day].join('-');
         };
-		$scope.getAllRoles();    
-		$scope.getAllCompanyLocations();  
+		
 		
 		
 		// This function is to edit employee information
 		$scope.editEmployee = function(employeeJson){
-			
-			$scope.employee = employee;
+			$scope.employeeJson = employeeJson;
 			$scope.isEmpCollapse = false;
 		};
 		
@@ -82,11 +80,11 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 			}).error(function() {
 	      	  console.error('Could not deleteEmployee');
 	        });
-			
-			// cancel employee educational information
-			$scope.cancelEmployee = function() {
-				$scope.isEmpCollapse = true;
-			};
+		};
+		
+		// cancel employee educational information
+		$scope.cancelEmployee = function() {
+			$scope.isEmpCollapse = true;
 		};
 		
 		$scope.getAllEmployeesList();

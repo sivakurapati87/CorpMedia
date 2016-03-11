@@ -1,11 +1,10 @@
 'use strict';
 
-App.controller('itInfo_Controller', ['$rootScope','$scope','$http','$location','ITInfoService','$stateParams', function($rootScope,$scope,$http,$location,ITInfoService,$stateParams) {
+App.controller('itInfo_Controller', ['$rootScope','$scope','$http','$location','$stateParams', function($rootScope,$scope,$http,$location,$stateParams) {
 	 $scope.state="legalentities";
 		$scope.left_state = "company_settings";
 		$scope.state_info_name = $stateParams.legEntity;
 		$scope.$parent.state_info_name = $stateParams.legEntity;
-		
 		// it info main object
 
           $scope.getITInfo = function() {

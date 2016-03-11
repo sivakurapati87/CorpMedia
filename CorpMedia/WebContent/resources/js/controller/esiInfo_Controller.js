@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('esiInfo_Controller', ['$http','$scope','$location','ESIInfoService','$stateParams', function($http,$scope,$location,ESIInfoService,$stateParams) {
+App.controller('esiInfo_Controller', ['$http','$scope','$location','$stateParams','$rootScope', function($http,$scope,$location,$stateParams,$rootScope) {
 	 $scope.state="legalentities";
 		$scope.left_state = "company_settings";
 		$scope.state_info_name = $stateParams.legEntity;

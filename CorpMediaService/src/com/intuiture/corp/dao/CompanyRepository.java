@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.intuiture.corp.entity.Company;
@@ -50,5 +52,18 @@ public class CompanyRepository extends BaseRepository {
 			e.printStackTrace();
 		}
 		return companySignatorList;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Company> findCompanyByName(String compName) {
+		List<Company> companieList = null;
+		try {
+			Criteria criteria = getSession().createCriteria(Company.class);
+			criteria.add(Restrictions.like("companyName", compName, MatchMode.ANYWHERE));
+			companieList = criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return companieList;
 	}
 }

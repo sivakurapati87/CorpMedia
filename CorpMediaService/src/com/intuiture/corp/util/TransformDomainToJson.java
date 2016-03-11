@@ -45,11 +45,14 @@ import com.intuiture.corp.entity.EmployeeProfessionalInfo;
 import com.intuiture.corp.entity.ExitSettings;
 import com.intuiture.corp.entity.FoodCoupons;
 import com.intuiture.corp.entity.GeneralSettings;
+import com.intuiture.corp.entity.Holidays;
 import com.intuiture.corp.entity.ITInfo;
 import com.intuiture.corp.entity.JobTitles;
+import com.intuiture.corp.entity.LeavesNotify;
 import com.intuiture.corp.entity.LookUpDetails;
 import com.intuiture.corp.entity.MedicalReimbursement;
 import com.intuiture.corp.entity.PFInfo;
+import com.intuiture.corp.entity.PayrollCycleSettings;
 import com.intuiture.corp.entity.ProfessionalAllowance;
 import com.intuiture.corp.entity.Reimbursement;
 import com.intuiture.corp.entity.Tags;
@@ -86,11 +89,14 @@ import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
 import com.intuiture.corp.json.ExitSettingsJson;
 import com.intuiture.corp.json.FoodCouponsJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
+import com.intuiture.corp.json.HolidaysJson;
 import com.intuiture.corp.json.ITInfoJson;
 import com.intuiture.corp.json.JobTitlesJson;
+import com.intuiture.corp.json.LeavesNotifyJson;
 import com.intuiture.corp.json.LookUpDetailJson;
 import com.intuiture.corp.json.MedicalReimbursementJson;
 import com.intuiture.corp.json.PFInfoJson;
+import com.intuiture.corp.json.PayrollCycleSettingsJson;
 import com.intuiture.corp.json.ProfessionalAllowanceJson;
 import com.intuiture.corp.json.ReimbursementJson;
 import com.intuiture.corp.json.TagsJson;
@@ -108,6 +114,22 @@ public class TransformDomainToJson {
 		Integer[] ids = splitString(idsInString);
 		List<Integer> listOfIds = ids != null ? Arrays.asList(ids) : null;
 		return listOfIds;
+	}
+
+	public static Integer convertStringToInteger(String str) {
+		Integer convertedStr = null;
+		if (str != null && str.length() > 0) {
+			convertedStr = Integer.parseInt(str);
+		}
+		return convertedStr;
+	}
+
+	public static String convertIntegerToString(Integer value) {
+		String str = null;
+		if (value != null) {
+			str = String.valueOf(value);
+		}
+		return str;
 	}
 
 	public static Integer[] splitString(String idsInString) {
@@ -153,6 +175,8 @@ public class TransformDomainToJson {
 			json.setLookupDetailId(lookUpDetails.getLookupDetailId());
 			json.setParent(lookUpDetails.getParent());
 			json.setLookupMasterId(lookUpDetails.getLookupMasterId());
+			json.setIndexOfTheMonth(lookUpDetails.getIndexOfTheMonth());
+			json.setDaysOfTheMonth(lookUpDetails.getDaysOfTheMonth());
 		}
 		return json;
 	}
@@ -404,6 +428,9 @@ public class TransformDomainToJson {
 		employeeJson.setMiddleName(employee.getMiddleName());
 		employeeJson.setRoleId(employee.getRoleId());
 		employeeJson.setStrDateOfJoining(convertDateToString(employee.getDateOfJoining()));
+		if (employee.getCompanyRoles() != null) {
+			employeeJson.setRole(employee.getCompanyRoles().getRoleName());
+		}
 		return employeeJson;
 	}
 
@@ -775,6 +802,39 @@ public class TransformDomainToJson {
 		exitSettingsJson.setReasonTypeId(exitSettings.getReasonTypeId());
 		exitSettingsJson.setExitSettingsId(exitSettings.getExitSettingsId());
 		return exitSettingsJson;
+	}
 
+	public static HolidaysJson getHolidaysJson(Holidays holidays) {
+		HolidaysJson holidaysJson = new HolidaysJson();
+		holidaysJson.setCompanyId(holidays.getCompanyId());
+		holidaysJson.setDescription(holidays.getDescription());
+		holidaysJson.setStrHolidayDate(convertDateToString(holidays.getHolidayDate()));
+		holidaysJson.setHolidayName(holidays.getHolidayName());
+		holidaysJson.setIsFloatingHoliday(holidays.getIsFloatingHoliday());
+		holidaysJson.setHolidaysId(holidays.getHolidaysId());
+		return holidaysJson;
+	}
+
+	public static LeavesNotifyJson getNotifyJson(LeavesNotify leavesNotify) {
+		LeavesNotifyJson leavesNotifyJson = new LeavesNotifyJson();
+		leavesNotifyJson.setCompanyId(leavesNotify.getCompanyId());
+		leavesNotifyJson.setLeavesNotifyId(leavesNotify.getLeavesNotifyId());
+		leavesNotifyJson.setNotifyEmpId(leavesNotify.getNotifyEmpId());
+		if (leavesNotify.getEmployee() != null) {
+			leavesNotifyJson.setNotifierName(leavesNotify.getEmployee().getDisplayName());
+		}
+		return leavesNotifyJson;
+	}
+
+	public static PayrollCycleSettingsJson getPayrollCycleSettingsJson(PayrollCycleSettings payrollCycleSettings) {
+		PayrollCycleSettingsJson payrollCycleSettingsJson = new PayrollCycleSettingsJson();
+		payrollCycleSettingsJson.setCompanyId(payrollCycleSettings.getCompanyId());
+		payrollCycleSettingsJson.setPayCycleMonthId(payrollCycleSettings.getPayCycleMonthId());
+		payrollCycleSettingsJson.setPayDay(payrollCycleSettings.getPayDay());
+		payrollCycleSettingsJson.setPayFrequency(payrollCycleSettings.getPayFrequency());
+		payrollCycleSettingsJson.setPayPeriodEndDayId(payrollCycleSettings.getPayPeriodEndDayId());
+		payrollCycleSettingsJson.setPayrollCycleSettingsId(payrollCycleSettings.getPayrollCycleSettingsId());
+		payrollCycleSettingsJson.setStrPayPeriodEndDayId(convertIntegerToString(payrollCycleSettings.getPayPeriodEndDayId()));
+		return payrollCycleSettingsJson;
 	}
 }

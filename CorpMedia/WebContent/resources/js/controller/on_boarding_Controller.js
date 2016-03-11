@@ -12,7 +12,8 @@ App.controller('on_boarding_Controller', ['$scope','$location','$rootScope','$ht
 			if($rootScope.selectedCompanyObj){
 				$scope.taskassigntohr.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.TaskAssignToHrController+'/saveTaskAssignToHr', $scope.taskassigntohr).success(function(data) {
-				
+				$scope.getAllTaskAssignToHrList();
+				$scope.taskassigntohr = {};
 			}).error(function() {
 	      	  console.error('Could not save or update taskassigntohr');
 	        });}
@@ -48,7 +49,8 @@ App.controller('on_boarding_Controller', ['$scope','$location','$rootScope','$ht
 			if($rootScope.selectedCompanyObj){
 				$scope.taskassigntoemployee.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.TaskAssignToEmployeeController+'/saveTaskAssignToEmployee', $scope.taskassigntoemployee).success(function(data) {
-				
+				 $scope.getAllTaskAssignToEmployeeList();
+				 $scope.taskassigntoemployee = {};
 			}).error(function() {
 	      	  console.error('Could not save or update taskassigntoemployee');
 	        });}

@@ -1430,10 +1430,16 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 	background-color: #ecf9fd;
 }
 
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 800px; 
+    height: 300px;
+}
 
 
-
-
+.ngSelectionCheckbox{
+  display:none;
+}
 
 
 

@@ -34,4 +34,11 @@ public class CompanyController {
 		List<CompanyJson> companyJsonList = companyService.getCompanyInfo(compName);
 		return companyJsonList;
 	}
+
+	@RequestMapping(value = "/findCompanyByName/{compName}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<CompanyJson> findCompanyByName(HttpServletRequest request, HttpServletResponse response, @PathVariable("compName") String compName) {
+		List<CompanyJson> companyJsonList = companyService.findCompanyByName(compName);
+		return companyJsonList;
+	}
 }

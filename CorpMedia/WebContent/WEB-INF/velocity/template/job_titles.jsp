@@ -10,37 +10,7 @@
 			<td width="20%" valign="top" bgcolor="white"><left-menu></left-menu>
 			</td>
 			<td width="1%"></td>
-			<td valign="top">
-
-				<table class="table" border="0" style="width: 100%;">
-					<tr>
-						<td>
-							<div class="sub-page-navigation">
-								<ul>
-
-									<li ng-class="{'active':(state==='job_titles')}"><a
-										class="anchor-sm" ui-sref="job_titles">Job Titles</a></li>
-									<li ng-class="{'active':(state==='employee_defaults')}"><a
-										class="anchor-sm" ui-sref="employee_defaults">Employee
-											Defaults</a></li>
-									<li ng-class="{'active':(state==='add_employee')}"><a
-										class="anchor-sm" ui-sref="add_employee">Add Employee</a></li>
-									<li ng-class="{'active':(state==='employee_professional')}"><a
-										class="anchor-sm" ui-sref="employee_professional">Professional</a></li>
-									<li ng-class="{'active':(state==='employee_personal')}"><a
-										class="anchor-sm" ui-sref="employee_personal">Personal</a></li>
-									<li ng-class="{'active':(state==='employee_job')}"><a
-										class="anchor-sm" ui-sref="employee_job">Job</a></li>
-
-
-
-
-
-								</ul>
-							</div>
-						</td>
-					</tr>
-				</table>
+			<td valign="top"><employee-module-top></employee-module-top>
 				<table class="table" border="0"
 					style="width: 100%; background-color: white">
 					<tr>
@@ -95,8 +65,8 @@
 													<button class="btn btn-success" type="submit"
 														style="width: 100px">Save</button>
 													&nbsp;
-													<button class="btn btn-cancel" style="width: 100px" ng-click="cancelJobTitle()"
-														type="button">Cancel</button>
+													<button class="btn btn-cancel" style="width: 100px"
+														ng-click="cancelJobTitle()" type="button">Cancel</button>
 												</p>
 											</div>
 
@@ -106,7 +76,8 @@
 
 							</div>
 							<div class="col-lg-8">
-								<table style="width: 100%" border="0" class="table table-bordered">
+								<table style="width: 100%" border="0"
+									class="table table-bordered">
 									<tr>
 										<th>Name</th>
 										<th>Description</th>
@@ -118,7 +89,8 @@
 										<td>{{jobTitle.description}}</td>
 										<td><a ng-click="editJobTitle(jobTitle)" tooltip="edit"
 											style="cursor: pointer; font-size: 12px"><i
-												class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a tooltip="delete"
+												class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+											tooltip="delete"
 											ng-click="deleteJobTitle(jobTitle.jobtitlesId)"
 											style="cursor: pointer; font-size: 12px"><i
 												class="fa fa-trash"></i></a></td>
@@ -157,8 +129,7 @@
 
 
 
-				</table>
-			</td>
+				</table></td>
 		</tr>
 	</table>
 </div>

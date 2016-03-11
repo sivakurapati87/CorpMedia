@@ -6,6 +6,8 @@ App.controller('timesheet_approval_chain_Controller', ['$scope','$location','$ro
 		$scope.left_state = "timesheet";
 		$scope.TimeSheetApproverJsonList = null;
 		
+		$scope.isProcessing = true;
+		
 		//increase the approvers list
 		$scope.addApproverLevel = function(){
 			//If list is empty
@@ -42,6 +44,7 @@ App.controller('timesheet_approval_chain_Controller', ['$scope','$location','$ro
           
 		// get all the approvers list
 		$scope.getAllApproversList = function(){
+			$scope.isProcessing = true;
 			if(!$scope.companyRolesJsonList){
 				$scope.getAllRoles();
 				$scope.getAllEmployeesList();
@@ -51,8 +54,9 @@ App.controller('timesheet_approval_chain_Controller', ['$scope','$location','$ro
 				$scope.TimeSheetApproverJsonList = data;
 				angular.forEach($scope.TimeSheetApproverJsonList, function(obj, key)
 		  				  {
-							obj.employeeJsonList = $scope.EmployeeJsonList;
+							obj.employeeJsonList = $scope.onChangeRoleAction(obj.roleId, obj);
 		  				  });
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllRoles');
 	        });}
@@ -75,6 +79,7 @@ App.controller('timesheet_approval_chain_Controller', ['$scope','$location','$ro
 								obj = approver;
 							}
 	  				  });
+			return $scope.empList;
 		};
 		
 		// get all the Employees list

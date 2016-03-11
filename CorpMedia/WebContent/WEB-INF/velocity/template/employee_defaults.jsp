@@ -1,16 +1,4 @@
 
-<script>
-	$(document).ready(function() {
-		$(fader).click(function() {
-			$(fade_out).fadeOut();
-			$(fade_in).fadeIn();
-		});
-	});
-</script>
-
-
-
-
 <div class="container-fluid" style="width: 100%;">
 	<table>
 		<tr
@@ -23,35 +11,7 @@
 			<td width="1%"></td>
 			<td valign="top">
 
-				<table class="table" border="0" style="width: 100%;">
-					<tr>
-						<td>
-							<div class="sub-page-navigation">
-								<ul>
-
-									<li ng-class="{'active':(state==='job_titles')}"><a
-										class="anchor-sm" ui-sref="job_titles">Job Titles</a></li>
-									<li ng-class="{'active':(state==='employee_defaults')}"><a
-										class="anchor-sm" ui-sref="employee_defaults">Employee
-											Defaults</a></li>
-									<li ng-class="{'active':(state==='add_employee')}"><a
-										class="anchor-sm" ui-sref="add_employee">Add Employee</a></li>
-									<li ng-class="{'active':(state==='employee_professional')}"><a
-										class="anchor-sm" ui-sref="employee_professional">Professional</a></li>
-									<li ng-class="{'active':(state==='employee_personal')}"><a
-										class="anchor-sm" ui-sref="employee_personal">Personal</a></li>
-									<li ng-class="{'active':(state==='employee_job')}"><a
-										class="anchor-sm" ui-sref="employee_job">Job</a></li>
-
-
-
-
-
-								</ul>
-							</div>
-						</td>
-					</tr>
-				</table>
+				<employee-module-top></employee-module-top>
 				<table class="table" border="0"
 					style="width: 100%; background-color: white">
 					<tr>
@@ -72,7 +32,7 @@
 							<div id="fade_out">
 								<div class="row">
 									<div class="col-md-2">
-										<button id="fader" class="btn btn-primary">
+										<button id="fader" class="btn btn-primary" ng-click="isCollapse=!isCollapse">
 											<i class="fa fa-pencil-square fa-2x"></i>&nbsp;&nbsp;&nbsp;
 										</button>
 									</div>
@@ -83,7 +43,7 @@
 								<br>
 
 
-								<div class="row">
+								<div class="row" collapse="!isCollapse">
 									<div class="col-md-8">
 
 
@@ -175,7 +135,9 @@
 
 											<div class="col-md-3">
 												<p>
-													<b><font size="3"> {{companyEmployeeDefaultsJson.isEmpAllowedToUpdate}}</font></b>
+													<b><font size="3" ng-if="companyEmployeeDefaultsJson.isEmpAllowedToUpdate"> Yes</font>
+													<font size="3" ng-if="companyEmployeeDefaultsJson.isEmpAllowedToUpdate == null || !companyEmployeeDefaultsJson.isEmpAllowedToUpdate">No</font>
+													</b>
 												</p>
 											</div>
 										</div>
@@ -191,7 +153,7 @@
 							</div>
 
 							<form ng-submit="saveCompanyEmpDefault()">
-								<div id="fade_in" style="display: none">
+								<div collapse="isCollapse">
 
 
 
@@ -323,7 +285,7 @@
 
 									<p>
 										<button type="submit" class="btn btn-success">Update</button>
-										<button type="button" class="btn btn-default">Cancel</button>
+										<button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
 									</p>
 
 								</div>
