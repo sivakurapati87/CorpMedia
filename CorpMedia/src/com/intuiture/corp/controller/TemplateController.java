@@ -292,4 +292,9 @@ public class TemplateController {// Serves Templates.
 		return "template/employee_info";
 	}
 
+	@RequestMapping(value = "/employee_finance")
+	public String employee_finance() {
+		return "template/employee_finance";
+	}
+
 }

@@ -473,7 +473,18 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	            }
 	        }
 	})
-	
+	.state('employee_finance', {
+		url: "/employee_finance",
+			views: {
+	            'content': {
+	            	templateUrl: 'employee_finance',
+	        		controller : "employee_finance_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})	
 	.state('employee_job', {
 		url: "/employee_job",
 			views: {

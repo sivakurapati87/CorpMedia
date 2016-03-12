@@ -101,6 +101,8 @@
 <script src="resources/js/controller/All_Employee_Controller.js"></script>
 <script src="resources/js/controller/Employee_Info_Controller.js"></script>
 <script src="resources/js/controller/Salary_component_Controller.js"></script>
+<script src="resources/js/controller/employee_finance_Controller.js"></script>
+
 
 <script src="resources/js/service/constants.js"></script>
 <script src="resources/js/service/HomeService.js"></script>
