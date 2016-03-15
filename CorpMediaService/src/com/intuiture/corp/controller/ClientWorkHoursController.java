@@ -1,10 +1,13 @@
 package com.intuiture.corp.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,13 +23,6 @@ public class ClientWorkHoursController {
 	@Autowired
 	private ClientWorkHoursService clientWorkHoursService;
 
-	/*
-	 * @RequestMapping(value = "/saveClients", method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public Boolean saveClients(HttpServletRequest request,
-	 * HttpServletResponse response, @RequestBody ClientsJson clientsJson) {
-	 * return true; //clientsService.saveClients(clientsJson); }
-	 */
 
 	@RequestMapping(value = "/saveClientWorkHours", method = RequestMethod.POST)
 	@ResponseBody
@@ -41,5 +37,17 @@ public class ClientWorkHoursController {
 		// return false;
 
 	}
-
+	@RequestMapping(value = "/getAllClientWorkHoursList/{companyId}", method = RequestMethod.GET)
+	 @ResponseBody
+	 public List<ClientWorkHoursJson> getAllClientWorkHoursList(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer companyId) {
+	  
+	  return clientWorkHoursService.getAllClientWorkHoursList(companyId);
+	  
+	 }
+	 
+	 @RequestMapping(value = "/deleteClientWorkHours/{clientWorkHourId}", method = RequestMethod.GET)
+	  @ResponseBody
+	  public Boolean deleteClientWorkHours(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer clientWorkHourId) {
+	  return clientWorkHoursService.deleteClientWorkHours(clientWorkHourId);
+	  }
 }

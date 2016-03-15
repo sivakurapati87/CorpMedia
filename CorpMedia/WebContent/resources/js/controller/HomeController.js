@@ -5,33 +5,43 @@ App.controller('HomeController', ['$scope','HomeService', function($scope,HomeSe
 	 var self = this;
 	 $scope.selectedCompany=null;
 	 $scope.companies=[];
-	 
-	 var currentDate = moment();
-	    
-     var fnWeekDays = function(dt) {
+        //set the selected contry
+          $scope.selectedCompanyAction = function(selected) {
+              if (selected) {
+            	  $scope.selectedCompany= selected.title;
+            	  HomeService.insertSelectedCompany($scope.selectedCompany);
+            	  
+              } else {
+                console.log('cleared');
+              }
+            };
 
-        var currentDate = dt;
-        var weekStart = currentDate.clone().startOf('week');
-        var weekEnd = currentDate.clone().endOf('week');
+            
+            
+            var currentDate = moment();
+    	    
+            var fnWeekDays = function(dt) {
 
-        var days = [],i;
-        for (i = 0; i <= 6; i++) {
+               var currentDate = dt;
+               var weekStart = currentDate.clone().startOf('week');
+               var weekEnd = currentDate.clone().endOf('week');
 
-            days.push(moment(weekStart).add(i, 'days').format("MMMM Do,dddd"));
+               var days = [],i;
+               for (i = 0; i <= 6; i++) {
 
-        };
-        return days;
-    }
-    
-    $scope.weekDays = fnWeekDays(currentDate);
-    $scope.nextWeek = function(dt) {
-        $scope.weekDays = fnWeekDays(moment(dt, "MMMM Do,dddd").add(1, 'days'));
-    };
-    $scope.previousWeek = function(dt) {
-        $scope.weekDays = fnWeekDays(moment(dt, "MMMM Do,dddd").subtract(1, 'days'));
-    };
+                   days.push(moment(weekStart).add(i, 'days').format("MMMM Do,dddd"));
 
-          
+               };
+               return days;
+           }
+           
+           $scope.weekDays = fnWeekDays(currentDate);
+           $scope.nextWeek = function(dt) {
+               $scope.weekDays = fnWeekDays(moment(dt, "MMMM Do,dddd").add(1, 'days'));
+           };
+           $scope.previousWeek = function(dt) {
+               $scope.weekDays = fnWeekDays(moment(dt, "MMMM Do,dddd").subtract(1, 'days'));
+           };
           
               
               

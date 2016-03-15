@@ -34,16 +34,32 @@ App.controller('dpt_work_hrs_Controller', ['$scope','$location','$rootScope','$h
 	        });}
 		};
 		
-		
-		
-		
-		
-		
-		
-          
-
-
-          
-
-          
+		// get all department Work Hrs list
+		  $scope.getAllDeptWorkHoursList = function(){
+		   if($rootScope.selectedCompanyObj){
+		   $http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.DeptWorkHoursController+'/getAllDeptWorkHoursList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+		    $scope.deptWorkHoursList = data;
+		    
+		   }).error(function() {
+		          console.error('Could not get department Work Hours list');
+		         });}
+		  };
+		  
+		  // init
+		  $scope.getAllDeptWorkHoursList();
+		  
+		  // edit department WorkHours
+		  $scope.editDeptWorkHours = function(deptWHL ){
+		   $scope.deptWorkHours = deptWHL;
+		   $scope.isExpCollapse = false;
+		  };
+		  
+		  //delete department Work Hour
+		  $scope.deleteDeptWorkHours= function(deptWorkHourId){
+		   $http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.DeptWorkHoursController+'/deleteDeptWorkHours/'+ deptWorkHourId).success(function(data) {
+		    $scope.getAllDeptWorkHoursList();
+		   }).error(function() {
+		          console.error('Could not delete department work hours');
+		         });
+		  };    
 }]);

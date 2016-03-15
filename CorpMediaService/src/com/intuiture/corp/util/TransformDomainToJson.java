@@ -24,6 +24,7 @@ import com.intuiture.corp.entity.CityCompensatoryAllowance;
 import com.intuiture.corp.entity.Clients;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.entity.CompanyBanks;
+import com.intuiture.corp.entity.CompanyClientWorkHours;
 import com.intuiture.corp.entity.CompanyEmployeeDefaults;
 import com.intuiture.corp.entity.CompanyLeavePlans;
 import com.intuiture.corp.entity.CompanyLeaveType;
@@ -34,6 +35,7 @@ import com.intuiture.corp.entity.CustomAllowance;
 import com.intuiture.corp.entity.DailyAllowance;
 import com.intuiture.corp.entity.Deductions;
 import com.intuiture.corp.entity.Department;
+import com.intuiture.corp.entity.DeptWorkHours;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.EmployeeAddressInfo;
@@ -72,6 +74,7 @@ import com.intuiture.corp.json.AllowancesJson;
 import com.intuiture.corp.json.BonusesJson;
 import com.intuiture.corp.json.CategoriesJson;
 import com.intuiture.corp.json.CityCompensatoryAllowanceJson;
+import com.intuiture.corp.json.ClientWorkHoursJson;
 import com.intuiture.corp.json.ClientsJson;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
@@ -85,6 +88,7 @@ import com.intuiture.corp.json.CustomAllowanceJson;
 import com.intuiture.corp.json.DailyAllowanceJson;
 import com.intuiture.corp.json.DeductionsJson;
 import com.intuiture.corp.json.DepartmentJson;
+import com.intuiture.corp.json.DeptWorkHoursJson;
 import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.EmployeeEducationalInfoJson;
 import com.intuiture.corp.json.EmployeeExperienceInfoJson;
@@ -649,6 +653,40 @@ public class TransformDomainToJson {
 		clientsJson.setManagerName(clients.getManagerName());
 		clientsJson.setNotes(clients.getNotes());
 		return clientsJson;
+	}
+
+	public static ClientWorkHoursJson getClientWorkHoursJson(CompanyClientWorkHours companyClientWorkHours) {
+		ClientWorkHoursJson clientWorkHoursJson = new ClientWorkHoursJson();
+		clientWorkHoursJson.setCompanyId(companyClientWorkHours.getCompanyId());
+		clientWorkHoursJson.setStrFrom(convertDateToString(companyClientWorkHours.getClientFrom()));
+		clientWorkHoursJson.setStrTo(convertDateToString(companyClientWorkHours.getClientTo()));
+		clientWorkHoursJson.setClientWorkHourId(companyClientWorkHours.getClientWorkHourId());
+		clientWorkHoursJson.setClientsId(companyClientWorkHours.getClientId());
+		if (companyClientWorkHours.getClients() != null) {
+			clientWorkHoursJson.setClient(companyClientWorkHours.getClients().getClientName());
+		}
+
+		return clientWorkHoursJson;
+	}
+
+	public static DeptWorkHoursJson getDeptWorkHoursJson(DeptWorkHours deptWorkHours) {
+		DeptWorkHoursJson deptWorkHoursJson = new DeptWorkHoursJson();
+		deptWorkHoursJson.setCompanyId(deptWorkHours.getCompanyId());
+		deptWorkHoursJson.setGroupById(deptWorkHours.getGroupById());
+		deptWorkHoursJson.setStrFrom(convertDateToString(deptWorkHours.getDeptFrom()));
+		deptWorkHoursJson.setStrTo(convertDateToString(deptWorkHours.getDeptTo()));
+		deptWorkHoursJson.setDeptWorkHourId(deptWorkHours.getDeptWorkHourId());
+		deptWorkHoursJson.setDepartmentId(deptWorkHours.getDepartmentId());
+		deptWorkHoursJson.setIncludeNonbillableHours(deptWorkHours.getIncludeNonbillableHours());
+		if (deptWorkHours.getGroupBy() != null) {
+			deptWorkHoursJson.setGroupBy(deptWorkHours.getGroupBy().getDescription());
+		}
+		if (deptWorkHours.getDepartment() != null) {
+			deptWorkHoursJson.setDepartment(deptWorkHours.getDepartment().getDepartmentName());
+
+		}
+
+		return deptWorkHoursJson;
 	}
 
 	public static MedicalReimbursementJson getMedicalReimbursementJson(MedicalReimbursement medicalReimbursement) {

@@ -13,7 +13,7 @@ public class ClientWorkHoursJson {
 	private Date to;
 	private String strFrom;
 	private String strTo;
-
+	private String client;
 
 	public Integer getCompanyId() {
 		return companyId;
@@ -85,6 +85,14 @@ public class ClientWorkHoursJson {
 
 	public void setClientWorkHourId(Integer clientWorkHourId) {
 		this.clientWorkHourId = clientWorkHourId;
+	}
+
+	public String getClient() {
+		return client;
+	}
+
+	public void setClient(String client) {
+		this.client = client;
 	}
 
 }

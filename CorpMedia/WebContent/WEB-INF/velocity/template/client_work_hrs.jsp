@@ -124,9 +124,21 @@
 											</div>
 
 											<div class="form-group">
-												<label for="date_from">From</label> <input type="date"
+												<label for="date_from">From</label> <!-- <input type="date"
 													class="form-control" id="date_from"
-													ng-model="clientworkhours.strFrom">
+													ng-model="clientworkhours.strFrom" required="required"> -->
+													<div class="input-group">
+													<input type="text" class="form-control"
+														ng-model="clientworkhours.strFrom"
+														datepicker-popup="dd-MMM-yyyy" is-open="Opened"
+														ng-click="Opened=true"> <span
+														class="input-group-btn">
+														<button type="button" class="btn btn-default"
+															ng-click="Opened=true;$event.stopPropagation();">
+															<i class="glyphicon glyphicon-calendar"></i>
+														</button>
+													</span>
+												</div>
 											</div>
 
 										</div>
@@ -140,9 +152,21 @@
 											</div>
 											<br>
 											<div class="form-group">
-												<label for="date_to">To</label> <input type="date"
+												<label for="date_to">To</label> <!-- <input type="date"
 													class="form-control" id="date_to"
-													ng-model="clientworkhours.strTo">
+													ng-model="clientworkhours.strTo" required="required"> -->
+													<div class="input-group">
+													<input type="text" class="form-control"
+														ng-model="clientworkhours.strTo"
+														datepicker-popup="dd-MMM-yyyy" is-open="endOpened"
+														ng-click="endOpened=true"> <span
+														class="input-group-btn">
+														<button type="button" class="btn btn-default"
+															ng-click="endOpened=true;$event.stopPropagation();">
+															<i class="glyphicon glyphicon-calendar"></i>
+														</button>
+													</span>
+												</div>
 											</div>
 
 										</div>
@@ -172,12 +196,42 @@
 									</div>
 
 									<br>
-									<p>
-										<b>No Client work hours summary</b>
-									</p>
-								</form>
-							</div>
+									 <p>
+										<b> Client work hours summary</b>
+									</p> 
+									<!--  ---------------------------------- values grid talbe--------------  -->
+									<div class="col-lg-8" style="margin-top: 30px;">
+										<table style="width: 100%" border="0"
+											class="table table-bordered">
+											<tbody>
+												<tr>
+													<th>Clients</th>
+													<th>From</th>
+													<th>To</th>
+													
+													<th>Actions</th>
+												</tr>
+												<tr ng-repeat="clientWHL in clientWorkHoursList" ng-class-odd="'odd'"
+													ng-class-even="'even'" style="height: 30px">
+													<td>{{clientWHL.client}}</td>
+													<td>{{clientWHL.strFrom}}</td>
+													<td>{{clientWHL.strTo}}</td>
+													
+													<td><a ng-click="editClientWorkHours(clientWHL)" tooltip="edit" style="cursor: pointer; font-size: 12px">
+															<i class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;
+															 <a tooltip="delete" style="cursor: pointer; font-size: 12px" ng-click="deleteClientWorkHours(clientWHL.clientWorkHourId)">
+															 <i class="fa fa-trash"></i></a>
+													</td>
+												</tr>
 
+											</tbody>
+										</table>
+									</div>
+
+
+
+									<!--  --------------------------------- values grid talbe--------------  -->
+								</form>
 							</div> <!--this is the end of the main row-->
 
 
@@ -200,35 +254,3 @@
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

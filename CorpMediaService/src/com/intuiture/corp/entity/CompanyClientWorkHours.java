@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,9 @@ public class CompanyClientWorkHours {
 	private Date clientFrom;
 	private Date clientTo;
 	private Date updatedOn;
+	@ManyToOne
+	@JoinColumn(name = "clientId", insertable = false, updatable = false)
+	private Clients clients;
 
 	public Integer getClientWorkHourId() {
 		return clientWorkHourId;
@@ -84,6 +89,14 @@ public class CompanyClientWorkHours {
 
 	public void setClientTo(Date clientTo) {
 		this.clientTo = clientTo;
+	}
+
+	public Clients getClients() {
+		return clients;
+	}
+
+	public void setClients(Clients clients) {
+		this.clients = clients;
 	}
 
 }

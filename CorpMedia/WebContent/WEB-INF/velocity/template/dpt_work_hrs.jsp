@@ -107,88 +107,132 @@
 
 								<!--this is the second row-->
 								<form ng-submit="saveDeptWorkHours()">
-								<div class="row">
+									<div class="row">
 
-									<div class="col-md-3">
+										<div class="col-md-3">
 
-										<div class="form-group">
-											<label for="sel1">Department</label> <select
-												class="form-control" id="sel1" 	ng-model="deptWorkHours.clientsId" required=""
-												ng-options=" opt.departmentId as opt.departmentName for opt in companyDepartmentList">
-												<option>select a department</option>
-												<!-- <option>All Departments</option>
+											<div class="form-group">
+												<label for="sel1">Department</label> <select
+													class="form-control" id="sel1"
+													ng-model="deptWorkHours.clientsId" required=""
+													ng-options=" opt.departmentId as opt.departmentName for opt in companyDepartmentList">
+													<option>select a department</option>
+													<!-- <option>All Departments</option>
 												<option>Ungrouped Departments</option>
 												<option>Accounts</option>
 												<option>Web Development</option>
  -->
-											</select>
-										</div>
-										<br>
-										<div class="form-group">
-											<label for="date_from">From</label> <input type="date" required="required"
-												class="form-control" id="" ng-model="deptWorkHours.strFrom" >
-										</div>
+												</select>
+											</div>
+											<br>
+											<div class="form-group">
+												<label for="date_from">From</label> <input type="date"
+													required="required" class="form-control" id=""
+													ng-model="deptWorkHours.strFrom">
+											</div>
 
-									</div>
-
-									<div class="col-md-1"></div>
-
-									<div class="col-md-3">
-
-										<div class="form-group">
-											<label for="sel1">Group By</label>
-											 <select
-														class="form-control ng-pristine ng-valid ng-valid-required ng-touched" 
-														ng-model="deptWorkHours.groupById"
-														ng-options="bank.lookupDetailId as bank.description for bank in  lookup.groupByList"
-														required="required">
-														<option value="" disabled selected>Select</option>
-														</select>
-											
-											
-										</div>
-										<br>
-										<div class="form-group">
-											<label for="date_to">To</label> <input type="date"
-												class="form-control" id="" ng-model="deptWorkHours.strTo">
 										</div>
 
+										<div class="col-md-1"></div>
+
+										<div class="col-md-3">
+
+											<div class="form-group">
+												<label for="sel1">Group By</label> <select
+													class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+													ng-model="deptWorkHours.groupById"
+													ng-options="bank.lookupDetailId as bank.description for bank in  lookup.groupByList"
+													required="required">
+													<option value="" disabled selected>Select</option>
+												</select>
+
+
+											</div>
+											<br>
+											<div class="form-group">
+												<label for="date_to">To</label> <input type="date"
+													class="form-control" id="" ng-model="deptWorkHours.strTo">
+											</div>
+
+										</div>
+
+										<!--this remains empty for the show-off purpose:for styling-->
+										<div class="col-md-5"></div>
+
 									</div>
+									<!--this is the end of the row-->
+									<div class="row">
 
-									<!--this remains empty for the show-off purpose:for styling-->
-									<div class="col-md-5"></div>
+										<div class="col-md-3">
+											<p>
+												<input type="checkbox"
+													ng-model="deptWorkHours.includeNonbillableHours">&nbsp;&nbsp;Include
+												non billable hours
+											</p>
+										</div>
 
-								</div>
-								<!--this is the end of the row-->
-								<div class="row">
+										<div class="col-md-1"></div>
 
-									<div class="col-md-3">
-										<p>
-											<input type="checkbox" ng-model="deptWorkHours.includeNonbillableHours">&nbsp;&nbsp;Include non
-											billable hours
-										</p>
+										<div class="col-md-3">
+											<!-- <button type="submit" class="btn btn-success">Submit</button> -->
+											<input type="submit" class="btn btn-submit ng-scope"
+												value="Save">
+										</div>
+
+										<div class="col-md-2"></div>
+										<div class="col-md-3">
+											<input type="search" placeholder="search"
+												class="form-control">
+										</div>
 									</div>
-
-									<div class="col-md-1"></div>
-
-									<div class="col-md-3">
-										<!-- <button type="submit" class="btn btn-success">Submit</button> -->
-										<input type="submit" class="btn btn-submit ng-scope" value="Save">
-									</div>
-
-									<div class="col-md-2"></div>
-									<div class="col-md-3">
-										<input type="search" placeholder="search" class="form-control">
-									</div>
-								</div>
 								</form>
 								<br>
 								<p>
 									<b>No department work hours summary</b>
 								</p>
-							</div>
 
-							</div> <!--this is the end of the main row-->
+								<!--  ---------------------------------- values grid talbe--------------  -->
+								<div class="col-lg-8" style="margin-top: 30px;">
+									<table style="width: 100%" border="0"
+										class="table table-bordered">
+										<tbody>
+											<tr>
+												<th>Department</th>
+												<th>Groupby</th>
+												<th>From</th>
+												<th>To</th>
+												<th>Include non billable hours</th>
+												<th>Actions</th>
+											</tr>
+											<tr ng-repeat="deptWHL in deptWorkHoursList"
+												ng-class-odd="'odd'" ng-class-even="'even'"
+												style="height: 30px">
+												<td>{{deptWHL.department}}</td>
+												<td>{{deptWHL.groupBy}}</td>
+												<td>{{deptWHL.strFrom}}</td>
+												<td>{{deptWHL.strTo}}</td>
+												<td ng-if="deptWHL.includeNonbillableHours==true">YES</td>
+												<td
+													ng-if="deptWHL.includeNonbillableHours==NULL || deptWHL.includeNonbillableHours==false">NO</td>
+												<td><a ng-click="editDeptWorkHours(deptWHL)"
+													tooltip="edit" style="cursor: pointer; font-size: 12px">
+														<i class="fa fa-pencil-square-o"></i>
+												</a> &nbsp;&nbsp; <a tooltip="delete"
+													style="cursor: pointer; font-size: 12px"
+													ng-click="deleteDeptWorkHours(deptWHL.deptWorkHourId">
+														<i class="fa fa-trash"></i>
+												</a></td>
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+
+
+
+								<!--  --------------------------------- values grid talbe--------------  -->
+							</div>
+							<!--this is the end of the main row-->
 
 
 						</td>
