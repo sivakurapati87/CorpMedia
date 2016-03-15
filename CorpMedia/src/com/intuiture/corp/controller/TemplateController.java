@@ -297,4 +297,9 @@ public class TemplateController {// Serves Templates.
 		return "template/employee_finance";
 	}
 
+	@RequestMapping(value = "/employeeSalaryStructure_cmn")
+	public String employeeSalaryStructure_cmn() {
+		return "template/employeeSalaryStructure_cmn";
+	}
+
 }

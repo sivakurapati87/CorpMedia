@@ -15,7 +15,7 @@ public class MedicalReimbursement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer medicalReimbursementId;
-	private Long maxAnnualLimit;
+	private Double maxAnnualLimit;
 	private Integer requireSubmissionId;
 	private Boolean isDeleted;
 	private Date createdOn;
@@ -30,11 +30,11 @@ public class MedicalReimbursement {
 		this.medicalReimbursementId = medicalReimbursementId;
 	}
 
-	public Long getMaxAnnualLimit() {
+	public Double getMaxAnnualLimit() {
 		return maxAnnualLimit;
 	}
 
-	public void setMaxAnnualLimit(Long maxAnnualLimit) {
+	public void setMaxAnnualLimit(Double maxAnnualLimit) {
 		this.maxAnnualLimit = maxAnnualLimit;
 	}
 

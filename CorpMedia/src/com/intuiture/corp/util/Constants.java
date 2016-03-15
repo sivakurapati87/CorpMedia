@@ -22,7 +22,7 @@ public class Constants {
 	public static final String DAYS = "DAYS";
 	public static final String LEAVETYPE = "LEAVETYPE";
 	public static final String MQHS = "MQHS";
-
+	public static final String PAYMENT_STATUS = "PAYMENT_STATUS";
 	public static final String REASONTYPE = "REASONTYPE";
 
 	public static final ResourceBundle RB = ResourceBundle.getBundle("config");

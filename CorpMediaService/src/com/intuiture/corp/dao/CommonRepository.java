@@ -85,7 +85,7 @@ public class CommonRepository extends BaseRepository {
 		List<?> list = null;
 		try {
 			Criteria criteria = getSession().createCriteria(clazz);
-			criteria.add(Restrictions.eq("employeeId", employeeId));
+			criteria.add(Restrictions.and(Restrictions.eq("employeeId", employeeId), Restrictions.or(Restrictions.eq("isDeleted", Boolean.FALSE), Restrictions.isNull("isDeleted"))));
 			list = criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();

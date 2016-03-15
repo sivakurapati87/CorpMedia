@@ -15,7 +15,7 @@ public class GratuityContribution {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer gratuityContributionId;
-	private Long maxAnnualLimit;
+	private Double maxAnnualLimit;
 	private Boolean isDeleted;
 	private Date createdOn;
 	private Date updatedOn;
@@ -29,11 +29,11 @@ public class GratuityContribution {
 		this.gratuityContributionId = gratuityContributionId;
 	}
 
-	public Long getMaxAnnualLimit() {
+	public Double getMaxAnnualLimit() {
 		return maxAnnualLimit;
 	}
 
-	public void setMaxAnnualLimit(Long maxAnnualLimit) {
+	public void setMaxAnnualLimit(Double maxAnnualLimit) {
 		this.maxAnnualLimit = maxAnnualLimit;
 	}
 

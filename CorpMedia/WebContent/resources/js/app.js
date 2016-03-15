@@ -31,6 +31,13 @@ App.directive('employeeModuleTop', function() {
 	    };
 	});
 
+App.directive('employeeSalaryStructure', function() {
+	  return {
+	      restrict: 'E',
+	      templateUrl: 'employeeSalaryStructure_cmn'
+	    };
+	});
+
 App.directive('employeeInfoTop', function() {
 	  return {
 	      restrict: 'E',

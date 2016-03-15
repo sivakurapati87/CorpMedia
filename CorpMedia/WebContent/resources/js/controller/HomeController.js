@@ -5,37 +5,33 @@ App.controller('HomeController', ['$scope','HomeService', function($scope,HomeSe
 	 var self = this;
 	 $scope.selectedCompany=null;
 	 $scope.companies=[];
-        //set the selected contry
-          $scope.selectedCompanyAction = function(selected) {
-              if (selected) {
-//            	  alert(selected.title);
-            	  $scope.selectedCompany= selected.title;
-//            	  HomeService.setSelectedCompany($scope.selectedCompany);
-            	  HomeService.insertSelectedCompany($scope.selectedCompany);
-            	  
-//            	  $scope.$watch(function () { return  HomeService.getSelectedCompany(); }, function (newValue, oldValue) {
-//            	        if (newValue != null) {
-//            	            //update Controller2's xxx value
-//            	            alert(newValue);
-//            	        }
-//            	    }, true);
-              } else {
-                console.log('cleared');
-              }
-            };
+	 
+	 var currentDate = moment();
+	    
+     var fnWeekDays = function(dt) {
+
+        var currentDate = dt;
+        var weekStart = currentDate.clone().startOf('week');
+        var weekEnd = currentDate.clone().endOf('week');
+
+        var days = [],i;
+        for (i = 0; i <= 6; i++) {
+
+            days.push(moment(weekStart).add(i, 'days').format("MMMM Do,dddd"));
+
+        };
+        return days;
+    }
+    
+    $scope.weekDays = fnWeekDays(currentDate);
+    $scope.nextWeek = function(dt) {
+        $scope.weekDays = fnWeekDays(moment(dt, "MMMM Do,dddd").add(1, 'days'));
+    };
+    $scope.previousWeek = function(dt) {
+        $scope.weekDays = fnWeekDays(moment(dt, "MMMM Do,dddd").subtract(1, 'days'));
+    };
 
           
-          //Search Action
-//            self.searchAction = function() {
-//        	 HomeService.searchAction($scope.selectedCompany)
-//        	 .then(
-//				       function(d) {
-//				       },
-//					function(errResponse){
-//						console.error('Error while fetching Currencies');
-//					}
-//		       );
-//          };
           
               
               

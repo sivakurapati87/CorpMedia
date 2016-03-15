@@ -8,7 +8,7 @@ public class Constants {
 	public static final String companyLeavePlanId = "companyLeavePlanId";
 	public static final String MONTHS = "MONTHS";
 	public static final Integer ENDDAY = 100;
-	public static final Float BASIC = 0.4f;
-	public static final Float HRA = 0.5f;
-	public static final Float PF = 0.048f;
+	public static final Double BASIC = 0.4d;
+	public static final Double HRA = 0.5d;
+	public static final Double PF = 0.048d;
 }

@@ -14,7 +14,7 @@ public class TransportAllowance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer transportAllowanceId;
-	private Long maxAnnualLimit;
+	private Double maxAnnualLimit;
 	private Integer requireSubmissionId;
 	private Boolean isDeleted;
 	private Date createdOn;
@@ -29,11 +29,11 @@ public class TransportAllowance {
 		this.transportAllowanceId = transportAllowanceId;
 	}
 
-	public Long getMaxAnnualLimit() {
+	public Double getMaxAnnualLimit() {
 		return maxAnnualLimit;
 	}
 
-	public void setMaxAnnualLimit(Long maxAnnualLimit) {
+	public void setMaxAnnualLimit(Double maxAnnualLimit) {
 		this.maxAnnualLimit = maxAnnualLimit;
 	}
 

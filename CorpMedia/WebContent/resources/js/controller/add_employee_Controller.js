@@ -69,6 +69,8 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 		// This function is to edit employee information
 		$scope.editEmployee = function(employeeJson){
 			$scope.employeeJson = employeeJson;
+			var parts =$scope.employeeJson.strDateOfJoining.split('-');
+			$scope.employeeJson.strDateOfJoining = new Date(parts[0],parts[1]-1,parts[2]); 
 			$scope.isEmpCollapse = false;
 		};
 		

@@ -25,7 +25,7 @@ public class LookupBean {
 	private List<LookUpDetailJson> daysList;
 	private List<LookUpDetailJson> leaveTypeList;
 	private List<LookUpDetailJson> monthQuerertyList;
-
+	private List<LookUpDetailJson> paymentStatusList;
 	private List<LookUpDetailJson> reasonTypeList;
 
 	public List<LookUpDetailJson> getBanksList() {
@@ -186,6 +186,14 @@ public class LookupBean {
 
 	public void setDaysList(List<LookUpDetailJson> daysList) {
 		this.daysList = daysList;
+	}
+
+	public List<LookUpDetailJson> getPaymentStatusList() {
+		return paymentStatusList;
+	}
+
+	public void setPaymentStatusList(List<LookUpDetailJson> paymentStatusList) {
+		this.paymentStatusList = paymentStatusList;
 	}
 
 }

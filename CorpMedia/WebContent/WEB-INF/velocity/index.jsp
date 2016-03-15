@@ -34,7 +34,7 @@
 <script src="resources/js/d3.min.js"></script>
 <script src="resources/js/nv.d3.min.js"></script>
 <script src="resources/js/angular-nvd3.js"></script>
-
+<script src="resources/js/moment.js"></script>
 
 <!-- <script -->
 <!-- 	src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script> -->

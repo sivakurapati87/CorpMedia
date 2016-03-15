@@ -309,46 +309,4 @@
 
 
 <!-- Popup -->
-<div class="modal fade" id="hramodelpopupid" role="dialog"
-	style="width: 70%; margin: 0 auto;">
-	<div class="modal-dialog" style="width: 90%; background: #fff;">
-		<div>
 
-			<!-- Modal content-->
-			<div class="modal-content" style="background:;">
-				<div class="modal-header" style="">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Add Salary Details to</h4>
-				</div>
-				<div class="modal-body"
-					style="float: left; height: 400px; width: 59%; margin: 0.4%; background:;">
-					<!-- <div style="float: left; width:19%; height: 100%; background: #fff;"></div> -->
-					<div class="form-group"
-						style="float: left; width: 100%; height: 100%;">
-						<div style="">
-							<label class="control-label"> Annul Salary(Salary Payable
-								Mothely.Excluding onetime paymets)</label> <input type="text"
-								class="form-control" style="border-radius: 5px;"><br>
-							<label class=" control-label"> Effective From</label> <input
-								type="date" class="form-control" style="border-radius: 5px;">
-						</div>
-						<p style="display: block; margin-top: 4%; margin-left: 40%;">
-							<button type="submit" class=" btn btn-success">Save &
-								Continue</button>
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Cancle</button>
-						</p>
-					</div>
-				</div>
-				<div class="modal-body"
-					style="float: left; height: 400px; width: 39%; margin: 0.4%; background: #ddd; border-radius: 0px 0px 10px 10px;">
-					<div class="form-group">Fill the salary detail to
-						view/generate the salary structure</div>
-				</div>
-				<div class="modal-footer" style="background: #bbb;"></div>
-			</div>
-
-		</div>
-	</div>
-
-</div>

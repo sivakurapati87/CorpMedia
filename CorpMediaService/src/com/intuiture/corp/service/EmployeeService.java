@@ -14,14 +14,20 @@ import com.intuiture.corp.entity.EmployeeAddressInfo;
 import com.intuiture.corp.entity.EmployeeEducationalInfo;
 import com.intuiture.corp.entity.EmployeeExperienceInfo;
 import com.intuiture.corp.entity.EmployeeFamilyInfo;
+import com.intuiture.corp.entity.EmployeeOneTimeComponent;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.EmployeeProfessionalInfo;
+import com.intuiture.corp.entity.EmployeeSalaryInfo;
+import com.intuiture.corp.entity.SalaryComponent;
 import com.intuiture.corp.json.EmployeeEducationalInfoJson;
 import com.intuiture.corp.json.EmployeeExperienceInfoJson;
 import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
+import com.intuiture.corp.json.EmployeeOneTimeComponentJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
+import com.intuiture.corp.json.EmployeeSalaryInfoJson;
+import com.intuiture.corp.json.SalaryComponentJson;
 import com.intuiture.corp.util.TransformDomainToJson;
 import com.intuiture.corp.util.TransformJsonToDomain;
 
@@ -165,6 +171,38 @@ public class EmployeeService {
 		return employeePersonalInfoJson;
 	}
 
+	@SuppressWarnings("unchecked")
+	public EmployeeSalaryInfoJson getEmployeeSalaryInfo(Integer employeeId) {
+		EmployeeSalaryInfoJson employeeSalaryInfoJson = null;
+		try {
+			List<EmployeeSalaryInfo> employeeSalaryInfoList = (List<EmployeeSalaryInfo>) commonRepository.findByEmployeeId(employeeId, EmployeeSalaryInfo.class);
+			if (employeeSalaryInfoList != null && employeeSalaryInfoList.size() > 0) {
+				employeeSalaryInfoJson = TransformDomainToJson.getEmployeeSalaryInfoJson(employeeSalaryInfoList.get(0));
+				SalaryComponent salaryComponent = (SalaryComponent) commonRepository.getRecordByCompanyId(employeeSalaryInfoJson.getCompanyId(), SalaryComponent.class);
+				SalaryComponentJson salaryComponentJson = TransformDomainToJson.getSalaryComponentJson(salaryComponent);
+				if (salaryComponent.getBasic() != null) {
+					salaryComponentJson.setBasic(salaryComponent.getBasic() * employeeSalaryInfoJson.getAnnualSalary());
+					if (salaryComponent.getHra() != null) {
+						salaryComponentJson.setHra(salaryComponent.getHra() * salaryComponentJson.getBasic());
+					}
+				}
+				if (salaryComponent.getPf() != null) {
+					salaryComponentJson.setPf(salaryComponent.getPf() * employeeSalaryInfoJson.getAnnualSalary());
+				}
+				Double totalAllowances = salaryComponentJson.getBasic() + salaryComponentJson.getHra() + salaryComponentJson.getPf() + salaryComponentJson.getMedicalReimbursement() + salaryComponentJson.getTransportAllowance()
+						+ salaryComponentJson.getProfessionalAllowance() + salaryComponentJson.getTransportAllowance() + salaryComponentJson.getFoodCoupons() + salaryComponentJson.getCityCompensatoryAllowance() + salaryComponentJson.getDailyAllowance()
+						+ salaryComponentJson.getGratuityContribution();
+				salaryComponentJson.setSpecialAllowance(employeeSalaryInfoJson.getAnnualSalary() - totalAllowances);
+				employeeSalaryInfoJson.setSalaryComponentJson(salaryComponentJson);
+				employeeSalaryInfoJson.setEmployeeOneTimeComponentJsonList(getEmployeeOneTimeComponent(employeeId));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return employeeSalaryInfoJson;
+	}
+
 	public Boolean saveOrUpdateEmployeeProfessionalInfo(EmployeeProfessionalInfoJson employeeProfessionalInfoJson) {
 		EmployeeProfessionalInfo employeeProfessionalInfo = null;
 		try {
@@ -211,11 +249,58 @@ public class EmployeeService {
 		return true;
 	}
 
+	public Boolean saveOrUpdateEmployeeSalaryInfo(EmployeeSalaryInfoJson employeeSalaryInfoJson) {
+		EmployeeSalaryInfo employeeSalaryInfo = null;
+		try {
+			if (employeeSalaryInfoJson != null) {
+				// This is to insert the data to salary Info Table
+				if (employeeSalaryInfoJson.getEmployeeSalaryInfoId() != null) {
+					employeeSalaryInfo = (EmployeeSalaryInfo) commonRepository.findById(employeeSalaryInfoJson.getEmployeeSalaryInfoId(), EmployeeSalaryInfo.class);
+				} else {
+					employeeSalaryInfo = new EmployeeSalaryInfo();
+				}
+				TransformJsonToDomain.getEmployeeSalaryInfo(employeeSalaryInfo, employeeSalaryInfoJson);
+				if (employeeSalaryInfoJson.getEmployeeSalaryInfoId() != null) {
+					commonRepository.update(employeeSalaryInfo);
+				} else {
+					commonRepository.persist(employeeSalaryInfo);
+				}
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
+	public Boolean saveOrUpdateEmployeeOneTimeComponent(EmployeeOneTimeComponentJson employeeOneTimeComponentJson) {
+		EmployeeOneTimeComponent employeeOneTimeComponent = null;
+		try {
+			if (employeeOneTimeComponentJson != null) {
+				// This is to insert the data to employee one time component
+				// Table
+				if (employeeOneTimeComponentJson.getEmployeeOneTimeComponentId() != null) {
+					employeeOneTimeComponent = (EmployeeOneTimeComponent) commonRepository.findById(employeeOneTimeComponentJson.getEmployeeOneTimeComponentId(), EmployeeOneTimeComponent.class);
+				} else {
+					employeeOneTimeComponent = new EmployeeOneTimeComponent();
+				}
+				TransformJsonToDomain.getEmployeeOneTimeComponent(employeeOneTimeComponent, employeeOneTimeComponentJson);
+				if (employeeOneTimeComponentJson.getEmployeeOneTimeComponentId() != null) {
+					commonRepository.update(employeeOneTimeComponent);
+				} else {
+					commonRepository.persist(employeeOneTimeComponent);
+				}
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
 	public Boolean saveOrUpdateEmployeeEducationalInfo(EmployeeEducationalInfoJson employeeEducationalInfoJson) {
 		EmployeeEducationalInfo employeeEducationalInfo = null;
 		try {
 			if (employeeEducationalInfoJson != null) {
-				// This is to insert the data to professional Info Table
+				// This is to insert the data to educational Info Table
 				if (employeeEducationalInfoJson.getEmployeeEducationalInfoId() != null) {
 					employeeEducationalInfo = (EmployeeEducationalInfo) commonRepository.findById(employeeEducationalInfoJson.getEmployeeEducationalInfoId(), EmployeeEducationalInfo.class);
 				} else {
@@ -283,6 +368,24 @@ public class EmployeeService {
 		return employeeEducationalInfoJsonList;
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<EmployeeOneTimeComponentJson> getEmployeeOneTimeComponent(Integer employeeId) {
+		List<EmployeeOneTimeComponentJson> employeeOneTimeComponentJsonList = null;
+		try {
+			List<EmployeeOneTimeComponent> employeeOneTimeComponentList = (List<EmployeeOneTimeComponent>) commonRepository.findByEmployeeId(employeeId, EmployeeOneTimeComponent.class);
+			if (employeeOneTimeComponentList != null && employeeOneTimeComponentList.size() > 0) {
+				employeeOneTimeComponentJsonList = new ArrayList<EmployeeOneTimeComponentJson>();
+				for (EmployeeOneTimeComponent employeeOneTimeComponent : employeeOneTimeComponentList) {
+					employeeOneTimeComponentJsonList.add(TransformDomainToJson.getEmployeeOneTimeComponentJson(employeeOneTimeComponent));
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return employeeOneTimeComponentJsonList;
+	}
+
 	public Boolean deleteEmployeeFamilyInfo(Integer employeeFamilyInfoId) {
 		try {
 			EmployeeFamilyInfo employeeFamilyInfo = (EmployeeFamilyInfo) commonRepository.findById(employeeFamilyInfoId, EmployeeFamilyInfo.class);
@@ -308,7 +411,20 @@ public class EmployeeService {
 		}
 		return true;
 	}
-	
+
+	public Boolean deleteEmployeeOneTimeComponent(Integer employeeOneTimeComponentId) {
+		try {
+			EmployeeOneTimeComponent employeeOneTimeComponent = (EmployeeOneTimeComponent) commonRepository.findById(employeeOneTimeComponentId, EmployeeOneTimeComponent.class);
+			if (employeeOneTimeComponent != null) {
+				employeeOneTimeComponent.setIsDeleted(Boolean.TRUE);
+				commonRepository.update(employeeOneTimeComponent);
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
 	public Boolean deleteEmployee(Integer employeeId) {
 		try {
 			Employee employee = (Employee) commonRepository.findById(employeeId, Employee.class);

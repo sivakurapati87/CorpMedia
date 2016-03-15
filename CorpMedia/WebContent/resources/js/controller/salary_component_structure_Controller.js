@@ -211,6 +211,16 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 	        });}
 		};
 		
+		//get gratuity of a company
+		$scope.getGratuityContributionJson = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.GratuityContributionController+'/getGratuityContributionJson/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.gratuitycontribution = data;
+			}).error(function() {
+	      	  console.error('Could not getGratuityContributionJson');
+	        });}
+		};
+		$scope.getGratuityContributionJson();
 		//Save custom allowance
 		$scope.saveCustomAllowance = function(){
 			if($rootScope.selectedCompanyObj){

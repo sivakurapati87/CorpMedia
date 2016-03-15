@@ -20,9 +20,9 @@ public class SalaryComponent {
 	private Date createdOn;
 	private Date updatedOn;
 	private Integer companyId;
-	private Float basic;
-	private Float hra;
-	private Float pf;
+	private Double basic;
+	private Double hra;
+	private Double pf;
 	private Integer medicalReimbursementId;
 	private Integer transportAllowanceId;
 	private Integer professionalAllowanceId;
@@ -97,27 +97,27 @@ public class SalaryComponent {
 		this.companyId = companyId;
 	}
 
-	public Float getBasic() {
+	public Double getBasic() {
 		return basic;
 	}
 
-	public void setBasic(Float basic) {
+	public void setBasic(Double basic) {
 		this.basic = basic;
 	}
 
-	public Float getHra() {
+	public Double getHra() {
 		return hra;
 	}
 
-	public void setHra(Float hra) {
+	public void setHra(Double hra) {
 		this.hra = hra;
 	}
 
-	public Float getPf() {
+	public Double getPf() {
 		return pf;
 	}
 
-	public void setPf(Float pf) {
+	public void setPf(Double pf) {
 		this.pf = pf;
 	}
 

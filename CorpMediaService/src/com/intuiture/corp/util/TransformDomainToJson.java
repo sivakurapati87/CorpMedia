@@ -40,8 +40,10 @@ import com.intuiture.corp.entity.EmployeeAddressInfo;
 import com.intuiture.corp.entity.EmployeeEducationalInfo;
 import com.intuiture.corp.entity.EmployeeExperienceInfo;
 import com.intuiture.corp.entity.EmployeeFamilyInfo;
+import com.intuiture.corp.entity.EmployeeOneTimeComponent;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.EmployeeProfessionalInfo;
+import com.intuiture.corp.entity.EmployeeSalaryInfo;
 import com.intuiture.corp.entity.ExitSettings;
 import com.intuiture.corp.entity.FoodCoupons;
 import com.intuiture.corp.entity.GeneralSettings;
@@ -88,8 +90,10 @@ import com.intuiture.corp.json.EmployeeEducationalInfoJson;
 import com.intuiture.corp.json.EmployeeExperienceInfoJson;
 import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
+import com.intuiture.corp.json.EmployeeOneTimeComponentJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
+import com.intuiture.corp.json.EmployeeSalaryInfoJson;
 import com.intuiture.corp.json.ExitSettingsJson;
 import com.intuiture.corp.json.FoodCouponsJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
@@ -528,6 +532,16 @@ public class TransformDomainToJson {
 		return employeeFamilyInfoJson;
 	}
 
+	public static EmployeeSalaryInfoJson getEmployeeSalaryInfoJson(EmployeeSalaryInfo employeeSalaryInfo) {
+		EmployeeSalaryInfoJson employeeSalaryInfoJson = new EmployeeSalaryInfoJson();
+		employeeSalaryInfoJson.setCompanyId(employeeSalaryInfo.getCompanyId());
+		employeeSalaryInfoJson.setEmployeeId(employeeSalaryInfo.getEmployeeId());
+		employeeSalaryInfoJson.setAnnualSalary(employeeSalaryInfo.getAnnualSalary());
+		employeeSalaryInfoJson.setEmployeeSalaryInfoId(employeeSalaryInfo.getEmployeeSalaryInfoId());
+		employeeSalaryInfoJson.setStrEffectiveFrom(convertDateToString(employeeSalaryInfo.getEffectiveFrom()));
+		return employeeSalaryInfoJson;
+	}
+
 	public static EmployeePersonalInfoJson getEmployeePersonalInfoJson(EmployeeAddressInfo employeeAddressInfo, EmployeePersonalInfo employeePersonalInfo) {
 		EmployeePersonalInfoJson employeePersonalInfoJson = new EmployeePersonalInfoJson();
 		employeePersonalInfoJson.setCompanyId(employeePersonalInfo.getCompanyId());
@@ -599,6 +613,23 @@ public class TransformDomainToJson {
 		employeeEducationalInfoJson.setUniversity(employeeEducationalInfo.getUniversity());
 		employeeEducationalInfoJson.setEmployeeEducationalInfoId(employeeEducationalInfo.getEmployeeEducationalInfoId());
 		return employeeEducationalInfoJson;
+
+	}
+
+	public static EmployeeOneTimeComponentJson getEmployeeOneTimeComponentJson(EmployeeOneTimeComponent employeeOneTimeComponent) {
+		EmployeeOneTimeComponentJson employeeOneTimeComponentJson = new EmployeeOneTimeComponentJson();
+		employeeOneTimeComponentJson.setCompanyId(employeeOneTimeComponent.getCompanyId());
+		employeeOneTimeComponentJson.setEmployeeId(employeeOneTimeComponent.getEmployeeId());
+		employeeOneTimeComponentJson.setAmount(employeeOneTimeComponent.getAmount());
+		employeeOneTimeComponentJson.setEmployeeOneTimeComponentId(employeeOneTimeComponent.getEmployeeOneTimeComponentId());
+		employeeOneTimeComponentJson.setNote(employeeOneTimeComponent.getNote());
+		employeeOneTimeComponentJson.setOneTimeComponentName(employeeOneTimeComponent.getOneTimeComponentName());
+		employeeOneTimeComponentJson.setStatusId(employeeOneTimeComponent.getStatusId());
+		employeeOneTimeComponentJson.setStrMonthPayable(convertDateToString(employeeOneTimeComponent.getMonthPayable()));
+		if (employeeOneTimeComponent.getStatus() != null) {
+			employeeOneTimeComponentJson.setStatus(employeeOneTimeComponent.getStatus().getDescription());
+		}
+		return employeeOneTimeComponentJson;
 
 	}
 
@@ -903,27 +934,43 @@ public class TransformDomainToJson {
 		salaryComponentJson.setHra(salaryComponent.getHra());
 		if (salaryComponent.getCityCompensatoryAllowance() != null) {
 			salaryComponentJson.setCityCompensatoryAllowance(salaryComponent.getCityCompensatoryAllowance().getMaxAnnualLimit());
+		} else {
+			salaryComponentJson.setCityCompensatoryAllowance(0d);
 		}
 		if (salaryComponent.getDailyAllowance() != null) {
 			salaryComponentJson.setDailyAllowance(salaryComponent.getDailyAllowance().getMaxAnnualLimit());
+		} else {
+			salaryComponentJson.setDailyAllowance(0d);
 		}
 		if (salaryComponent.getFoodCoupons() != null) {
 			salaryComponentJson.setFoodCoupons(salaryComponent.getFoodCoupons().getMaxAnnualLimit());
+		} else {
+			salaryComponentJson.setFoodCoupons(0d);
 		}
 		if (salaryComponent.getGratuityContribution() != null) {
 			salaryComponentJson.setGratuityContribution(salaryComponent.getGratuityContribution().getMaxAnnualLimit());
+		} else {
+			salaryComponentJson.setGratuityContribution(0d);
 		}
 		if (salaryComponent.getMedicalReimbursement() != null) {
 			salaryComponentJson.setMedicalReimbursement(salaryComponent.getMedicalReimbursement().getMaxAnnualLimit());
+		} else {
+			salaryComponentJson.setMedicalReimbursement(0d);
 		}
 		if (salaryComponent.getProfessionalAllowance() != null) {
 			salaryComponentJson.setProfessionalAllowance(salaryComponent.getProfessionalAllowance().getMaxAnnualLimit());
+		} else {
+			salaryComponentJson.setProfessionalAllowance(0d);
 		}
 		if (salaryComponent.getTransportAllowance() != null) {
 			salaryComponentJson.setTransportAllowance(salaryComponent.getTransportAllowance().getMaxAnnualLimit());
+		} else {
+			salaryComponentJson.setTransportAllowance(0d);
 		}
 		if (salaryComponent.getTravelReimbursement() != null) {
 			salaryComponentJson.setTravelReimbursement(salaryComponent.getTravelReimbursement().getMaxAnnualLimit());
+		} else {
+			salaryComponentJson.setTravelReimbursement(0d);
 		}
 		salaryComponentJson.setSalaryComponentId(salaryComponent.getSalaryComponentId());
 		salaryComponentJson.setPf(salaryComponent.getPf());
