@@ -1,6 +1,6 @@
 <div class="container-fluid" style="width: 100%;">
 	<form ng-submit="saveCompanyLeaveType()">
-		<table border="2">
+		<table border="2" >
 			<tr
 				style="height: 120px; background-image: url('resources/images/bgimg3.png');">
 				<td class="lable50_blue" align="center" colspan="3">{{companyName}}</td>
@@ -47,11 +47,11 @@
 								</button>
 
 								<div collapse="collapsed">
-									<table border="0" class="table">
+									<table border="0" class="table stable table-striped">
 										<tr>
 											<td><label> Define a Leave Plan</label></td>
 										</tr>
-										<tr height="30px"></tr>
+										<!-- <tr height="30px"></tr> -->
 										<tr>
 											<td><label>Name</label></td>
 										</tr>
@@ -61,7 +61,7 @@
 												type="text" required=""
 												ng-model="companyLeaveTypeJson.leaveTypeName"></td>
 										</tr>
-										<tr height="30px"></tr>
+										<!-- <tr height="30px"></tr> -->
 										<tr>
 											<td><label>Description</label></td>
 										</tr>
@@ -73,60 +73,61 @@
 										<tr>
 											<td><div class="form-group">
 													<label> <input
-														class="ng-pristine ng-untouched ng-valid" type="checkbox"
+														class="ng-pristine ng-untouched ng-valid inputs_15  lrspace_10" type="checkbox"
 														ng-model="companyLeaveTypeJson.isPaidLeave"> <span
 														class="check-overlay"></span> This leave does not incur
 														loss of pay
 													</label> <span
-														class="fa fa-info-circle information-tooltip tooltip-grey"
+														 class="sym lrspace_10"
 														tooltip-placement="right"
-														tooltip="If this is checked, the leave will be considered as paid leave and employees will not suffer from loss of pay on deduction from this leave type"></span>
+														tooltip="If this is checked, the leave will be considered as paid leave and employees will not suffer from loss of pay on deduction from this leave type"><b>i</b></span>
 												</div></td>
 										</tr>
 										<tr>
 											<td><div class="form-group">
 													<label> <input
-														class="ng-pristine ng-untouched ng-valid" type="checkbox"
+														class="ng-pristine ng-untouched ng-valid inputs_15  lrspace_10" type="checkbox"
 														ng-model="companyLeaveTypeJson.isSickLeave"> <span
 														class="check-overlay"></span> This is a sick leave
-													</label> <span
-														class="fa fa-info-circle information-tooltip tooltip-grey"
-														tooltip-placement="right" tooltip="This is a Sick Leave"></span>
+													</label> <!-- <span
+														class="sym lrspace_10"
+														tooltip-placement="right" tooltip="This is a Sick Leave"></span>-->
+ 															<span tooltip="This is a Sick Leave" tooltip-placement="right" class="sym lrspace_10"> <b>i</b> </span>
 												</div></td>
 										</tr>
 										<tr>
 											<td><div class="form-group">
 													<label> <input
-														class="ng-pristine ng-untouched ng-valid" type="checkbox"
+														class="ng-pristine ng-untouched ng-valid inputs_15  lrspace_10" type="checkbox"
 														ng-model="companyLeaveTypeJson.isStatutoryLeave">
 														<span class="check-overlay"></span> This is statutory
 														leave
 													</label> <span
-														class="fa fa-info-circle information-tooltip tooltip-grey"
+														class="sym lrspace_10"
 														tooltip-placement="right"
-														tooltip="This is Statutory Leave"></span>
+														tooltip="This is Statutory Leave"><b>i</b> </span>
 												</div></td>
 										</tr>
 										<tr>
 											<td><div class="form-group">
 													<label> <input
-														class="ng-pristine ng-untouched ng-valid" type="checkbox"
+														class="ng-pristine ng-untouched ng-valid inputs_15  lrspace_10" type="checkbox"
 														ng-model="companyLeaveTypeJson.isCommentRequired">
 														<span class="check-overlay"></span> Require note/comment
 													</label> <span
-														class="fa fa-info-circle information-tooltip tooltip-grey"
-														tooltip-placement="right" tooltip="Require Note/Comment"></span>
+														class="sym lrspace_10"
+														tooltip-placement="right" tooltip="Require Note/Comment"><b>i</b> </span>
 
 												</div></td>
 										</tr>
 										<tr>
 											<td><div class="form-group">
 													<label class="clear-bottom"> <input
-														class="ng-pristine ng-untouched ng-valid" type="checkbox"
+														class="ng-pristine ng-untouched ng-valid inputs_15  lrspace_10" type="checkbox"
 														ng-model="companyLeaveTypeJson.isDocumentProofRequired">
 														<span class="check-overlay"></span> Require document proof
 														when leaves exceed <input
-														class="form-control days-count ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-pattern ng-valid-required"
+														class="in_height days-count ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-pattern ng-valid-required"
 														type="number"
 														ng-required="companyLeaveTypeJson.isDocumentProofRequired"
 														ng-pattern="/^[0-9]\d*$/"
@@ -135,9 +136,9 @@
 														ng-min="1" name="documentProofLeaveExceedDays">
 														calendar days
 													</label> <span
-														class="fa fa-info-circle information-tooltip tooltip-grey"
+														class="sym lrspace_10"
 														tooltip-placement="right"
-														tooltip="Require Document Proof when leaves exceed days"></span>
+														tooltip="Require Document Proof when leaves exceed days"><b>i</b> </span>
 													<div class="ng-isolate-scope" data-form-submit="submitted"
 														data-min-error="Minimum allowed number is 1. "
 														data-pattern-error="Enter valid number. "
@@ -153,11 +154,11 @@
 										<tr>
 											<td><div class="form-group">
 													<label class="clear-bottom"> <input
-														class="ng-pristine ng-untouched ng-valid" type="checkbox"
+														class="ng-pristine ng-untouched ng-valid inputs_15  lrspace_10" type="checkbox"
 														ng-model="companyLeaveTypeJson.isPriorNoticeRequired">
 														<span class="check-overlay"></span> Require a prior notice
 														of <input
-														class="form-control days-count ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-pattern ng-valid-required"
+														class="in_height days-count ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-pattern ng-valid-required"
 														type="number"
 														ng-required="companyLeaveTypeJson.isPriorNoticeRequired"
 														ng-disabled="!companyLeaveTypeJson.isPriorNoticeRequired"
@@ -165,37 +166,37 @@
 														ng-model="companyLeaveTypeJson.priorNoticeRequered_After"
 														name="noticeDays"> working days
 													</label> <span
-														class="fa fa-info-circle information-tooltip tooltip-grey"
+														class="sym lrspace_10"
 														tooltip-placement="right"
-														tooltip="Require a prior notice of days"></span>
+														tooltip="Require a prior notice of days"><b>i</b> </span>
 
 												</div></td>
 										</tr>
 										<tr>
 											<td><div class="form-group">
 													<label class="clear-bottom"> <input
-														class="ng-pristine ng-untouched ng-valid" type="checkbox"
+														class="ng-pristine ng-untouched ng-valid inputs_15  lrspace_10" type="checkbox"
 														ng-model="companyLeaveTypeJson.isRestricted"> <span
-														class="check-overlay"></span> Restrict to <select
-														class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+														class="check-overlay"></span> Restrict to <select style="width:120px;"
+														class="in_height ng-pristine ng-valid ng-valid-required ng-touched"
 														required ng-model="companyLeaveTypeJson.restrictToId"
 														ng-options="bank.lookupDetailId as bank.description for bank in  lookup.genderList">
 															<option value="" disabled selected>Restricted to</option>
 													</select> Gender
 													</label> <span
-														class="fa fa-info-circle information-tooltip tooltip-grey"
-														tooltip-placement="right" tooltip="Restrict to Gender"></span>
+														class="sym lrspace_10 "
+														tooltip-placement="right" tooltip="Restrict to Gender"><b>i</b> </span>
 												</div></td>
 										</tr>
 										<tr>
 											<td><div class="form-group">
 													<label> <input
-														class="ng-pristine ng-untouched ng-valid" type="checkbox"
+														class="ng-pristine ng-untouched ng-valid inputs_15  lrspace_10" type="checkbox"
 														ng-model="companyLeaveTypeJson.isHalfDayLeaveAllowed">
 														<span class="check-overlay"></span> Allow half day leave
 													</label> <span
-														class="fa fa-info-circle information-tooltip tooltip-grey"
-														tooltip-placement="right" tooltip="Allow half day Leave"></span>
+														class="sym lrspace_10"
+														tooltip-placement="right" tooltip="Allow half day Leave"><b>i</b> </span>
 
 												</div></td>
 										</tr>
@@ -250,5 +251,3 @@
 	</form>
 
 </div>
-
-
