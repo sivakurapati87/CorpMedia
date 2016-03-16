@@ -58,7 +58,7 @@ App.controller('general_payroll_settings_Controller', ['$scope','$location','$ro
 		
 		//This function is to get the list of pay days
 		$scope.payPeriodEndComboAction = function(){
-			if($scope.payrollcyclesettings.strPayPeriodEndDayId && $scope.payrollcyclesettings.payCycleMonthId){
+			if($scope.payrollcyclesettings.strPayPeriodEndDayId && $scope.payrollcyclesettings.payCycleMonthId != null){
 				var payPeriodEndDay = $scope.payrollcyclesettings.strPayPeriodEndDayId;
 				if($scope.payrollcyclesettings.strPayPeriodEndDayId == constants.LastDayOfTheMonth){
 					payPeriodEndDay = constants.MAXENDOF_DAY;

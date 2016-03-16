@@ -1,20 +1,28 @@
 package com.intuiture.corp.util;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.text.Format;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
+
+import Decoder.BASE64Decoder;
+import Decoder.BASE64Encoder;
 
 import com.intuiture.corp.entity.AddLeaveType;
 import com.intuiture.corp.entity.Allowances;
@@ -46,6 +54,7 @@ import com.intuiture.corp.entity.EmployeeOneTimeComponent;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.EmployeeProfessionalInfo;
 import com.intuiture.corp.entity.EmployeeSalaryInfo;
+import com.intuiture.corp.entity.Employee_TimeSheet;
 import com.intuiture.corp.entity.ExitSettings;
 import com.intuiture.corp.entity.FoodCoupons;
 import com.intuiture.corp.entity.GeneralSettings;
@@ -98,6 +107,7 @@ import com.intuiture.corp.json.EmployeeOneTimeComponentJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
 import com.intuiture.corp.json.EmployeeSalaryInfoJson;
+import com.intuiture.corp.json.EmployeeTimeSheetJson;
 import com.intuiture.corp.json.ExitSettingsJson;
 import com.intuiture.corp.json.FoodCouponsJson;
 import com.intuiture.corp.json.GeneralSettingsJson;
@@ -125,6 +135,64 @@ import com.intuiture.corp.json.TravelReimbursementJson;
 public class TransformDomainToJson {
 	private static Logger LOG = Logger.getLogger(TransformDomainToJson.class);
 	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+	public static void makeDirectory(File myFolder) {
+		if (!myFolder.exists()) {
+			try {
+				myFolder.mkdirs();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+	public static List<Date> getWeeklyDatesList(String startingWeekDate) {
+		List<Date> datesList = new ArrayList<Date>();
+		Date startingWeekDay = convertDiffferentFormatString(startingWeekDate);
+		for (int i = 0; i < 7; i++) {
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(startingWeekDay);
+			cal.add(Calendar.DATE, i);
+			datesList.add(cal.getTime());
+		}
+		return datesList;
+	}
+
+	public static String uploadAnImage(String imageBase64) {
+		BufferedOutputStream buffStream = null;
+		Random ran = new Random();
+		String imageName = String.valueOf(100000 + ran.nextInt(900000)) + ".png";
+		try {
+			byte[] bytes = new BASE64Decoder().decodeBuffer(imageBase64.split(",")[1]);
+			File folder = new File(Constants.FILEUPLOADEDPATH);
+			makeDirectory(folder);
+			File newFile = new File(Constants.FILEUPLOADEDPATH + "\\" + imageName);
+			buffStream = new BufferedOutputStream(new FileOutputStream(newFile));
+			buffStream.write(bytes);
+			if (buffStream != null) {
+				buffStream.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return imageName;
+	}
+
+	public static String getStrInputStream(String imageName) {
+		String inputStreamToString = null;
+		try {
+			if (imageName != null) {
+				File initialFile = new File(Constants.FILEUPLOADEDPATH + "\\" + imageName);
+				InputStream inputStream = new FileInputStream(initialFile);
+				inputStreamToString = new BASE64Encoder().encode(IOUtils.toByteArray(inputStream));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return inputStreamToString;
+
+	}
 
 	public static List<Integer> splitStringInList(String idsInString) {
 		Integer[] ids = splitString(idsInString);
@@ -293,10 +361,10 @@ public class TransformDomainToJson {
 			companyJson.setCin(company.getCin());
 			companyJson.setCompanyId(company.getCompanyId());
 			companyJson.setCompanyName(company.getCompanyName());
-			companyJson.setCreatedOn(company.getCreatedOn());
+			// companyJson.setCreatedOn(company.getCreatedOn());
 			companyJson.setCst(company.getCst());
 			companyJson.setTin(company.getTin());
-			companyJson.setUpdatedOn(company.getUpdatedOn());
+			// companyJson.setUpdatedOn(company.getUpdatedOn());
 
 			if (company.getCompanyInfo() != null) {
 				companyJson.setAddress1(company.getCompanyInfo().getAddress1());
@@ -304,7 +372,7 @@ public class TransformDomainToJson {
 				companyJson.setBoardNumber(company.getCompanyInfo().getBoardNumber());
 				companyJson.setArea(company.getCompanyInfo().getArea());
 				companyJson.setCity(company.getCompanyInfo().getCity());
-				companyJson.setCompanyLogo(company.getCompanyInfo().getCompanyLogo());
+				// companyJson.setCompanyLogo(company.getCompanyInfo().getCompanyLogo());
 				companyJson.setCompanyType(company.getCompanyInfo().getCompanyType());
 				companyJson.setCountry(company.getCompanyInfo().getCountry());
 				companyJson.setD_o_incorporation(company.getCompanyInfo().getD_o_incorporation());
@@ -327,6 +395,8 @@ public class TransformDomainToJson {
 				companyJson.setState(company.getCompanyInfo().getState());
 				companyJson.setTwitterLink(company.getCompanyInfo().getTwitterLink());
 				companyJson.setWebsite(company.getCompanyInfo().getWebsite());
+				companyJson.setBase64logo(getStrInputStream(company.getCompanyInfo().getLogoImageName()));
+				companyJson.setShortName(company.getCompanyInfo().getShortName());
 			}
 
 		} catch (Exception e) {
@@ -1013,5 +1083,16 @@ public class TransformDomainToJson {
 		salaryComponentJson.setSalaryComponentId(salaryComponent.getSalaryComponentId());
 		salaryComponentJson.setPf(salaryComponent.getPf());
 		return salaryComponentJson;
+	}
+
+	public static EmployeeTimeSheetJson getEmployeeTimeSheetJson(Employee_TimeSheet employee_TimeSheet) {
+		EmployeeTimeSheetJson employeeTimeSheetJson = new EmployeeTimeSheetJson();
+		employeeTimeSheetJson.setTimesheetId(employee_TimeSheet.getTimesheetId());
+		employeeTimeSheetJson.setEmployeeId(employee_TimeSheet.getEmployeeId());
+		employeeTimeSheetJson.setStatusId(employee_TimeSheet.getStatusId());
+		if (employee_TimeSheet.getTimesheet() != null) {
+			employeeTimeSheetJson.setTimeSheetDate(employee_TimeSheet.getTimesheet().getTimeSheetDate());
+		}
+		return employeeTimeSheetJson;
 	}
 }

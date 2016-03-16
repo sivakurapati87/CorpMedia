@@ -80,6 +80,7 @@ import com.intuiture.corp.json.ClientWorkHoursJson;
 import com.intuiture.corp.json.ClientsJson;
 import com.intuiture.corp.json.CompanyBankJson;
 import com.intuiture.corp.json.CompanyEmployeeDefaultsJson;
+import com.intuiture.corp.json.CompanyJson;
 import com.intuiture.corp.json.CompanyLeavePlansJson;
 import com.intuiture.corp.json.CompanyLeaveTypeJson;
 import com.intuiture.corp.json.CompanyLocationJson;
@@ -911,5 +912,12 @@ public class TransformJsonToDomain {
 		employeeOneTimeComponent.setNote(employeeOneTimeComponentJson.getNote());
 		employeeOneTimeComponent.setOneTimeComponentName(employeeOneTimeComponentJson.getOneTimeComponentName());
 		employeeOneTimeComponent.setStatusId(employeeOneTimeComponentJson.getStatusId());
+	}
+
+	public static void getCompanyInfo(Company company, CompanyJson companyJson) {
+		if (company.getCompanyInfo() != null) {
+			company.getCompanyInfo().setShortName(companyJson.getShortName());
+			company.getCompanyInfo().setLogoImageName(companyJson.getLogoImageName());
+		}
 	}
 }

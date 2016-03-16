@@ -9,9 +9,9 @@ public class CompanyJson {
 	private String cin;
 	private String tin;
 	private String cst;
-	private Date createdOn;
-	private Date updatedOn;
-	private String companyLogo;
+//	private Date createdOn;
+//	private Date updatedOn;
+//	private String companyLogo;
 	private String hoPhoto;
 	private String registrationNumber;
 	private Boolean isRegisteredWithRoc;
@@ -45,7 +45,19 @@ public class CompanyJson {
 	private String strD_o_incorporation;
 	private String strDateOfLastAGM;
 	private String strDateOfBalanceSheet;
+	private String shortName;
+	private String base64logo;
+	private String logoImageName;
 	private List<CompanySignatorJson> companySignatorJsonsList;
+
+	public String getShortName() {
+		return shortName;
+	}
+
+	public void setShortName(String shortName) {
+		this.shortName = shortName;
+	}
+
 
 	public String getStrD_o_incorporation() {
 		return strD_o_incorporation;
@@ -95,13 +107,13 @@ public class CompanyJson {
 		this.strIsListed = strIsListed;
 	}
 
-	public String getCompanyLogo() {
-		return companyLogo;
-	}
-
-	public void setCompanyLogo(String companyLogo) {
-		this.companyLogo = companyLogo;
-	}
+//	public String getCompanyLogo() {
+//		return companyLogo;
+//	}
+//
+//	public void setCompanyLogo(String companyLogo) {
+//		this.companyLogo = companyLogo;
+//	}
 
 	public String getHoPhoto() {
 		return hoPhoto;
@@ -359,21 +371,21 @@ public class CompanyJson {
 		this.cst = cst;
 	}
 
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
-
-	public Date getUpdatedOn() {
-		return updatedOn;
-	}
-
-	public void setUpdatedOn(Date updatedOn) {
-		this.updatedOn = updatedOn;
-	}
+//	public Date getCreatedOn() {
+//		return createdOn;
+//	}
+//
+//	public void setCreatedOn(Date createdOn) {
+//		this.createdOn = createdOn;
+//	}
+//
+//	public Date getUpdatedOn() {
+//		return updatedOn;
+//	}
+//
+//	public void setUpdatedOn(Date updatedOn) {
+//		this.updatedOn = updatedOn;
+//	}
 
 	public List<CompanySignatorJson> getCompanySignatorJsonsList() {
 		return companySignatorJsonsList;
@@ -381,6 +393,22 @@ public class CompanyJson {
 
 	public void setCompanySignatorJsonsList(List<CompanySignatorJson> companySignatorJsonsList) {
 		this.companySignatorJsonsList = companySignatorJsonsList;
+	}
+
+	public String getBase64logo() {
+		return base64logo;
+	}
+
+	public void setBase64logo(String base64logo) {
+		this.base64logo = base64logo;
+	}
+
+	public String getLogoImageName() {
+		return logoImageName;
+	}
+
+	public void setLogoImageName(String logoImageName) {
+		this.logoImageName = logoImageName;
 	}
 
 }

@@ -1484,6 +1484,12 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 	color: #949494;
 	text-decoration: none;
 }
+.labelfont_16 {
+	font-family: tahoma;
+	font-size: 12px;
+	color: #563c68;
+	text-decoration: none;
+}
 .text_align_right{
 	text-align: right;
 }

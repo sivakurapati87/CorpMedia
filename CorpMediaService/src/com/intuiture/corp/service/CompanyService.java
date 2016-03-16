@@ -12,6 +12,7 @@ import com.intuiture.corp.dao.CompanyRepository;
 import com.intuiture.corp.entity.Company;
 import com.intuiture.corp.json.CompanyJson;
 import com.intuiture.corp.util.TransformDomainToJson;
+import com.intuiture.corp.util.TransformJsonToDomain;
 
 @Service
 @Transactional
@@ -33,34 +34,13 @@ public class CompanyService {
 		return companyJsonList;
 	}
 
-	public List<CompanyJson> getCompanyInfo(String compName) {
-		List<CompanyJson> companyJsonList = new ArrayList<CompanyJson>();
-		List<Company> companiesList = companyRepository.getCompanyInfo(compName.trim());
-		if (companiesList != null && companiesList.size() > 0) {
-			List<Integer> companyIds = new ArrayList<Integer>();
-			for (Company company : companiesList) {
-				companyIds.add(company.getCompanyId());
-			}
-			// List<CompanySignator> companySignatorList =
-			// companyRepository.getCompanySignatorsByCompanyId(companyIds);
-
-			for (Company company : companiesList) {
-				CompanyJson companyJson = TransformDomainToJson.getAllCompanyJsonByCompany(company);
-				// if (companySignatorList != null && companySignatorList.size()
-				// > 0) {
-				// List<CompanySignatorJson> companySignatorJsonsList = new
-				// ArrayList<CompanySignatorJson>();
-				// for (CompanySignator signator : companySignatorList) {
-				// CompanySignatorJson companySignatorJson =
-				// TransformDomainToJson.getCompanySignatorJson(signator);
-				// companySignatorJsonsList.add(companySignatorJson);
-				// }
-				// companyJson.setCompanySignatorJsonsList(companySignatorJsonsList);
-				// }
-				companyJsonList.add(companyJson);
-			}
+	public CompanyJson getCompanyInfoByCompanyId(Integer companyId) {
+		CompanyJson companyJson = null;
+		Company company = (Company) commonRepository.getRecordByCompanyId(companyId, Company.class);
+		if (company != null) {
+			companyJson = TransformDomainToJson.getAllCompanyJsonByCompany(company);
 		}
-		return companyJsonList;
+		return companyJson;
 	}
 
 	public List<CompanyJson> findCompanyByName(String compName) {
@@ -71,25 +51,32 @@ public class CompanyService {
 			for (Company company : companiesList) {
 				companyIds.add(company.getCompanyId());
 			}
-			// List<CompanySignator> companySignatorList =
-			// companyRepository.getCompanySignatorsByCompanyId(companyIds);
-
 			for (Company company : companiesList) {
 				CompanyJson companyJson = TransformDomainToJson.getAllCompanyJsonByCompany(company);
-				// if (companySignatorList != null && companySignatorList.size()
-				// > 0) {
-				// List<CompanySignatorJson> companySignatorJsonsList = new
-				// ArrayList<CompanySignatorJson>();
-				// for (CompanySignator signator : companySignatorList) {
-				// CompanySignatorJson companySignatorJson =
-				// TransformDomainToJson.getCompanySignatorJson(signator);
-				// companySignatorJsonsList.add(companySignatorJson);
-				// }
-				// companyJson.setCompanySignatorJsonsList(companySignatorJsonsList);
-				// }
 				companyJsonList.add(companyJson);
 			}
 		}
 		return companyJsonList;
 	}
+
+	public CompanyJson saveCompanyGeneralInfo(CompanyJson companyJson) {
+		Company company = null;
+		try {
+			if (companyJson.getCompanyId() != null) {
+				company = (Company) commonRepository.findById(companyJson.getCompanyId(), Company.class);
+			} else {
+				company = new Company();
+			}
+			TransformJsonToDomain.getCompanyInfo(company, companyJson);
+			if (companyJson.getCompanyId() != null) {
+				commonRepository.update(company);
+			} else {
+				commonRepository.persist(company);
+			}
+			companyJson = TransformDomainToJson.getAllCompanyJsonByCompany(company);
+		} catch (Exception e) {
+		}
+		return companyJson;
+	}
+
 }

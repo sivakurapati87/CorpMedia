@@ -1,14 +1,14 @@
 package com.intuiture.corp.bean;
 
 public class CompanyInfoBean {
-	
-	private String selectedCompName;
 
-	public String getSelectedCompName() {
-		return selectedCompName;
+	private Integer companyId;
+
+	public Integer getCompanyId() {
+		return companyId;
 	}
 
-	public void setSelectedCompName(String selectedCompName) {
-		this.selectedCompName = selectedCompName;
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
 	}
 }

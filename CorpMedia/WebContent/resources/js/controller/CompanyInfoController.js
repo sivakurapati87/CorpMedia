@@ -23,24 +23,24 @@ App.controller('CompanyInfoController', ['$scope','CompanyInfoService','$statePa
 //     		       );
 //      	        }
 //      	    }, true);
-        	  CompanyInfoService.getSelectedCompany()
-         	 .then(
- 				       function(d) {
-				    	  $scope.selectedCompany=d.selectedCompName;
- 				    	 CompanyInfoService.getCompanyInfo($scope.selectedCompany)
- 			          	 .then(
- 			  				       function(d) {
- 			  				    	 $scope.companyInfo = d;
- 			  				       },
- 			    					function(errResponse){
- 			    						console.error('Error while fetching Currencies');
- 			    					}
- 			  		       );
- 				       },
-   					function(errResponse){
-   						console.error('Error while fetching Currencies');
-   					}
- 		       );
+//        	  CompanyInfoService.getSelectedCompany()
+//         	 .then(
+// 				       function(d) {
+//				    	  $scope.selectedCompany=d.selectedCompName;
+// 				    	 CompanyInfoService.getCompanyInfo($scope.selectedCompany)
+// 			          	 .then(
+// 			  				       function(d) {
+// 			  				    	 $scope.companyInfo = d;
+// 			  				       },
+// 			    					function(errResponse){
+// 			    						console.error('Error while fetching Currencies');
+// 			    					}
+// 			  		       );
+// 				       },
+//   					function(errResponse){
+//   						console.error('Error while fetching Currencies');
+//   					}
+// 		       );
         	  
         	  
         	 

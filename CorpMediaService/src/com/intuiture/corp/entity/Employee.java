@@ -1,5 +1,6 @@
 package com.intuiture.corp.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,7 +13,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "employee")
-public class Employee {
+public class Employee implements Serializable {
+	private static final long serialVersionUID = -8703235749572195994L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer employeeId;
@@ -31,6 +33,8 @@ public class Employee {
 	@ManyToOne
 	@JoinColumn(name = "roleId", insertable = false, updatable = false)
 	private CompanyRoles companyRoles;
+//	@OneToMany(mappedBy = "employee")
+//	private List<Employee_TimeSheet> employee_TimeSheets;
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -143,5 +147,13 @@ public class Employee {
 	public void setCompanyRoles(CompanyRoles companyRoles) {
 		this.companyRoles = companyRoles;
 	}
+
+//	public List<Employee_TimeSheet> getEmployee_TimeSheets() {
+//		return employee_TimeSheets;
+//	}
+//
+//	public void setEmployee_TimeSheets(List<Employee_TimeSheet> employee_TimeSheets) {
+//		this.employee_TimeSheets = employee_TimeSheets;
+//	}
 
 }

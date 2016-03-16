@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.intuiture.corp.dao.CommonRepository;
-import com.intuiture.corp.dao.EmployeeRepository;
+import com.intuiture.corp.dao.EmployeeTimeSheetRepository;
 import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.EmployeeAddressInfo;
 import com.intuiture.corp.entity.EmployeeEducationalInfo;
@@ -37,7 +37,7 @@ public class EmployeeService {
 	@Autowired
 	private CommonRepository commonRepository;
 	@Autowired
-	private EmployeeRepository employeeRepository;
+	private EmployeeTimeSheetRepository employeeRepository;
 
 	public Boolean saveOrUpdateEmployee(EmployeeJson employeeJson) {
 		Employee employee = null;

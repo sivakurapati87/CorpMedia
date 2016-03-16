@@ -142,19 +142,7 @@
 						</td>
 					</tr>
 				</table>
-				<table>
-					<tr>
-						<td>
-							<div ng-repeat="day in weekDays">{{day}}</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a ng-click="previousWeek(weekDays[0])">Previous</a> <a
-							ng-click="nextWeek(weekDays[6])">Next</a>
-						</td>
-					</tr>
-				</table>
+				
 
 
 			</td>

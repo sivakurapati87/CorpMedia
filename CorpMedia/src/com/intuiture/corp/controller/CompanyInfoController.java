@@ -14,14 +14,14 @@ import com.intuiture.corp.bean.CompanyInfoBean;
 public class CompanyInfoController {// Serves Data.
 	private CompanyInfoBean companyInfoBean = new CompanyInfoBean();
 
-	@RequestMapping(value = "/setSelectedCompany/{selectedCompName}", method = RequestMethod.GET)
-	public ResponseEntity<CompanyInfoBean> setSelectedCompany(@PathVariable("selectedCompName") String selectedCompName) {
-		companyInfoBean.setSelectedCompName(selectedCompName);
+	@RequestMapping(value = "/setSelectedCompanyId/{companyId}", method = RequestMethod.GET)
+	public ResponseEntity<CompanyInfoBean> setSelectedCompanyId(@PathVariable("companyId") Integer companyId) {
+		companyInfoBean.setCompanyId(companyId);
 		return new ResponseEntity<CompanyInfoBean>(new CompanyInfoBean(), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/getSelectedCompany", method = RequestMethod.GET)
-	public ResponseEntity<CompanyInfoBean> getSelectedCompany() {
+	@RequestMapping(value = "/getSelectedCompanyId", method = RequestMethod.GET)
+	public ResponseEntity<CompanyInfoBean> getSelectedCompanyId() {
 		return new ResponseEntity<CompanyInfoBean>(companyInfoBean, HttpStatus.OK);
 	}
 

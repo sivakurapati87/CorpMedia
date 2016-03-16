@@ -4,7 +4,7 @@ App.controller('Company_Legalentities_Controller', ['$rootScope','$http','$scope
 	$scope.state="legalentities";
 	$scope.left_state = "company_settings";
 	$scope.state_info_name = null;
-	$scope.companyName= null;
+//	$scope.companyName= null;
 	
 	$scope.signator = {};
 	

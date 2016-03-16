@@ -17,7 +17,7 @@ public class CompanyInfo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer companyInfoId;
 	private Integer companyId;
-	private String companyLogo;
+//	private String companyLogo;
 	private String hoPhoto;
 	private String registrationNumber;
 	private Boolean isRegisteredWithRoc;
@@ -47,6 +47,9 @@ public class CompanyInfo {
 	private String companyType;
 	private Date dateOfLastAGM;
 	private Date dateOfBalanceSheet;
+	private String shortName;
+	private String logoImageName;
+
 	@OneToOne
 	@JoinColumn(name = "companyId", insertable = false, updatable = false)
 	private Company company;
@@ -61,6 +64,22 @@ public class CompanyInfo {
 		return companyInfoId;
 	}
 
+	public String getShortName() {
+		return shortName;
+	}
+
+	public void setShortName(String shortName) {
+		this.shortName = shortName;
+	}
+
+	public String getLogoImageName() {
+		return logoImageName;
+	}
+
+	public void setLogoImageName(String logoImageName) {
+		this.logoImageName = logoImageName;
+	}
+
 	public void setCompanyInfoId(Integer companyInfoId) {
 		this.companyInfoId = companyInfoId;
 	}
@@ -73,13 +92,13 @@ public class CompanyInfo {
 		this.companyId = companyId;
 	}
 
-	public String getCompanyLogo() {
-		return companyLogo;
-	}
-
-	public void setCompanyLogo(String companyLogo) {
-		this.companyLogo = companyLogo;
-	}
+//	public String getCompanyLogo() {
+//		return companyLogo;
+//	}
+//
+//	public void setCompanyLogo(String companyLogo) {
+//		this.companyLogo = companyLogo;
+//	}
 
 	public String getHoPhoto() {
 		return hoPhoto;
