@@ -44,7 +44,7 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table mtable table-hover table-striped" border="0"
+				<table class="table mtable " border="0"
 					style="width: 100%; background-color: white">
 					<tr><th><h2>PAYROLL CYCLE SETTINGS</h2></th></tr><tr>
 						<td>

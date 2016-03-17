@@ -12,18 +12,16 @@
 			<td valign="top">
 
 				<employee-module-top></employee-module-top>
-				<table class="table" border="0"
+				<table class="table mtable " border="0"
 					style="width: 100%; background-color: white">
-					<tr>
+					<tr><th><h2>Employee Default Settings</h2></th> </tr><tr>
 						<td>
 
 
 
 
 
-							<p>
-								<font size="4">Employee Default Settings</font>
-							</p>
+							
 							<p>
 								<font size="3">These are the default settings which apply
 									to new recruits</font>

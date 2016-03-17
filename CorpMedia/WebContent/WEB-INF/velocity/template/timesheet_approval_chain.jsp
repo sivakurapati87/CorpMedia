@@ -27,9 +27,11 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr>
+					<tr><tr><th><h4 class="page-heading"
+														data-ng-class="{'clear-top-margin': vm.id }">Approval
+														Chain</h4></th> </tr><tr>
 						<td>
 
 							<div class="panel-body">
@@ -46,9 +48,7 @@
 													class="col-lg-12 col-md-12 col-sm-12 col-xs-12 approver-hierarchy"
 													data-ng-class="{'vertical-margin': vm.id }">
 
-													<h4 class="page-heading"
-														data-ng-class="{'clear-top-margin': vm.id }">Approval
-														Chain</h4>
+													
 													<p class="page-description ng-scope" data-ng-if="!vm.id">This
 														is the default timesheet approval chain. When a new
 														project is created, then this approval chain is applied by

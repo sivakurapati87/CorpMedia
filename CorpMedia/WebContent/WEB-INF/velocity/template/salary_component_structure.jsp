@@ -45,30 +45,26 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
+					<tr><th> <h2>Salary components </h2><a ui-sref="Salary_component" href="#">click here </a> </th> </tr>
 					<tr>
 						<td>
 
 
 
-							<div class="row">
-								<div class="col-md-10">
-									<p>
-										<font size="3">Salary components</font> <a
-											ui-sref="Salary_component" href="#">click here </a>
-									</p>
-									<p>
+							<div class="cont">
+								
+									
+									<p class="dis_block">
 										<font size="2"><b>In this section,you can set up
 												and define properties for salary components.</b></font>
 									</p>
-								</div>
+								
 
-							</div>
-
-							<div class="row">
-								<div class="col-md-12">
-									<p>
+							
+								
+									<p class="dis_block">
 										<font size="3">Basic components</font>
 									</p>
 									<p>
@@ -79,40 +75,40 @@
 											allowances and components. You can edit the name of Special
 											Allowance to suit your needs. </font>
 									</p>
-								</div>
+								
 
-							</div> <br>
-							<div class="row">
-								<div class="col-md-2" style="background-color: grey">
+							</div> 
+							<div class="cont">
+								<div class="col-md-2 " style="background-color: #dedede;">
 									<p></p>
 									<p>Basic</p>
 								</div>
 								<div class="col-md-1"></div>
-								<div class="col-md-2" style="background-color: grey">
+								<div class="col-md-2" style="background-color: #ccc;">
 									<p></p>
 									<p>HRA</p>
 								</div>
 								<div class="col-md-1"></div>
-								<div class="col-md-2" style="background-color: grey">
+								<div class="col-md-2" style="background-color: #ccc;">
 									<p></p>
 									<p>PF Employee</p>
 								</div>
 								<div class="col-md-1"></div>
-								<div class="col-md-2" style="background-color: grey">
+								<div class="col-md-2" style="background-color: #ccc;">
 									<p></p>
 									<p>Special allowance</p>
 								</div>
 
 
-							</div> <br> <br>
+							</div> 
 
 
-							<div class="row">
-								<div class="col-md-12">
-									<p>
+							<div class="cont">
+								
+									<p class="dis_block">
 										<font size="3">Recurring Salary Heads</font>
 									</p>
-									<p>
+									<p class="dis_block">
 										<font size="2">Allowances are the salary components
 											within an Employee Gross Salary. All Statutory tax-exempt
 											allowances are already provided and for most part you do not
@@ -120,30 +116,26 @@
 											Basic, HRA etc are auto calculated by the system optimized
 											for each employee.</font>
 									</p>
-								</div>
+								
 							</div>
 
 
-							<div class="row">
-								<div class="col-md-5">
-									<p></p>
-									<p>
-										<b><font size="3">STANDARD ALLOWANCES</font></b>
-									</p>
+							<div class="cont">
+								<div style="background: #fff; padding:10px;">
+									
+										<h4>STANDARD ALLOWANCES</h4>
+									
 
 									<!--this is first box for medical allowance-->
-									<div class="w3-container w3-border"
-										style="background-color: #ceddde">
-										<p></p>
-
-										<h>Medical reimbursement</h>
-										<p>
-											<font size="1">Tax Free,Max limit:
-												Rs.{{medicalreimbursement.maxAnnualLimit}} </font>&nbsp;&nbsp;&nbsp;<a
-												href="" data-toggle="modal"
-												data-target="#medicalmodelpopupid"><i class="fa fa-cog"></i>
+									<div class="abc" >
+										<label>Medical reimbursement</label>
+										<span  class="dis_block">Tax Free,Max limit:
+												Rs.{{medicalreimbursement.maxAnnualLimit}} 
+											<a href="" data-toggle="modal"
+												data-target="#medicalmodelpopupid "><i class="fa fa-cog lrspace_10"></i>
 											</a>
-										</p>
+										</sapn>
+										
 									</div>
 
 
@@ -197,17 +189,16 @@
 
 									<!--this is second box for transport allowance-->
 									<p></p>
-									<div class="w3-container w3-border"
-										style="background-color: #ceddde">
-										<p></p>
-										<h>Transport allowance</h>
-										<p>
-											<font size="1">Tax Free, Max Limit :
-												Rs.{{transportallowance.maxAnnualLimit}}</font>&nbsp;&nbsp;&nbsp;<a
-												href="" data-toggle="modal"
+									<div class="abc" >
+										
+										<label>Transport allowance</label>
+										<span class="dis_block">Tax Free, Max Limit :
+												Rs.{{transportallowance.maxAnnualLimit}}
+												<a href="" data-toggle="modal"
 												data-target="#transportmodelpopupid"><i
-												class="fa fa-cog"></i></a>
-										</p>
+												class="fa fa-cog lrspace_10"></i></a>
+										</span>
+										
 									</div>
 
 
@@ -261,17 +252,14 @@
 
 									<!--this is third box for professional allowance-->
 									<p></p>
-									<div class="w3-container w3-border"
-										style="background-color: #ceddde">
-										<p></p>
-										<h>Professional allowance</h>
-										<p>
-											<font size="1">Tax Free, Max Limit:
-												Rs.{{professionalallowance.maxAnnualLimit}}</font>&nbsp;&nbsp;&nbsp;<a
-												href="" data-toggle="modal"
-												data-target="#professionalmodelpopupid"><i
-												class="fa fa-cog"></i></a>
-										</p>
+									<div class="abc" >
+										<label>Professional allowance</label>
+										<span class="dis_block">Tax Free, Max Limit:
+												Rs.{{professionalallowance.maxAnnualLimit}}
+												<a href="" data-toggle="modal"
+												data-target="#professionalmodelpopupid">
+												<i class="fa fa-cog lrspace_10"></i></a>
+										</span>
 									</div>
 
 
@@ -319,16 +307,15 @@
 
 									<!--this is fourth box for travel reimbursement-->
 									<p></p>
-									<div class="w3-container w3-border"
-										style="background-color: #ceddde">
-										<p></p>
-										<h>Travel reimbursement</h>
-										<p>
-											<font size="1">Tax Free, Max Limit:
-												Rs.{{travelreimbursement.maxAnnualLimit}}</font>&nbsp;&nbsp;&nbsp;<a
-												href="" data-toggle="modal"
-												data-target="#travelmodelpopupid"><i class="fa fa-cog"></i></a>
-										</p>
+									<div class="abc" >
+										 <label>Travel reimbursement</label>
+										 <span class="dis_block">Tax Free, Max Limit:
+												Rs.{{travelreimbursement.maxAnnualLimit}}
+												<a href="" data-toggle="modal"
+												data-target="#travelmodelpopupid">
+												<i class="fa fa-cog lrspace_10 "></i>
+												</a>
+											</span>
 									</div>
 
 
@@ -377,16 +364,13 @@
 
 									<!--this is fifth box for food allowance-->
 									<p></p>
-									<div class="w3-container w3-border"
-										style="background-color: #ceddde">
-										<p></p>
-										<h>Food coupons</h>
-										<p>
-											<font size="1">Tax Free, Max Limit:
-												Rs.{{foodcoupons.maxAnnualLimit}}</font>&nbsp;&nbsp;&nbsp;<a
-												href="" data-toggle="modal" data-target="#foodmodelpopupid"><i
-												class="fa fa-cog"></i></a>
-										</p>
+									<div class="abc" >
+										<label>Food coupons</label>
+										<span class="dis_block">Tax Free, Max Limit:
+												Rs.{{foodcoupons.maxAnnualLimit}}
+											<a href="" data-toggle="modal" data-target="#foodmodelpopupid">
+											<i class="fa fa-cog lrspace_10"></i></a>
+										</span>
 									</div>
 
 
@@ -433,16 +417,15 @@
 
 									<!--this is sixth box for compensatory allowance-->
 									<p></p>
-									<div class="w3-container w3-border"
-										style="background-color: #ceddde">
-										<p></p>
-										<h>City compensatory allowance</h>
-										<p>
-											<font size="1">Tax Free, Max Limit:
-												Rs.{{citycompensatoryallowance.maxAnnualLimit}}</font>&nbsp;&nbsp;&nbsp;<a
-												href="" data-toggle="modal" data-target="#citymodelpopupid"><i
-												class="fa fa-cog"></i></a>
-										</p>
+									<div class="abc" >
+									
+										<label>City compensatory allowance</label>
+										<span class="dis_block">
+											Tax Free, Max Limit:
+												Rs.{{citycompensatoryallowance.maxAnnualLimit}}
+												<a href="" data-toggle="modal" data-target="#citymodelpopupid">
+												<i class="fa fa-cog lrspace_10"></i></a>
+										</span>
 									</div>
 
 
@@ -491,16 +474,15 @@
 
 									<!--this is seventh box for daily allowance-->
 									<p></p>
-									<div class="w3-container w3-border"
-										style="background-color: #ceddde">
-										<p></p>
-										<h>Daily allowance</h>
-										<p>
-											<font size="1">Tax Free, Max Limit:
-												Rs.{{dailyallowance.maxAnnualLimit}}</font>&nbsp;&nbsp;&nbsp;<a
-												href="" data-toggle="modal" data-target="#dailymodelpopupid"><i
-												class="fa fa-cog"></i></a>
-										</p>
+									<div class="abc" >
+										
+										<label>Daily allowance</label>
+										<span class="dis_block">
+											Tax Free, Max Limit:
+												Rs.{{dailyallowance.maxAnnualLimit}}
+												<a href="" data-toggle="modal" data-target="#dailymodelpopupid">
+												<i class="fa fa-cog lrspace_10"></i></a>
+										</span>
 									</div>
 
 
@@ -557,13 +539,13 @@
 
 
 								<!--this is the second half of the row(right hand side part)-->
-								<div class="col-md-5">
+								<div class="" >
 
 									<p></p>
 									<p>
 										<b><font size="3">CUSTOM ALLOWANCES</font></b>
 									</p>
-									<div class="w3-container w3-border"
+									<div class=""
 										style="background-color: #fffff">
 										<br>
 										<!--making it a link since we need to trigger bootstrap modal-->
@@ -576,6 +558,30 @@
 												</font>
 											</p>
 										</a>
+										<table style="width: 40%" border="0"
+												class="table table-bordered" >
+												<tr>
+													<th>Name</th>
+													<th>Actions</th>
+												</tr>
+												<tr ng-repeat="customallowance in customAllowanceList"
+													ng-class-odd="'odd'" ng-class-even="'even'"
+													style="height: 30px">
+													<td>{{customallowance.Name}}</td>
+													<td><a ng-click="editCustomAllowance(customallowance)"
+														tooltip="edit" style="cursor: pointer; font-size: 12px"><i
+															class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+														tooltip="delete"
+														ng-click="deleteCustomAllowance(customallowance.customAllowanceId)"
+														style="cursor: pointer; font-size: 12px"><i
+															class="fa fa-trash"></i></a></td>
+												</tr>
+											</table>
+										
+
+									</div>
+								</div>
+							</div>
 
 
 										<!--bootstrap modal for adding custom allowances-->
@@ -653,52 +659,28 @@
 
 											</div>
 										</div>
-										<br>
-										<div class="col-lg-8">
-											<table style="width: 100%" border="0"
-												class="table table-bordered">
-												<tr>
-													<th>Name</th>
-													<th>Actions</th>
-												</tr>
-												<tr ng-repeat="customallowance in customAllowanceList"
-													ng-class-odd="'odd'" ng-class-even="'even'"
-													style="height: 30px">
-													<td>{{customallowance.Name}}</td>
-													<td><a ng-click="editCustomAllowance(customallowance)"
-														tooltip="edit" style="cursor: pointer; font-size: 12px"><i
-															class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
-														tooltip="delete"
-														ng-click="deleteCustomAllowance(customallowance.customAllowanceId)"
-														style="cursor: pointer; font-size: 12px"><i
-															class="fa fa-trash"></i></a></td>
-												</tr>
-											</table>
-										</div>
-
+									
+										
+											
+							
+							
+							<div class="cont" style="margin-top: 50px;">
+							
+								<label>CONTRIBUTIONS</label>
+								<div class="abc" >
+										
+										<label>Employee Gratuity contribution</label>
+										<span class="dis_block">
+											Gratuity :
+												Rs.{{gratuitycontribution.maxAnnualLimit}}
+												<a href="" data-toggle="modal" data-target="#myModal_gratuity"><i
+												class="fa fa-cog lrspace_10"></i></a>
+										</span>
 									</div>
-								</div>
-							</div> <br>
-							<p>
-								<b><font size="3"></font>CONTRIBUTIONS</b>
-							</p>
-							<div class="row">
-								<div class="col-md-5">
-									<div class="w3-container w3-border"
-										style="background-color: #ceceee">
-										<p></p>
-										<h>Employee Gratuity contribution</h>
-										<p>
-											<font size="1">Gratuity :
-												Rs.{{gratuitycontribution.maxAnnualLimit}}</font>&nbsp;&nbsp;&nbsp;<a
-												href="" data-toggle="modal" data-target="#myModal_gratuity"><i
-												class="fa fa-cog"></i></a>
-										</p>
-									</div>
-									<br>
-								</div>
-								<div class="col-md-7"></div>
-							</div> <!--bootstrap modal for the gratuity box-->
+									
+							</div>	
+								
+							 <!--bootstrap modal for the gratuity box-->
 							<div class="modal fade" id="myModal_gratuity" role="dialog">
 								<div class="modal-dialog">
 									<form ng-submit="saveGratuityContribution()">

@@ -42,16 +42,16 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable " border="0"
 					style="width: 100%; background-color: white;">
-					<tr>
+					<tr><th><h2>CLIENTS</h2></th> </tr><tr>
 						<td>
 							<div id="fade_out">
 
 								<br>
 
 								<p>
-									<b><font size="3">CLIENTS</font></b>
+									<b><font size="3"></font></b>
 								</p>
 								<p>
 									<font size="2">Here you can add / manage the client</font>

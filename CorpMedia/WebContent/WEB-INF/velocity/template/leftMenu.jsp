@@ -71,9 +71,10 @@
 					</a></li>
 					<li ng-class="{'active':(left_state==='project')}"><a
 						class="anchor-sm" ui-sref="projects" href="#"> <span
-							class="subnav-item-title">Project</span> <br> 
-								 
-					
+							class="subnav-item-title">Project</span> <br> <span
+							class="subnav-item-description">projects Billing Clients Billing Rates Reports
+							<span class="glyphicon glyphicon-menu-right dis_block float_right"></span>	 
+					</span>
 					</a></li>
 					
 				</ul>

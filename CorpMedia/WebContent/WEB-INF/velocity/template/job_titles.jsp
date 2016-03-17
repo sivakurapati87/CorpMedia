@@ -11,17 +11,15 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top"><employee-module-top></employee-module-top>
-				<table class="table" border="0"
+				<table class="table mtable " border="0"
 					style="width: 100%; background-color: white">
-					<tr>
+					<tr><th><h2>Job Titles</h2></th> </tr><tr>
 						<td>
 
 
 
 							<div>
-								<p>
-									<font size="4">Job Titles</font>
-								</p>
+								
 								<p>
 									<font size="2">You can specify employee job title here.</font>
 								</p>
@@ -79,9 +77,9 @@
 								<table style="width: 100%" border="0"
 									class="table table-bordered">
 									<tr>
-										<th>Name</th>
-										<th>Description</th>
-										<th>Actions</th>
+										<th class="th">Name</th>
+										<th class="th">Description</th>
+										<th class="th">Actions</th>
 									</tr>
 									<tr ng-repeat="jobTitle in jobtitlesList" ng-class-odd="'odd'"
 										ng-class-even="'even'" style="height: 30px">

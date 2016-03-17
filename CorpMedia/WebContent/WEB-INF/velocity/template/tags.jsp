@@ -30,9 +30,9 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr>
+					<tr><th><h4>Tags</h4></th> </tr><tr>
 						<td>
 
 							<div class="panel-body">

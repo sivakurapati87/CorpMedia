@@ -41,14 +41,14 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable " border="0"
 					style="width: 100%; background-color: white;">
-					<tr>
+					<tr><th><h2>Projects</h2></th> </tr><tr>
 						<td>
 
 							<div id="fade_out">
 								<p>
-									<b><font size="3">Projects</font></b>
+									<b><font size="3"></font></b>
 								</p>
 								<p>
 									<font size="2">Here you can add / manage the projects
@@ -103,7 +103,7 @@
 													style="cursor: pointer; font-size: 12px"><i
 														class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp; <a
 													tooltip="delete" style="cursor: pointer; font-size: 12px"
-													ng-click="deleteProjects(projects.projectId)"><i
+													ng-click="deleteProjects(projects.projectsId)"><i
 														class="fa fa-trash"></i></a></td>
 											</tr>
 											<tr>
@@ -169,7 +169,7 @@
 												<label for="sel1">Status</label> <select
 													class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
 													id="currency" ng-model="projects.statusId"
-													ng-options="bank.lookupDetailId as bank.description for bank in  lookup.statusList">
+													ng-options="bank.lookupDetailId as bank.description for bank in  lookup.projectStatusList">
 													<option value="" disabled selected>Select</option>
 												</select>
 											</div>

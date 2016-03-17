@@ -28,10 +28,10 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
 
-					<tr>
+					<tr><th><h2>Notify</h2></th> </tr><tr>
 						<td><a data-toggle="modal" data-target="#addSignatoryPopupId"
 							id="addSignatoryId" style="cursor: pointer; font-size: 20px"><span
 								class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add Notifier</a>

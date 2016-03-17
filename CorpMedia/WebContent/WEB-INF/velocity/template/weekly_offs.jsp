@@ -46,9 +46,9 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr>
+					<tr><th><h2>Weekly Offs</h2></th></tr><tr>
 						<td>
 
 
@@ -58,9 +58,9 @@
 									class="col-lg-12 col-md-12 col-sm-12 sub-page-container content-container">
 									<div class="col-lg-12">
 										<div id="replacable">
-											<h4 class="page-heading"
+											<p><h4 class="page-heading"
 												data-ng-class="{'clear-top-margin': vm.id }">Edit
-												Weekly off</h4>
+												Weekly off</h4></p>
 											<p class="page-description ng-scope" data-ng-if="!vm.id">You
 												can specify weekly off schedules here. These can be assigned
 												to individual employees. The default weekly off plan gets

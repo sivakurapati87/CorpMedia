@@ -11,11 +11,11 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top"><employee-module-top></employee-module-top>
-				<table class="table" border="0"
+				<table class="table mtable " border="0"
 					style="width: 100%; background-color: white">
 
 
-
+					<tr><th><h2>ALL EMPLOYEES</h2></th> </tr><tr>
 					<tr>
 						<td colspan="4" width="100%"></td>
 					</tr>

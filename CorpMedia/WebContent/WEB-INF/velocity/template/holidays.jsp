@@ -43,14 +43,12 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr>
+					<tr><th><h2>Holidays</h2></th> </tr><tr>
 						<td>
 							<div id="fade_out">
-								<p>
-									<font size="3"><b>Holidays</b></font>
-								</p>
+								
 								<p>
 									<font size="2">You can specify holidays list here. These
 										can be assigned to specific location. The default holidays

@@ -26,15 +26,15 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable " border="0"
 					style="width: 100%; background-color: white">
-					<tr>
+					<tr><th><h2>Company Roles</h2></th> </tr><tr>
 						<td><div class="panel-body">
 
 								<div
 									class="col-lg-12 col-md-12 col-sm-12 sub-page-container content-container">
 									<div class="col-lg-12">
-										<h4 class="page-heading">Company Roles</h4>
+										<h4 class="page-heading"></h4>
 									</div>
 								</div>
 

@@ -42,11 +42,12 @@
 					</tr>
 				</table>
 
-				<table class="table" border="1"
+				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white;">
-					<tr>
-						<td width="20%">
-							<div class="row">
+					<tr><th ><h2>REPORTS</h2></th> <td width="1%"></td> <th width="100%"><h2>Client Work Hours</h2></th> </tr>
+						<tr>
+						<td width="16%" style="background:#efefef; ">
+							<div class="">
 								<!--first part is for vertical navigation bar.-->
 								<div class="subnavbar-static-side">
 									<ul class="nav">
@@ -75,7 +76,7 @@
 								</div>
 							</div>
 						</td>
-						<td width="2%"></td>
+						<td width="1%"></td>
 						<td>
 							<!--rest of the page and data comes here-->
 							<div class="col-md-12">

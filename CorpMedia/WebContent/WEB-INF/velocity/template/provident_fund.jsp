@@ -39,16 +39,15 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr>
+					<tr><tr><th><h2>PROVIDENT FUND & ESI SETTING</h2></th> </tr><tr>
 						<td>
 
 						 
             
   <div class="row">
     <div class="col-md-9">
-        <p><b><font size="3">PROVIDENT FUND & ESI SETTING</font></b></p>
         <p>The settings here are defaulted to general industry practices.</p>
         <div class="row">
             <div class="col-md-6">

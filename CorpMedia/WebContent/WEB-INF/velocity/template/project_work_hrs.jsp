@@ -50,10 +50,10 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0" style="width: 100%; background-color: white;">
-					<tr>
-						<td width="20%">
-						 <div class="row">
+				<table class="table mtable" border="0" style="width: 100%; background-color: white;">
+					<tr><th ><h2>REPORTS</h2></th> <td width="1%"></td> <th width="100%"><h2>Project Work Hours</h2></th> </tr>
+						<tr>
+						<td width="16%" style="background:#efefef;  ">
             <!--first part is for vertical navigation bar.-->
             <div class="subnavbar-static-side">
 				<ul class="nav">

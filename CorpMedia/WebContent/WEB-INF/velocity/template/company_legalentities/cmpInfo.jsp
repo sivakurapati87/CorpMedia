@@ -88,11 +88,11 @@
 
 
 
-	<table class="table" border="0" width="100%">
+	<table class="table table-striped" border="0" width="100%">
 		<tr>
 			<td>
 				<table border="0" width="100%"
-					class="table table-hover table table-bordered">
+					class="table table-hover table-striped table-bordered">
 					<tr style="height: 10px"></tr>
 					<tr>
 						<td class="lable16_Regular">CIN:</td>
@@ -100,70 +100,70 @@
 						<td class="lable16_Regular">Registration Number:</td>
 						<td class="lable16_numbers">{{selectedCompanyObj.registrationNumber}}</td>
 					</tr>
-					<tr style="height: 5px"></tr>
+					<!-- <tr style="height: 5px"></tr> -->
 					<tr>
 						<td class="lable16_Regular">Registered with ROC:</td>
 						<td class="lable14">{{selectedCompanyObj.strIsRegisteredWithRoc}}</td>
 						<td class="lable16_Regular">PSU:</td>
 						<td class="lable14">{{selectedCompanyObj.strIsPSU}}</td>
 					</tr>
-					<tr style="height: 5px"></tr>
+					<!-- <tr style="height: 5px"></tr> -->
 					<tr>
 						<td class="lable16_Regular">Public Or Private:</td>
 						<td class="lable14">{{selectedCompanyObj.companyType}}</td>
 						<td class="lable16_Regular">Date of Incorporation:</td>
 						<td class="lable14">{{selectedCompanyObj.strD_o_incorporation}}</td>
 					</tr>
-					<tr style="height: 5px"></tr>
+					<!-- <tr style="height: 5px"></tr> -->
 					<tr>
 						<td class="lable16_Regular">Address 1:</td>
 						<td class="lable14">{{selectedCompanyObj.address1}}</td>
 						<td class="lable16_Regular">Address 2:</td>
 						<td class="lable14">{{selectedCompanyObj.address2}}</td>
 					</tr>
-					<tr style="height: 5px"></tr>
+				<!-- 	<tr style="height: 5px"></tr> -->
 					<tr>
 						<td class="lable16_Regular">City:</td>
 						<td class="lable14">{{selectedCompanyObj.city}}</td>
 						<td class="lable16_Regular">State:</td>
 						<td class="lable14">{{selectedCompanyObj.state}}</td>
 					</tr>
-					<tr style="height: 5px"></tr>
+					<!-- <tr style="height: 5px"></tr> -->
 					<tr>
 						<td class="lable16_Regular">Country:</td>
 						<td class="lable14">{{selectedCompanyObj.country}}</td>
 						<td class="lable16_Regular">PIN:</td>
 						<td class="lable16_numbers">{{selectedCompanyObj.pincode}}</td>
 					</tr>
-					<tr style="height: 5px"></tr>
+					<!-- <tr style="height: 5px"></tr> -->
 					<tr>
 						<td class="lable16_Regular">Email:</td>
 						<td class="lable14">{{selectedCompanyObj.email}}</td>
 						<td class="lable16_Regular">Is Listed Or Not:</td>
 						<td class="lable14">{{selectedCompanyObj.strIsListed}}</td>
 					</tr>
-					<tr style="height: 5px"></tr>
+					<!-- <tr style="height: 5px"></tr> -->
 					<tr>
 						<td class="lable16_Regular">Date of Last AGM:</td>
 						<td class="lable14">{{selectedCompanyObj.dateOfLastAGM}}</td>
 						<td class="lable16_Regular">Date of Balance Sheet:</td>
 						<td class="lable14">{{selectedCompanyObj.dateOfBalanceSheet}}</td>
 					</tr>
-					<tr style="height: 5px"></tr>
+					<!-- <tr style="height: 5px"></tr> -->
 					<tr>
 						<td class="lable16_Regular">Board Number:</td>
 						<td class="lable14">{{selectedCompanyObj.boardNumber}}</td>
 						<td class="lable16_Regular">Fax Number:</td>
 						<td class="lable16_numbers">{{selectedCompanyObj.faxNumber}}</td>
 					</tr>
-					<tr style="height: 5px"></tr>
+					<!-- <tr style="height: 5px"></tr> -->
 					<tr>
 						<td class="lable16_Regular">Website:</td>
 						<td class="lable14">{{selectedCompanyObj.website}}</td>
 						<td class="lable16_Regular">Twitter:</td>
 						<td class="lable14">{{selectedCompanyObj.twitterLink}}</td>
 					</tr>
-					<tr style="height: 5px"></tr>
+					<!-- <tr style="height: 5px"></tr> -->
 					<tr>
 						<td class="lable16_Regular">Facebook:</td>
 						<td class="lable14">{{selectedCompanyObj.facebookLink}}</td>

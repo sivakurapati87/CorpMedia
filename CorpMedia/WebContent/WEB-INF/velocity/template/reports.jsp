@@ -41,11 +41,12 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="1"
-					style="width: 100%; background-color: white;">
+				<table class="table mtable " border="0"
+					style="width: 100%; background-color: white; ">
+					<tr><th ><h2>REPORTS</h2></th><td width="1%"></td>  <th width="100%"><h2>Client Details</h2></th> </tr>
 					<tr>
-						<td width="20%">
-							<div class="row">
+						<td width="16%" style="background:#efefef;  ">
+							
 								<!--first part is for vertical navigation bar.-->
 								<div class="subnavbar-static-side">
 									<ul class="nav">

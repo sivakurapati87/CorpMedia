@@ -32,7 +32,7 @@
 				</table>
 				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white">
-
+					<tr><th><h2>Legal Entities</h2></th> </tr><tr>
 					<tr>
 						<td><a data-toggle="modal" data-target="#addSignatoryPopupId"
 							id="addSignatoryId" style="cursor: pointer; font-size: 20px"><span
