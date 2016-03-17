@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.intuiture.corp.json.HolidaysJson;
 import com.intuiture.corp.service.HolidayService;
-import com.intuiture.corp.util.TransformDomainToJson;
+import com.intuiture.corp.util.MethodUtil;
 
 @Controller
 @RequestMapping("/HolidayController")
@@ -27,7 +27,7 @@ public class HolidayController {
 	@ResponseBody
 	public Boolean saveHoliday(HttpServletRequest request, HttpServletResponse response, @RequestBody HolidaysJson holidaysJson) {
 		if (holidaysJson != null && holidaysJson.getStrHolidayDate() != null) {
-			holidaysJson.setHolidayDate(TransformDomainToJson.convertDiffferentFormatString(holidaysJson.getStrHolidayDate()));
+			holidaysJson.setHolidayDate(MethodUtil.convertDiffferentFormatString(holidaysJson.getStrHolidayDate()));
 		}
 		return holidayService.saveHoliday(holidaysJson);
 	}

@@ -1,6 +1,6 @@
 'use strict';
 
-var App = angular.module('myApp',['ui.router','ui.bootstrap',"angucomplete-alt","ngGrid","ImageCropper","nvd3"]);
+var App = angular.module('myApp',['ui.router','ui.bootstrap',"angucomplete-alt","ngGrid","ImageCropper","nvd3","jkuri.timepicker"]);
 App.directive("autoSubmit", function($timeout) {
     return {
         link: function(scope, element, attrs) {

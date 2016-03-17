@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('cmpInfo_Controller', ['$scope','$http', '$rootScope','CompanyInfoService','$stateParams', function($scope,$http,$rootScope,CompanyInfoService,$stateParams) {
+App.controller('cmpInfo_Controller', ['$scope','$http', '$rootScope','$stateParams', function($scope,$http,$rootScope,$stateParams) {
 	 $scope.state="legalentities";
 		$scope.left_state = "company_settings";
 		$scope.state_info_name = $stateParams.legEntity;

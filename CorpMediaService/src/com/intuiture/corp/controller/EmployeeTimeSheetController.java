@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeeTimeSheetJson;
 import com.intuiture.corp.service.EmployeeTimeSheetService;
-import com.intuiture.corp.util.TransformDomainToJson;
+import com.intuiture.corp.util.MethodUtil;
 
 @Controller
 @RequestMapping("/EmployeeTimeSheetController")
@@ -24,19 +23,16 @@ public class EmployeeTimeSheetController {
 	@Autowired
 	private EmployeeTimeSheetService employeeTimeSheetService;
 
-	@RequestMapping(value = "/saveOrUpdateEmployee", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveOrUpdateEmployeeTimesheetList", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveOrUpdateEmployee(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeJson employeeJson) {
-		if (employeeJson != null && employeeJson.getStrDateOfJoining() != null) {
-			employeeJson.setDateOfJoining(TransformDomainToJson.convertDiffferentFormatString(employeeJson.getStrDateOfJoining()));
-		}
-		return employeeTimeSheetService.saveOrUpdateEmployee(employeeJson);
+	public Boolean saveOrUpdateEmployeeTimesheetList(HttpServletRequest request, HttpServletResponse response, @RequestBody List<EmployeeTimeSheetJson> employeeTimeSheetJsonList) {
+		return employeeTimeSheetService.saveOrUpdateEmployeeTimesheetList(employeeTimeSheetJsonList);
 	}
 
 	@RequestMapping(value = "/getEmployeeTimesheetOfTheWeek", method = RequestMethod.GET)
 	@ResponseBody
 	public List<EmployeeTimeSheetJson> getEmployeeTimesheetOfTheWeek(HttpServletRequest request, HttpServletResponse response, @RequestParam("employeeId") Integer employeeId, @RequestParam("startingWeekDate") String startingWeekDate) {
-		return employeeTimeSheetService.getEmployeeTimesheetOfTheWeek(employeeId, TransformDomainToJson.getWeeklyDatesList(startingWeekDate));
+		return employeeTimeSheetService.getEmployeeTimesheetOfTheWeek(employeeId, MethodUtil.getWeeklyDatesList(startingWeekDate));
 	}
 
 }

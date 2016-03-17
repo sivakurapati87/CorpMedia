@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('LeftMenu_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$state', function($scope,$location,$rootScope,CompanyInfoService,$state) {
+App.controller('LeftMenu_Controller', ['$scope','$location','$rootScope','$state', function($scope,$location,$rootScope,$state) {
         	 
 //        	  
 //        	$scope.leftMenuAction = function(sref,state){

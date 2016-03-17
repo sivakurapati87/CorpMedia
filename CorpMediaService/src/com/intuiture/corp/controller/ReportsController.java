@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.intuiture.corp.json.ReportsJson;
 import com.intuiture.corp.service.ReportsService;
-import com.intuiture.corp.util.TransformDomainToJson;
+import com.intuiture.corp.util.MethodUtil;
 @Controller
 @RequestMapping("/ReportsController")
 public class ReportsController {
@@ -24,8 +24,8 @@ public class ReportsController {
 	@ResponseBody
 	public Boolean saveOrUpdateReports(HttpServletRequest request, HttpServletResponse response, @RequestBody ReportsJson reportsJson) {
 		if (reportsJson != null && reportsJson.getStrFromDate() != null && reportsJson.getStrToDate() != null) {
-			reportsJson.setFromDate(TransformDomainToJson.convertDiffferentFormatString(reportsJson.getStrFromDate()));
-			reportsJson.setToDate(TransformDomainToJson.convertDiffferentFormatString(reportsJson.getStrToDate()));
+			reportsJson.setFromDate(MethodUtil.convertDiffferentFormatString(reportsJson.getStrFromDate()));
+			reportsJson.setToDate(MethodUtil.convertDiffferentFormatString(reportsJson.getStrToDate()));
 		}
 		return reportsService.saveOrUpdateReports(reportsJson);
 	}

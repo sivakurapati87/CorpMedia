@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.intuiture.corp.json.DeptWorkHoursJson;
 import com.intuiture.corp.service.DeptWorkHoursService;
-import com.intuiture.corp.util.TransformDomainToJson;
+import com.intuiture.corp.util.MethodUtil;
 
 @Controller
 @RequestMapping("/DeptWorkHoursController")
@@ -27,10 +27,10 @@ public class DeptWorkHoursController {
 	@ResponseBody
 	public Boolean saveDeptWorkHours(HttpServletRequest request, HttpServletResponse response, @RequestBody DeptWorkHoursJson deptWorkHoursJson) {
 		if (deptWorkHoursJson != null && deptWorkHoursJson.getStrFrom() != null) {
-			deptWorkHoursJson.setFrom(TransformDomainToJson.convertDiffferentFormatString(deptWorkHoursJson.getStrFrom()));
+			deptWorkHoursJson.setFrom(MethodUtil.convertDiffferentFormatString(deptWorkHoursJson.getStrFrom()));
 		}
 		if (deptWorkHoursJson != null && deptWorkHoursJson.getStrTo() != null) {
-			deptWorkHoursJson.setTo(TransformDomainToJson.convertDiffferentFormatString(deptWorkHoursJson.getStrTo()));
+			deptWorkHoursJson.setTo(MethodUtil.convertDiffferentFormatString(deptWorkHoursJson.getStrTo()));
 		}
 		return deptWorkHoursService.saveDeptWorkHours(deptWorkHoursJson);
 	}

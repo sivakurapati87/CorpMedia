@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('pfInfo_Controller', ['$http','$scope','$rootScope','PFInfoService','$stateParams', function($http,$scope,$rootScope,PFInfoService,$stateParams) {
+App.controller('pfInfo_Controller', ['$http','$scope','$rootScope','$stateParams', function($http,$scope,$rootScope,$stateParams) {
 	
 	//common 
 		$scope.state="legalentities";

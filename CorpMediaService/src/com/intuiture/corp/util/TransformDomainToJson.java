@@ -1,28 +1,6 @@
 package com.intuiture.corp.util;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.text.Format;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Random;
-
-import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-
-import Decoder.BASE64Decoder;
-import Decoder.BASE64Encoder;
 
 import com.intuiture.corp.entity.AddLeaveType;
 import com.intuiture.corp.entity.Allowances;
@@ -134,123 +112,6 @@ import com.intuiture.corp.json.TravelReimbursementJson;
 
 public class TransformDomainToJson {
 	private static Logger LOG = Logger.getLogger(TransformDomainToJson.class);
-	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-	public static void makeDirectory(File myFolder) {
-		if (!myFolder.exists()) {
-			try {
-				myFolder.mkdirs();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}
-	}
-
-	public static List<Date> getWeeklyDatesList(String startingWeekDate) {
-		List<Date> datesList = new ArrayList<Date>();
-		Date startingWeekDay = convertDiffferentFormatString(startingWeekDate);
-		for (int i = 0; i < 7; i++) {
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(startingWeekDay);
-			cal.add(Calendar.DATE, i);
-			datesList.add(cal.getTime());
-		}
-		return datesList;
-	}
-
-	public static String uploadAnImage(String imageBase64) {
-		BufferedOutputStream buffStream = null;
-		Random ran = new Random();
-		String imageName = String.valueOf(100000 + ran.nextInt(900000)) + ".png";
-		try {
-			byte[] bytes = new BASE64Decoder().decodeBuffer(imageBase64.split(",")[1]);
-			File folder = new File(Constants.FILEUPLOADEDPATH);
-			makeDirectory(folder);
-			File newFile = new File(Constants.FILEUPLOADEDPATH + "\\" + imageName);
-			buffStream = new BufferedOutputStream(new FileOutputStream(newFile));
-			buffStream.write(bytes);
-			if (buffStream != null) {
-				buffStream.close();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return imageName;
-	}
-
-	public static String getStrInputStream(String imageName) {
-		String inputStreamToString = null;
-		try {
-			if (imageName != null) {
-				File initialFile = new File(Constants.FILEUPLOADEDPATH + "\\" + imageName);
-				InputStream inputStream = new FileInputStream(initialFile);
-				inputStreamToString = new BASE64Encoder().encode(IOUtils.toByteArray(inputStream));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return inputStreamToString;
-
-	}
-
-	public static List<Integer> splitStringInList(String idsInString) {
-		Integer[] ids = splitString(idsInString);
-		List<Integer> listOfIds = ids != null ? Arrays.asList(ids) : null;
-		return listOfIds;
-	}
-
-	public static Integer convertStringToInteger(String str) {
-		Integer convertedStr = null;
-		if (str != null && str.length() > 0) {
-			convertedStr = Integer.parseInt(str);
-		}
-		return convertedStr;
-	}
-
-	public static String convertIntegerToString(Integer value) {
-		String str = null;
-		if (value != null) {
-			str = String.valueOf(value);
-		}
-		return str;
-	}
-
-	public static Integer[] splitString(String idsInString) {
-		Integer[] ids = null;
-		if (idsInString != null && idsInString.length() > 0) {
-			String[] strIds = idsInString.split(",");
-			ids = new Integer[strIds.length];
-			for (int i = 0; i < strIds.length; i++) {
-				ids[i] = Integer.parseInt(strIds[i]);
-			}
-		}
-		return ids;
-	}
-
-	public static Date convertDiffferentFormatString(String str) {
-		Date date = null;
-		try {
-			if (str != null && str.length() > 9) {
-				// SimpleDateFormat dateformat = null;
-				String s1 = null;
-				if (str.length() == 11) {
-					// dateformat = new SimpleDateFormat("dd-MMM-yyyy");
-					s1 = str.subSequence(0, 11).toString();
-				} else {
-					// dateformat = new SimpleDateFormat("yyyy-MM-dd");
-					s1 = str.subSequence(0, 10).toString();
-				}
-
-				date = sdf.parse(s1);
-				date = convertStringToDate(convertDateToString(date));
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			LOG.error("Error at convertDateToString() in TransformDomainToJson:" + e.getMessage(), e);
-		}
-		return date;
-	}
 
 	public static LookUpDetailJson getLookUpDetailJson(LookUpDetails lookUpDetails) {
 		LookUpDetailJson json = new LookUpDetailJson();
@@ -272,89 +133,7 @@ public class TransformDomainToJson {
 	// return json;
 	// }
 
-	public static String convertDoubleToMoney(Double dbl) {
-		String str = null;
-		if (dbl != null) {
-			Format format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
-			str = format.format(new BigDecimal(dbl));
-		}
-		return str;
-	}
-
-	public static String concateStringValues(String[] strArray) {
-		if (strArray != null && strArray.length > 0) {
-			String strValue = null;
-			for (String str : strArray) {
-				if (strValue == null) {
-					strValue = str;
-				} else {
-					strValue += "," + str;
-				}
-			}
-			return strValue;
-		}
-		return null;
-	}
-
-	public static String getInputStream(String fileName, String filePath) {
-		String inputStreamToString = null;
-		try {
-			File initialFile = new File(filePath + "\\" + fileName);
-			InputStream inputStream = new FileInputStream(initialFile);
-			inputStreamToString = IOUtils.toString(inputStream, "UTF-8");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return inputStreamToString;
-
-	}
-
-	public static String[] getListOfStringsByIntArray(Integer[] listOfIds, Map<Integer, String> idWithDescriptionMap) {
-		String[] strAmenities = null;
-		if (listOfIds != null && listOfIds.length > 0) {
-			strAmenities = new String[listOfIds.length];
-			for (int i = 0; i < listOfIds.length; i++) {
-				strAmenities[i] = idWithDescriptionMap.get(listOfIds[i]);
-			}
-		}
-		return strAmenities;
-
-	}
-
-	public static Date convertStringToDate(String strDate) {
-		Date date = null;
-		try {
-			if (strDate != null && strDate.trim().length() > 0) {
-				date = sdf.parse(strDate);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			LOG.error("Error at convertStringToDate() in TransformDomainToJson:" + e.getMessage(), e);
-		}
-		return date;
-	}
-
-	/**
-	 * This method is to convert Date to String
-	 * 
-	 * @param date
-	 * @return
-	 */
-	public static String convertDateToString(Date date) {
-		String strDate = null;
-		try {
-			if (date != null) {
-				strDate = sdf.format(date);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			LOG.error("Error at convertDateToString() in TransformDomainToJson:" + e.getMessage(), e);
-		}
-		return strDate;
-	}
-
+	
 	public static CompanyJson getAllCompanyJsonByCompany(Company company) {
 		CompanyJson companyJson = new CompanyJson();
 		try {
@@ -395,7 +174,7 @@ public class TransformDomainToJson {
 				companyJson.setState(company.getCompanyInfo().getState());
 				companyJson.setTwitterLink(company.getCompanyInfo().getTwitterLink());
 				companyJson.setWebsite(company.getCompanyInfo().getWebsite());
-				companyJson.setBase64logo(getStrInputStream(company.getCompanyInfo().getLogoImageName()));
+				companyJson.setBase64logo(MethodUtil.getStrInputStream(company.getCompanyInfo().getLogoImageName()));
 				companyJson.setShortName(company.getCompanyInfo().getShortName());
 			}
 
@@ -436,7 +215,7 @@ public class TransformDomainToJson {
 			pfInfoJson.setPfNumber(pfInfo.getPfNumber());
 			pfInfoJson.setRegistrationDate(pfInfo.getRegistrationDate());
 			pfInfoJson.setUpdatedOn(pfInfo.getUpdatedOn());
-			pfInfoJson.setStrRegistrationDate(CorpoMediaUtil.convertDateToString(pfInfo.getRegistrationDate()));
+			pfInfoJson.setStrRegistrationDate(MethodUtil.convertDateToString(pfInfo.getRegistrationDate()));
 		}
 		return pfInfoJson;
 	}
@@ -470,7 +249,7 @@ public class TransformDomainToJson {
 			esiInfoJson.setEsiInfoId(esiInfo.getEsiInfoId());
 			esiInfoJson.setEsiNumber(esiInfo.getEsiNumber());
 			esiInfoJson.setRegistrationDate(esiInfo.getRegistrationDate());
-			esiInfoJson.setStrRegistrationDate(CorpoMediaUtil.convertDateToString(esiInfo.getRegistrationDate()));
+			esiInfoJson.setStrRegistrationDate(MethodUtil.convertDateToString(esiInfo.getRegistrationDate()));
 
 		}
 		return esiInfoJson;
@@ -513,7 +292,7 @@ public class TransformDomainToJson {
 		employeeJson.setLocationId(employee.getLocationId());
 		employeeJson.setMiddleName(employee.getMiddleName());
 		employeeJson.setRoleId(employee.getRoleId());
-		employeeJson.setStrDateOfJoining(convertDateToString(employee.getDateOfJoining()));
+		employeeJson.setStrDateOfJoining(MethodUtil.convertDateToString(employee.getDateOfJoining()));
 		if (employee.getCompanyRoles() != null) {
 			employeeJson.setRole(employee.getCompanyRoles().getRoleName());
 		}
@@ -612,7 +391,7 @@ public class TransformDomainToJson {
 		employeeSalaryInfoJson.setEmployeeId(employeeSalaryInfo.getEmployeeId());
 		employeeSalaryInfoJson.setAnnualSalary(employeeSalaryInfo.getAnnualSalary());
 		employeeSalaryInfoJson.setEmployeeSalaryInfoId(employeeSalaryInfo.getEmployeeSalaryInfoId());
-		employeeSalaryInfoJson.setStrEffectiveFrom(convertDateToString(employeeSalaryInfo.getEffectiveFrom()));
+		employeeSalaryInfoJson.setStrEffectiveFrom(MethodUtil.convertDateToString(employeeSalaryInfo.getEffectiveFrom()));
 		return employeeSalaryInfoJson;
 	}
 
@@ -623,7 +402,7 @@ public class TransformDomainToJson {
 		employeePersonalInfoJson.setMobileNumber(employeePersonalInfo.getMobileNumber());
 		employeePersonalInfoJson.setGenderId(employeePersonalInfo.getGenderId());
 		employeePersonalInfoJson.setEmployeePersonalInfoId(employeePersonalInfo.getEmployeePersonalInfoId());
-		employeePersonalInfoJson.setStrDateOfBirth(convertDateToString(employeePersonalInfo.getDateOfBirth()));
+		employeePersonalInfoJson.setStrDateOfBirth(MethodUtil.convertDateToString(employeePersonalInfo.getDateOfBirth()));
 		employeePersonalInfoJson.setMaritalStatusId(employeePersonalInfo.getMaritalStatusId());
 		employeePersonalInfoJson.setBloodGroupId(employeePersonalInfo.getBloodGroupId());
 		employeePersonalInfoJson.setWorkNumber(employeePersonalInfo.getWorkNumber());
@@ -669,8 +448,8 @@ public class TransformDomainToJson {
 		employeeExperienceInfoJson.setCompanyName(employeeExperienceInfo.getCompanyName());
 		employeeExperienceInfoJson.setJobTitle(employeeExperienceInfo.getJobTitle());
 		employeeExperienceInfoJson.setLocation(employeeExperienceInfo.getLocation());
-		employeeExperienceInfoJson.setStrFromDate(convertDateToString(employeeExperienceInfo.getFromDate()));
-		employeeExperienceInfoJson.setStrToDate(convertDateToString(employeeExperienceInfo.getToDate()));
+		employeeExperienceInfoJson.setStrFromDate(MethodUtil.convertDateToString(employeeExperienceInfo.getFromDate()));
+		employeeExperienceInfoJson.setStrToDate(MethodUtil.convertDateToString(employeeExperienceInfo.getToDate()));
 		employeeExperienceInfoJson.setDescription(employeeExperienceInfo.getDescription());
 		employeeExperienceInfoJson.setEmployeeExperienceInfoId(employeeExperienceInfo.getEmployeeExperienceInfoId());
 		return employeeExperienceInfoJson;
@@ -680,8 +459,8 @@ public class TransformDomainToJson {
 		EmployeeEducationalInfoJson employeeEducationalInfoJson = new EmployeeEducationalInfoJson();
 		employeeEducationalInfoJson.setCompanyId(employeeEducationalInfo.getCompanyId());
 		employeeEducationalInfoJson.setEmployeeId(employeeEducationalInfo.getEmployeeId());
-		employeeEducationalInfoJson.setStrFromDate(convertDateToString(employeeEducationalInfo.getFromDate()));
-		employeeEducationalInfoJson.setStrToDate(convertDateToString(employeeEducationalInfo.getToDate()));
+		employeeEducationalInfoJson.setStrFromDate(MethodUtil.convertDateToString(employeeEducationalInfo.getFromDate()));
+		employeeEducationalInfoJson.setStrToDate(MethodUtil.convertDateToString(employeeEducationalInfo.getToDate()));
 		employeeEducationalInfoJson.setDegree(employeeEducationalInfo.getDegree());
 		employeeEducationalInfoJson.setSpecialization(employeeEducationalInfo.getSpecialization());
 		employeeEducationalInfoJson.setUniversity(employeeEducationalInfo.getUniversity());
@@ -699,7 +478,7 @@ public class TransformDomainToJson {
 		employeeOneTimeComponentJson.setNote(employeeOneTimeComponent.getNote());
 		employeeOneTimeComponentJson.setOneTimeComponentName(employeeOneTimeComponent.getOneTimeComponentName());
 		employeeOneTimeComponentJson.setStatusId(employeeOneTimeComponent.getStatusId());
-		employeeOneTimeComponentJson.setStrMonthPayable(convertDateToString(employeeOneTimeComponent.getMonthPayable()));
+		employeeOneTimeComponentJson.setStrMonthPayable(MethodUtil.convertDateToString(employeeOneTimeComponent.getMonthPayable()));
 		if (employeeOneTimeComponent.getStatus() != null) {
 			employeeOneTimeComponentJson.setStatus(employeeOneTimeComponent.getStatus().getDescription());
 		}
@@ -728,8 +507,8 @@ public class TransformDomainToJson {
 	public static ClientWorkHoursJson getClientWorkHoursJson(CompanyClientWorkHours companyClientWorkHours) {
 		ClientWorkHoursJson clientWorkHoursJson = new ClientWorkHoursJson();
 		clientWorkHoursJson.setCompanyId(companyClientWorkHours.getCompanyId());
-		clientWorkHoursJson.setStrFrom(convertDateToString(companyClientWorkHours.getClientFrom()));
-		clientWorkHoursJson.setStrTo(convertDateToString(companyClientWorkHours.getClientTo()));
+		clientWorkHoursJson.setStrFrom(MethodUtil.convertDateToString(companyClientWorkHours.getClientFrom()));
+		clientWorkHoursJson.setStrTo(MethodUtil.convertDateToString(companyClientWorkHours.getClientTo()));
 		clientWorkHoursJson.setClientWorkHourId(companyClientWorkHours.getClientWorkHourId());
 		clientWorkHoursJson.setClientsId(companyClientWorkHours.getClientId());
 		if (companyClientWorkHours.getClients() != null) {
@@ -743,8 +522,8 @@ public class TransformDomainToJson {
 		DeptWorkHoursJson deptWorkHoursJson = new DeptWorkHoursJson();
 		deptWorkHoursJson.setCompanyId(deptWorkHours.getCompanyId());
 		deptWorkHoursJson.setGroupById(deptWorkHours.getGroupById());
-		deptWorkHoursJson.setStrFrom(convertDateToString(deptWorkHours.getDeptFrom()));
-		deptWorkHoursJson.setStrTo(convertDateToString(deptWorkHours.getDeptTo()));
+		deptWorkHoursJson.setStrFrom(MethodUtil.convertDateToString(deptWorkHours.getDeptFrom()));
+		deptWorkHoursJson.setStrTo(MethodUtil.convertDateToString(deptWorkHours.getDeptTo()));
 		deptWorkHoursJson.setDeptWorkHourId(deptWorkHours.getDeptWorkHourId());
 		deptWorkHoursJson.setDepartmentId(deptWorkHours.getDepartmentId());
 		deptWorkHoursJson.setIncludeNonbillableHours(deptWorkHours.getIncludeNonbillableHours());
@@ -962,7 +741,7 @@ public class TransformDomainToJson {
 		HolidaysJson holidaysJson = new HolidaysJson();
 		holidaysJson.setCompanyId(holidays.getCompanyId());
 		holidaysJson.setDescription(holidays.getDescription());
-		holidaysJson.setStrHolidayDate(convertDateToString(holidays.getHolidayDate()));
+		holidaysJson.setStrHolidayDate(MethodUtil.convertDateToString(holidays.getHolidayDate()));
 		holidaysJson.setHolidayName(holidays.getHolidayName());
 		holidaysJson.setIsFloatingHoliday(holidays.getIsFloatingHoliday());
 		holidaysJson.setHolidaysId(holidays.getHolidaysId());
@@ -988,7 +767,7 @@ public class TransformDomainToJson {
 		payrollCycleSettingsJson.setPayFrequency(payrollCycleSettings.getPayFrequency());
 		payrollCycleSettingsJson.setPayPeriodEndDayId(payrollCycleSettings.getPayPeriodEndDayId());
 		payrollCycleSettingsJson.setPayrollCycleSettingsId(payrollCycleSettings.getPayrollCycleSettingsId());
-		payrollCycleSettingsJson.setStrPayPeriodEndDayId(convertIntegerToString(payrollCycleSettings.getPayPeriodEndDayId()));
+		payrollCycleSettingsJson.setStrPayPeriodEndDayId(MethodUtil.convertIntegerToString(payrollCycleSettings.getPayPeriodEndDayId()));
 		return payrollCycleSettingsJson;
 	}
 
@@ -998,8 +777,8 @@ public class TransformDomainToJson {
 		projectsJson.setProjectsId(projects.getProjectsId());
 		projectsJson.setProjectName(projects.getProjectName());
 		projectsJson.setStatusId(projects.getStatusId());
-		projectsJson.setStrEndDate(convertDateToString(projects.getEndDate()));
-		projectsJson.setStrStartDate(convertDateToString(projects.getStartDate()));
+		projectsJson.setStrEndDate(MethodUtil.convertDateToString(projects.getEndDate()));
+		projectsJson.setStrStartDate(MethodUtil.convertDateToString(projects.getStartDate()));
 		projectsJson.setDescription(projects.getDescription());
 		projectsJson.setIsProjectAssignToAllEmployees(projects.getIsProjectAssignToAllEmployees());
 		projectsJson.setClientsId(projects.getClientsId());
@@ -1091,7 +870,7 @@ public class TransformDomainToJson {
 		employeeTimeSheetJson.setEmployeeId(employee_TimeSheet.getEmployeeId());
 		employeeTimeSheetJson.setStatusId(employee_TimeSheet.getStatusId());
 		if (employee_TimeSheet.getTimesheet() != null) {
-			employeeTimeSheetJson.setTimeSheetDate(employee_TimeSheet.getTimesheet().getTimeSheetDate());
+			employeeTimeSheetJson.setSpendedTime(employee_TimeSheet.getSpendedTime());
 		}
 		return employeeTimeSheetJson;
 	}

@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('Company_Legalentities_Controller', ['$rootScope','$http','$scope','$location','CompanyInfoService','$stateParams', function($rootScope,$http,$scope,$location,CompanyInfoService,$stateParams) {
+App.controller('Company_Legalentities_Controller', ['$rootScope','$http','$scope','$location','$stateParams', function($rootScope,$http,$scope,$location,$stateParams) {
 	$scope.state="legalentities";
 	$scope.left_state = "company_settings";
 	$scope.state_info_name = null;

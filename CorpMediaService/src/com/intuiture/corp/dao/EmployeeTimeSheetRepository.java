@@ -44,4 +44,17 @@ public class EmployeeTimeSheetRepository extends BaseRepository {
 		return timeSheetList;
 	}
 
+	public Employee_TimeSheet getEmployee_TimeSheetByEmpIdAndTimeSheetId(Integer employeeId, Integer timesheetId) {
+		Employee_TimeSheet employee_TimeSheet = null;
+		try {
+			Criteria criteria = getSession().createCriteria(Employee_TimeSheet.class);
+			criteria.add(Restrictions.and(Restrictions.eq("employeeId", employeeId), Restrictions.eq("timesheetId", timesheetId)));
+			employee_TimeSheet = (Employee_TimeSheet) criteria.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOG.error("Error at EmployeeTimeSheetRepository getEmployee_TimeSheetByEmpIdAndTimeSheetId()" + e.getMessage(), e);
+		}
+		return employee_TimeSheet;
+	}
+
 }

@@ -9,7 +9,7 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top">
-				<table class="table" border="0" style="width: 100%;">
+				<table class="table " border="0" style="width: 100%;">
 					<tr>
 						<td>
 							<div class="sub-page-navigation">
@@ -33,37 +33,34 @@
 					</tr>
 				</table>
 				<form ng-submit="saveCompanyGeneralInfo()">
-					<table class="table" border="0"
-						style="width: 100%; background-color: white">
+					<table class="table mtable table-hover table-striped" border="0"
+						style="width: 100%; background-color: white; border-radius:10px;">
 						<tr>
-							<td>Company Info</td>
+							<th>Company Info</th>
 						</tr>
-						<tr height="10px"></tr>
+						<tr height="1px"></tr>
 						<tr>
 							<td>Information about the company</td>
 						</tr>
-						<tr height="10px"></tr>
+						
 						<tr>
 							<td>Short Name</td>
 						</tr>
-						<tr height="5px"></tr>
 						<tr>
 							<td><input type='text' class='form-control'
-								ng-model="companyJson.shortName" style="width: 500px"></td>
+								ng-model="companyJson.shortName" style="width: 200px"></td>
 						</tr>
-						<tr height="10px"></tr>
 						<tr>
 							<td><img ng-src="{{companyLogo}}" width="200" height="200"
 								ng-show="companyLogo != null"> <img
 								ng-src="{{'data:image/png;base64,'+companyJson.base64logo}}"
 								width="200" height="200" ng-show="companyLogo == null"></td>
 						</tr>
-						<tr height="10px"></tr>
 						<tr>
 							<td><input type="file" name="fileInput" id="fileInput"
 								onchange="angular.element(this).scope().fileChanged(event)" /></td>
 						</tr>
-						<tr height="10px"></tr>
+						<!-- <tr height="10px"></tr> -->
 						<tr>
 							<td><button class="btn btn-success" type="submit"
 									style="width: 100px">Save</button></td>
@@ -79,16 +76,4 @@
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 

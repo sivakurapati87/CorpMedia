@@ -1,12 +1,11 @@
 'use strict';
 
-App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope','CompanyInfoService','$stateParams', function($scope,$http,$rootScope,CompanyInfoService,$stateParams) {
+App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope','$stateParams', function($scope,$http,$rootScope,$stateParams) {
 	$scope.state="employee_timesheets";
 	$scope.left_state = "employee";
 	
 	
 	 var currentDate = moment();
-	    
      var fnWeekDays = function(dt) {
 
         var currentDate = dt;
@@ -17,6 +16,7 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
         for (i = 0; i <= 6; i++) {
 
             days.push(moment(weekStart).add(i, 'days').format("MMMM Do,dddd"));
+//        	days.push(moment(weekStart).add(i, 'days').format("ddd Do"));
 //            var currentDate = formatteddate(moment(weekStart).add(i, 'days'));
 //            dates.push(currentDate);
         };
@@ -25,6 +25,7 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
         if($rootScope.empId){
         getEmployeeTimesheetOfTheWeek($rootScope.empId, formatteddate(moment(weekStart).add(0, 'days')));
         }
+        days.push('Total');
         return days;
     }
     
@@ -56,7 +57,14 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
       return [year, month, day].join('-');
       };
 		
-		
+      //Save Time Sheet of an employee
+	$scope.saveOrUpdateEmployeeTimesheetList = function(){
+		$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeTimeSheetController+'/saveOrUpdateEmployeeTimesheetList', $scope.employeeTimeSheetJsonList).success(function(data) {
+		}).error(function() {
+	       console.error('Could not save Or Update Employee Timesheet List');
+	    });
+		};
+			
 		
 		
 		
