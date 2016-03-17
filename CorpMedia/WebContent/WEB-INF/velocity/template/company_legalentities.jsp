@@ -30,7 +30,7 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white">
 
 					<tr>

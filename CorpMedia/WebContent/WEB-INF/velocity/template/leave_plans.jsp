@@ -1,5 +1,5 @@
 <div class="container-fluid" style="width: 100%;">
-	<table border="1">
+	<table border="0">
 		<tr
 			style="height: 120px; background-image: url('resources/images/bgimg3.png');">
 			<td class="lable50_blue" align="center" colspan="3">{{companyName}}</td>
@@ -27,10 +27,10 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable table-hover table-striped" border="0"
 					style="width: 100%; background-color: white;">
 					<tr>
-						<td><h2>Leave Plans</h2></td>
+						<th><h2>Leave Plans</h2></th>
 					</tr>
 					<tr>
 						<td>Leave Plans allow you to define a package of different

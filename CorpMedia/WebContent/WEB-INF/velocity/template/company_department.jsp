@@ -31,10 +31,10 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white">
 					<tr>
-						<td><h2>Departments</h2></td>
+						<th><h2>Departments</h2></th>
 					</tr>
 					<tr>
 						<td>Departments are used to group the employees based on

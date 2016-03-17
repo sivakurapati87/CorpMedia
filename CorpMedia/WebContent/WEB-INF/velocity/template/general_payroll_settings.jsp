@@ -44,18 +44,18 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable table-hover table-striped" border="0"
 					style="width: 100%; background-color: white">
-					<tr>
+					<tr><th><h2>PAYROLL CYCLE SETTINGS</h2></th></tr><tr>
 						<td>
 
 
 
 							<div class="row">
-								<div class="col-md-7">
-									<p>
-										<font size="4"><b>PAYROLL CYCLE SETTINGS</b></font>
-									</p>
+								<div class="col-md-7 ">
+									
+										
+									
 									<form ng-submit="savePayrollCycleSettings()">
 										<div>
 											<!-- this is our container for the first form -->

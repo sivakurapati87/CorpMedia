@@ -44,9 +44,18 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table  " border="0"
 					style="width: 100%; background-color: white">
-					<tr>
+					<tr><th><h2>Adhoc components</h2>
+						<p>
+										Adhoc components are salary components
+											that are added to an employee for a given payroll month and
+											are typically not paid as regular monthly components.
+											Examples are - Joining bonus, Performance Bonus,
+											Reimbursements, Leave Encashment at the end of an year,
+											Penalty for late arrival etc. 
+									</p>
+					</th></tr><tr>
 						<td>
 
 
@@ -55,17 +64,8 @@
 
 
 								<div class="col-md-8">
-									<p>
-										<font size="3">Adhoc components</font>
-									</p>
-									<p>
-										<font size="2">Adhoc components are salary components
-											that are added to an employee for a given payroll month and
-											are typically not paid as regular monthly components.
-											Examples are - Joining bonus, Performance Bonus,
-											Reimbursements, Leave Encashment at the end of an year,
-											Penalty for late arrival etc. </font>
-									</p>
+									
+									
 
 								</div>
 

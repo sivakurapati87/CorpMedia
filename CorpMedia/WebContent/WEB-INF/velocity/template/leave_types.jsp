@@ -1,6 +1,6 @@
 <div class="container-fluid" style="width: 100%;">
 	<form ng-submit="saveCompanyLeaveType()">
-		<table border="2" >
+		<table border="0" >
 			<tr
 				style="height: 120px; background-image: url('resources/images/bgimg3.png');">
 				<td class="lable50_blue" align="center" colspan="3">{{companyName}}</td>
@@ -29,9 +29,9 @@
 							</td>
 						</tr>
 					</table>
-					<table class="table" border="0" style="width: 100%;">
+					<table class="table mtable table-hover table-striped" border="0" style="width: 100%;">
 						<tr>
-							<td><h4>Leave Types</h4></td>
+							<th><h4>Leave Types</h4></th>
 						</tr>
 						<tr>
 							<td><h5>Leave types can be defined here. Leave types

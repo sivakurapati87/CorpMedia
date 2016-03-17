@@ -32,10 +32,10 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table" border="0"
+				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white">
 					<tr>
-						<td><h2>Locations</h2></td>
+						<th><h2>Locations</h2></th>
 					</tr>
 					<tr>
 						<td>Locations can be branches or subsidiaries in other
@@ -51,7 +51,7 @@
 							<div class="row">
 								<div  class="col-lg-8" collapse="isCollapse">
 									<form ng-submit="saveLocation()">
-										<table border="0">
+										<table border="0" class="table table-hover table-striped  ">
 											<tr height="10px"></tr>
 											<tr>
 												<td><label> Add Location</label></td>
