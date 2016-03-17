@@ -22,7 +22,7 @@ import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
 import com.intuiture.corp.json.EmployeeSalaryInfoJson;
 import com.intuiture.corp.service.EmployeeService;
-import com.intuiture.corp.util.TransformDomainToJson;
+import com.intuiture.corp.util.MethodUtil;
 
 @Controller
 @RequestMapping("/EmployeeController")
@@ -34,7 +34,7 @@ public class EmployeeController {
 	@ResponseBody
 	public Boolean saveOrUpdateEmployee(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeJson employeeJson) {
 		if (employeeJson != null && employeeJson.getStrDateOfJoining() != null) {
-			employeeJson.setDateOfJoining(TransformDomainToJson.convertDiffferentFormatString(employeeJson.getStrDateOfJoining()));
+			employeeJson.setDateOfJoining(MethodUtil.convertDiffferentFormatString(employeeJson.getStrDateOfJoining()));
 		}
 		return employeeService.saveOrUpdateEmployee(employeeJson);
 	}
@@ -55,7 +55,7 @@ public class EmployeeController {
 	@ResponseBody
 	public Boolean saveOrUpdateEmployeePersonalInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeePersonalInfoJson employeePersonalInfoJson) {
 		if (employeePersonalInfoJson != null && employeePersonalInfoJson.getStrDateOfBirth() != null) {
-			employeePersonalInfoJson.setDateOfBirth(TransformDomainToJson.convertDiffferentFormatString(employeePersonalInfoJson.getStrDateOfBirth()));
+			employeePersonalInfoJson.setDateOfBirth(MethodUtil.convertDiffferentFormatString(employeePersonalInfoJson.getStrDateOfBirth()));
 		}
 		return employeeService.saveOrUpdateEmployeePersonalInfo(employeePersonalInfoJson);
 	}
@@ -100,7 +100,7 @@ public class EmployeeController {
 	@ResponseBody
 	public Boolean saveOrUpdateEmployeeSalaryInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeSalaryInfoJson employeeSalaryInfoJson) {
 		if (employeeSalaryInfoJson != null && employeeSalaryInfoJson.getStrEffectiveFrom() != null) {
-			employeeSalaryInfoJson.setEffectiveFrom(TransformDomainToJson.convertDiffferentFormatString(employeeSalaryInfoJson.getStrEffectiveFrom()));
+			employeeSalaryInfoJson.setEffectiveFrom(MethodUtil.convertDiffferentFormatString(employeeSalaryInfoJson.getStrEffectiveFrom()));
 		}
 		return employeeService.saveOrUpdateEmployeeSalaryInfo(employeeSalaryInfoJson);
 	}
@@ -109,7 +109,7 @@ public class EmployeeController {
 	@ResponseBody
 	public Boolean saveOrUpdateEmployeeOneTimeComponent(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeOneTimeComponentJson employeeOneTimeComponentJson) {
 		if (employeeOneTimeComponentJson != null && employeeOneTimeComponentJson.getStrMonthPayable() != null) {
-			employeeOneTimeComponentJson.setMonthPayable(TransformDomainToJson.convertDiffferentFormatString(employeeOneTimeComponentJson.getStrMonthPayable()));
+			employeeOneTimeComponentJson.setMonthPayable(MethodUtil.convertDiffferentFormatString(employeeOneTimeComponentJson.getStrMonthPayable()));
 		}
 		return employeeService.saveOrUpdateEmployeeOneTimeComponent(employeeOneTimeComponentJson);
 	}
@@ -118,8 +118,8 @@ public class EmployeeController {
 	@ResponseBody
 	public Boolean saveOrUpdateEmployeeExperienceInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeExperienceInfoJson employeeExperienceInfoJson) {
 		if (employeeExperienceInfoJson != null && employeeExperienceInfoJson.getStrFromDate() != null && employeeExperienceInfoJson.getStrToDate() != null) {
-			employeeExperienceInfoJson.setFromDate(TransformDomainToJson.convertDiffferentFormatString(employeeExperienceInfoJson.getStrFromDate()));
-			employeeExperienceInfoJson.setToDate(TransformDomainToJson.convertDiffferentFormatString(employeeExperienceInfoJson.getStrToDate()));
+			employeeExperienceInfoJson.setFromDate(MethodUtil.convertDiffferentFormatString(employeeExperienceInfoJson.getStrFromDate()));
+			employeeExperienceInfoJson.setToDate(MethodUtil.convertDiffferentFormatString(employeeExperienceInfoJson.getStrToDate()));
 		}
 		return employeeService.saveOrUpdateEmployeeExperienceInfo(employeeExperienceInfoJson);
 	}
@@ -128,8 +128,8 @@ public class EmployeeController {
 	@ResponseBody
 	public Boolean saveOrUpdateEmployeeEducationalInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeEducationalInfoJson employeeEducationalInfoJson) {
 		if (employeeEducationalInfoJson != null && employeeEducationalInfoJson.getStrFromDate() != null && employeeEducationalInfoJson.getStrToDate() != null) {
-			employeeEducationalInfoJson.setFromDate(TransformDomainToJson.convertDiffferentFormatString(employeeEducationalInfoJson.getStrFromDate()));
-			employeeEducationalInfoJson.setToDate(TransformDomainToJson.convertDiffferentFormatString(employeeEducationalInfoJson.getStrToDate()));
+			employeeEducationalInfoJson.setFromDate(MethodUtil.convertDiffferentFormatString(employeeEducationalInfoJson.getStrFromDate()));
+			employeeEducationalInfoJson.setToDate(MethodUtil.convertDiffferentFormatString(employeeEducationalInfoJson.getStrToDate()));
 		}
 		return employeeService.saveOrUpdateEmployeeEducationalInfo(employeeEducationalInfoJson);
 	}

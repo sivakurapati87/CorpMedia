@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.intuiture.corp.json.CompanyJson;
 import com.intuiture.corp.service.CompanyService;
-import com.intuiture.corp.util.TransformDomainToJson;
+import com.intuiture.corp.util.MethodUtil;
 
 @Controller
 @RequestMapping("/CompanyController")
@@ -47,7 +47,7 @@ public class CompanyController {
 	@ResponseBody
 	public CompanyJson saveCompanyGeneralInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody CompanyJson companyJson) {
 		if (companyJson != null && companyJson.getBase64logo() != null) {
-			companyJson.setLogoImageName(TransformDomainToJson.uploadAnImage(companyJson.getBase64logo()));
+			companyJson.setLogoImageName(MethodUtil.uploadAnImage(companyJson.getBase64logo()));
 		}
 		return companyService.saveCompanyGeneralInfo(companyJson);
 	}

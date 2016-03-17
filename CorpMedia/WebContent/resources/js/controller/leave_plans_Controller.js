@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('leave_plans_Controller', ['$scope','$state','$rootScope','CompanyInfoService','$http', function($scope,$state,$rootScope,CompanyInfoService,$http) {
+App.controller('leave_plans_Controller', ['$scope','$state','$rootScope','$http', function($scope,$state,$rootScope,$http) {
 	 var self = this;
 	 $scope.state="leave_plans";
 		$scope.left_state = "leaves_&_holidays";

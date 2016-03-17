@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('Notify_Controller', ['$scope','$location','$rootScope','CompanyInfoService','$http', function($scope,$location,$rootScope,CompanyInfoService,$http) {
+App.controller('Notify_Controller', ['$scope','$location','$rootScope','$http', function($scope,$location,$rootScope,$http) {
 	 var self = this;
 	 $scope.state="notify";
 		$scope.left_state = "leaves_&_holidays";

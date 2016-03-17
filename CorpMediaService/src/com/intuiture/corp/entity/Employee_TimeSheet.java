@@ -15,6 +15,7 @@ import javax.persistence.Table;
 public class Employee_TimeSheet implements Serializable {
 	private static final long serialVersionUID = 3506400680737930849L;
 	private Integer statusId;
+	private String spendedTime;
 	@Id
 	private Integer employeeId;
 	@Id
@@ -68,6 +69,14 @@ public class Employee_TimeSheet implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getSpendedTime() {
+		return spendedTime;
+	}
+
+	public void setSpendedTime(String spendedTime) {
+		this.spendedTime = spendedTime;
 	}
 
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.intuiture.corp.json.ProjectDetailsJson;
 import com.intuiture.corp.service.ProjectDetailsService;
-import com.intuiture.corp.util.TransformDomainToJson;
+import com.intuiture.corp.util.MethodUtil;
 
 @Controller
 @RequestMapping("/ProjectDetailsController")
@@ -25,8 +25,8 @@ public class ProjectDetailsController {
 	@ResponseBody
 	public Boolean saveOrUpdateProjectDetails(HttpServletRequest request, HttpServletResponse response, @RequestBody ProjectDetailsJson projectDetailsJson) {
 		if (projectDetailsJson != null && projectDetailsJson.getStrFromDate() != null && projectDetailsJson.getStrToDate() != null) {
-			projectDetailsJson.setFromDate(TransformDomainToJson.convertDiffferentFormatString(projectDetailsJson.getStrFromDate()));
-			projectDetailsJson.setToDate(TransformDomainToJson.convertDiffferentFormatString(projectDetailsJson.getStrToDate()));
+			projectDetailsJson.setFromDate(MethodUtil.convertDiffferentFormatString(projectDetailsJson.getStrFromDate()));
+			projectDetailsJson.setToDate(MethodUtil.convertDiffferentFormatString(projectDetailsJson.getStrToDate()));
 		}
 		return projectDetailsService.saveOrUpdateProjectDetails(projectDetailsJson);
 	}

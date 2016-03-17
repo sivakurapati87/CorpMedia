@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="resources/css/ng-grid.css" />
 <link rel="stylesheet" href="resources/css/image-crop-styles.css" />
 <link rel="stylesheet" href="resources/css/corpo_media.css" />
+<link rel="stylesheet" href="resources/css/ngTimepicker.css" />
 <!-- <script -->
 <!-- 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script> -->
 
@@ -35,6 +36,7 @@
 <script src="resources/js/nv.d3.min.js"></script>
 <script src="resources/js/angular-nvd3.js"></script>
 <script src="resources/js/moment.js"></script>
+<script src="resources/js/ngTimepicker.min.js"></script>
 
 <!-- <script -->
 <!-- 	src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script> -->
@@ -105,10 +107,6 @@
 
 
 <script src="resources/js/service/constants.js"></script>
-<script src="resources/js/service/HomeService.js"></script>
-<script src="resources/js/service/CompanyInfoService.js"></script>
-<script src="resources/js/service/Company_Legalentities_Info_Service.js"></script>
-<script src="resources/js/service/PFInfoService.js"></script>
 <script>
 	$(document).ready(function() {
 		// $(replacedwith).hide();

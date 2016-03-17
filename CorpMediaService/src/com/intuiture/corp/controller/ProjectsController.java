@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.intuiture.corp.json.ProjectsJson;
 import com.intuiture.corp.service.ProjectsService;
-import com.intuiture.corp.util.TransformDomainToJson;
+import com.intuiture.corp.util.MethodUtil;
 @Controller
 @RequestMapping("/ProjectsController")
 public class ProjectsController {
@@ -27,8 +27,8 @@ public class ProjectsController {
 	@ResponseBody
 	public Boolean saveOrUpdateProjects(HttpServletRequest request, HttpServletResponse response, @RequestBody ProjectsJson projectsJson) {
 		if (projectsJson != null && projectsJson.getStrStartDate() != null && projectsJson.getStrEndDate() != null) {
-			projectsJson.setStartDate(TransformDomainToJson.convertDiffferentFormatString(projectsJson.getStrStartDate()));
-			projectsJson.setEndDate(TransformDomainToJson.convertDiffferentFormatString(projectsJson.getStrEndDate()));
+			projectsJson.setStartDate(MethodUtil.convertDiffferentFormatString(projectsJson.getStrStartDate()));
+			projectsJson.setEndDate(MethodUtil.convertDiffferentFormatString(projectsJson.getStrEndDate()));
 		}
 		return projectsService.saveOrUpdateProjects(projectsJson);
 	}

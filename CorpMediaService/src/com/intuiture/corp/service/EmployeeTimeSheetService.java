@@ -10,13 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.intuiture.corp.dao.CommonRepository;
 import com.intuiture.corp.dao.EmployeeTimeSheetRepository;
-import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.Employee_TimeSheet;
 import com.intuiture.corp.entity.TimeSheet;
-import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeeTimeSheetJson;
+import com.intuiture.corp.util.MethodUtil;
 import com.intuiture.corp.util.TransformDomainToJson;
-import com.intuiture.corp.util.TransformJsonToDomain;
 
 @Service
 @Transactional
@@ -26,20 +24,16 @@ public class EmployeeTimeSheetService {
 	@Autowired
 	private EmployeeTimeSheetRepository employeeTimeSheetRepository;
 
-	public Boolean saveOrUpdateEmployee(EmployeeJson employeeJson) {
-		Employee employee = null;
+	public Boolean saveOrUpdateEmployeeTimesheetList(List<EmployeeTimeSheetJson> employeeTimeSheetJsonList) {
 		try {
-			if (employeeJson != null) {
-				if (employeeJson.getEmployeeId() != null) {
-					employee = (Employee) commonRepository.findById(employeeJson.getEmployeeId(), Employee.class);
-				} else {
-					employee = new Employee();
-				}
-				TransformJsonToDomain.getEmployee(employee, employeeJson);
-				if (employeeJson.getEmployeeId() != null) {
-					commonRepository.update(employee);
-				} else {
-					commonRepository.persist(employee);
+			if (employeeTimeSheetJsonList != null && employeeTimeSheetJsonList.size() > 0) {
+				for (EmployeeTimeSheetJson json : employeeTimeSheetJsonList) {
+					if (json.getEmployeeId() != null && json.getTimesheetId() != null) {
+						Employee_TimeSheet employee_TimeSheet = employeeTimeSheetRepository.getEmployee_TimeSheetByEmpIdAndTimeSheetId(json.getEmployeeId(), json.getTimesheetId());
+						if (employee_TimeSheet != null) {
+							employee_TimeSheet.setSpendedTime(json.getSpendedTime());
+						}
+					}
 				}
 			}
 		} catch (Exception e) {
@@ -79,6 +73,16 @@ public class EmployeeTimeSheetService {
 				for (Employee_TimeSheet employee_TimeSheet : employee_TimeSheetList) {
 					employeeTimeSheetJsonList.add(TransformDomainToJson.getEmployeeTimeSheetJson(employee_TimeSheet));
 				}
+				List<String> timestampsList = new ArrayList<String>();
+				for (EmployeeTimeSheetJson json : employeeTimeSheetJsonList) {
+					if (json.getSpendedTime() != null) {
+						timestampsList.add(json.getSpendedTime());
+					}
+				}
+				EmployeeTimeSheetJson employeeTimeSheetJson = new EmployeeTimeSheetJson();
+				String[] s = new String[timestampsList.size()];
+				employeeTimeSheetJson.setTotalTimeSpent(MethodUtil.sumTimes(timestampsList.toArray(s)));
+				employeeTimeSheetJsonList.add(employeeTimeSheetJson);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
