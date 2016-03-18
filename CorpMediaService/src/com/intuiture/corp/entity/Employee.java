@@ -30,11 +30,13 @@ public class Employee implements Serializable {
 	private Date updatedOn;
 	private Integer companyId;
 	private Boolean isDeleted;
+	private Integer genderId;
 	@ManyToOne
 	@JoinColumn(name = "roleId", insertable = false, updatable = false)
 	private CompanyRoles companyRoles;
-//	@OneToMany(mappedBy = "employee")
-//	private List<Employee_TimeSheet> employee_TimeSheets;
+
+	// @OneToMany(mappedBy = "employee")
+	// private List<Employee_TimeSheet> employee_TimeSheets;
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -148,12 +150,21 @@ public class Employee implements Serializable {
 		this.companyRoles = companyRoles;
 	}
 
-//	public List<Employee_TimeSheet> getEmployee_TimeSheets() {
-//		return employee_TimeSheets;
-//	}
-//
-//	public void setEmployee_TimeSheets(List<Employee_TimeSheet> employee_TimeSheets) {
-//		this.employee_TimeSheets = employee_TimeSheets;
-//	}
+	public Integer getGenderId() {
+		return genderId;
+	}
+
+	public void setGenderId(Integer genderId) {
+		this.genderId = genderId;
+	}
+
+	// public List<Employee_TimeSheet> getEmployee_TimeSheets() {
+	// return employee_TimeSheets;
+	// }
+	//
+	// public void setEmployee_TimeSheets(List<Employee_TimeSheet>
+	// employee_TimeSheets) {
+	// this.employee_TimeSheets = employee_TimeSheets;
+	// }
 
 }

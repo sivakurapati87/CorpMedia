@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.intuiture.corp.dao.AddLeaveTypeRepository;
 import com.intuiture.corp.dao.CommonRepository;
-import com.intuiture.corp.dao.JobTitlesRepository;
+import com.intuiture.corp.entity.AddLeaveType;
 import com.intuiture.corp.entity.CompanyLeaveType;
 import com.intuiture.corp.json.CompanyLeaveTypeJson;
 import com.intuiture.corp.util.TransformDomainToJson;
@@ -20,7 +21,7 @@ public class CompanyLeaveTypeService {
 	@Autowired
 	private CommonRepository commonRepository;
 	@Autowired
-	private JobTitlesRepository jobTitlesRepository;
+	private AddLeaveTypeRepository addLeaveTypeRepository;
 
 	public Boolean saveCompanyLeaveType(CompanyLeaveTypeJson companyLeaveTypeJson) {
 		CompanyLeaveType companyLeaveType = null;
@@ -46,11 +47,29 @@ public class CompanyLeaveTypeService {
 	public List<CompanyLeaveTypeJson> getAllCompanyLeaveTypeList(Integer companyId) {
 		List<CompanyLeaveTypeJson> companyLeaveTypeJsonList = null;
 		try {
-			List<CompanyLeaveType> companyLeaveTypeList = (List<CompanyLeaveType>) commonRepository.getAllRecordsByCompanyId(companyId, CompanyLeaveType.class);
+			List<CompanyLeaveType> companyLeaveTypeList = (List<CompanyLeaveType>) commonRepository.getAllRecordsByCompanyId(companyId,
+					CompanyLeaveType.class);
 			if (companyLeaveTypeList != null && companyLeaveTypeList.size() > 0) {
 				companyLeaveTypeJsonList = new ArrayList<CompanyLeaveTypeJson>();
 				for (CompanyLeaveType companyLeaveType : companyLeaveTypeList) {
 					companyLeaveTypeJsonList.add(TransformDomainToJson.getCompanyLeaveTypeJson(companyLeaveType));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return companyLeaveTypeJsonList;
+	}
+
+	public List<CompanyLeaveTypeJson> getAllLeaveTypeListByCmpIdAndGenderId(Integer companyId, Integer genderId) {
+		List<CompanyLeaveTypeJson> companyLeaveTypeJsonList = null;
+		try {
+			List<AddLeaveType> leaveTypeList = addLeaveTypeRepository.getAllLeaveTypeListByCmpIdAndGenderId(companyId, genderId);
+			if (leaveTypeList != null && leaveTypeList.size() > 0) {
+				companyLeaveTypeJsonList = new ArrayList<CompanyLeaveTypeJson>();
+				for (AddLeaveType leaveType : leaveTypeList) {
+					if (leaveType.getCompanyLeaveType() != null)
+						companyLeaveTypeJsonList.add(TransformDomainToJson.getCompanyLeaveTypeJson(leaveType.getCompanyLeaveType()));
 				}
 			}
 		} catch (Exception e) {

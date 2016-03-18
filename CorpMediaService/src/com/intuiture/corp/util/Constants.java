@@ -12,4 +12,5 @@ public class Constants {
 	public static final Double BASIC = 0.4d;
 	public static final Double HRA = 0.5d;
 	public static final Double PF = 0.048d;
+	public static final String LEAVETIME = "08:00";
 }

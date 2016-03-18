@@ -10,8 +10,7 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top"><employee-info-top></employee-info-top>
-				<table class="table" 
-					style="width: 100%; background-color: white">
+				<table class="table" style="width: 100%; background-color: white">
 					<tr>
 						<td>
 							<div
@@ -27,18 +26,19 @@
 					<tr>
 						<td>
 
-							<table style="width: 100%" 
-								class="table table-bordered">
+							<table style="width: 100%" class="table table-bordered">
 								<tr style="height: 30px">
 									<td ng-repeat="week in weekDays" align="center">{{week}}</td>
 								</tr>
 								<tr style="height: 30px">
 									<td ng-repeat="timesheet in employeeTimeSheetJsonList"
 										align="center"><ng-timepicker
-											ng-if="timesheet.totalTimeSpent == null"
+											ng-if="(timesheet.totalTimeSpent == null && employeeLeaveJsonList[$index].leaveTime == null) ? true:false"
 											init-time="{{timesheet.spendedTime}}" step="05"
 											ng-model="timesheet.spendedTime"></ng-timepicker> <label
 										ng-if="timesheet.totalTimeSpent != null">{{timesheet.totalTimeSpent}}</label>
+										 <label style="background-color: #dea09a"
+										ng-if="employeeLeaveJsonList[$index].leaveTime != null">Leave Applied</label>
 									</td>
 								</tr>
 							</table>
@@ -47,14 +47,19 @@
 					<tr>
 						<td>
 
-							<table style="width: 100%" 
-								class="table table-bordered">
+							<table style="width: 100%" class="table table-bordered">
 								<tr style="height: 30px">
+									<td><div>
+											<div style="float: left;">Leaves</div>
+											<div style="float: right;">
+												<a ui-sref="applyLeave">Apply Leave</a>
+											</div>
+										</div></td>
 									<td ng-repeat="week in weekDays" align="center">{{week}}</td>
 								</tr>
 								<tr style="height: 30px">
-									<td ng-repeat="leave in employeeLeaveJsonList"
-										align="center"><ng-timepicker
+									<td style="width: 20%"></td>
+									<td ng-repeat="leave in employeeLeaveJsonList" align="center"><ng-timepicker
 											ng-if="leave.strTotalLeaveTime == null"
 											init-time="{{leave.leaveTime}}" step="05"
 											ng-model="timesheet.spendedTime"></ng-timepicker> <label
@@ -64,7 +69,7 @@
 							</table>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<td align="right">
 							<table>
@@ -78,10 +83,11 @@
 					</tr>
 					<tr style="height: 10px"></tr>
 					<tr>
-						<td align="right" style="padding-right: 200px;"><label class="lable16_Regular">Pick a project:</label></td>
+						<td align="right" style="padding-right: 200px;"><label
+							class="lable16_Regular">Pick a project:</label></td>
 					</tr>
 					<tr>
-						<td align="right" ><select
+						<td align="right"><select
 							class="form-control ng-pristine ng-valid ng-valid-required ng-touched width30"
 							required ng-model="projectId"
 							ng-options="project.projectId as project.projectName for project in  employeeProjectsList">

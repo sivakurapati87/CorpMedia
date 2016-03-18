@@ -15,6 +15,7 @@ public class EmployeeJson {
 	private Integer companyId;
 	private Date dateOfJoining;
 	private String role;
+	private Integer genderId;
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -110,6 +111,14 @@ public class EmployeeJson {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public Integer getGenderId() {
+		return genderId;
+	}
+
+	public void setGenderId(Integer genderId) {
+		this.genderId = genderId;
 	}
 
 }

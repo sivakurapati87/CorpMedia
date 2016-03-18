@@ -11,18 +11,29 @@ import org.springframework.stereotype.Repository;
 import com.intuiture.corp.entity.Employee_Leave;
 import com.intuiture.corp.entity.Employee_TimeSheet;
 import com.intuiture.corp.entity.Leave;
+import com.intuiture.corp.json.EmployeeLeaveJson;
 
 @Repository
 public class EmployeeLeaveRepository extends BaseRepository {
 	private final static Logger LOG = Logger.getLogger(EmployeeLeaveRepository.class);
 
 	@SuppressWarnings("unchecked")
-	public List<Employee_Leave> getEmployeeLeavesOfTheWeek(Integer employeeId, List<Date> weekDatesList) {
+	public List<Employee_Leave> getEmployeeLeavesOfTheWeek(Integer employeeId, List<Date> weekDatesList, EmployeeLeaveJson employeeLeaveJson) {
 		List<Employee_Leave> employee_LeaveList = null;
 		try {
 			Criteria criteria = getSession().createCriteria(Employee_Leave.class);
 			criteria.createAlias("leave", "leave");
-			criteria.add(Restrictions.and(Restrictions.eq("employeeId", employeeId), Restrictions.and(Restrictions.ge("leave.leaveDate", weekDatesList.get(0)), Restrictions.le("leave.leaveDate", weekDatesList.get(6)))));
+			if (employeeLeaveJson != null) {
+				criteria.add(Restrictions.and(
+						Restrictions.eq("employeeId", employeeId),
+						Restrictions.and(Restrictions.ge("leave.leaveDate", employeeLeaveJson.getLeaveStartDate()),
+								Restrictions.le("leave.leaveDate", employeeLeaveJson.getLeaveEndDate()))));
+			} else {
+				criteria.add(Restrictions.and(
+						Restrictions.eq("employeeId", employeeId),
+						Restrictions.and(Restrictions.ge("leave.leaveDate", weekDatesList.get(0)),
+								Restrictions.le("leave.leaveDate", weekDatesList.get(6)))));
+			}
 			employee_LeaveList = criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -32,11 +43,16 @@ public class EmployeeLeaveRepository extends BaseRepository {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Leave> getAllLeaves(List<Date> weekDatesList) {
+	public List<Leave> getAllLeaves(List<Date> weekDatesList, EmployeeLeaveJson employeeLeaveJson) {
 		List<Leave> leaveList = null;
 		try {
 			Criteria criteria = getSession().createCriteria(Leave.class);
-			criteria.add(Restrictions.and(Restrictions.ge("leaveDate", weekDatesList.get(0)), Restrictions.le("leaveDate", weekDatesList.get(6))));
+			if (employeeLeaveJson != null) {
+				criteria.add(Restrictions.and(Restrictions.ge("leaveDate", employeeLeaveJson.getLeaveStartDate()),
+						Restrictions.le("leaveDate", employeeLeaveJson.getLeaveEndDate())));
+			} else {
+				criteria.add(Restrictions.and(Restrictions.ge("leaveDate", weekDatesList.get(0)), Restrictions.le("leaveDate", weekDatesList.get(6))));
+			}
 			leaveList = criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();

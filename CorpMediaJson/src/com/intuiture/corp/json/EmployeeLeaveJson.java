@@ -1,14 +1,20 @@
 package com.intuiture.corp.json;
 
+import java.util.Date;
+
 public class EmployeeLeaveJson {
 	private Integer employeeId;
 	private Integer leaveId;
 	private Integer statusId;
 	private Integer projectId;
 	private String leaveTime;
-	private String strLeaveStartTime;
-	private String strLeaveEndTime;
+	private String strLeaveStartDate;
+	private String strLeaveEndDate;
 	private String strTotalLeaveTime;
+	private Integer leaveTypeId;
+	private String note;
+	private Date leaveStartDate;
+	private Date leaveEndDate;
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -50,20 +56,20 @@ public class EmployeeLeaveJson {
 		this.leaveTime = leaveTime;
 	}
 
-	public String getStrLeaveStartTime() {
-		return strLeaveStartTime;
+	public String getStrLeaveStartDate() {
+		return strLeaveStartDate;
 	}
 
-	public void setStrLeaveStartTime(String strLeaveStartTime) {
-		this.strLeaveStartTime = strLeaveStartTime;
+	public void setStrLeaveStartDate(String strLeaveStartDate) {
+		this.strLeaveStartDate = strLeaveStartDate;
 	}
 
-	public String getStrLeaveEndTime() {
-		return strLeaveEndTime;
+	public String getStrLeaveEndDate() {
+		return strLeaveEndDate;
 	}
 
-	public void setStrLeaveEndTime(String strLeaveEndTime) {
-		this.strLeaveEndTime = strLeaveEndTime;
+	public void setStrLeaveEndDate(String strLeaveEndDate) {
+		this.strLeaveEndDate = strLeaveEndDate;
 	}
 
 	public String getStrTotalLeaveTime() {
@@ -72,6 +78,38 @@ public class EmployeeLeaveJson {
 
 	public void setStrTotalLeaveTime(String strTotalLeaveTime) {
 		this.strTotalLeaveTime = strTotalLeaveTime;
+	}
+
+	public Integer getLeaveTypeId() {
+		return leaveTypeId;
+	}
+
+	public void setLeaveTypeId(Integer leaveTypeId) {
+		this.leaveTypeId = leaveTypeId;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public Date getLeaveStartDate() {
+		return leaveStartDate;
+	}
+
+	public void setLeaveStartDate(Date leaveStartDate) {
+		this.leaveStartDate = leaveStartDate;
+	}
+
+	public Date getLeaveEndDate() {
+		return leaveEndDate;
+	}
+
+	public void setLeaveEndDate(Date leaveEndDate) {
+		this.leaveEndDate = leaveEndDate;
 	}
 
 }

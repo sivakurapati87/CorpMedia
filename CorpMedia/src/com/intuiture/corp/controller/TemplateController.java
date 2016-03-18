@@ -306,4 +306,9 @@ public class TemplateController {// Serves Templates.
 	public String employee_projects() {
 		return "template/employee_projects";
 	}
+
+	@RequestMapping(value = "/applyLeave")
+	public String applyLeave() {
+		return "template/applyLeave";
+	}
 }

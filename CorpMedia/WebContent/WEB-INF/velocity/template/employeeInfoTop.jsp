@@ -1,7 +1,7 @@
 <table>
 	<tr style="height: 10px"></tr>
 	<tr>
-		<td><h3>Emp Name : {{empName}}</h3></td>
+		<td><h3>Emp Name : {{empObj.displayName}}</h3></td>
 	</tr>
 	<tr style="height: 10px"></tr>
 </table>

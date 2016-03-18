@@ -105,7 +105,7 @@
 <script src="resources/js/controller/Employee_Info_Controller.js"></script>
 <script src="resources/js/controller/Salary_component_Controller.js"></script>
 <script src="resources/js/controller/employee_finance_Controller.js"></script>
-
+<script src="resources/js/controller/applyLeave_Controller.js"></script>
 
 <script src="resources/js/service/constants.js"></script>
 <script>
