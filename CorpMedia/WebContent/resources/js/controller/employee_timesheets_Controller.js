@@ -24,6 +24,7 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
         $scope.week_StartAndEndDays = days[0]+" <--> "+days[6];
         if($rootScope.empId){
         getEmployeeTimesheetOfTheWeek($rootScope.empId, formatteddate(moment(weekStart).add(0, 'days')));
+        getEmployeeLeavesOfTheWeek($rootScope.empId, formatteddate(moment(weekStart).add(0, 'days')));
         }
         days.push('Total');
         return days;
@@ -37,7 +38,7 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
         $scope.weekDays = fnWeekDays(moment(dt, "MMMM Do,dddd").subtract(1, 'days'));
     };
 	
-    
+    //This is to get the employee Timesheet of the week
    function getEmployeeTimesheetOfTheWeek(employeeId,startingWeekDate){
 		$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeTimeSheetController+'/getEmployeeTimesheetOfTheWeek?employeeId='+employeeId+"&startingWeekDate="+startingWeekDate).success(function(data) {
 			$scope.employeeTimeSheetJsonList = data;
@@ -46,6 +47,16 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
         });
 	};
     
+	//This is to get the employee leaves of the week
+	function getEmployeeLeavesOfTheWeek(employeeId,startingWeekDate){
+		$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeLeaveController+'/getEmployeeLeavesOfTheWeek?employeeId='+employeeId+"&startingWeekDate="+startingWeekDate).success(function(data) {
+			$scope.employeeLeaveJsonList = data;
+		}).error(function() {
+      	  console.error('Could not getEmployeeLeavesOfTheWeek');
+        });
+	};
+    
+	
     //This is to formate dates
 	function formatteddate(inputDate){
       var inDate = new Date(inputDate);
@@ -64,14 +75,34 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
 	       console.error('Could not save Or Update Employee Timesheet List');
 	    });
 		};
-			
+		
+		  //submit Employee Time Sheet list for approval
+		$scope.submitEmployeeTimesheetListForApproval = function(){
+			angular.forEach($scope.employeeTimeSheetJsonList, function(o, k)
+  				  {
+						o.projectId = $scope.projectId;
+		           });
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeTimeSheetController+'/saveOrUpdateEmployeeTimesheetList', $scope.employeeTimeSheetJsonList).success(function(data) {
+			}).error(function() {
+		       console.error('Could not save Or Update Employee Timesheet List for approval');
+		    });
+			};
 		
 		
 		
+		// get all the projects assigned to an employee
+		$scope.getEmployeeProjects = function(){
+			if($rootScope.empId){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeProjects/'+  $rootScope.empId).success(function(data) {
+				$scope.employeeProjectsList = data;
+			}).error(function() {
+	      	  console.error('Could not get Employee Projects');
+	        });}
+		};
           
 
 
           
-
+		$scope.getEmployeeProjects();
           
 }]);

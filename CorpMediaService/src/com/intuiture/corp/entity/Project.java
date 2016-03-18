@@ -11,12 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "projects")
-public class Projects {
+@Table(name = "project")
+public class Project {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer projectsId;
+	private Integer projectId;
 	private Integer companyId;
 	private Boolean isDeleted;
 	private Date createdOn;
@@ -35,12 +35,12 @@ public class Projects {
 	@JoinColumn(name = "statusId", insertable = false, updatable = false)
 	private LookUpDetails status;
 
-	public Integer getProjectsId() {
-		return projectsId;
+	public Integer getProjectId() {
+		return projectId;
 	}
 
-	public void setProjectsId(Integer projectsId) {
-		this.projectsId = projectsId;
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
 	}
 
 	public Integer getCompanyId() {

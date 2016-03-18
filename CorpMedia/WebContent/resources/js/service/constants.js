@@ -2,7 +2,7 @@ var constants = {
 
 	localhost_port : 'http://localhost:8080',
 	// contexts
-	web_context : 'CorpMedia',
+	web_context : 'payz',
 	service_context : 'CorpMediaService',
 
 	// constants
@@ -44,6 +44,7 @@ var constants = {
 	BonusesController : 'BonusesController',
 	AllowancesController : 'AllowancesController',
 	EmployeeTimeSheetController : 'EmployeeTimeSheetController',
+	EmployeeLeaveController     : 'EmployeeLeaveController',
 
 	MedicalReimbursementController : 'MedicalReimbursementController',
 	CompanyEmpDefaultController : 'CompanyEmpDefaultController',

@@ -2,9 +2,9 @@ package com.intuiture.corp.json;
 
 import java.util.Date;
 
-public class ProjectsJson {
+public class ProjectJson {
 
-	private Integer projectsId;
+	private Integer projectId;
 	private Integer companyId;
 	private Boolean isDeleted;
 
@@ -19,14 +19,6 @@ public class ProjectsJson {
 	private String description;
 	private String status;
 	private Boolean isProjectAssignToAllEmployees;
-
-	public Integer getProjectsId() {
-		return projectsId;
-	}
-
-	public void setProjectsId(Integer projectsId) {
-		this.projectsId = projectsId;
-	}
 
 	public Integer getCompanyId() {
 		return companyId;
@@ -130,6 +122,14 @@ public class ProjectsJson {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Integer getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
 	}
 
 }

@@ -144,7 +144,7 @@ public class MethodUtil {
 		}
 		return date;
 	}
-	
+
 	public static String convertDoubleToMoney(Double dbl) {
 		String str = null;
 		if (dbl != null) {
@@ -227,21 +227,23 @@ public class MethodUtil {
 		}
 		return strDate;
 	}
-	public static String sumTimes(final String[] timestampList) {
-	    long milliseconds = 0;
-	    final DateFormat dt = new SimpleDateFormat("HH:mm");
-	    dt.setLenient(false);
-	    try {
-	        final long timezoneOffset = dt.parse("00:00").getTime();
-	        for (final String t: timestampList) {
-	            milliseconds += (dt.parse(t).getTime() - timezoneOffset);
-	        }
-	    } catch (final Exception e) {
-	       e.printStackTrace();
-	    }
 
-	    ((SimpleDateFormat) dt).applyPattern(":mm");
-	    return new StringBuilder(8).append(milliseconds / 3600000).append(
-	            dt.format(new Date(milliseconds))).toString();
+	public static String sumTimes(final String[] timestampList) {
+		long milliseconds = 0;
+
+		final DateFormat dt = new SimpleDateFormat("HH:mm");
+		dt.setLenient(false);
+		if (timestampList != null && timestampList.length > 0) {
+			try {
+				final long timezoneOffset = dt.parse("00:00").getTime();
+				for (final String t : timestampList) {
+					milliseconds += (dt.parse(t).getTime() - timezoneOffset);
+				}
+			} catch (final Exception e) {
+				e.printStackTrace();
+			}
+		}
+		((SimpleDateFormat) dt).applyPattern(":mm");
+		return new StringBuilder(8).append(milliseconds / 3600000).append(dt.format(new Date(milliseconds))).toString();
 	}
 }

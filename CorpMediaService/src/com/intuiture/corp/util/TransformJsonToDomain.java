@@ -41,6 +41,7 @@ import com.intuiture.corp.entity.EmployeeFamilyInfo;
 import com.intuiture.corp.entity.EmployeeOneTimeComponent;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.EmployeeProfessionalInfo;
+import com.intuiture.corp.entity.EmployeeProject;
 import com.intuiture.corp.entity.EmployeeSalaryInfo;
 import com.intuiture.corp.entity.ExitSettings;
 import com.intuiture.corp.entity.FoodCoupons;
@@ -56,8 +57,8 @@ import com.intuiture.corp.entity.PFInfo;
 import com.intuiture.corp.entity.PayrollCycleSettings;
 import com.intuiture.corp.entity.PayrollPeriodCalculation;
 import com.intuiture.corp.entity.ProfessionalAllowance;
+import com.intuiture.corp.entity.Project;
 import com.intuiture.corp.entity.ProjectDetails;
-import com.intuiture.corp.entity.Projects;
 import com.intuiture.corp.entity.Reimbursement;
 import com.intuiture.corp.entity.Reports;
 import com.intuiture.corp.entity.SalaryComponent;
@@ -99,6 +100,7 @@ import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeeOneTimeComponentJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
+import com.intuiture.corp.json.EmployeeProjectJson;
 import com.intuiture.corp.json.EmployeeSalaryInfoJson;
 import com.intuiture.corp.json.ExitSettingsJson;
 import com.intuiture.corp.json.FoodCouponsJson;
@@ -114,7 +116,7 @@ import com.intuiture.corp.json.PayrollCycleSettingsJson;
 import com.intuiture.corp.json.PayrollPeriodCalculationJson;
 import com.intuiture.corp.json.ProfessionalAllowanceJson;
 import com.intuiture.corp.json.ProjectDetailsJson;
-import com.intuiture.corp.json.ProjectsJson;
+import com.intuiture.corp.json.ProjectJson;
 import com.intuiture.corp.json.ReimbursementJson;
 import com.intuiture.corp.json.ReportsJson;
 import com.intuiture.corp.json.SalaryComponentJson;
@@ -608,6 +610,19 @@ public class TransformJsonToDomain {
 		employeeFamilyInfo.setRelationId(employeeFamilyInfoJson.getRelationId());
 	}
 
+	public static void getEmployeeProject(EmployeeProject employeeProject, EmployeeProjectJson employeeProjectJson) {
+		employeeProject.setCompanyId(employeeProjectJson.getCompanyId());
+		if (employeeProjectJson.getEmployeeProjectId() != null) {
+			employeeProject.setUpdatedOn(new Date());
+		} else {
+			employeeProject.setCreatedOn(new Date());
+		}
+		employeeProject.setIsDeleted(Boolean.FALSE);
+		employeeProject.setEmployeeId(employeeProjectJson.getEmployeeId());
+		employeeProject.setProjectId(employeeProjectJson.getProjectId());
+		employeeProject.setRoleId(employeeProjectJson.getRoleId());
+	}
+
 	public static void getEmployeeProfessionalInfo(EmployeeProfessionalInfo employeeProfessionalInfo, EmployeeProfessionalInfoJson employeeProfessionalInfoJson) {
 		employeeProfessionalInfo.setCompanyId(employeeProfessionalInfoJson.getCompanyId());
 		if (employeeProfessionalInfoJson.getEmployeeProfessionalInfoId() != null) {
@@ -734,18 +749,18 @@ public class TransformJsonToDomain {
 		taskAssignToEmployee.setIsDeleted(Boolean.FALSE);
 	}
 
-	public static void getProjects(Projects projects, ProjectsJson projectsJson) {
-		projects.setCompanyId(projectsJson.getCompanyId());
+	public static void getProject(Project projects, ProjectJson projectJson) {
+		projects.setCompanyId(projectJson.getCompanyId());
 		projects.setCreatedOn(new Date());
 		projects.setIsDeleted(Boolean.FALSE);
-		projects.setProjectName(projectsJson.getProjectName());
-		// projects.setClient(projectsJson.getClient());
-		projects.setClientsId(projectsJson.getClientsId());
-		projects.setStartDate(projectsJson.getStartDate());
-		projects.setEndDate(projectsJson.getEndDate());
-		projects.setDescription(projectsJson.getDescription());
-		projects.setIsProjectAssignToAllEmployees(projectsJson.getIsProjectAssignToAllEmployees());
-		projects.setStatusId(projectsJson.getStatusId());
+		projects.setProjectName(projectJson.getProjectName());
+		// projects.setClient(projectJson.getClient());
+		projects.setClientsId(projectJson.getClientsId());
+		projects.setStartDate(projectJson.getStartDate());
+		projects.setEndDate(projectJson.getEndDate());
+		projects.setDescription(projectJson.getDescription());
+		projects.setIsProjectAssignToAllEmployees(projectJson.getIsProjectAssignToAllEmployees());
+		projects.setStatusId(projectJson.getStatusId());
 	}
 
 	public static void getExitSettings(ExitSettings exitSettings, ExitSettingsJson exitSettingsJson) {

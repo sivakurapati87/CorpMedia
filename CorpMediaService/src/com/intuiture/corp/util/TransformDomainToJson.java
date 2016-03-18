@@ -31,7 +31,9 @@ import com.intuiture.corp.entity.EmployeeFamilyInfo;
 import com.intuiture.corp.entity.EmployeeOneTimeComponent;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.EmployeeProfessionalInfo;
+import com.intuiture.corp.entity.EmployeeProject;
 import com.intuiture.corp.entity.EmployeeSalaryInfo;
+import com.intuiture.corp.entity.Employee_Leave;
 import com.intuiture.corp.entity.Employee_TimeSheet;
 import com.intuiture.corp.entity.ExitSettings;
 import com.intuiture.corp.entity.FoodCoupons;
@@ -46,7 +48,7 @@ import com.intuiture.corp.entity.MedicalReimbursement;
 import com.intuiture.corp.entity.PFInfo;
 import com.intuiture.corp.entity.PayrollCycleSettings;
 import com.intuiture.corp.entity.ProfessionalAllowance;
-import com.intuiture.corp.entity.Projects;
+import com.intuiture.corp.entity.Project;
 import com.intuiture.corp.entity.Reimbursement;
 import com.intuiture.corp.entity.SalaryComponent;
 import com.intuiture.corp.entity.Shifts;
@@ -81,9 +83,11 @@ import com.intuiture.corp.json.EmployeeEducationalInfoJson;
 import com.intuiture.corp.json.EmployeeExperienceInfoJson;
 import com.intuiture.corp.json.EmployeeFamilyInfoJson;
 import com.intuiture.corp.json.EmployeeJson;
+import com.intuiture.corp.json.EmployeeLeaveJson;
 import com.intuiture.corp.json.EmployeeOneTimeComponentJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
+import com.intuiture.corp.json.EmployeeProjectJson;
 import com.intuiture.corp.json.EmployeeSalaryInfoJson;
 import com.intuiture.corp.json.EmployeeTimeSheetJson;
 import com.intuiture.corp.json.ExitSettingsJson;
@@ -99,7 +103,7 @@ import com.intuiture.corp.json.MedicalReimbursementJson;
 import com.intuiture.corp.json.PFInfoJson;
 import com.intuiture.corp.json.PayrollCycleSettingsJson;
 import com.intuiture.corp.json.ProfessionalAllowanceJson;
-import com.intuiture.corp.json.ProjectsJson;
+import com.intuiture.corp.json.ProjectJson;
 import com.intuiture.corp.json.ReimbursementJson;
 import com.intuiture.corp.json.SalaryComponentJson;
 import com.intuiture.corp.json.ShiftsJson;
@@ -133,7 +137,6 @@ public class TransformDomainToJson {
 	// return json;
 	// }
 
-	
 	public static CompanyJson getAllCompanyJsonByCompany(Company company) {
 		CompanyJson companyJson = new CompanyJson();
 		try {
@@ -486,6 +489,23 @@ public class TransformDomainToJson {
 
 	}
 
+	public static EmployeeProjectJson getEmployeeProjectJson(EmployeeProject employeeProject) {
+		EmployeeProjectJson employeeProjectJson = new EmployeeProjectJson();
+		employeeProjectJson.setCompanyId(employeeProject.getCompanyId());
+		employeeProjectJson.setEmployeeId(employeeProject.getEmployeeId());
+		employeeProjectJson.setEmployeeProjectId(employeeProject.getEmployeeProjectId());
+		employeeProjectJson.setProjectId(employeeProject.getProjectId());
+		employeeProjectJson.setRoleId(employeeProject.getRoleId());
+		if (employeeProject.getProject() != null) {
+			employeeProjectJson.setProjectName(employeeProject.getProject().getProjectName());
+		}
+		if (employeeProject.getCompanyRoles() != null) {
+			employeeProjectJson.setRole(employeeProject.getCompanyRoles().getRoleName());
+		}
+		return employeeProjectJson;
+
+	}
+
 	public static TagsJson getTagsJson(Tags tags) {
 		TagsJson tagsJson = new TagsJson();
 		tagsJson.setCompanyId(tags.getCompanyId());
@@ -771,10 +791,10 @@ public class TransformDomainToJson {
 		return payrollCycleSettingsJson;
 	}
 
-	public static ProjectsJson getProjectsJson(Projects projects) {
-		ProjectsJson projectsJson = new ProjectsJson();
+	public static ProjectJson getProjectJson(Project projects) {
+		ProjectJson projectsJson = new ProjectJson();
 		projectsJson.setCompanyId(projects.getCompanyId());
-		projectsJson.setProjectsId(projects.getProjectsId());
+		projectsJson.setProjectId(projects.getProjectId());
 		projectsJson.setProjectName(projects.getProjectName());
 		projectsJson.setStatusId(projects.getStatusId());
 		projectsJson.setStrEndDate(MethodUtil.convertDateToString(projects.getEndDate()));
@@ -869,9 +889,22 @@ public class TransformDomainToJson {
 		employeeTimeSheetJson.setTimesheetId(employee_TimeSheet.getTimesheetId());
 		employeeTimeSheetJson.setEmployeeId(employee_TimeSheet.getEmployeeId());
 		employeeTimeSheetJson.setStatusId(employee_TimeSheet.getStatusId());
+		employeeTimeSheetJson.setProjectId(employee_TimeSheet.getProjectId());
 		if (employee_TimeSheet.getTimesheet() != null) {
 			employeeTimeSheetJson.setSpendedTime(employee_TimeSheet.getSpendedTime());
 		}
 		return employeeTimeSheetJson;
+	}
+
+	public static EmployeeLeaveJson getEmployeeLeaveJson(Employee_Leave employee_Leave) {
+		EmployeeLeaveJson employeeLeaveJson = new EmployeeLeaveJson();
+		employeeLeaveJson.setLeaveId(employee_Leave.getLeaveId());
+		employeeLeaveJson.setEmployeeId(employee_Leave.getEmployeeId());
+		employeeLeaveJson.setStatusId(employee_Leave.getStatusId());
+		employeeLeaveJson.setProjectId(employee_Leave.getProjectId());
+		if (employee_Leave.getLeaveTime() != null) {
+			employeeLeaveJson.setLeaveTime(employee_Leave.getLeaveTime());
+		}
+		return employeeLeaveJson;
 	}
 }

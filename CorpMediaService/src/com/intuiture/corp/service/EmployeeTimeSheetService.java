@@ -29,7 +29,9 @@ public class EmployeeTimeSheetService {
 			if (employeeTimeSheetJsonList != null && employeeTimeSheetJsonList.size() > 0) {
 				for (EmployeeTimeSheetJson json : employeeTimeSheetJsonList) {
 					if (json.getEmployeeId() != null && json.getTimesheetId() != null) {
+						//Getting the unique record
 						Employee_TimeSheet employee_TimeSheet = employeeTimeSheetRepository.getEmployee_TimeSheetByEmpIdAndTimeSheetId(json.getEmployeeId(), json.getTimesheetId());
+						employee_TimeSheet.setProjectId(json.getProjectId());
 						if (employee_TimeSheet != null) {
 							employee_TimeSheet.setSpendedTime(json.getSpendedTime());
 						}
@@ -73,6 +75,8 @@ public class EmployeeTimeSheetService {
 				for (Employee_TimeSheet employee_TimeSheet : employee_TimeSheetList) {
 					employeeTimeSheetJsonList.add(TransformDomainToJson.getEmployeeTimeSheetJson(employee_TimeSheet));
 				}
+				
+				//This section is to find out the sum of the weekly spended hours
 				List<String> timestampsList = new ArrayList<String>();
 				for (EmployeeTimeSheetJson json : employeeTimeSheetJsonList) {
 					if (json.getSpendedTime() != null) {

@@ -16,6 +16,8 @@
 							Professional </a></li>
 					<li ng-class="{'active':(state==='employee_personal')}"><a
 						class="anchor-sm" ui-sref="employee_personal">Personal</a></li>
+					<li ng-class="{'active':(state==='employee_projects')}"><a
+						class="anchor-sm" ui-sref="employee_projects">My Projects</a></li>
 					<li ng-class="{'active':(state==='employee_finance')}"><a
 						class="anchor-sm" ui-sref="employee_finance">Finance</a></li>
 					<li ng-class="{'active':(state==='employee_timesheets')}"><a

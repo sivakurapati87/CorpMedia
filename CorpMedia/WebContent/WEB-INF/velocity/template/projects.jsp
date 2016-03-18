@@ -103,7 +103,7 @@
 													style="cursor: pointer; font-size: 12px"><i
 														class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp; <a
 													tooltip="delete" style="cursor: pointer; font-size: 12px"
-													ng-click="deleteProjects(projects.projectsId)"><i
+													ng-click="deleteProjects(projects.projectId)"><i
 														class="fa fa-trash"></i></a></td>
 											</tr>
 											<tr>
@@ -169,7 +169,7 @@
 												<label for="sel1">Status</label> <select
 													class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
 													id="currency" ng-model="projects.statusId"
-													ng-options="bank.lookupDetailId as bank.description for bank in  lookup.projectStatusList">
+													ng-options="bank.lookupDetailId as bank.description for bank in  lookup.statusList">
 													<option value="" disabled selected>Select</option>
 												</select>
 											</div>

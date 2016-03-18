@@ -14,12 +14,14 @@ import javax.persistence.Table;
 @IdClass(Employee_TimeSheetId.class)
 public class Employee_TimeSheet implements Serializable {
 	private static final long serialVersionUID = 3506400680737930849L;
-	private Integer statusId;
-	private String spendedTime;
 	@Id
 	private Integer employeeId;
 	@Id
 	private Integer timesheetId;
+	private Integer statusId;
+	private Integer projectId;
+	private String spendedTime;
+
 	@ManyToOne
 	@JoinColumn(name = "employeeId", updatable = false, insertable = false, referencedColumnName = "employeeId")
 	private Employee employee;
@@ -77,6 +79,14 @@ public class Employee_TimeSheet implements Serializable {
 
 	public void setSpendedTime(String spendedTime) {
 		this.spendedTime = spendedTime;
+	}
+
+	public Integer getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
 	}
 
 }

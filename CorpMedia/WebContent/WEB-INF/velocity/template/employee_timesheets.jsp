@@ -10,7 +10,7 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top"><employee-info-top></employee-info-top>
-				<table class="table" border="1"
+				<table class="table" 
 					style="width: 100%; background-color: white">
 					<tr>
 						<td>
@@ -27,7 +27,7 @@
 					<tr>
 						<td>
 
-							<table style="width: 100%" border="1"
+							<table style="width: 100%" 
 								class="table table-bordered">
 								<tr style="height: 30px">
 									<td ng-repeat="week in weekDays" align="center">{{week}}</td>
@@ -45,12 +45,58 @@
 						</td>
 					</tr>
 					<tr>
+						<td>
+
+							<table style="width: 100%" 
+								class="table table-bordered">
+								<tr style="height: 30px">
+									<td ng-repeat="week in weekDays" align="center">{{week}}</td>
+								</tr>
+								<tr style="height: 30px">
+									<td ng-repeat="leave in employeeLeaveJsonList"
+										align="center"><ng-timepicker
+											ng-if="leave.strTotalLeaveTime == null"
+											init-time="{{leave.leaveTime}}" step="05"
+											ng-model="timesheet.spendedTime"></ng-timepicker> <label
+										ng-if="leave.strTotalLeaveTime != null">{{leave.strTotalLeaveTime}}</label>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					
+					<tr>
 						<td align="right">
 							<table>
 								<tr>
 									<td><button class="btn btn-success" type="button"
 											ng-click="saveOrUpdateEmployeeTimesheetList()"
 											style="width: 150px">Save Timesheet</button></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr style="height: 10px"></tr>
+					<tr>
+						<td align="right" style="padding-right: 200px;"><label class="lable16_Regular">Pick a project:</label></td>
+					</tr>
+					<tr>
+						<td align="right" ><select
+							class="form-control ng-pristine ng-valid ng-valid-required ng-touched width30"
+							required ng-model="projectId"
+							ng-options="project.projectId as project.projectName for project in  employeeProjectsList">
+								<option value="" disabled selected>Name of the Project</option>
+						</select></td>
+					</tr>
+					<tr style="height: 10px"></tr>
+					<tr>
+						<td align="right">
+							<table>
+								<tr>
+									<td><button class="btn btn-success" type="button"
+											ng-disabled="employeeTimeSheetJsonList[0].projectId != null"
+											ng-click="submitEmployeeTimesheetListForApproval()"
+											style="width: 180px">Submit for Approval</button></td>
 								</tr>
 							</table>
 						</td>

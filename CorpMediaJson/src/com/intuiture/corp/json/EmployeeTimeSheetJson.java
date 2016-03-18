@@ -21,6 +21,7 @@ public class EmployeeTimeSheetJson {
 	private String strTimeSheetDate;
 	private Integer statusId;
 	private String totalTimeSpent;
+	private Integer projectId;
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -164,6 +165,14 @@ public class EmployeeTimeSheetJson {
 
 	public void setTotalTimeSpent(String totalTimeSpent) {
 		this.totalTimeSpent = totalTimeSpent;
+	}
+
+	public Integer getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
 	}
 
 }

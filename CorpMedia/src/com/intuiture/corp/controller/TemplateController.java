@@ -302,4 +302,8 @@ public class TemplateController {// Serves Templates.
 		return "template/employeeSalaryStructure_cmn";
 	}
 
+	@RequestMapping(value = "/employee_projects")
+	public String employee_projects() {
+		return "template/employee_projects";
+	}
 }

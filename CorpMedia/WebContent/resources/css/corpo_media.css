@@ -1530,6 +1530,8 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 
 .float_right{ float: right;}
 
-
+.width30{
+	width: 30%;
+}
 
 

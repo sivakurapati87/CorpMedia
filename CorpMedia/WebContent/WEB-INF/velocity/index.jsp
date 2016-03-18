@@ -85,6 +85,7 @@
 <script src="resources/js/controller/add_employee_Controller.js"></script>
 <script src="resources/js/controller/employee_professional_Controller.js"></script>
 <script src="resources/js/controller/employee_personal_Controller.js"></script>
+<script src="resources/js/controller/employee_projects_Controller.js"></script>
 <script src="resources/js/controller/employee_job_Controller.js"></script>
 <script src="resources/js/controller/projects_Controller.js"></script>
 <script src="resources/js/controller/billing_Controller.js"></script>

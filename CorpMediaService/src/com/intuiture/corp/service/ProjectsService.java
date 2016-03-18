@@ -8,29 +8,29 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.intuiture.corp.dao.CommonRepository;
-import com.intuiture.corp.entity.Projects;
-import com.intuiture.corp.json.ProjectsJson;
+import com.intuiture.corp.entity.Project;
+import com.intuiture.corp.json.ProjectJson;
 import com.intuiture.corp.util.TransformDomainToJson;
 import com.intuiture.corp.util.TransformJsonToDomain;
+
 @Service
 @Transactional
 public class ProjectsService {
 	@Autowired
 	private CommonRepository commonRepository;
-	
-	
-	public Boolean saveOrUpdateProjects(ProjectsJson projectsJson) {
-		Projects projects = null;
+
+	public Boolean saveOrUpdateProject(ProjectJson projectJson) {
+		Project projects = null;
 		try {
-			if (projectsJson != null) {
-				
-				if (projectsJson.getProjectsId() != null) {
-					projects = (Projects) commonRepository.findById(projectsJson.getProjectsId(), Projects.class);
+			if (projectJson != null) {
+
+				if (projectJson.getProjectId() != null) {
+					projects = (Project) commonRepository.findById(projectJson.getProjectId(), Project.class);
 				} else {
-					projects = new Projects();
+					projects = new Project();
 				}
-				TransformJsonToDomain.getProjects(projects, projectsJson);
-				if (projectsJson.getProjectsId() != null) {
+				TransformJsonToDomain.getProject(projects, projectJson);
+				if (projectJson.getProjectId() != null) {
 					commonRepository.update(projects);
 				} else {
 					commonRepository.persist(projects);
@@ -41,29 +41,27 @@ public class ProjectsService {
 		}
 		return true;
 	}
-	
-	
+
 	@SuppressWarnings("unchecked")
-	public List<ProjectsJson> getAllProjectsList(Integer companyId) {
-		List<ProjectsJson> projectsJsonList = null;
+	public List<ProjectJson> getAllProjectList(Integer companyId) {
+		List<ProjectJson> projectJsonList = null;
 		try {
-			List<Projects> projectsList = (List<Projects>) commonRepository.getAllRecordsByCompanyId(companyId, Projects.class);
+			List<Project> projectsList = (List<Project>) commonRepository.getAllRecordsByCompanyId(companyId, Project.class);
 			if (projectsList != null && projectsList.size() > 0) {
-				projectsJsonList = new ArrayList<ProjectsJson>();
-				for (Projects projects  : projectsList) {
-					projectsJsonList.add(TransformDomainToJson.getProjectsJson(projects));
+				projectJsonList = new ArrayList<ProjectJson>();
+				for (Project projects : projectsList) {
+					projectJsonList.add(TransformDomainToJson.getProjectJson(projects));
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return projectsJsonList;
+		return projectJsonList;
 	}
-	
-	
-	public  Boolean deleteProjects(Integer projectsId) {
+
+	public Boolean deleteProject(Integer projectsId) {
 		try {
-			Projects projects= (Projects) commonRepository.findById(projectsId, Projects.class);
+			Project projects = (Project) commonRepository.findById(projectsId, Project.class);
 			if (projects != null) {
 				projects.setIsDeleted(Boolean.TRUE);
 				commonRepository.update(projects);
@@ -73,6 +71,5 @@ public class ProjectsService {
 		}
 		return true;
 	}
-	
 
 }

@@ -17,6 +17,7 @@ import com.intuiture.corp.entity.EmployeeFamilyInfo;
 import com.intuiture.corp.entity.EmployeeOneTimeComponent;
 import com.intuiture.corp.entity.EmployeePersonalInfo;
 import com.intuiture.corp.entity.EmployeeProfessionalInfo;
+import com.intuiture.corp.entity.EmployeeProject;
 import com.intuiture.corp.entity.EmployeeSalaryInfo;
 import com.intuiture.corp.entity.SalaryComponent;
 import com.intuiture.corp.json.EmployeeEducationalInfoJson;
@@ -26,6 +27,7 @@ import com.intuiture.corp.json.EmployeeJson;
 import com.intuiture.corp.json.EmployeeOneTimeComponentJson;
 import com.intuiture.corp.json.EmployeePersonalInfoJson;
 import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
+import com.intuiture.corp.json.EmployeeProjectJson;
 import com.intuiture.corp.json.EmployeeSalaryInfoJson;
 import com.intuiture.corp.json.SalaryComponentJson;
 import com.intuiture.corp.util.TransformDomainToJson;
@@ -146,6 +148,29 @@ public class EmployeeService {
 					commonRepository.update(employeeFamilyInfo);
 				} else {
 					commonRepository.persist(employeeFamilyInfo);
+				}
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
+	public Boolean saveOrUpdateEmployeeProject(EmployeeProjectJson employeeProjectJson) {
+		EmployeeProject employeeProject = null;
+		try {
+			if (employeeProjectJson != null) {
+				// This is to insert the data to employee project Table
+				if (employeeProjectJson.getEmployeeProjectId() != null) {
+					employeeProject = (EmployeeProject) commonRepository.findById(employeeProjectJson.getEmployeeProjectId(), EmployeeProject.class);
+				} else {
+					employeeProject = new EmployeeProject();
+				}
+				TransformJsonToDomain.getEmployeeProject(employeeProject, employeeProjectJson);
+				if (employeeProjectJson.getEmployeeProjectId() != null) {
+					commonRepository.update(employeeProject);
+				} else {
+					commonRepository.persist(employeeProject);
 				}
 			}
 		} catch (Exception e) {
@@ -386,6 +411,24 @@ public class EmployeeService {
 		return employeeOneTimeComponentJsonList;
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<EmployeeProjectJson> getEmployeeProjects(Integer employeeId) {
+		List<EmployeeProjectJson> employeeProjectJsonList = null;
+		try {
+			List<EmployeeProject> employeeProjectList = (List<EmployeeProject>) commonRepository.findByEmployeeId(employeeId, EmployeeProject.class);
+			if (employeeProjectList != null && employeeProjectList.size() > 0) {
+				employeeProjectJsonList = new ArrayList<EmployeeProjectJson>();
+				for (EmployeeProject employeeProject : employeeProjectList) {
+					employeeProjectJsonList.add(TransformDomainToJson.getEmployeeProjectJson(employeeProject));
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return employeeProjectJsonList;
+	}
+
 	public Boolean deleteEmployeeFamilyInfo(Integer employeeFamilyInfoId) {
 		try {
 			EmployeeFamilyInfo employeeFamilyInfo = (EmployeeFamilyInfo) commonRepository.findById(employeeFamilyInfoId, EmployeeFamilyInfo.class);
@@ -431,6 +474,19 @@ public class EmployeeService {
 			if (employee != null) {
 				employee.setIsDeleted(Boolean.TRUE);
 				commonRepository.update(employee);
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
+
+	public Boolean deleteEmployeeProject(Integer employeeProjectId) {
+		try {
+			EmployeeProject employeeProjects = (EmployeeProject) commonRepository.findById(employeeProjectId, EmployeeProject.class);
+			if (employeeProjects != null) {
+				employeeProjects.setIsDeleted(Boolean.TRUE);
+				commonRepository.update(employeeProjects);
 			}
 		} catch (Exception e) {
 			return false;

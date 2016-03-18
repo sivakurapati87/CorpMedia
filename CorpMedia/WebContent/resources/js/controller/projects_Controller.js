@@ -28,7 +28,7 @@ App.controller('projects_Controller', ['$scope','$location','$rootScope','$http'
 			alert("conform to savae");
 			if($rootScope.selectedCompanyObj){
 				$scope.projects.companyId = $rootScope.selectedCompanyObj.companyId;
-			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.ProjectsController+'/saveOrUpdateProjects/',$scope.projects).success(function(data) {
+			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.ProjectsController+'/saveOrUpdateProject/',$scope.projects).success(function(data) {
 				$scope.projects = {};
 				$scope.getAllProjectsList();
 				
@@ -40,7 +40,7 @@ App.controller('projects_Controller', ['$scope','$location','$rootScope','$http'
 		// get all Projects list
 		$scope.getAllProjectsList = function(){
 			if($rootScope.selectedCompanyObj){
-			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ProjectsController+'/getAllProjectsList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ProjectsController+'/getAllProjectList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.projectsList = data;
 			}).error(function() {
 	      	  console.error('Could not getAllProjects List');
@@ -58,8 +58,8 @@ App.controller('projects_Controller', ['$scope','$location','$rootScope','$http'
 		};
 		
 		//delete  project
-		$scope.deleteProjects= function(projectsId){
-			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ProjectsController+'/deleteProjects/'+ projectsId).success(function(data) {
+		$scope.deleteProjects= function(projectId){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ProjectsController+'/deleteProject/'+ projectId).success(function(data) {
 				$scope.getAllProjectsList();
 				
 			}).error(function() {

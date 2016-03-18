@@ -468,6 +468,18 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	            }
 	        }
 	})
+	.state('employee_projects', {
+		url: "/employee_projects",
+			views: {
+	            'content': {
+	            	templateUrl: 'employee_projects',
+	        		controller : "employee_projects_Controller"
+	            },
+	            'footer': {
+	                templateUrl: 'footer'
+	            }
+	        }
+	})
 	.state('employee_personal', {
 		url: "/employee_personal",
 			views: {
