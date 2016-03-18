@@ -29,9 +29,9 @@
 							</td>
 						</tr>
 					</table>
-					<table class="table mtable table-hover table-striped" border="0" style="width: 100%;">
+					<table class="table mtable " border="0" style="width: 100%;">
 						<tr>
-							<th><h4>Leave Types</h4></th>
+							<th class="th"><h2>Leave Types</h2></th>
 						</tr>
 						<tr>
 							<td><h5>Leave types can be defined here. Leave types
@@ -243,6 +243,9 @@
 								</div>
 							</td>
 						</tr>
+						<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 					</table>
 				</td>
 			</tr>

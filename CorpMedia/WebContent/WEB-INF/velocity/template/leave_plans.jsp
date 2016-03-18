@@ -27,10 +27,10 @@
 						</td>
 					</tr>
 				</table>
-				<table class="table mtable table-hover table-striped" border="0"
+				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white;">
 					<tr>
-						<th><h2>Leave Plans</h2></th>
+						<th class="th"><h2>Leave Plans</h2></th>
 					</tr>
 					<tr>
 						<td>Leave Plans allow you to define a package of different
@@ -160,7 +160,9 @@
 
 
 
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table>
 			</td>
 		</tr>

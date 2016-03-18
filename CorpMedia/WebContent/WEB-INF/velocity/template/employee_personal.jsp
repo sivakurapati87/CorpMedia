@@ -12,12 +12,11 @@
 			<td valign="top">
 
 				<employee-info-top></employee-info-top>
-				<table class="table" border="0"
-					style="width: 100%; background-color: white">
-					<tr>
+				<table class="table mtable" border="0"  style="width: 100%;">
+					<tr><th class="th"><h2>PERSONAL</h2></th> </tr><tr>
 						<td><p>
-								<font size="5">Basic Info</font>
-							</p>
+									<font size="5">Basic Info</font>
+								</p>
 							<hr>
 							<form ng-submit="saveOrUpdateEmployeePersonalInfo()">
 
@@ -523,7 +522,9 @@
 
 
 
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table>
 			</td>
 		</tr>

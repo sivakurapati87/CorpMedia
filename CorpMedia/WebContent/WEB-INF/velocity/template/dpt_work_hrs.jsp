@@ -43,9 +43,9 @@
 				</table>
 				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white;">
-					<tr><th ><h2>REPORTS</h2></th><td width="1%"></td>  <th width="100%"><h2>Department Work Hours</h2></th> </tr>
+					<tr><th class="th"><h2>REPORTS</h2></th><td width="1%"></td>  <th class="th"><h2>Department Work Hours</h2></th> </tr>
 						<tr>
-						<td width="16%" style="background:#efefef;  ">
+						<td width="16%" style="background:#f9f9f9;  ">
 							<div class="">
 								<!--first part is for vertical navigation bar.-->
 								<div class="subnavbar-static-side">
@@ -74,7 +74,7 @@
 								</div>
 						</td>
 						<td width="1%"></td>
-						<td>
+						<td style="border:solid 1px #ccc; border-style: inset; background:#fefefe;">
 							<!--rest of the page and data comes here-->
 							<div class="col-md-12">
 
@@ -245,7 +245,11 @@
 
 
 
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+						<td></td>
+						<td class="bth"><h2></h2></td>
+					</tr>
 
 				</table>
 			</td>

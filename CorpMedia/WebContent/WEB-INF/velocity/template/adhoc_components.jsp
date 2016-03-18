@@ -46,7 +46,7 @@
 				</table>
 				<table class="table mtable    " border="0"
 					style="width: 100%; background-color: white">
-					<tr><th><h2>Adhoc components</h2>
+					<tr><th class="th"><h2>Adhoc components</h2>
 						<p>
 										Adhoc components are salary components
 											that are added to an employee for a given payroll month and
@@ -461,7 +461,9 @@
 
 
 
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table>
 			</td>
 		</tr>

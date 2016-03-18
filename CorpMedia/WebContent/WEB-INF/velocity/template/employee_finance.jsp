@@ -11,24 +11,24 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top"><employee-info-top></employee-info-top>
-				<table class="table" border="0"
-					style="width: 100%; background-color: white">
-
+				<table class="table mtable " border="0" style="width: 100%;">
+					<tr><th class="th"><h2>FINANCE</h2></th> </tr><tr>
 					<tr>
 						<td colspan="2"><a data-toggle="modal"
 							data-target="#mySalaryModelPopupId"
 							style="cursor: pointer; font-size: 20px"><i class="fa fa-inr"></i>&nbsp;My
 								Salary </a></td>
 					</tr>
-				</table>
-				<table class="table" border="0"
-					style="width: 100%; background-color: white">
+				
 
 					<tr>
 						<td colspan="2"><a data-toggle="modal"
 							data-target="#oneTimeComponentModelpopupid"
 							style="cursor: pointer; font-size: 20px"><i class="fa fa-inr"></i>&nbsp;My
 								One Time Components </a></td>
+					</tr>
+					<tr>
+						<td class="bth"><h2></h2></td>
 					</tr>
 				</table></td>
 		</tr>

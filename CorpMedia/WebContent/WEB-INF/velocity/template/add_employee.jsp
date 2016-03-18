@@ -15,7 +15,7 @@
 				<employee-module-top></employee-module-top>
 
 				<table style="width: 100%" class="table mtable ">
-					<tr><th><h2>ADD EMPLOYEE</h2></th> </tr><tr>
+					<tr><th class="th"><h2>ADD EMPLOYEE</h2></th> </tr><tr>
 						<td>
 							<div class="row">
 								<div class="col-md-2">
@@ -160,7 +160,9 @@
 								</tr>
 							</table></td>
 					</tr>
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table>
 
 

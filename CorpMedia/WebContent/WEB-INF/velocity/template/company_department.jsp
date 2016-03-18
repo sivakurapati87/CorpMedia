@@ -34,7 +34,7 @@
 				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white">
 					<tr>
-						<th><h2>Departments</h2></th>
+						<th class="th"><h2>Departments</h2></th>
 					</tr>
 					<tr>
 						<td>Departments are used to group the employees based on
@@ -97,6 +97,9 @@
 									</table>
 								</div>
 							</div></td>
+					</tr>
+					<tr>
+						<td class="bth"><h2></h2></td>
 					</tr>
 				</table>
 			</td>

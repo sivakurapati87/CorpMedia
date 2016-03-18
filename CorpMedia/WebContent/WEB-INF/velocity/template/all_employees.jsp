@@ -15,7 +15,7 @@
 					style="width: 100%; background-color: white">
 
 
-					<tr><th><h2>ALL EMPLOYEES</h2></th> </tr><tr>
+					<tr><th class="th"><h2>ALL EMPLOYEES</h2></th> </tr><tr>
 					<tr>
 						<td colspan="4" width="100%"></td>
 					</tr>
@@ -48,7 +48,9 @@
 
 
 
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table></td>
 		</tr>
 	</table>

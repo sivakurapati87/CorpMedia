@@ -31,7 +31,7 @@
 				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
 
-					<tr><th><h2>Notify</h2></th> </tr><tr>
+					<tr><th class="th"><h2>Notify</h2></th> </tr><tr>
 						<td><a data-toggle="modal" data-target="#addSignatoryPopupId"
 							id="addSignatoryId" style="cursor: pointer; font-size: 20px"><span
 								class="glyphicon glyphicon-plus-sign"></span>&nbsp;Add Notifier</a>
@@ -98,6 +98,9 @@
 
 					<tr>
 						<td></td>
+					</tr>
+					<tr>
+						<td class="bth"><h2></h2></td>
 					</tr>
 				</table>
 			</td>

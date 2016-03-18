@@ -11,9 +11,9 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top"><employee-info-top></employee-info-top>
-				<table class="table" border="0"
+				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white">
-
+					<tr><th class="th"><h2>PROFESSIONAL</h2></th> </tr><tr>
 
 
 					<tr>
@@ -330,7 +330,9 @@
 					</tr>
 
 
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table></td>
 		</tr>
 	</table>

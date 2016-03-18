@@ -35,7 +35,7 @@
 				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white">
 					<tr>
-						<th><h2>Locations</h2></th>
+						<th class="th"><h2>Locations</h2></th>
 					</tr>
 					<tr>
 						<td>Locations can be branches or subsidiaries in other
@@ -160,7 +160,9 @@
 								</div>
 							</div></td>
 					</tr>
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table>
 			</td>
 		</tr>

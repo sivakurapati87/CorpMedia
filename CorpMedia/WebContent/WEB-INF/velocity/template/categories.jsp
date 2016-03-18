@@ -31,7 +31,7 @@
 				</table>
 				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr><th><h4>Categories</h4></th> </tr><tr>
+					<tr><th class="th"><h4>Categories</h4></th> </tr><tr>
 						<td>
 
 							<div class="panel-body">
@@ -181,7 +181,9 @@
 						</td>
 					</tr>
 
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table>
 			</td>
 		</tr>

@@ -11,9 +11,9 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top">
-
-				<table class="table" border="0" style="width: 100%;">
-					<tr>
+				
+				<table class="table mtable" border="0" style="width: 100%; margin-top: 2%;">
+					<tr><th class="th"><h2>Salary component</h2></th> </tr><tr>
 						<td>
 							<div style="width: 80%; height: 500px;">
 								<nvd3 options="options" data="data"
@@ -24,7 +24,7 @@
 					<tr>
 						<td>
 							<div class="row">
-								<div class="col-sm-8 s" style="float: right;">
+								<div class="col-sm-8 " style="float: right;">
 
 									<div class="col-sm-6" style="float: right; text-align: right;">
 										<a style="float: right; cursor: pointer;" ng-if="!isEdit"
@@ -45,7 +45,7 @@
 
 					<tr>
 						<td>
-							<div class="row">
+							<div class="">
 								<div class="col-sm-12 s" style="border-top: solid 3px #dde6f6;">
 									<div class="col-sm-4 component-head compo_header">
 										<h5>
@@ -248,6 +248,9 @@
 							</div>
 
 						</td>
+					</tr>
+					<tr>
+						<td class="bth"><h2></h2></td>
 					</tr>
 				</table>
 

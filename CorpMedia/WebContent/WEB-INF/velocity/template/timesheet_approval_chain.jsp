@@ -29,7 +29,7 @@
 				</table>
 				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr><tr><th><h4 class="page-heading"
+					<tr><th class="th"><h4 class="page-heading"
 														data-ng-class="{'clear-top-margin': vm.id }">Approval
 														Chain</h4></th> </tr><tr>
 						<td>
@@ -78,22 +78,24 @@
 																</div>
 															</div>
 														</div>
-														<div class="col-md-4">
-															<p>
-																<i class="fa fa-users"></i>Role Based
-															</p>
-														</div>
-														<div class="col-md-4">
-															<p>
-																<i class="fa fa-user"></i>Employees
-															</p>
-														</div>
 													</div>
+													
 													<!-- this is the end of row -->
 													<form ng-submit="saveOrUpdateApproversList()">
 														<div>
+															<table style="width: 100%;">
+																<tr height="20px"></tr>
+																<tr>
+																	<th width="40%"><i class="fa fa-users lrspace_10"></i>Role Based</th>
+																	<th style="width:10%"></th>
+																	<th width="40%"><i class="fa fa-user lrspace_10"></i>Employees</th>
+																	<th style="width:10%"></th>
+																</tr>
+																<tr height="20px"></tr>
+															</table>
 															<table ng-repeat="approver in TimeSheetApproverJsonList"
-																style="width: 100%">
+																style="width: 100%;">
+																
 																<tr>
 																	<td width="40%"><select
 																		class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
@@ -102,14 +104,15 @@
 																			<option value="" disabled selected>Name of
 																				the Role</option>
 																	</select></td>
-																	<td style="width: 30px"></td>
-																	<td><select
+																	<td style="width:10%"></td>
+																	<td  width="40%"><select
 																		class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
 																		required ng-model="approver.employeeId"
 																		ng-options="employee.employeeId as employee.displayName for employee in  approver.employeeJsonList">
 																			<option value="" disabled selected>Name of
 																				the Employee</option>
 																	</select></td>
+																	<td style="width:10%"></td>
 																</tr>
 																<tr height="20px"></tr>
 															</table>
@@ -126,6 +129,9 @@
 							</div>
 
 						</td>
+					</tr>
+					<tr>
+						<td class="bth"><h2></h2></td>
 					</tr>
 				</table>
 			</td>

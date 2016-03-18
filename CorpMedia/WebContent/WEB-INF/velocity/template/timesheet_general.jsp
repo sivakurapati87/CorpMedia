@@ -29,7 +29,7 @@
 				</table>
 				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr><th><h2>General</h2></th> </tr><tr>
+					<tr><th class="th"><h2>General</h2></th> </tr><tr>
 						<td><div class="panel-body">
 
 								<div
@@ -105,7 +105,9 @@
 
 
 
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table>
 			</td>
 		</tr>

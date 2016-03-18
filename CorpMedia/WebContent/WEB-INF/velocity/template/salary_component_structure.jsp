@@ -47,7 +47,7 @@
 				</table>
 				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr><th> <h2>Salary components </h2><a ui-sref="Salary_component" href="#">click here </a> </th> </tr>
+					<tr><th class="th"> <h2>Salary components </h2><a ui-sref="Salary_component" href="#">click here </a> </th> </tr>
 					<tr>
 						<td>
 
@@ -746,7 +746,9 @@
 
 
 
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 
 				</table>
 			</td>

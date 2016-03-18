@@ -36,7 +36,7 @@
 					<table class="table mtable table-hover table-striped" border="0"
 						style="width: 100%; background-color: white; border-radius:10px;">
 						<tr>
-							<th><h2>Company Info</h2></th>
+							<th class="th"><h2>Company Info</h2></th>
 						</tr>
 						<tr height="1px"></tr>
 						<tr>
@@ -66,7 +66,9 @@
 									style="width: 100px">Save</button></td>
 						</tr>
 						<tr height="10px"></tr>
-
+					<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 					</table>
 				</form>
 			</td>

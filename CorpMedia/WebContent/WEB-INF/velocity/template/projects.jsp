@@ -43,7 +43,7 @@
 				</table>
 				<table class="table mtable " border="0"
 					style="width: 100%; background-color: white;">
-					<tr><th><h2>Projects</h2></th> </tr><tr>
+					<tr><th class="th"><h2>Projects</h2></th> </tr><tr>
 						<td>
 
 							<div id="fade_out">
@@ -272,7 +272,9 @@
 
 
 
-
+				<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table>
 			</td>
 		</tr>

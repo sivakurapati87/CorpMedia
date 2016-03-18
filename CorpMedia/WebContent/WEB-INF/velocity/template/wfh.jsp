@@ -49,7 +49,7 @@ $(document).ready(function(){
 				</table>
 				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr><th><h2>WFH</h2></th> </tr><tr>
+					<tr><th class="th"><h2>WFH</h2></th> </tr><tr>
 						<td>
 
 
@@ -129,6 +129,9 @@ $(document).ready(function(){
 
 
 						</td>
+					</tr>
+					<tr>
+						<td class="bth"><h2></h2></td>
 					</tr>
 				</table>
 			</td>
