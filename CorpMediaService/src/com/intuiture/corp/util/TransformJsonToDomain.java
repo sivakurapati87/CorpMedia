@@ -386,6 +386,7 @@ public class TransformJsonToDomain {
 		employee.setLastName(employeeJson.getLastName());
 		employee.setLocationId(employeeJson.getLocationId());
 		employee.setMiddleName(employeeJson.getMiddleName());
+		employee.setGenderId(employeeJson.getGenderId());
 	}
 
 	public static void getDeductions(Deductions deductions, DeductionsJson deductionsJson) {

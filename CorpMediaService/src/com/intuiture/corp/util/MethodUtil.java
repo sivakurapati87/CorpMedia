@@ -27,7 +27,12 @@ import Decoder.BASE64Encoder;
 
 public class MethodUtil {
 	private static Logger LOG = Logger.getLogger(MethodUtil.class);
-	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	// private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	private final static ThreadLocal<SimpleDateFormat> sdf = new ThreadLocal<SimpleDateFormat>() {
+		protected SimpleDateFormat initialValue() {
+			return new SimpleDateFormat("yyyy-MM-dd");
+		}
+	};
 
 	public static void makeDirectory(File myFolder) {
 		if (!myFolder.exists()) {
@@ -42,12 +47,24 @@ public class MethodUtil {
 
 	public static List<Date> getWeeklyDatesList(String startingWeekDate) {
 		List<Date> datesList = new ArrayList<Date>();
-		Date startingWeekDay = convertDiffferentFormatString(startingWeekDate);
+		Date startingWeekDay = convertStringToDate(startingWeekDate);
+		Calendar cal = Calendar.getInstance();
 		for (int i = 0; i < 7; i++) {
-			Calendar cal = Calendar.getInstance();
 			cal.setTime(startingWeekDay);
 			cal.add(Calendar.DATE, i);
 			datesList.add(cal.getTime());
+		}
+		return datesList;
+	}
+
+	public static List<Date> findDatesList(Date startingDate, Date endingDate) {
+		List<Date> datesList = new ArrayList<Date>();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(startingDate);
+		int i = 1;
+		while (cal.getTime().compareTo(endingDate) <= 0) {
+			datesList.add(cal.getTime());
+			cal.add(Calendar.DATE, i);
 		}
 		return datesList;
 	}
@@ -135,7 +152,7 @@ public class MethodUtil {
 					s1 = str.subSequence(0, 10).toString();
 				}
 
-				date = sdf.parse(s1);
+				date = sdf.get().parse(s1);
 				date = convertStringToDate(convertDateToString(date));
 			}
 		} catch (Exception e) {
@@ -198,7 +215,7 @@ public class MethodUtil {
 		Date date = null;
 		try {
 			if (strDate != null && strDate.trim().length() > 0) {
-				date = sdf.parse(strDate);
+				date = sdf.get().parse(strDate);
 			}
 
 		} catch (Exception e) {
@@ -218,7 +235,7 @@ public class MethodUtil {
 		String strDate = null;
 		try {
 			if (date != null) {
-				strDate = sdf.format(date);
+				strDate = sdf.get().format(date);
 			}
 
 		} catch (Exception e) {

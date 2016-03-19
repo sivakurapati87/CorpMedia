@@ -11,7 +11,7 @@ App.controller('employee_finance_Controller', ['$scope','$state','$rootScope','$
 			if($rootScope.selectedCompanyObj){
 				$scope.employeeSalaryInfoJson.strEffectiveFrom = $scope.formatteddate($scope.employeeSalaryInfoJson.strEffectiveFrom);
 				$scope.employeeSalaryInfoJson.companyId = $rootScope.selectedCompanyObj.companyId;
-				$scope.employeeSalaryInfoJson.employeeId = $rootScope.empId;
+				$scope.employeeSalaryInfoJson.employeeId = $rootScope.empObj.employeeId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployeeSalaryInfo', $scope.employeeSalaryInfoJson).success(function(data) {
 				$scope.getEmployeeSalaryInfo();
 				 $('#mySalaryModelPopupId').modal('hide');
@@ -32,8 +32,8 @@ App.controller('employee_finance_Controller', ['$scope','$state','$rootScope','$
 	        
 	    	// get the employee Salary Info
 			$scope.getEmployeeSalaryInfo = function(){
-				if($rootScope.empId){
-				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeSalaryInfo/'+  $rootScope.empId).success(function(data) {
+				if($rootScope.empObj){
+				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeSalaryInfo/'+  $rootScope.empObj.employeeId).success(function(data) {
 					$scope.employeeSalaryInfoJson = data;
 				}).error(function() {
 		      	  console.error('Could not get Employee Salary Info');
@@ -45,7 +45,7 @@ App.controller('employee_finance_Controller', ['$scope','$state','$rootScope','$
 				if($rootScope.selectedCompanyObj){
 					$scope.employeeOneTimeComponentJson.strMonthPayable = $scope.formatteddate($scope.employeeOneTimeComponentJson.strMonthPayable);
 					$scope.employeeOneTimeComponentJson.companyId = $rootScope.selectedCompanyObj.companyId;
-					$scope.employeeOneTimeComponentJson.employeeId = $rootScope.empId;
+					$scope.employeeOneTimeComponentJson.employeeId = $rootScope.empObj.employeeId;
 				$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployeeOneTimeComponent', $scope.employeeOneTimeComponentJson).success(function(data) {
 					$scope.getEmployeeSalaryInfo();
 					$scope.employeeOneTimeComponentJson = {};
@@ -83,8 +83,8 @@ App.controller('employee_finance_Controller', ['$scope','$state','$rootScope','$
 		        
 		    	// get the employee Salary Info
 				$scope.getEmployeeOneTimeComponent = function(){
-					if($rootScope.empId){
-					$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeOneTimeComponent/'+  $rootScope.empId).success(function(data) {
+					if($rootScope.empObj){
+					$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeOneTimeComponent/'+  $rootScope.empObj.employeeId).success(function(data) {
 						$scope.employeeOneTimeComponentJsonList = data;
 					}).error(function() {
 			      	  console.error('Could not get Employee One Time Component Info');

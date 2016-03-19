@@ -15,9 +15,8 @@ App.controller('All_Employee_Controller', ['$scope','$state','$rootScope','$http
 	        });}
 		};
 		
-		$scope.onClickNavigation = function(empId,displayName){
-			$rootScope.empId = empId;
-			$rootScope.empName = displayName;
+		$scope.onClickNavigation = function(emp){
+			$rootScope.empObj = emp;
 			$state.go("employee_info");
 		};
 		

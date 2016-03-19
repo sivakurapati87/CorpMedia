@@ -38,7 +38,7 @@
 									ng-class-even="'even'" style="height: 30px">
 									<td>{{emp.employeeId}}</td>
 									<td>{{emp.displayName}}</td>
-									<td><a ng-click="onClickNavigation(emp.employeeId,emp.displayName)" href="#">{{emp.email}}</a></td>
+									<td><a ng-click="onClickNavigation(emp)" href="#">{{emp.email}}</a></td>
 									<td>{{emp.strDateOfJoining}}</td>
 									<td>{{emp.role}}</td>
 								</tr>

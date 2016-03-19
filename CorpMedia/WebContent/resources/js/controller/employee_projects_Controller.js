@@ -10,7 +10,7 @@ App.controller('employee_projects_Controller', ['$scope','$location','$rootScope
 		$scope.saveOrUpdateEmployeeProject = function(){
 			if($rootScope.selectedCompanyObj){
 				$scope.employeeProjectJson.companyId = $rootScope.selectedCompanyObj.companyId;
-				$scope.employeeProjectJson.employeeId = $rootScope.empId;
+				$scope.employeeProjectJson.employeeId = $rootScope.empObj.employeeId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployeeProject', $scope.employeeProjectJson).success(function(data) {
 				$scope.getEmployeeProjects();
 				$scope.employeeProjectJson = {};
@@ -21,8 +21,8 @@ App.controller('employee_projects_Controller', ['$scope','$location','$rootScope
 	        
 		// get all the projects assigned to an employee
 		$scope.getEmployeeProjects = function(){
-			if($rootScope.empId){
-			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeProjects/'+  $rootScope.empId).success(function(data) {
+			if($rootScope.empObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeProjects/'+  $rootScope.empObj.employeeId).success(function(data) {
 				$scope.employeeProjectsList = data;
 				if(!$scope.projectList){
 				$scope.getAllProjectList();

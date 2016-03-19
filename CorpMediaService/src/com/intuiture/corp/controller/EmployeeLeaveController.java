@@ -23,15 +23,28 @@ public class EmployeeLeaveController {
 	@Autowired
 	private EmployeeLeaveService employeeLeaveService;
 
-	@RequestMapping(value = "/saveOrUpdateEmployeeLeavesList", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveOrUpdateEmployeeLeaves", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveOrUpdateEmployeeTimesheetList(HttpServletRequest request, HttpServletResponse response, @RequestBody List<EmployeeLeaveJson> employeeLeaveJsonList) {
-		return employeeLeaveService.saveOrUpdateEmployeeLeavesList(employeeLeaveJsonList);
+	public Boolean saveOrUpdateEmployeeLeaves(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody EmployeeLeaveJson employeeLeaveJson) {
+		if (employeeLeaveJson != null) {
+			if (employeeLeaveJson != null && employeeLeaveJson.getStrLeaveStartDate() != null) {
+				employeeLeaveJson.setLeaveStartDate(MethodUtil.convertDiffferentFormatString(employeeLeaveJson.getStrLeaveStartDate()));
+			}
+			if (employeeLeaveJson != null && employeeLeaveJson.getStrLeaveEndDate() != null) {
+				employeeLeaveJson.setLeaveEndDate(MethodUtil.convertDiffferentFormatString(employeeLeaveJson.getStrLeaveEndDate()));
+			}
+			return employeeLeaveService.saveOrUpdateEmployeeLeaves(employeeLeaveJson,
+					MethodUtil.findDatesList(employeeLeaveJson.getLeaveStartDate(), employeeLeaveJson.getLeaveEndDate()));
+		} else {
+			return false;
+		}
 	}
 
 	@RequestMapping(value = "/getEmployeeLeavesOfTheWeek", method = RequestMethod.GET)
 	@ResponseBody
-	public List<EmployeeLeaveJson> getEmployeeLeavesOfTheWeek(HttpServletRequest request, HttpServletResponse response, @RequestParam("employeeId") Integer employeeId, @RequestParam("startingWeekDate") String startingWeekDate) {
+	public List<EmployeeLeaveJson> getEmployeeLeavesOfTheWeek(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam("employeeId") Integer employeeId, @RequestParam("startingWeekDate") String startingWeekDate) {
 		return employeeLeaveService.getEmployeeLeavesOfTheWeek(employeeId, MethodUtil.getWeeklyDatesList(startingWeekDate));
 	}
 

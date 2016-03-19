@@ -10,12 +10,13 @@
 			<td width="20%" valign="top" bgcolor="white"><left-menu></left-menu>
 			</td>
 			<td width="1%"></td>
-			<td valign="top">
-
-				<employee-module-top></employee-module-top>
+			<td valign="top"><employee-module-top></employee-module-top>
 
 				<table style="width: 100%" class="table mtable ">
-					<tr><th><h2>ADD EMPLOYEE</h2></th> </tr><tr>
+					<tr>
+						<th><h2>ADD EMPLOYEE</h2></th>
+					</tr>
+					<tr>
 						<td>
 							<div class="row">
 								<div class="col-md-2">
@@ -106,11 +107,26 @@
 												</div></td>
 											<td><select
 												class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-												required ng-model="employeeJson.roleId" 
+												required ng-model="employeeJson.roleId"
 												ng-options="role.roleId as role.roleName for role in  companyRolesJsonList">
 													<option value="" disabled selected>Select</option>
 											</select></td>
 
+
+										</tr>
+
+										<tr>
+											<td><label class="lable16_Regular">Gender </label></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td><select
+												class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+												required ng-model="employeeJson.genderId"
+												ng-options="gender.lookupDetailId as gender.description for gender in  lookup.genderList">
+													<option value="" disabled selected>Select</option>
+											</select></td>
+											<td></td>
 
 										</tr>
 										<tr>
@@ -161,13 +177,7 @@
 							</table></td>
 					</tr>
 
-				</table>
-
-
-
-
-
-			</td>
+				</table></td>
 		</tr>
 
 

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.intuiture.corp.dao.CommonRepository;
-import com.intuiture.corp.dao.JobTitlesRepository;
 import com.intuiture.corp.entity.AddLeaveType;
 import com.intuiture.corp.entity.JobTitles;
 import com.intuiture.corp.json.AddLeaveTypeJson;
@@ -21,8 +20,6 @@ import com.intuiture.corp.util.TransformJsonToDomain;
 public class AddLeaveTypeService {
 	@Autowired
 	private CommonRepository commonRepository;
-	@Autowired
-	private JobTitlesRepository jobTitlesRepository;
 
 	public Boolean addLeaveType(AddLeaveTypeJson addLeaveTypeJson) {
 		AddLeaveType addLeaveType = null;

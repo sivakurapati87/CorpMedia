@@ -21,13 +21,30 @@ public class Employee_Leave implements Serializable {
 	private Integer statusId;
 	private Integer projectId;
 	private String leaveTime;
-
+	private Integer leaveTypeId;
+	private String note;
 	@ManyToOne
 	@JoinColumn(name = "employeeId", updatable = false, insertable = false, referencedColumnName = "employeeId")
 	private Employee employee;
 	@ManyToOne
 	@JoinColumn(name = "leaveId", updatable = false, insertable = false, referencedColumnName = "leaveId")
 	private Leave leave;
+
+	public Integer getLeaveTypeId() {
+		return leaveTypeId;
+	}
+
+	public void setLeaveTypeId(Integer leaveTypeId) {
+		this.leaveTypeId = leaveTypeId;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
 
 	public Integer getLeaveId() {
 		return leaveId;

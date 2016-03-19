@@ -169,7 +169,7 @@
 												<label for="sel1">Status</label> <select
 													class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
 													id="currency" ng-model="projects.statusId"
-													ng-options="bank.lookupDetailId as bank.description for bank in  lookup.projectStatusList">
+													ng-options="bank.lookupDetailId as bank.description for bank in  lookup.statusList">
 													<option value="" disabled selected>Select</option>
 												</select>
 											</div>

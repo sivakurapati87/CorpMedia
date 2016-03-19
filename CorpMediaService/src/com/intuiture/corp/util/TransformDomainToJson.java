@@ -296,6 +296,7 @@ public class TransformDomainToJson {
 		employeeJson.setMiddleName(employee.getMiddleName());
 		employeeJson.setRoleId(employee.getRoleId());
 		employeeJson.setStrDateOfJoining(MethodUtil.convertDateToString(employee.getDateOfJoining()));
+		employeeJson.setGenderId(employee.getGenderId());
 		if (employee.getCompanyRoles() != null) {
 			employeeJson.setRole(employee.getCompanyRoles().getRoleName());
 		}

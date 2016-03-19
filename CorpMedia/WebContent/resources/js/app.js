@@ -692,7 +692,18 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			}
 		}
 	})
-
+	.state('applyLeave', {
+		url : "/applyLeave",
+		views : {
+			'content' : {
+				templateUrl : 'applyLeave',
+				controller : "applyLeave_Controller"
+			},
+			'footer' : {
+				templateUrl : 'footer'
+			}
+		}
+	})
 	
 	
 	

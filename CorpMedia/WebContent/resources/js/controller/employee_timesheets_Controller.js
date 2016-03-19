@@ -22,9 +22,9 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
         };
         var currentDate = new Date();
         $scope.week_StartAndEndDays = days[0]+" <--> "+days[6];
-        if($rootScope.empId){
-        getEmployeeTimesheetOfTheWeek($rootScope.empId, formatteddate(moment(weekStart).add(0, 'days')));
-        getEmployeeLeavesOfTheWeek($rootScope.empId, formatteddate(moment(weekStart).add(0, 'days')));
+        if($rootScope.empObj){
+        getEmployeeTimesheetOfTheWeek($rootScope.empObj.employeeId, formatteddate(moment(weekStart).add(0, 'days')));
+        getEmployeeLeavesOfTheWeek($rootScope.empObj.employeeId, formatteddate(moment(weekStart).add(0, 'days')));
         }
         days.push('Total');
         return days;
@@ -92,8 +92,8 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
 		
 		// get all the projects assigned to an employee
 		$scope.getEmployeeProjects = function(){
-			if($rootScope.empId){
-			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeProjects/'+  $rootScope.empId).success(function(data) {
+			if($rootScope.empObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeProjects/'+  $rootScope.empObj.employeeId).success(function(data) {
 				$scope.employeeProjectsList = data;
 			}).error(function() {
 	      	  console.error('Could not get Employee Projects');

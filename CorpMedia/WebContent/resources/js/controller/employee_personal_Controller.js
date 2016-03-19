@@ -50,7 +50,7 @@ App.controller('employee_personal_Controller', ['$scope','$location','$rootScope
 				if($rootScope.selectedCompanyObj){
 				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getAllEmployeesByCompanyId/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 					$scope.EmployeeJsonList = data;
-					$scope.employeePersonalInfoJson.employeeId = $rootScope.empId;
+					$scope.employeePersonalInfoJson.employeeId = $rootScope.empObj.employeeId;
 					$scope.onChangeEmployeeId();
 				}).error(function() {
 		      	  console.error('Could not get All Employees List');

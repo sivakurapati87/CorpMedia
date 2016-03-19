@@ -13,6 +13,7 @@ import com.intuiture.corp.dao.EmployeeLeaveRepository;
 import com.intuiture.corp.entity.Employee_Leave;
 import com.intuiture.corp.entity.Leave;
 import com.intuiture.corp.json.EmployeeLeaveJson;
+import com.intuiture.corp.util.Constants;
 import com.intuiture.corp.util.MethodUtil;
 import com.intuiture.corp.util.TransformDomainToJson;
 
@@ -24,19 +25,42 @@ public class EmployeeLeaveService {
 	@Autowired
 	private EmployeeLeaveRepository employeeLeaveRepository;
 
-	public Boolean saveOrUpdateEmployeeLeavesList(List<EmployeeLeaveJson> employeeLeaveJsonList) {
+	public Boolean saveOrUpdateEmployeeLeaves(EmployeeLeaveJson employeeLeaveJson, List<Date> weekDatesList) {
 		try {
-			if (employeeLeaveJsonList != null && employeeLeaveJsonList.size() > 0) {
-				for (EmployeeLeaveJson json : employeeLeaveJsonList) {
-					if (json.getEmployeeId() != null && json.getLeaveId() != null) {
-						// Getting the unique record
-						Employee_Leave employee_Leave = employeeLeaveRepository.getEmployee_LeaveByEmpIdAndTimeSheetId(json.getEmployeeId(), json.getLeaveId());
-						if (employee_Leave != null) {
-							employee_Leave.setProjectId(json.getProjectId());
-							employee_Leave.setLeaveTime(json.getLeaveTime());
+			if (employeeLeaveJson != null) {
+				List<Employee_Leave> employee_LeaveList = employeeLeaveRepository.getEmployeeLeavesOfTheWeek(employeeLeaveJson.getEmployeeId(), null,
+						employeeLeaveJson);
+				// If employee leaves are empty
+				if (employee_LeaveList == null || !(employee_LeaveList.size() > 0)) {
+					List<Leave> leaveList = employeeLeaveRepository.getAllLeaves(null, employeeLeaveJson);
+					if (leaveList == null || !(leaveList.size() > 0)) {
+						leaveList = new ArrayList<Leave>();
+						for (Date date : weekDatesList) {
+							Leave leave = new Leave();
+							leave.setIsDeleted(Boolean.FALSE);
+							leave.setLeaveDate(date);
+							commonRepository.persist(leave);
+							leaveList.add(leave);
 						}
 					}
+					employee_LeaveList = new ArrayList<Employee_Leave>();
+					for (Leave leave : leaveList) {
+						Employee_Leave employee_Leave = new Employee_Leave();
+						employee_Leave.setEmployeeId(employeeLeaveJson.getEmployeeId());
+						employee_Leave.setLeaveId(leave.getLeaveId());
+						commonRepository.persist(employee_Leave);
+						employee_LeaveList.add(employee_Leave);
+					}
 				}
+				if (employee_LeaveList != null && employee_LeaveList.size() > 0) {
+					for (Employee_Leave employee_Leave : employee_LeaveList) {
+						employee_Leave.setLeaveTypeId(employeeLeaveJson.getLeaveTypeId());
+						employee_Leave.setNote(employeeLeaveJson.getNote());
+						employee_Leave.setLeaveTime(Constants.LEAVETIME);
+						employee_Leave.setProjectId(employeeLeaveJson.getProjectId());
+					}
+				}
+
 			}
 		} catch (Exception e) {
 			return false;
@@ -47,10 +71,10 @@ public class EmployeeLeaveService {
 	public List<EmployeeLeaveJson> getEmployeeLeavesOfTheWeek(Integer employeeId, List<Date> weekDatesList) {
 		List<EmployeeLeaveJson> employeeLeaveJsonList = null;
 		try {
-			List<Employee_Leave> employee_LeaveList = employeeLeaveRepository.getEmployeeLeavesOfTheWeek(employeeId, weekDatesList);
+			List<Employee_Leave> employee_LeaveList = employeeLeaveRepository.getEmployeeLeavesOfTheWeek(employeeId, weekDatesList, null);
 			// If employee leaves are empty
 			if (employee_LeaveList == null || !(employee_LeaveList.size() > 0)) {
-				List<Leave> leaveList = employeeLeaveRepository.getAllLeaves(weekDatesList);
+				List<Leave> leaveList = employeeLeaveRepository.getAllLeaves(weekDatesList, null);
 				if (leaveList == null || !(leaveList.size() > 0)) {
 					leaveList = new ArrayList<Leave>();
 					for (Date date : weekDatesList) {
