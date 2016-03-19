@@ -123,7 +123,7 @@
 											<td><select
 												class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
 												required ng-model="employeeJson.genderId"
-												ng-options="role.roleId as role.roleName for role in  lookup.genderList">
+												ng-options="gender.lookupDetailId as gender.description for gender in  lookup.genderList">
 													<option value="" disabled selected>Select</option>
 											</select></td>
 											<td></td>
