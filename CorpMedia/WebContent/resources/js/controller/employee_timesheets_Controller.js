@@ -3,11 +3,12 @@
 App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope','$stateParams', function($scope,$http,$rootScope,$stateParams) {
 	$scope.state="employee_timesheets";
 	$scope.left_state = "employee";
+	$scope.isProcessing = true;
 	
 	
 	 var currentDate = moment();
      var fnWeekDays = function(dt) {
-
+    	 $scope.isProcessing = true;
         var currentDate = dt;
         var weekStart = currentDate.clone().startOf('week');
         var weekEnd = currentDate.clone().endOf('week');
@@ -28,6 +29,7 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
         }
         days.push('Total');
         return days;
+        $scope.isProcessing = false;
     }
     
     $scope.weekDays = fnWeekDays(currentDate);
@@ -70,7 +72,9 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
 		
       //Save Time Sheet of an employee
 	$scope.saveOrUpdateEmployeeTimesheetList = function(){
+		$scope.isProcessing = true;
 		$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeTimeSheetController+'/saveOrUpdateEmployeeTimesheetList', $scope.employeeTimeSheetJsonList).success(function(data) {
+			$scope.isProcessing = false;
 		}).error(function() {
 	       console.error('Could not save Or Update Employee Timesheet List');
 	    });
@@ -93,8 +97,10 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
 		// get all the projects assigned to an employee
 		$scope.getEmployeeProjects = function(){
 			if($rootScope.empObj){
+				$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getEmployeeProjects/'+  $rootScope.empObj.employeeId).success(function(data) {
 				$scope.employeeProjectsList = data;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not get Employee Projects');
 	        });}

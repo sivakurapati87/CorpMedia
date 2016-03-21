@@ -254,3 +254,11 @@
 	</form>
 
 </div>
+<div class="main1" ng-show="isProcessing">
+	<div class="div1">
+
+		<i class="fa fa-spinner fa-spin " style="font-size: 60px"></i>
+	</div>
+</div>
++321
+

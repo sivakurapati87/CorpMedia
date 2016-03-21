@@ -4,15 +4,18 @@ App.controller('applyLeave_Controller', ['$scope','$state','$rootScope','$http',
 	 	$scope.state="employee_finance";
 		$scope.left_state = "employee";
 		$scope.employeeLeaveJson = {};
+		$scope.isProcessing = true;
 		
 		//Save Employee Leaves
 		$scope.saveOrUpdateEmployeeLeaves = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 				$scope.employeeLeaveJson.employeeId = $rootScope.empObj.employeeId;
 				$scope.employeeLeaveJson.strLeaveStartDate = $scope.formatteddate($scope.employeeLeaveJson.strLeaveStartDate);
 				$scope.employeeLeaveJson.strLeaveEndDate = $scope.formatteddate($scope.employeeLeaveJson.strLeaveEndDate);
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeLeaveController+'/saveOrUpdateEmployeeLeaves', $scope.employeeLeaveJson).success(function(data) {
 				$state.go("employee_timesheets");
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not save or update Employee Family Info');
 	        });}
@@ -20,9 +23,11 @@ App.controller('applyLeave_Controller', ['$scope','$state','$rootScope','$http',
 		
 		// get all company leave type
 		$scope.getAllLeaveTypeListByCmpIdAndGenderId = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyLeaveTypeController+'/getAllLeaveTypeListByCmpIdAndGenderId?companyId='+ $rootScope.selectedCompanyObj.companyId+"&genderId="+$rootScope.empObj.genderId).success(function(data) {
 				$scope.companyLeaveTypeJsonList = data;
+				$scope.isProcessing = false
 			}).error(function() {
 	      	  console.error('Could not getAllLeaveTypeListByCmpIdAndGenderId');
 	        });}

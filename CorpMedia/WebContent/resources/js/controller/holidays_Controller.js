@@ -4,15 +4,18 @@ App.controller('holidays_Controller', ['$scope','$location','$rootScope','$http'
 	 var self = this;
 	 $scope.state="holidays";
 		$scope.left_state = "leaves_&_holidays";
+		$scope.isProcessing = true;
 		
 		
 		//save Holiday
 		$scope.saveOrUpdateHoliday = function(){
 			if($rootScope.selectedCompanyObj){
+				$scope.isProcessing = true;
 				$scope.holidayJson.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.HolidayController+'/saveHoliday', $scope.holidayJson).success(function(data) {
 				$scope.holidayJson = {};
 				$scope.getAllHolidaysList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not saveHoliday');
 	        });}
@@ -20,9 +23,11 @@ App.controller('holidays_Controller', ['$scope','$location','$rootScope','$http'
 	          
 		// get all company holidays
 		$scope.getAllHolidaysList = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.HolidayController+'/getAllHolidaysList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.holidayJsonList = data;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllCompanyLeaveTypeList');
 	        });}
@@ -32,8 +37,10 @@ App.controller('holidays_Controller', ['$scope','$location','$rootScope','$http'
 		
 		//delete delete holiday
 		$scope.deleteHoliday = function(companyLeaveTypeId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.HolidayController+'/deleteHoliday/'+ companyLeaveTypeId).success(function(data) {
 				$scope.getAllHolidaysList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not deleteCompanyDepartment');
 	        });
@@ -79,9 +86,11 @@ App.controller('holidays_Controller', ['$scope','$location','$rootScope','$http'
 	        
 			//init
 	        $scope.init = function(){
+	        	
 	        	$scope.isCollapse = true;
 	        	$scope.holidayJson = {};
 	        	$scope.getAllHolidaysList();
+	        	
 	        };
 	        $scope.init();
 

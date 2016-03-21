@@ -5,6 +5,7 @@ App.controller('employee_finance_Controller', ['$scope','$state','$rootScope','$
 		$scope.left_state = "employee";
 		$scope.employeeSalaryInfoJson = {};	
 		$scope.employeeOneTimeComponentJson = {};
+		$scope.isProcessing = false;
 		
 		//This function is to save employee salary info
 		$scope.saveOrUpdateEmployeeSalaryInfo = function(){

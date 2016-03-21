@@ -5,11 +5,13 @@ App.controller('esiInfo_Controller', ['$http','$scope','$location','$stateParams
 		$scope.left_state = "company_settings";
 		$scope.state_info_name = $stateParams.legEntity;
 		$scope.$parent.state_info_name = $stateParams.legEntity;
-		
+		$scope.isProcessing = true;
 		
 		 $scope.getESIInfo = function() {
+			 $scope.isProcessing = true;
              $http.get(constants.localhost_port+'/CorpMediaService/ESIController/findAllCompanyESI/'+$rootScope.companyId).success(function(data){
            	  $scope.esiinfo = data;
+           	$scope.isProcessing = false;
              });
          };
          

@@ -4,25 +4,29 @@
 
 		 $scope.state="leave_types";
 			$scope.left_state = "leaves_&_holidays";
-			
+			$scope.isProcessing = true;
 		//Save leave type
 		$scope.saveCompanyLeaveType = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 				$scope.companyLeaveTypeJson.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyLeaveTypeController+'/saveCompanyLeaveType', $scope.companyLeaveTypeJson).success(function(data) {
 				$scope.companyLeaveTypeJson = {};
 				$scope.getAllCompanyLeaveTypeList();
 				$scope.collapsed = true;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not save or update jobtitles');
 	        });}
 		};
 	          
 		// get all company leave type
-		$scope.getAllCompanyLeaveTypeList = function(){
+		$scope.getAllCompanyLeaveTypeList = function(){ 
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyLeaveTypeController+'/getAllCompanyLeaveTypeList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.companyLeaveTypeJsonList = data;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllCompanyLeaveTypeList');
 	        });}
@@ -37,8 +41,10 @@
 		
 		//delete Leave Type
 		$scope.deleteLeaveType = function(companyLeaveTypeId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyLeaveTypeController+'/deleteCompanyLeaveType/'+ companyLeaveTypeId).success(function(data) {
 				$scope.getAllCompanyLeaveTypeList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not deleteCompanyDepartment');
 	        });

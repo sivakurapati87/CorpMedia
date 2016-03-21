@@ -8,16 +8,20 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		$scope.reimbursement = {};
 		$scope.bonuses = {};
 		$scope.allowances = {};
+		$scope.isProcessing = true;
+		
 		
 
 		//Save deductions
 		$scope.saveDeductions = function(){
+			
 			alert($rootScope.selectedCompanyObj.companyId);
 			if($rootScope.selectedCompanyObj){
 				$scope.deductions.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.DeductionsController+'/saveDeductions', $scope.deductions).success(function(data) {
 				$scope.getAllDeductionsList();
 				$scope.deductions ={};
+				
 	        }).error(function() {
 	      	  console.error('Could not save or update deductions');
 	        });}
@@ -25,9 +29,11 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		
 		// get deductions list
 		$scope.getAllDeductionsList = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.DeductionsController+'/getAllDeductionsList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.deductionsList = data;
+				$scope.isProcessing =false;
 			}).error(function() {
 	      	  console.error('Could not getAllDeductionsList');
 	        });}
@@ -43,8 +49,10 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		
 		//delete deductions
 		$scope.deleteDeductions = function(deductionId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.DeductionsController+'/deleteDeductions/'+ deductionId).success(function(data) {
 				$scope.getAllDeductionsList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not deleteDeductions');
 	        });
@@ -65,9 +73,11 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		
 		// get reimbursement list
 		$scope.getAllReimbursementList = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ReimbursementController+'/getAllReimbursementList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.reimbursementList = data;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllReimbursementList');
 	        });}
@@ -83,8 +93,10 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		
 		//delete reimbursement
 		$scope.deleteReimbursement = function(reimbursementId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ReimbursementController+'/deleteReimbursement/'+ reimbursementId).success(function(data) {
 				$scope.getAllReimbursementList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not deleteDeductions');
 	        });
@@ -106,9 +118,11 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		
 		// get bonuses list
 		$scope.getAllBonusesList = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.BonusesController+'/getAllBonusesList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.bonusesList = data;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllBonusesList');
 	        });}
@@ -124,8 +138,10 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		
 		//delete bonuses
 		$scope.deleteBonuses = function(bonusesId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.BonusesController+'/deleteBonuses/'+ bonusesId).success(function(data) {
 				$scope.getAllBonusesList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not deleteBonuses');
 	        });
@@ -147,9 +163,11 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		
 		// get allowances list
 		$scope.getAllAllowancesList = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.AllowancesController+'/getAllAllowancesList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.allowancesList = data;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllAllowancesList');
 	        });}
@@ -165,8 +183,10 @@ App.controller('adhoc_components_Controller', ['$scope','$location','$rootScope'
 		
 		//delete allowances
 		$scope.deleteAllowances = function(allowancesId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.AllowancesController+'/deleteAllowances/'+ allowancesId).success(function(data) {
 				$scope.getAllAllowancesList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not deleteAllowances');
 	        });

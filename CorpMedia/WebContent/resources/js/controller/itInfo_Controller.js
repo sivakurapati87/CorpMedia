@@ -5,19 +5,23 @@ App.controller('itInfo_Controller', ['$rootScope','$scope','$http','$location','
 		$scope.left_state = "company_settings";
 		$scope.state_info_name = $stateParams.legEntity;
 		$scope.$parent.state_info_name = $stateParams.legEntity;
+		$scope.isProcessing = true;
 		// it info main object
 
           $scope.getITInfo = function() {
+        	  $scope.isProcessing = true;
               $http.get(constants.localhost_port+'/CorpMediaService/ITController/findAllCompanyIT/'+$rootScope.companyId).success(function(data){
             	  $scope.itinfo = data;
+            	  $scope.isProcessing = false;
               });
           };
           
           $scope.saveOrUpdate = function() {
 //              $scope.resetError();
-
+        	 
               $http.post(constants.localhost_port+'/CorpMediaService/ITController/saveOrUpdateITInfo', $scope.itinfo).success(function() {
                   $scope.getITInfo();
+                
               }).error(function() {
             	  console.error('Could not save or update it');
               });

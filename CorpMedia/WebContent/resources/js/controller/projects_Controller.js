@@ -5,14 +5,16 @@ App.controller('projects_Controller', ['$scope','$location','$rootScope','$http'
 	 $scope.state="projects";
 		$scope.left_state = "project";
 		$scope.projects = {};
+		$scope.isProcessing = true;
 		
 		
 		// get all clients list
 		$scope.getAllClientsList = function(){
-			
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ClientsController+'/getAllClientsList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.clientsList = data;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getclientsList');
 	        });}
@@ -25,12 +27,13 @@ App.controller('projects_Controller', ['$scope','$location','$rootScope','$http'
 		
 		//This function is to save projects
 		$scope.saveOrUpdateProjects = function(){
-			alert("conform to savae");
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 				$scope.projects.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.ProjectsController+'/saveOrUpdateProject/',$scope.projects).success(function(data) {
 				$scope.projects = {};
 				$scope.getAllProjectsList();
+				$scope.isProcessing = false;
 				
 			}).error(function() {
 	      	  console.error('Could not Save Projects');
@@ -59,8 +62,10 @@ App.controller('projects_Controller', ['$scope','$location','$rootScope','$http'
 		
 		//delete  project
 		$scope.deleteProjects= function(projectId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.ProjectsController+'/deleteProject/'+ projectId).success(function(data) {
 				$scope.getAllProjectsList();
+				$scope.isProcessing = false;
 				
 			}).error(function() {
 	      	  console.error('Could not delete Project');

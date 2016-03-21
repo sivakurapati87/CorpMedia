@@ -4,6 +4,7 @@ App.controller('leave_plans_Controller', ['$scope','$state','$rootScope','$http'
 	 var self = this;
 	 $scope.state="leave_plans";
 		$scope.left_state = "leaves_&_holidays";
+		$scope.isProcessing = true;
 		
 		//Navigate to add leave type
 		$scope.addLeaveType=function(leavePlan,companyLeavePlansId){
@@ -43,11 +44,13 @@ App.controller('leave_plans_Controller', ['$scope','$state','$rootScope','$http'
 
 		//Save leave plan
 		$scope.saveLeavePlan = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 				$scope.leavePlan.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyLeavePlanController+'/saveCompanyLeavePlans', $scope.leavePlan).success(function(data) {
 				$scope.getAllLeavePlans();
 				$scope.leavePlan = {};
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not save or update Leave Plan');
 	        });}
@@ -55,9 +58,11 @@ App.controller('leave_plans_Controller', ['$scope','$state','$rootScope','$http'
 		
 		// get all company Leave Plans list
 		$scope.getAllLeavePlans = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyLeavePlanController+'/getAllCompanyLeavePlansList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.companyLeavePlansList = data;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllLeavePlans');
 	        });}
@@ -65,9 +70,11 @@ App.controller('leave_plans_Controller', ['$scope','$state','$rootScope','$http'
 		
 		// get all company leave type
 		$scope.getAllCompanyLeaveTypeList = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyLeaveTypeController+'/getAllCompanyLeaveTypeList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.companyLeaveTypeJsonList = data;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllCompanyLeaveTypeList');
 	        });}
@@ -82,8 +89,10 @@ App.controller('leave_plans_Controller', ['$scope','$state','$rootScope','$http'
 		
 		//delete companylocation
 		$scope.deleteCompanyLeavePlans = function(leavePlanId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyLeavePlanController+'/deleteCompanyLeavePlans/'+ leavePlanId).success(function(data) {
 				$scope.getAllLeavePlans();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not deleteCompanyDepartment');
 	        });

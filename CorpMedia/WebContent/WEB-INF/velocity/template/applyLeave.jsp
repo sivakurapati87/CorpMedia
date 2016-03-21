@@ -1,7 +1,7 @@
 
 
 <div class="container-fluid" style="width: 100%;">
-	<table>
+	<table >
 		<tr
 			style="height: 120px; background-image: url('resources/images/bgimg3.png');">
 			<td class="lable50_blue" align="center" colspan="3">{{companyName}}</td>
@@ -12,20 +12,20 @@
 			<td width="1%"></td>
 			<td valign="top">
 				<form ng-submit="saveOrUpdateEmployeeLeaves()">
-					<table class="table" border="1"
-						style="width: 100%; background-color: white">
-						<tr style="height: 20px"></tr>
+					<table class="table mtable " border="0"
+						style="width: 100%; background-color: white; margin-top:15px;">
+						
 						<tr>
-							<td><label class="lable36">Applying : Paid/Unpaid
+							<td class="th"><h2></h2><label class="lable36">Applying : Paid/Unpaid
 									Leave</label></td>
-						</tr>
+						</tr> 
 						<tr style="height: 10px"></tr>
+						
 						<tr>
-							<td align="right" style="padding-right: 200px;"><label
-								class="lable16_Regular">Pick a project</label></td>
-						</tr>
-						<tr>
-							<td align="right"><select
+							<td >
+							<label 
+								class="lable16_Regular">Pick a project</label>
+							<select
 								class="form-control ng-pristine ng-valid ng-valid-required ng-touched width30"
 								required ng-model="employeeLeaveJson.projectId"
 								ng-options="project.projectId as project.projectName for project in  employeeProjectsList">
@@ -33,11 +33,11 @@
 							</select></td>
 						</tr>
 						<tr style="height: 10px"></tr>
+						
 						<tr>
-							<td><label class="lable16_Regular">Select leave type</label></td>
-						</tr>
-						<tr>
-							<td><select
+							<td>
+							<label class="lable16_Regular">Select leave type</label>
+							<select
 								class="form-control ng-pristine ng-valid ng-valid-required ng-touched width30"
 								required ng-model="employeeLeaveJson.leaveTypeId"
 								ng-options="leaveType.companyLeaveTypeId as leaveType.leaveTypeName for leaveType in  companyLeaveTypeJsonList">
@@ -47,7 +47,7 @@
 						<tr style="height: 10px"></tr>
 						<tr>
 							<td style="width: 100%">
-								<table style="width: 100%" border="1">
+								<table style="width: 100%" border="0 ">
 									<tr>
 										<td style="width: 50%"><label class="lable16_Regular">From</label></td>
 										<td style="width: 50%"><label class="lable16_Regular">To</label></td>
@@ -83,10 +83,12 @@
 						</tr>
 						<tr style="height: 10px"></tr>
 						<tr>
-							<td><label class="lable16_Regular">Note</label></td>
+							<td></td>
 						</tr>
 						<tr>
-							<td><textarea rows="5" style="resize: none; width: 70%"
+							<td>
+							<label class="lable16_Regular">Note</label>
+							<textarea rows="5" style="resize: none; width: 70%"
 									class="form-control ng-pristine  ng-valid ng-valid-required width90"
 									placeholder="Please enter reason for applying leave"
 									ng-model="employeeLeaveJson.note"></textarea></td>
@@ -100,10 +102,18 @@
 									ui-sref="employee_timesheets" type="button">Cancel</button>
 							</td>
 						</tr>
-
+					<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 					</table>
 				</form>
 			</td>
 		</tr>
 	</table>
+</div>
+<div class="main1" ng-show="isProcessing">
+	<div class="div1">
+
+		<i class="fa fa-spinner fa-spin " style="font-size: 60px"></i>
+	</div>
 </div>

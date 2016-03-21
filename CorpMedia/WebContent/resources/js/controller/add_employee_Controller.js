@@ -7,26 +7,31 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 		
 		$scope.employeeJson = {};
 		$scope.isEmpCollapse = true;
+		$scope.isProcessing = true;
 		
 		//Save/update employee
 		$scope.saveOrUpdateEmployee = function(){
+			$scope.isProcessing = true;
 			$scope.formatteddate();
 			if($rootScope.selectedCompanyObj){
 				$scope.employeeJson.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/saveOrUpdateEmployee', $scope.employeeJson).success(function(data) {
 				$scope.employeeJson = {};
 				$scope.getAllEmployeesList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not save or update Employee');
 	        });}
 		};
 		// get all the employees list
 		$scope.getAllEmployeesList = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getAllEmployeesByCompanyId/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.employeeJsonList = data;
 				$scope.getAllRoles();    
-				$scope.getAllCompanyLocations();  
+				$scope.getAllCompanyLocations();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not get All Employees List');
 	        });}
@@ -77,8 +82,10 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 		// delete employee  information
 		
 		$scope.deleteEmployee = function(employeeId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/deleteEmployee/'+ employeeId).success(function(data) {
 				$scope.getAllEmployeesList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not deleteEmployee');
 	        });

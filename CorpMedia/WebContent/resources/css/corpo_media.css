@@ -1538,7 +1538,11 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 .abc{ width:30%; height:60px; padding:10px 10px 10px 5%;border: 2px solid #9b9215; border-radius:2px 50px 2px 50px; 
 		background:#ede6bc; margin-top: 2px; font-size: 100%; line-height:1;}
 
+
 .abc:hover{box-shadow: 0px 0px 15px #45550f; -moz-box-shadow: 0px 0px 15px #45550f; }
+
+.def{width:50%; height:40px; padding:3px 5px; border: 1px solid #9b9215; border-radius:50px; 
+		background:#ede6bc; margin-top: 2px; font-size: 16px; }
 
 
 /*<tr><th></th> </tr><tr> */
@@ -1546,5 +1550,11 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 .width30{
 	width: 30%;
 }
+.tdh{background:#eee;  }
+.tdv{background:#e1fafd; }
+/* .hi{box-shadow:  0px 0px 10px #aaa; -moz-box-shadow: 0px 0px 10px #aaa;} */
+.l1{padding: 5px 10px; border:solid 1px #789; display:inline-block; border-radius:10px;}
+
+
 
 

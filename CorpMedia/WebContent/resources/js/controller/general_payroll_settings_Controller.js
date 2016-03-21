@@ -5,7 +5,7 @@ App.controller('general_payroll_settings_Controller', ['$scope','$location','$ro
 		$scope.left_state = "payroll";
 		$scope.payrollcyclesettings = {};
 		$scope.payrollperiodcalculation = {};
-		
+		$scope.isProcessing = true;
 		
 		
 		
@@ -13,9 +13,11 @@ App.controller('general_payroll_settings_Controller', ['$scope','$location','$ro
 		
 		//Save payrollcyclesettings
 		$scope.savePayrollCycleSettings = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 				$scope.payrollcyclesettings.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.PayrollCycleSettingsController+'/savePayrollCycleSettings', $scope.payrollcyclesettings).success(function(data) {
+				$scope.isProcessing = false;
 	        }).error(function() {
 	      	  console.error('Could not save or update payrollcyclesettings');
 	        });}
@@ -37,6 +39,7 @@ App.controller('general_payroll_settings_Controller', ['$scope','$location','$ro
 		
 		//get all Pay cycle list
 		$scope.getPayCycleList = function(){
+			
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.LookUpController+'/getPayCycleList').success(function(data) {
 			
 				$scope.payCycleJsonList = data;
@@ -78,11 +81,13 @@ App.controller('general_payroll_settings_Controller', ['$scope','$location','$ro
           
        // get the company payroll cycle
   		$scope.getPayrollCycleSettingsJson = function(){
+  			$scope.isProcessing = true;
   			if($rootScope.selectedCompanyObj){
   			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.PayrollCycleSettingsController+'/getPayrollCycleSettingsJson/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
   				$scope.payrollcyclesettings = data;
   				$scope.getPayCycleList();
   				$scope.payPeriodEndComboAction();
+  				$scope.isProcessing = false;
   			}).error(function() {
   	      	  console.error('Could not getPayrollCycleSettingsJson');
   	        });}

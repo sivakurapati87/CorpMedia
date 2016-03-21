@@ -4,4 +4,5 @@ App.controller('provident_fund_Controller', ['$scope','$location','$rootScope','
 	 var self = this;
 	 $scope.state="provident_fund";
 		$scope.left_state = "payroll";
+		$scope.isProcessing = false;
 }]);

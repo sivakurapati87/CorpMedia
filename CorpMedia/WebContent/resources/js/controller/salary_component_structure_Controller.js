@@ -14,7 +14,7 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		$scope.gratuitycontribution = {};
 		$scope.customallowance = {};
 		$scope.isCollapse = true;
-		
+		$scope.isProcessing = true;
 		
 		
 		//Save medicalreimbursement
@@ -235,9 +235,11 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		
 		// get custom allowance list
 		$scope.getAllCustomAllowanceList = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.CustomAllowanceController+'/getAllCustomAllowanceList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.customAllowanceList = data;
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllCustomAllowanceList');
 	        });}
@@ -256,8 +258,10 @@ App.controller('salary_component_structure_Controller', ['$scope','$location','$
 		
 		//delete  custom allowance
 		$scope.deleteCustomAllowance = function(customAllowanceId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.CustomAllowanceController+'/deleteCustomAllowance/'+ customAllowanceId).success(function(data) {
 				$scope.getAllCustomAllowanceList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not deleteCustomAllowance');
 	        });

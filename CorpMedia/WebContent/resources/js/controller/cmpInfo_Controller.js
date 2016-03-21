@@ -7,9 +7,11 @@ App.controller('cmpInfo_Controller', ['$scope','$http', '$rootScope','$statePara
 		$scope.$parent.state_info_name = $stateParams.legEntity;
         $scope.selectedCompany=null;
         $rootScope.companyInfo=[];
-      
+    	$scope.isProcessing = true;
+        
           //getting the lookup and company json object
           $scope.getCompanyInfoInit = function(){
+        		$scope.isProcessing = true;
         	  $http.get(constants.localhost_port+"/"+constants.web_context+'/'+constants.LookUpController+'/lookupInit').success(function(data){
 		    	   	  if(data){
 		    	   		$rootScope.lookup = data;
@@ -23,6 +25,7 @@ App.controller('cmpInfo_Controller', ['$scope','$http', '$rootScope','$statePara
   		    	   		$rootScope.selectedCompanyObj = result;
   		    	   		$rootScope.companyId = result.companyId;
   		    	   		$rootScope.companyName = result.companyName;
+  		    	   	$scope.isProcessing = false;
   		    	   	  }
   		    	     });}
     			}).error(function() {

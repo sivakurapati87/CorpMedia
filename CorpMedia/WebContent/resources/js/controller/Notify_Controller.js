@@ -4,6 +4,7 @@ App.controller('Notify_Controller', ['$scope','$location','$rootScope','$http', 
 	 var self = this;
 	 $scope.state="notify";
 		$scope.left_state = "leaves_&_holidays";
+		$scope.isProcessing = true;
 		
 		
 		//save Holiday
@@ -22,10 +23,12 @@ App.controller('Notify_Controller', ['$scope','$location','$rootScope','$http', 
 	          
 		// get all company leave type
 		$scope.getAllLeaveNotifiersList = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.NotifyController+'/getAllNotifiersList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.notifiesList = data;
 				$scope.getFinalEmployeeList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllCompanyLeaveTypeList');
 	        });}
@@ -35,8 +38,10 @@ App.controller('Notify_Controller', ['$scope','$location','$rootScope','$http', 
 		
 		//delete delete Holiday
 		$scope.deleteNotify = function(leavesNotifyId){
+			$scope.isProcessing = true;
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.NotifyController+'/deleteNotify/'+ leavesNotifyId).success(function(data) {
 				$scope.getAllLeaveNotifiersList();
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not delete Notify');
 	        });
@@ -53,10 +58,12 @@ App.controller('Notify_Controller', ['$scope','$location','$rootScope','$http', 
     
        // get all the Employees list
   		$scope.getAllEmployeesList = function(){
+  			$scope.isProcessing = true;
   			if($rootScope.selectedCompanyObj){
   			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeController+'/getAllEmployeesByCompanyId/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
   				$scope.EmployeeJsonList = data;
   				$scope.getAllLeaveNotifiersList();
+  				$scope.isProcessing = false;
   			}).error(function() {
   	      	  console.error('Could not get All Employees List');
   	        });}

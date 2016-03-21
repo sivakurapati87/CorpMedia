@@ -13,10 +13,10 @@
 	border-radius: 2px;
 	color: #333;
 	font-size: 18px;
-	padding:  3px 5px;
-	background: #fff;
+	padding:  2px 2px;
+	background: #789;
 }
-
+.ng-timepicker > table { background:#eee; width:100px;}
 .ng-timepicker > table > tbody > tr > td {
 	width: 20px;
 	text-align: center;

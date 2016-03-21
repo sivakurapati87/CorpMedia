@@ -15,12 +15,17 @@ App.controller('dpt_work_hrs_Controller', ['$scope','$location','$rootScope','$h
 	      	  console.error('Could not getAllDepartmentsList');
 	        });}
 		};
-		//init functions
-		$scope.getAllDepartmentsList();
 		
+		$scope.init = function(){
+			
+			$scope.getAllDepartmentsList();
+			$scope.deptWorkHours={};
+			 $scope.getAllDeptWorkHoursList();
+		};
 		
+		//init function
+		$scope.init();
 		
-		$scope.deptWorkHours={};
 		//to save Department work hours 
 		$scope.saveDeptWorkHours = function(){
 			
@@ -46,7 +51,7 @@ App.controller('dpt_work_hrs_Controller', ['$scope','$location','$rootScope','$h
 		  };
 		  
 		  // init
-		  $scope.getAllDeptWorkHoursList();
+		 
 		  
 		  // edit department WorkHours
 		  $scope.editDeptWorkHours = function(deptWHL ){

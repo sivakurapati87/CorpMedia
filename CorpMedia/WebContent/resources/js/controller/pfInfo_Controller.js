@@ -7,12 +7,15 @@ App.controller('pfInfo_Controller', ['$http','$scope','$rootScope','$stateParams
 		$scope.left_state = "company_settings";
 		$scope.state_info_name = $stateParams.legEntity;
 		$scope.$parent.state_info_name = $stateParams.legEntity;
+		$scope.isProcessing = true;
 		// pf info main object
 //		$scope.pfinfo={};
           
           $scope.getPFInfo = function() {
+        	  $scope.isProcessing = true;
               $http.get(constants.localhost_port+'/CorpMediaService/PFController/findAllCompanyPF/'+$rootScope.companyId).success(function(data){
             	  $scope.pfinfo = data;
+            	  $scope.isProcessing = false;
               });
           };
           

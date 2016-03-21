@@ -14,7 +14,7 @@
 
 				<table style="width: 100%" class="table mtable ">
 					<tr>
-						<th><h2>ADD EMPLOYEE</h2></th>
+						<th class="th"><h2>ADD EMPLOYEE</h2></th>
 					</tr>
 					<tr>
 						<td>
@@ -140,7 +140,7 @@
 
 											</td>
 										</tr>
-
+			
 									</table>
 								</div>
 							</form>
@@ -176,14 +176,21 @@
 								</tr>
 							</table></td>
 					</tr>
-
+					<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table></td>
 		</tr>
 
 
 	</table>
 </div>
+<div class="main1" ng-show="isProcessing">
+	<div class="div1">
 
+		<i class="fa fa-spinner fa-spin " style="font-size: 60px"></i>
+	</div>
+</div>
 
 
 
