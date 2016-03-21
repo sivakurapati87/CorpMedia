@@ -44,7 +44,12 @@ App.directive('employeeInfoTop', function() {
 	      templateUrl: 'employeeInfoTop'
 	    };
 	});
-
+App.directive('timeAndAttendanceModuleTop', function() {
+	  return {
+	      restrict: 'E',
+	      templateUrl: 'timeAndAttendanceModuleTop'
+	    };
+});
 
 App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 	
@@ -698,6 +703,30 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			'content' : {
 				templateUrl : 'applyLeave',
 				controller : "applyLeave_Controller"
+			},
+			'footer' : {
+				templateUrl : 'footer'
+			}
+		}
+	})
+	.state('leaveApproval', {
+		url : "/leaveApproval",
+		views : {
+			'content' : {
+				templateUrl : 'leaveApproval',
+				controller : "leaveApproval_Controller"
+			},
+			'footer' : {
+				templateUrl : 'footer'
+			}
+		}
+	})
+	.state('timesheetApproval', {
+		url : "/timesheetApproval",
+		views : {
+			'content' : {
+				templateUrl : 'timesheetApproval',
+				controller : "timesheetApproval_Controller"
 			},
 			'footer' : {
 				templateUrl : 'footer'

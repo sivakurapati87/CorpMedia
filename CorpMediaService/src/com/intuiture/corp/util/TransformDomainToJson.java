@@ -399,7 +399,8 @@ public class TransformDomainToJson {
 		return employeeSalaryInfoJson;
 	}
 
-	public static EmployeePersonalInfoJson getEmployeePersonalInfoJson(EmployeeAddressInfo employeeAddressInfo, EmployeePersonalInfo employeePersonalInfo) {
+	public static EmployeePersonalInfoJson getEmployeePersonalInfoJson(EmployeeAddressInfo employeeAddressInfo,
+			EmployeePersonalInfo employeePersonalInfo) {
 		EmployeePersonalInfoJson employeePersonalInfoJson = new EmployeePersonalInfoJson();
 		employeePersonalInfoJson.setCompanyId(employeePersonalInfo.getCompanyId());
 		employeePersonalInfoJson.setEmployeeId(employeePersonalInfo.getEmployeeId());
@@ -903,8 +904,24 @@ public class TransformDomainToJson {
 		employeeLeaveJson.setEmployeeId(employee_Leave.getEmployeeId());
 		employeeLeaveJson.setStatusId(employee_Leave.getStatusId());
 		employeeLeaveJson.setProjectId(employee_Leave.getProjectId());
+		employeeLeaveJson.setNote(employee_Leave.getNote());
+		employeeLeaveJson.setStrLeaveIds(MethodUtil.convertIntegerToString(employee_Leave.getLeaveId()));
+		employeeLeaveJson.setLeaveTypeId(employee_Leave.getLeaveTypeId());
+		employeeLeaveJson.setAppliedOn(MethodUtil.convertDateToString(employee_Leave.getAppliedOn()));
+		employeeLeaveJson.setComment(employee_Leave.getComment());
+		employeeLeaveJson.setApprovedOrRejectedById(employee_Leave.getApprovedOrRejectedById());
 		if (employee_Leave.getLeaveTime() != null) {
 			employeeLeaveJson.setLeaveTime(employee_Leave.getLeaveTime());
+		}
+		if (employee_Leave.getLeave() != null) {
+			employeeLeaveJson.setStrLeaveDate(MethodUtil.convertDateToString(employee_Leave.getLeave().getLeaveDate()));
+			employeeLeaveJson.setStrLeaveDates(employeeLeaveJson.getStrLeaveDate());
+		}
+		if (employee_Leave.getCompanyLeaveType() != null) {
+			employeeLeaveJson.setLeaveType(employee_Leave.getCompanyLeaveType().getLeaveTypeName());
+		}
+		if (employee_Leave.getEmployee() != null) {
+			employeeLeaveJson.setEmployeeName(employee_Leave.getEmployee().getDisplayName());
 		}
 		return employeeLeaveJson;
 	}

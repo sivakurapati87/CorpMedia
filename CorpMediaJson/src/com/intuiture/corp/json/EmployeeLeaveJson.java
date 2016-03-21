@@ -15,6 +15,26 @@ public class EmployeeLeaveJson {
 	private String note;
 	private Date leaveStartDate;
 	private Date leaveEndDate;
+	private String comment;
+	private Integer approvedOrRejectedById;
+
+	private String strLeaveIds;
+	private String strLeaveDate;
+	private String leaveType;
+	private String appliedOn;
+	private String employeeName;
+	// This is to concatenate list of leave dates
+	private String strLeaveDates;
+	private Boolean isShowBlock = false;
+	private String approveOrReject;
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -110,6 +130,78 @@ public class EmployeeLeaveJson {
 
 	public void setLeaveEndDate(Date leaveEndDate) {
 		this.leaveEndDate = leaveEndDate;
+	}
+
+	public String getStrLeaveIds() {
+		return strLeaveIds;
+	}
+
+	public void setStrLeaveIds(String strLeaveIds) {
+		this.strLeaveIds = strLeaveIds;
+	}
+
+	public String getStrLeaveDate() {
+		return strLeaveDate;
+	}
+
+	public void setStrLeaveDate(String strLeaveDate) {
+		this.strLeaveDate = strLeaveDate;
+	}
+
+	public String getLeaveType() {
+		return leaveType;
+	}
+
+	public void setLeaveType(String leaveType) {
+		this.leaveType = leaveType;
+	}
+
+	public String getAppliedOn() {
+		return appliedOn;
+	}
+
+	public void setAppliedOn(String appliedOn) {
+		this.appliedOn = appliedOn;
+	}
+
+	public String getStrLeaveDates() {
+		return strLeaveDates;
+	}
+
+	public void setStrLeaveDates(String strLeaveDates) {
+		this.strLeaveDates = strLeaveDates;
+	}
+
+	public String getEmployeeName() {
+		return employeeName;
+	}
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+
+	public Boolean getIsShowBlock() {
+		return isShowBlock;
+	}
+
+	public void setIsShowBlock(Boolean isShowBlock) {
+		this.isShowBlock = isShowBlock;
+	}
+
+	public String getApproveOrReject() {
+		return approveOrReject;
+	}
+
+	public void setApproveOrReject(String approveOrReject) {
+		this.approveOrReject = approveOrReject;
+	}
+
+	public Integer getApprovedOrRejectedById() {
+		return approvedOrRejectedById;
+	}
+
+	public void setApprovedOrRejectedById(Integer approvedOrRejectedById) {
+		this.approvedOrRejectedById = approvedOrRejectedById;
 	}
 
 }

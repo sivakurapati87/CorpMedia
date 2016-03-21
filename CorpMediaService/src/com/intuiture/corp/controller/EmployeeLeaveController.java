@@ -35,7 +35,7 @@ public class EmployeeLeaveController {
 				employeeLeaveJson.setLeaveEndDate(MethodUtil.convertDiffferentFormatString(employeeLeaveJson.getStrLeaveEndDate()));
 			}
 			return employeeLeaveService.saveOrUpdateEmployeeLeaves(employeeLeaveJson,
-					MethodUtil.findDatesList(employeeLeaveJson.getLeaveStartDate(), employeeLeaveJson.getLeaveEndDate()));
+					MethodUtil.getWeeklyDatesByAnyStartDate(employeeLeaveJson.getLeaveStartDate()));
 		} else {
 			return false;
 		}
@@ -48,4 +48,21 @@ public class EmployeeLeaveController {
 		return employeeLeaveService.getEmployeeLeavesOfTheWeek(employeeId, MethodUtil.getWeeklyDatesList(startingWeekDate));
 	}
 
+	@RequestMapping(value = "/getAllAppliedLeavesByCompany", method = RequestMethod.GET)
+	@ResponseBody
+	public List<EmployeeLeaveJson> getAllAppliedLeavesByCompany(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam("companyId") Integer companyId) {
+		return employeeLeaveService.getAllAppliedLeavesByCompany(companyId);
+	}
+
+	@RequestMapping(value = "/approveOrRejectAppliedLeaves", method = RequestMethod.POST)
+	@ResponseBody
+	public Boolean approveOrRejectAppliedLeaves(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody EmployeeLeaveJson employeeLeaveJson) {
+		if (employeeLeaveJson != null) {
+			return employeeLeaveService.approveOrRejectAppliedLeaves(employeeLeaveJson);
+		} else {
+			return false;
+		}
+	}
 }

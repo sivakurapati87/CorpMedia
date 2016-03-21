@@ -23,7 +23,7 @@
 		</layout>
 	</appender>
 
-	<category name="com.intuiture.storetodoorgrocer">
+	<category name="com.intuiture.corp">
 		<priority value="debug" />
 		<appender-ref ref="web" />
 	</category>

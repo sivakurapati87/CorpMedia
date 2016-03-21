@@ -106,6 +106,8 @@
 <script src="resources/js/controller/Salary_component_Controller.js"></script>
 <script src="resources/js/controller/employee_finance_Controller.js"></script>
 <script src="resources/js/controller/applyLeave_Controller.js"></script>
+<script src="resources/js/controller/leaveApproval_Controller.js"></script>
+<script src="resources/js/controller/timesheetApproval_Controller.js"></script>
 
 <script src="resources/js/service/constants.js"></script>
 <script>
@@ -129,7 +131,7 @@
 </head>
 <body>
 	<div ui-view="content"></div>
-	<div ui-view="footer"></div>
+<!-- 	<div ui-view="footer"></div> -->
 
        
 

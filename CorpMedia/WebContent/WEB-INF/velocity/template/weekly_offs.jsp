@@ -1,16 +1,3 @@
-<script>
-	$(document).ready(function() {
-		// $(replacedwith).hide();
-		$("#btn2").click(function() {
-			// this is the culprit if your program breaks.
-
-			$(replacable).fadeOut("slow");
-			$(table).fadeIn("slow");
-			// $(noexpense).remove();
-		});
-	});
-</script>
-
 
 <div class="container-fluid" style="width: 100%;">
 	<table>
@@ -23,7 +10,7 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top">
-
+	<time-and-attendance-module-top></time-and-attendance-module-top>
 				<table class="table" border="0" style="width: 100%;">
 					<tr>
 						<td>

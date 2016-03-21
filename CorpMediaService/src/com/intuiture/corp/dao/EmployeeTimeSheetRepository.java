@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -21,7 +22,11 @@ public class EmployeeTimeSheetRepository extends BaseRepository {
 		try {
 			Criteria criteria = getSession().createCriteria(Employee_TimeSheet.class);
 			criteria.createAlias("timesheet", "timesheet");
-			criteria.add(Restrictions.and(Restrictions.eq("employeeId", employeeId), Restrictions.and(Restrictions.ge("timesheet.timeSheetDate", weekDatesList.get(0)), Restrictions.le("timesheet.timeSheetDate", weekDatesList.get(6)))));
+			criteria.add(Restrictions.and(
+					Restrictions.eq("employeeId", employeeId),
+					Restrictions.and(Restrictions.ge("timesheet.timeSheetDate", weekDatesList.get(0)),
+							Restrictions.le("timesheet.timeSheetDate", weekDatesList.get(6)))));
+			criteria.addOrder(Order.asc("timesheet.timeSheetDate"));
 			employee_TimeSheetList = criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -35,7 +40,9 @@ public class EmployeeTimeSheetRepository extends BaseRepository {
 		List<TimeSheet> timeSheetList = null;
 		try {
 			Criteria criteria = getSession().createCriteria(TimeSheet.class);
-			criteria.add(Restrictions.and(Restrictions.ge("timeSheetDate", weekDatesList.get(0)), Restrictions.le("timeSheetDate", weekDatesList.get(6))));
+			criteria.add(Restrictions.and(Restrictions.ge("timeSheetDate", weekDatesList.get(0)),
+					Restrictions.le("timeSheetDate", weekDatesList.get(6))));
+			criteria.addOrder(Order.asc("timeSheetDate"));
 			timeSheetList = criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();

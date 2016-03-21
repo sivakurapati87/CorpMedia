@@ -34,8 +34,8 @@
 								 <span class="glyphicon glyphicon-menu-right dis_block float_right"></span>
 						</span>
 					</a></li>
-					<li ng-class="{'active':(left_state==='time_&_attendance')}"><a
-						class="anchor-sm" ui-sref="weekly_offs" href="#"> <span
+					<li ng-class="{'active':(left_state==='time_And_attendance')}"><a
+						class="anchor-sm" ui-sref="leaveApproval" href="#"> <span
 							class="subnav-item-title">Time & Attendance</span> <br> <span
 							class="subnav-item-description">Time and Attendance settings.
 								 <i class="glyphicon glyphicon-menu-right dis_block float_right" style=" margin-left:30px;  "></i>
