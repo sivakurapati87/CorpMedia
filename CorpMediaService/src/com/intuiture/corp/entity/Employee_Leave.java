@@ -1,6 +1,7 @@
 package com.intuiture.corp.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,12 +24,38 @@ public class Employee_Leave implements Serializable {
 	private String leaveTime;
 	private Integer leaveTypeId;
 	private String note;
+	private Date appliedOn;
+	private String comment;
+	private Integer approvedOrRejectedById;
 	@ManyToOne
 	@JoinColumn(name = "employeeId", updatable = false, insertable = false, referencedColumnName = "employeeId")
 	private Employee employee;
 	@ManyToOne
 	@JoinColumn(name = "leaveId", updatable = false, insertable = false, referencedColumnName = "leaveId")
 	private Leave leave;
+	@ManyToOne
+	@JoinColumn(name = "leaveTypeId", insertable = false, updatable = false)
+	private CompanyLeaveType companyLeaveType;
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public CompanyLeaveType getCompanyLeaveType() {
+		return companyLeaveType;
+	}
+
+	public void setCompanyLeaveType(CompanyLeaveType companyLeaveType) {
+		this.companyLeaveType = companyLeaveType;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public Integer getLeaveTypeId() {
 		return leaveTypeId;
@@ -100,6 +127,22 @@ public class Employee_Leave implements Serializable {
 
 	public void setLeaveTime(String leaveTime) {
 		this.leaveTime = leaveTime;
+	}
+
+	public Date getAppliedOn() {
+		return appliedOn;
+	}
+
+	public void setAppliedOn(Date appliedOn) {
+		this.appliedOn = appliedOn;
+	}
+
+	public Integer getApprovedOrRejectedById() {
+		return approvedOrRejectedById;
+	}
+
+	public void setApprovedOrRejectedById(Integer approvedOrRejectedById) {
+		this.approvedOrRejectedById = approvedOrRejectedById;
 	}
 
 }

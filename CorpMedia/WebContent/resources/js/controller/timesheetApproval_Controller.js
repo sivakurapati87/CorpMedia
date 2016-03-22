@@ -1,20 +1,16 @@
 'use strict';
 
-App.controller('applyLeave_Controller', ['$scope','$state','$rootScope','$http', function($scope,$state,$rootScope,$http) {
-	 	$scope.state="employee_finance";
-		$scope.left_state = "employee";
+App.controller('timesheetApproval_Controller', ['$scope','$state','$rootScope','$http', function($scope,$state,$rootScope,$http) {
+	 	$scope.state="timesheetApproval";
+	 	$scope.left_state = "time_And_attendance";
 		$scope.employeeLeaveJson = {};
 		
 		//Save Employee Leaves
 		$scope.saveOrUpdateEmployeeLeaves = function(){
 			if($rootScope.selectedCompanyObj){
 				$scope.employeeLeaveJson.employeeId = $rootScope.empObj.employeeId;
-				if($scope.employeeLeaveJson.strLeaveStartDate){
 				$scope.employeeLeaveJson.strLeaveStartDate = $scope.formatteddate($scope.employeeLeaveJson.strLeaveStartDate);
-				}
-				if($scope.employeeLeaveJson.strLeaveEndDate){
 				$scope.employeeLeaveJson.strLeaveEndDate = $scope.formatteddate($scope.employeeLeaveJson.strLeaveEndDate);
-				}
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeLeaveController+'/saveOrUpdateEmployeeLeaves', $scope.employeeLeaveJson).success(function(data) {
 				$state.go("employee_timesheets");
 			}).error(function() {
@@ -44,8 +40,8 @@ App.controller('applyLeave_Controller', ['$scope','$state','$rootScope','$http',
 		
 		
 		//init functions
-		$scope.getAllLeaveTypeListByCmpIdAndGenderId();
-		$scope.getEmployeeProjects();
+//		$scope.getAllLeaveTypeListByCmpIdAndGenderId();
+//		$scope.getEmployeeProjects();
 		
 		//This is to formate dates
 		 $scope.formatteddate = function(date){

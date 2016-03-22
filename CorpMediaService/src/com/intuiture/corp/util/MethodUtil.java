@@ -46,25 +46,39 @@ public class MethodUtil {
 	}
 
 	public static List<Date> getWeeklyDatesList(String startingWeekDate) {
-		List<Date> datesList = new ArrayList<Date>();
 		Date startingWeekDay = convertStringToDate(startingWeekDate);
+		return calculateWeeklyDatesList(startingWeekDay);
+	}
+
+	public static List<Date> calculateWeeklyDatesList(Date startDate) {
+		List<Date> datesList = new ArrayList<Date>();
 		Calendar cal = Calendar.getInstance();
 		for (int i = 0; i < 7; i++) {
-			cal.setTime(startingWeekDay);
+			cal.setTime(startDate);
 			cal.add(Calendar.DATE, i);
 			datesList.add(cal.getTime());
 		}
 		return datesList;
 	}
 
+	public static List<Date> getWeeklyDatesByAnyStartDate(Date date) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, -(cal.get(Calendar.DAY_OF_WEEK) - 1));
+		return calculateWeeklyDatesList(cal.getTime());
+	}
+
 	public static List<Date> findDatesList(Date startingDate, Date endingDate) {
 		List<Date> datesList = new ArrayList<Date>();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(startingDate);
-		int i = 1;
-		while (cal.getTime().compareTo(endingDate) <= 0) {
-			datesList.add(cal.getTime());
-			cal.add(Calendar.DATE, i);
+		datesList.add(cal.getTime());
+		if (endingDate != null) {
+			int i = 1;
+			while (cal.getTime().compareTo(endingDate) < 0) {
+				cal.add(Calendar.DATE, i);
+				datesList.add(cal.getTime());
+			}
 		}
 		return datesList;
 	}
@@ -184,6 +198,20 @@ public class MethodUtil {
 			return strValue;
 		}
 		return null;
+	}
+
+	public static List<Integer> getListByString(String strvalue) {
+		List<Integer> list = null;
+		if (strvalue != null) {
+			String[] strArray = strvalue.split(",");
+			if (strArray != null && strArray.length > 0) {
+				list = new ArrayList<Integer>();
+				for (String str : strArray) {
+					list.add(Integer.parseInt(str));
+				}
+			}
+		}
+		return list;
 	}
 
 	public static String getInputStream(String fileName, String filePath) {

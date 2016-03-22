@@ -11,6 +11,7 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top">
+			<time-and-attendance-module-top></time-and-attendance-module-top>
 				<form ng-submit="saveOrUpdateEmployeeLeaves()">
 					<table class="table" border="1"
 						style="width: 100%; background-color: white">
@@ -66,7 +67,7 @@
 												</span>
 											</div></td>
 										<td><div class="input-group" style="width: 60%">
-												<input type="text" class="form-control"
+												<input type="text" class="form-control" required
 													ng-model="employeeLeaveJson.strLeaveEndDate"
 													datepicker-popup="dd-MMM-yyyy" is-open="toOpened"
 													ng-click="toOpened=true"> <span

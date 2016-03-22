@@ -311,4 +311,19 @@ public class TemplateController {// Serves Templates.
 	public String applyLeave() {
 		return "template/applyLeave";
 	}
+
+	@RequestMapping(value = "/timeAndAttendanceModuleTop")
+	public String timeAndAttendanceModuleTop() {
+		return "template/timeAndAttendanceModuleTop";
+	}
+
+	@RequestMapping(value = "/leaveApproval")
+	public String leaveApproval() {
+		return "template/leaveApproval";
+	}
+
+	@RequestMapping(value = "/timesheetApproval")
+	public String timesheetApproval() {
+		return "template/timesheetApproval";
+	}
 }
