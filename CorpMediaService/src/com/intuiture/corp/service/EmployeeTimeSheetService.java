@@ -53,7 +53,9 @@ public class EmployeeTimeSheetService {
 			if (employeeTimeSheetJsonList != null && employeeTimeSheetJsonList.size() > 0) {
 				List<Integer> timesheetIdsList = new ArrayList<Integer>();
 				for (EmployeeTimeSheetJson json : employeeTimeSheetJsonList) {
-					timesheetIdsList.add(json.getTimesheetId());
+					if (json.getTimesheetId() != null) {
+						timesheetIdsList.add(json.getTimesheetId());
+					}
 				}
 				List<Employee_TimeSheet> employee_TimeSheetList = employeeTimeSheetRepository.getEmployee_TimeSheetByEmpIdAndTimeSheetIds(
 						employeeTimeSheetJsonList.get(0).getEmployeeId(), timesheetIdsList);
@@ -78,29 +80,7 @@ public class EmployeeTimeSheetService {
 	public List<EmployeeTimeSheetJson> getEmployeeTimesheetOfTheWeek(Integer employeeId, List<Date> weekDatesList) {
 		List<EmployeeTimeSheetJson> employeeTimeSheetJsonList = null;
 		try {
-			List<Employee_TimeSheet> employee_TimeSheetList = employeeTimeSheetRepository.getEmployeeTimesheetOfTheWeek(employeeId, weekDatesList);
-
-			if (employee_TimeSheetList == null || !(employee_TimeSheetList.size() > 0)) {
-				List<TimeSheet> timeSheetList = employeeTimeSheetRepository.getAllTimeSheets(weekDatesList);
-				if (timeSheetList == null || !(timeSheetList.size() > 0)) {
-					timeSheetList = new ArrayList<TimeSheet>();
-					for (Date date : weekDatesList) {
-						TimeSheet timeSheet = new TimeSheet();
-						timeSheet.setIsDeleted(Boolean.FALSE);
-						timeSheet.setTimeSheetDate(date);
-						commonRepository.persist(timeSheet);
-						timeSheetList.add(timeSheet);
-					}
-				}
-				employee_TimeSheetList = new ArrayList<Employee_TimeSheet>();
-				for (TimeSheet timeSheet : timeSheetList) {
-					Employee_TimeSheet employee_TimeSheet = new Employee_TimeSheet();
-					employee_TimeSheet.setEmployeeId(employeeId);
-					employee_TimeSheet.setTimesheetId(timeSheet.getTimesheetId());
-					commonRepository.persist(employee_TimeSheet);
-					employee_TimeSheetList.add(employee_TimeSheet);
-				}
-			}
+			List<Employee_TimeSheet> employee_TimeSheetList = getEmployeeTimesheetByweekListAndEmployeeId(employeeId, weekDatesList);
 			if (employee_TimeSheetList != null && employee_TimeSheetList.size() > 0) {
 				employeeTimeSheetJsonList = new ArrayList<EmployeeTimeSheetJson>();
 				for (Employee_TimeSheet employee_TimeSheet : employee_TimeSheetList) {
@@ -126,6 +106,33 @@ public class EmployeeTimeSheetService {
 		return employeeTimeSheetJsonList;
 	}
 
+	public List<Employee_TimeSheet> getEmployeeTimesheetByweekListAndEmployeeId(Integer employeeId, List<Date> weekDatesList) {
+		List<Employee_TimeSheet> employee_TimeSheetList = employeeTimeSheetRepository.getEmployeeTimesheetOfTheWeek(employeeId, weekDatesList);
+
+		if (employee_TimeSheetList == null || !(employee_TimeSheetList.size() > 0)) {
+			List<TimeSheet> timeSheetList = employeeTimeSheetRepository.getAllTimeSheets(weekDatesList);
+			if (timeSheetList == null || !(timeSheetList.size() > 0)) {
+				timeSheetList = new ArrayList<TimeSheet>();
+				for (Date date : weekDatesList) {
+					TimeSheet timeSheet = new TimeSheet();
+					timeSheet.setIsDeleted(Boolean.FALSE);
+					timeSheet.setTimeSheetDate(date);
+					commonRepository.persist(timeSheet);
+					timeSheetList.add(timeSheet);
+				}
+			}
+			employee_TimeSheetList = new ArrayList<Employee_TimeSheet>();
+			for (TimeSheet timeSheet : timeSheetList) {
+				Employee_TimeSheet employee_TimeSheet = new Employee_TimeSheet();
+				employee_TimeSheet.setEmployeeId(employeeId);
+				employee_TimeSheet.setTimesheetId(timeSheet.getTimesheetId());
+				commonRepository.persist(employee_TimeSheet);
+				employee_TimeSheetList.add(employee_TimeSheet);
+			}
+		}
+		return employee_TimeSheetList;
+	}
+
 	public Map<Integer, List<EmployeeTimeSheetJson>> getAllAppliedTimesheetList(Integer companyId) {
 		Map<Integer, List<EmployeeTimeSheetJson>> empTimesheetMap = null;
 		try {
@@ -142,6 +149,21 @@ public class EmployeeTimeSheetService {
 						empTimesheetMap.put(json.getEmployeeId(), employeeTimeSheetJsonList);
 					}
 
+				}
+				// This section is to find out the sum of the weekly spended
+				// hours
+				for (Integer key : empTimesheetMap.keySet()) {
+					List<String> timestampsList = new ArrayList<String>();
+					for (EmployeeTimeSheetJson json : empTimesheetMap.get(key)) {
+						if (json.getSpendedTime() != null) {
+							timestampsList.add(json.getSpendedTime());
+						}
+					}
+					EmployeeTimeSheetJson employeeTimeSheetJson = new EmployeeTimeSheetJson();
+					String[] s = new String[timestampsList.size()];
+					employeeTimeSheetJson.setSpendedTime(MethodUtil.sumTimes(timestampsList.toArray(s)));
+					employeeTimeSheetJson.setStrTimeSheetDate("Total");
+					empTimesheetMap.get(key).add(employeeTimeSheetJson);
 				}
 			}
 		} catch (Exception e) {

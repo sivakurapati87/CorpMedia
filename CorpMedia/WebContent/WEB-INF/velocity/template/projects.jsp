@@ -156,7 +156,7 @@
 														datepicker-popup="dd-MMM-yyyy" is-open="Opened"
 														ng-click="Opened=true"> <span
 														class="input-group-btn">
-														<button type="button" class="btn btn-default"
+														<button type="button" class="btn btn-info"
 															ng-click="Opened=true;$event.stopPropagation();">
 															<i class="glyphicon glyphicon-calendar"></i>
 														</button>

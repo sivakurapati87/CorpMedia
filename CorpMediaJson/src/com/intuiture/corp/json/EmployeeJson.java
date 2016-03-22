@@ -16,6 +16,8 @@ public class EmployeeJson {
 	private Date dateOfJoining;
 	private String role;
 	private Integer genderId;
+	private String gender;
+	private String designation;
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -119,6 +121,22 @@ public class EmployeeJson {
 
 	public void setGenderId(Integer genderId) {
 		this.genderId = genderId;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
 	}
 
 }

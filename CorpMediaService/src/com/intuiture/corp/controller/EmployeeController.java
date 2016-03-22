@@ -39,7 +39,8 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/getAllEmployeeFamilyList/{employeeId}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<EmployeeFamilyInfoJson> getAllEmployeeFamilyList(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+	public List<EmployeeFamilyInfoJson> getAllEmployeeFamilyList(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable Integer employeeId) {
 		return employeeService.getAllEmployeeFamilyList(employeeId);
 	}
 
@@ -55,27 +56,37 @@ public class EmployeeController {
 		return employeeService.getEmployeeSalaryInfo(employeeId);
 	}
 
+	@RequestMapping(value = "/getEmployeePayroll/{employeeId}", method = RequestMethod.GET)
+	@ResponseBody
+	public EmployeeSalaryInfoJson getEmployeePayroll(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+		return employeeService.getEmployeePayroll(employeeId);
+	}
+
 	@RequestMapping(value = "/getEmployeeProfessionalInfo/{employeeId}", method = RequestMethod.GET)
 	@ResponseBody
-	public EmployeeProfessionalInfoJson getEmployeeProfessionalInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+	public EmployeeProfessionalInfoJson getEmployeeProfessionalInfo(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable Integer employeeId) {
 		return employeeService.getEmployeeProfessionalInfo(employeeId);
 	}
 
 	@RequestMapping(value = "/getEmployeeExperienceInfo/{employeeId}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<EmployeeExperienceInfoJson> getEmployeeExperienceInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+	public List<EmployeeExperienceInfoJson> getEmployeeExperienceInfo(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable Integer employeeId) {
 		return employeeService.getEmployeeExperienceInfo(employeeId);
 	}
 
 	@RequestMapping(value = "/getEmployeeEducationalInfo/{employeeId}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<EmployeeEducationalInfoJson> getEmployeeEducationalInfo(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+	public List<EmployeeEducationalInfoJson> getEmployeeEducationalInfo(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable Integer employeeId) {
 		return employeeService.getEmployeeEducationalInfo(employeeId);
 	}
 
 	@RequestMapping(value = "/getEmployeeOneTimeComponent/{employeeId}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<EmployeeOneTimeComponentJson> getEmployeeOneTimeComponent(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeId) {
+	public List<EmployeeOneTimeComponentJson> getEmployeeOneTimeComponent(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable Integer employeeId) {
 		return employeeService.getEmployeeOneTimeComponent(employeeId);
 	}
 
@@ -87,13 +98,15 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/saveOrUpdateEmployeeProfessionalInfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveOrUpdateEmployeeProfessionalInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeProfessionalInfoJson employeeProfessionalInfoJson) {
+	public Boolean saveOrUpdateEmployeeProfessionalInfo(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody EmployeeProfessionalInfoJson employeeProfessionalInfoJson) {
 		return employeeService.saveOrUpdateEmployeeProfessionalInfo(employeeProfessionalInfoJson);
 	}
 
 	@RequestMapping(value = "/saveOrUpdateEmployeeSalaryInfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveOrUpdateEmployeeSalaryInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeSalaryInfoJson employeeSalaryInfoJson) {
+	public Boolean saveOrUpdateEmployeeSalaryInfo(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody EmployeeSalaryInfoJson employeeSalaryInfoJson) {
 		if (employeeSalaryInfoJson != null && employeeSalaryInfoJson.getStrEffectiveFrom() != null) {
 			employeeSalaryInfoJson.setEffectiveFrom(MethodUtil.convertDiffferentFormatString(employeeSalaryInfoJson.getStrEffectiveFrom()));
 		}
@@ -102,7 +115,8 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/saveOrUpdateEmployeeOneTimeComponent", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveOrUpdateEmployeeOneTimeComponent(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeOneTimeComponentJson employeeOneTimeComponentJson) {
+	public Boolean saveOrUpdateEmployeeOneTimeComponent(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody EmployeeOneTimeComponentJson employeeOneTimeComponentJson) {
 		if (employeeOneTimeComponentJson != null && employeeOneTimeComponentJson.getStrMonthPayable() != null) {
 			employeeOneTimeComponentJson.setMonthPayable(MethodUtil.convertDiffferentFormatString(employeeOneTimeComponentJson.getStrMonthPayable()));
 		}
@@ -111,8 +125,10 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/saveOrUpdateEmployeeExperienceInfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveOrUpdateEmployeeExperienceInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeExperienceInfoJson employeeExperienceInfoJson) {
-		if (employeeExperienceInfoJson != null && employeeExperienceInfoJson.getStrFromDate() != null && employeeExperienceInfoJson.getStrToDate() != null) {
+	public Boolean saveOrUpdateEmployeeExperienceInfo(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody EmployeeExperienceInfoJson employeeExperienceInfoJson) {
+		if (employeeExperienceInfoJson != null && employeeExperienceInfoJson.getStrFromDate() != null
+				&& employeeExperienceInfoJson.getStrToDate() != null) {
 			employeeExperienceInfoJson.setFromDate(MethodUtil.convertDiffferentFormatString(employeeExperienceInfoJson.getStrFromDate()));
 			employeeExperienceInfoJson.setToDate(MethodUtil.convertDiffferentFormatString(employeeExperienceInfoJson.getStrToDate()));
 		}
@@ -121,8 +137,10 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/saveOrUpdateEmployeeEducationalInfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveOrUpdateEmployeeEducationalInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeEducationalInfoJson employeeEducationalInfoJson) {
-		if (employeeEducationalInfoJson != null && employeeEducationalInfoJson.getStrFromDate() != null && employeeEducationalInfoJson.getStrToDate() != null) {
+	public Boolean saveOrUpdateEmployeeEducationalInfo(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody EmployeeEducationalInfoJson employeeEducationalInfoJson) {
+		if (employeeEducationalInfoJson != null && employeeEducationalInfoJson.getStrFromDate() != null
+				&& employeeEducationalInfoJson.getStrToDate() != null) {
 			employeeEducationalInfoJson.setFromDate(MethodUtil.convertDiffferentFormatString(employeeEducationalInfoJson.getStrFromDate()));
 			employeeEducationalInfoJson.setToDate(MethodUtil.convertDiffferentFormatString(employeeEducationalInfoJson.getStrToDate()));
 		}
@@ -140,7 +158,8 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/saveOrUpdateEmployeePersonalInfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveOrUpdateEmployeePersonalInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeePersonalInfoJson employeePersonalInfoJson) {
+	public Boolean saveOrUpdateEmployeePersonalInfo(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody EmployeePersonalInfoJson employeePersonalInfoJson) {
 		if (employeePersonalInfoJson != null && employeePersonalInfoJson.getStrDateOfBirth() != null) {
 			employeePersonalInfoJson.setDateOfBirth(MethodUtil.convertDiffferentFormatString(employeePersonalInfoJson.getStrDateOfBirth()));
 		}
@@ -149,13 +168,15 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/saveOrUpdateEmployeeFamilyInfo", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveOrUpdateEmployeeFamilyInfo(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeFamilyInfoJson employeeFamilyInfoJson) {
+	public Boolean saveOrUpdateEmployeeFamilyInfo(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody EmployeeFamilyInfoJson employeeFamilyInfoJson) {
 		return employeeService.saveOrUpdateEmployeeFamilyInfo(employeeFamilyInfoJson);
 	}
 
 	@RequestMapping(value = "/saveOrUpdateEmployeeProject", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean saveOrUpdateEmployeeProject(HttpServletRequest request, HttpServletResponse response, @RequestBody EmployeeProjectJson employeeProjectJson) {
+	public Boolean saveOrUpdateEmployeeProject(HttpServletRequest request, HttpServletResponse response,
+			@RequestBody EmployeeProjectJson employeeProjectJson) {
 		return employeeService.saveOrUpdateEmployeeProject(employeeProjectJson);
 	}
 
@@ -179,7 +200,8 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/deleteEmployeeOneTimeComponent/{employeeOneTimeComponentId}", method = RequestMethod.GET)
 	@ResponseBody
-	public Boolean deleteEmployeeOneTimeComponent(HttpServletRequest request, HttpServletResponse response, @PathVariable Integer employeeOneTimeComponentId) {
+	public Boolean deleteEmployeeOneTimeComponent(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable Integer employeeOneTimeComponentId) {
 		return employeeService.deleteEmployeeOneTimeComponent(employeeOneTimeComponentId);
 	}
 

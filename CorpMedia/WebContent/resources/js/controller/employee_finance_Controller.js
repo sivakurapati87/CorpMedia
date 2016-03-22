@@ -6,6 +6,7 @@ App.controller('employee_finance_Controller', ['$scope','$state','$rootScope','$
 		$scope.employeeSalaryInfoJson = {};	
 		$scope.employeeOneTimeComponentJson = {};
 		$scope.isProcessing = false;
+		$scope.isComponentRequired = true;
 		
 		//This function is to save employee salary info
 		$scope.saveOrUpdateEmployeeSalaryInfo = function(){
@@ -71,16 +72,6 @@ App.controller('employee_finance_Controller', ['$scope','$state','$rootScope','$
 			};
 			
 			
-			//This is to formate dates
-			 $scope.formatteddate = function(inputDate){
-		      	  var inDate = new Date(inputDate);
-		      	 var month = '' + (inDate.getMonth() + 1);
-		           var day = '' + inDate.getDate();
-		          var  year = inDate.getFullYear();
-		      	  if (month.length < 2) month = '0' + month;
-		      	    if (day.length < 2) day = '0' + day;
-		      	    return [year, month, day].join('-');
-		        };
 		        
 		    	// get the employee Salary Info
 				$scope.getEmployeeOneTimeComponent = function(){

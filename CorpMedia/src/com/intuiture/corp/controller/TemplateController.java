@@ -327,8 +327,15 @@ public class TemplateController {// Serves Templates.
 		return "template/timesheetApproval";
 	}
 
+
 	@RequestMapping(value = "/company_designation")
 	public String company_Designation_Page() {
 		return "template/company_designation";
 	}
+
+	@RequestMapping(value = "/employeePaySlip")
+	public String employeePaySlip() {
+		return "template/employeePaySlip";
+	}
+
 }

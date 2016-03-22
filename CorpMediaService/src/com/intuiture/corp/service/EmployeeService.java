@@ -30,6 +30,8 @@ import com.intuiture.corp.json.EmployeeProfessionalInfoJson;
 import com.intuiture.corp.json.EmployeeProjectJson;
 import com.intuiture.corp.json.EmployeeSalaryInfoJson;
 import com.intuiture.corp.json.SalaryComponentJson;
+import com.intuiture.corp.util.ConvertNumberToWord;
+import com.intuiture.corp.util.MethodUtil;
 import com.intuiture.corp.util.TransformDomainToJson;
 import com.intuiture.corp.util.TransformJsonToDomain;
 
@@ -84,7 +86,8 @@ public class EmployeeService {
 	public List<EmployeeFamilyInfoJson> getAllEmployeeFamilyList(Integer employeeId) {
 		List<EmployeeFamilyInfoJson> employeeFamilyInfoJsonList = null;
 		try {
-			List<EmployeeFamilyInfo> employeesFamilyInfoList = (List<EmployeeFamilyInfo>) commonRepository.findByEmployeeId(employeeId, EmployeeFamilyInfo.class);
+			List<EmployeeFamilyInfo> employeesFamilyInfoList = (List<EmployeeFamilyInfo>) commonRepository.findByEmployeeId(employeeId,
+					EmployeeFamilyInfo.class);
 			if (employeesFamilyInfoList != null && employeesFamilyInfoList.size() > 0) {
 				employeeFamilyInfoJsonList = new ArrayList<EmployeeFamilyInfoJson>();
 				for (EmployeeFamilyInfo empFamilyInfo : employeesFamilyInfoList) {
@@ -104,7 +107,8 @@ public class EmployeeService {
 			if (employeePersonalInfoJson != null) {
 				// This is to insert the data to Personal Info Table
 				if (employeePersonalInfoJson.getEmployeePersonalInfoId() != null) {
-					employeePersonalInfo = (EmployeePersonalInfo) commonRepository.findById(employeePersonalInfoJson.getEmployeePersonalInfoId(), EmployeePersonalInfo.class);
+					employeePersonalInfo = (EmployeePersonalInfo) commonRepository.findById(employeePersonalInfoJson.getEmployeePersonalInfoId(),
+							EmployeePersonalInfo.class);
 				} else {
 					employeePersonalInfo = new EmployeePersonalInfo();
 				}
@@ -116,7 +120,8 @@ public class EmployeeService {
 				}
 				// This is to insert the data to Address Info Table
 				if (employeePersonalInfoJson.getEmployeeAddressInfoId() != null) {
-					employeeAddressInfo = (EmployeeAddressInfo) commonRepository.findById(employeePersonalInfoJson.getEmployeeAddressInfoId(), EmployeeAddressInfo.class);
+					employeeAddressInfo = (EmployeeAddressInfo) commonRepository.findById(employeePersonalInfoJson.getEmployeeAddressInfoId(),
+							EmployeeAddressInfo.class);
 				} else {
 					employeeAddressInfo = new EmployeeAddressInfo();
 				}
@@ -139,7 +144,8 @@ public class EmployeeService {
 			if (employeeFamilyInfoJson != null) {
 				// This is to insert the data to family Info Table
 				if (employeeFamilyInfoJson.getEmployeeFamilyInfoId() != null) {
-					employeeFamilyInfo = (EmployeeFamilyInfo) commonRepository.findById(employeeFamilyInfoJson.getEmployeeFamilyInfoId(), EmployeeFamilyInfo.class);
+					employeeFamilyInfo = (EmployeeFamilyInfo) commonRepository.findById(employeeFamilyInfoJson.getEmployeeFamilyInfoId(),
+							EmployeeFamilyInfo.class);
 				} else {
 					employeeFamilyInfo = new EmployeeFamilyInfo();
 				}
@@ -183,11 +189,14 @@ public class EmployeeService {
 	public EmployeePersonalInfoJson getEmployeePersonalInfo(Integer employeeId) {
 		EmployeePersonalInfoJson employeePersonalInfoJson = null;
 		try {
-			List<EmployeePersonalInfo> employeePersonalInfoList = (List<EmployeePersonalInfo>) commonRepository.findByEmployeeId(employeeId, EmployeePersonalInfo.class);
-			List<EmployeeAddressInfo> employeeAddressInfoList = (List<EmployeeAddressInfo>) commonRepository.findByEmployeeId(employeeId, EmployeeAddressInfo.class);
+			List<EmployeePersonalInfo> employeePersonalInfoList = (List<EmployeePersonalInfo>) commonRepository.findByEmployeeId(employeeId,
+					EmployeePersonalInfo.class);
+			List<EmployeeAddressInfo> employeeAddressInfoList = (List<EmployeeAddressInfo>) commonRepository.findByEmployeeId(employeeId,
+					EmployeeAddressInfo.class);
 			if (employeePersonalInfoList != null && employeePersonalInfoList.size() > 0) {
 				if (employeeAddressInfoList != null && employeeAddressInfoList.size() > 0) {
-					employeePersonalInfoJson = TransformDomainToJson.getEmployeePersonalInfoJson(employeeAddressInfoList.get(0), employeePersonalInfoList.get(0));
+					employeePersonalInfoJson = TransformDomainToJson.getEmployeePersonalInfoJson(employeeAddressInfoList.get(0),
+							employeePersonalInfoList.get(0));
 				}
 			}
 		} catch (Exception e) {
@@ -196,14 +205,15 @@ public class EmployeeService {
 		return employeePersonalInfoJson;
 	}
 
-	@SuppressWarnings("unchecked")
 	public EmployeeSalaryInfoJson getEmployeeSalaryInfo(Integer employeeId) {
 		EmployeeSalaryInfoJson employeeSalaryInfoJson = null;
 		try {
-			List<EmployeeSalaryInfo> employeeSalaryInfoList = (List<EmployeeSalaryInfo>) commonRepository.findByEmployeeId(employeeId, EmployeeSalaryInfo.class);
-			if (employeeSalaryInfoList != null && employeeSalaryInfoList.size() > 0) {
-				employeeSalaryInfoJson = TransformDomainToJson.getEmployeeSalaryInfoJson(employeeSalaryInfoList.get(0));
-				SalaryComponent salaryComponent = (SalaryComponent) commonRepository.getRecordByCompanyId(employeeSalaryInfoJson.getCompanyId(), SalaryComponent.class);
+			EmployeeSalaryInfo employeeSalaryInfo = (EmployeeSalaryInfo) commonRepository
+					.getARecordByEmployeeId(employeeId, EmployeeSalaryInfo.class);
+			if (employeeSalaryInfo != null) {
+				employeeSalaryInfoJson = TransformDomainToJson.getEmployeeSalaryInfoJson(employeeSalaryInfo);
+				SalaryComponent salaryComponent = (SalaryComponent) commonRepository.getRecordByCompanyId(employeeSalaryInfoJson.getCompanyId(),
+						SalaryComponent.class);
 				SalaryComponentJson salaryComponentJson = TransformDomainToJson.getSalaryComponentJson(salaryComponent);
 				if (salaryComponent.getBasic() != null) {
 					salaryComponentJson.setBasic(salaryComponent.getBasic() * employeeSalaryInfoJson.getAnnualSalary());
@@ -214,10 +224,58 @@ public class EmployeeService {
 				if (salaryComponent.getPf() != null) {
 					salaryComponentJson.setPf(salaryComponent.getPf() * employeeSalaryInfoJson.getAnnualSalary());
 				}
-				Double totalAllowances = salaryComponentJson.getBasic() + salaryComponentJson.getHra() + salaryComponentJson.getPf() + salaryComponentJson.getMedicalReimbursement() + salaryComponentJson.getTransportAllowance()
-						+ salaryComponentJson.getProfessionalAllowance() + salaryComponentJson.getTransportAllowance() + salaryComponentJson.getFoodCoupons() + salaryComponentJson.getCityCompensatoryAllowance() + salaryComponentJson.getDailyAllowance()
-						+ salaryComponentJson.getGratuityContribution();
+				Double totalAllowances = salaryComponentJson.getBasic() + salaryComponentJson.getHra() + salaryComponentJson.getPf()
+						+ salaryComponentJson.getMedicalReimbursement() + salaryComponentJson.getTransportAllowance()
+						+ salaryComponentJson.getProfessionalAllowance() + salaryComponentJson.getTransportAllowance()
+						+ salaryComponentJson.getFoodCoupons() + salaryComponentJson.getCityCompensatoryAllowance()
+						+ salaryComponentJson.getDailyAllowance() + salaryComponentJson.getGratuityContribution();
 				salaryComponentJson.setSpecialAllowance(employeeSalaryInfoJson.getAnnualSalary() - totalAllowances);
+				employeeSalaryInfoJson.setSalaryComponentJson(salaryComponentJson);
+				employeeSalaryInfoJson.setEmployeeOneTimeComponentJsonList(getEmployeeOneTimeComponent(employeeId));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return employeeSalaryInfoJson;
+	}
+
+	public EmployeeSalaryInfoJson getEmployeePayroll(Integer employeeId) {
+		EmployeeSalaryInfoJson employeeSalaryInfoJson = null;
+		try {
+			EmployeeSalaryInfo employeeSalaryInfo = (EmployeeSalaryInfo) commonRepository
+					.getARecordByEmployeeId(employeeId, EmployeeSalaryInfo.class);
+			if (employeeSalaryInfo != null) {
+				employeeSalaryInfoJson = TransformDomainToJson.getEmployeeSalaryInfoJson(employeeSalaryInfo);
+				SalaryComponent salaryComponent = (SalaryComponent) commonRepository.getRecordByCompanyId(employeeSalaryInfoJson.getCompanyId(),
+						SalaryComponent.class);
+				SalaryComponentJson salaryComponentJson = TransformDomainToJson.getSalaryComponentJson(salaryComponent);
+				if (salaryComponent.getBasic() != null) {
+					salaryComponentJson.setBasic(salaryComponent.getBasic() * employeeSalaryInfoJson.getAnnualSalary());
+					if (salaryComponent.getHra() != null) {
+						salaryComponentJson.setHra(salaryComponent.getHra() * salaryComponentJson.getBasic());
+					}
+				}
+				if (salaryComponent.getPf() != null) {
+					salaryComponentJson.setPf(salaryComponent.getPf() * employeeSalaryInfoJson.getAnnualSalary());
+				}
+
+				Double totalEarningsWithOutSpecialAll = salaryComponentJson.getBasic() + salaryComponentJson.getHra()
+						+ salaryComponentJson.getMedicalReimbursement() + salaryComponentJson.getTransportAllowance();
+
+				Double totalDeductions = salaryComponentJson.getPf() + salaryComponentJson.getProfessionalAllowance();
+
+				salaryComponentJson
+						.setSpecialAllowance((employeeSalaryInfoJson.getAnnualSalary() - totalDeductions) - totalEarningsWithOutSpecialAll);
+
+				Double totalEarnings = totalEarningsWithOutSpecialAll + salaryComponentJson.getSpecialAllowance();
+
+				salaryComponentJson.setGrossEarningInMoney(MethodUtil.convertLongToMoney(Math.round(totalEarnings / 12)));
+				salaryComponentJson.setGrossDeductionsInMoney(MethodUtil.convertLongToMoney(Math.round(totalDeductions / 12)));
+				salaryComponentJson
+						.setNetAmountInMoney(MethodUtil.convertLongToMoney(((Math.round(totalEarnings) - Math.round(totalDeductions)) / 12)));
+				salaryComponentJson.setNetPayInWords(ConvertNumberToWord.convertNumberToWords((Math.round(totalEarnings) - Math
+						.round(totalDeductions)) / 12));
 				employeeSalaryInfoJson.setSalaryComponentJson(salaryComponentJson);
 				employeeSalaryInfoJson.setEmployeeOneTimeComponentJsonList(getEmployeeOneTimeComponent(employeeId));
 			}
@@ -234,7 +292,8 @@ public class EmployeeService {
 			if (employeeProfessionalInfoJson != null) {
 				// This is to insert the data to professional Info Table
 				if (employeeProfessionalInfoJson.getEmployeeProfessionalInfoId() != null) {
-					employeeProfessionalInfo = (EmployeeProfessionalInfo) commonRepository.findById(employeeProfessionalInfoJson.getEmployeeProfessionalInfoId(), EmployeeProfessionalInfo.class);
+					employeeProfessionalInfo = (EmployeeProfessionalInfo) commonRepository.findById(
+							employeeProfessionalInfoJson.getEmployeeProfessionalInfoId(), EmployeeProfessionalInfo.class);
 				} else {
 					employeeProfessionalInfo = new EmployeeProfessionalInfo();
 				}
@@ -257,7 +316,8 @@ public class EmployeeService {
 			if (employeeExperienceInfoJson != null) {
 				// This is to insert the data to professional Info Table
 				if (employeeExperienceInfoJson.getEmployeeExperienceInfoId() != null) {
-					employeeExperienceInfo = (EmployeeExperienceInfo) commonRepository.findById(employeeExperienceInfoJson.getEmployeeExperienceInfoId(), EmployeeExperienceInfo.class);
+					employeeExperienceInfo = (EmployeeExperienceInfo) commonRepository.findById(
+							employeeExperienceInfoJson.getEmployeeExperienceInfoId(), EmployeeExperienceInfo.class);
 				} else {
 					employeeExperienceInfo = new EmployeeExperienceInfo();
 				}
@@ -280,7 +340,8 @@ public class EmployeeService {
 			if (employeeSalaryInfoJson != null) {
 				// This is to insert the data to salary Info Table
 				if (employeeSalaryInfoJson.getEmployeeSalaryInfoId() != null) {
-					employeeSalaryInfo = (EmployeeSalaryInfo) commonRepository.findById(employeeSalaryInfoJson.getEmployeeSalaryInfoId(), EmployeeSalaryInfo.class);
+					employeeSalaryInfo = (EmployeeSalaryInfo) commonRepository.findById(employeeSalaryInfoJson.getEmployeeSalaryInfoId(),
+							EmployeeSalaryInfo.class);
 				} else {
 					employeeSalaryInfo = new EmployeeSalaryInfo();
 				}
@@ -304,7 +365,8 @@ public class EmployeeService {
 				// This is to insert the data to employee one time component
 				// Table
 				if (employeeOneTimeComponentJson.getEmployeeOneTimeComponentId() != null) {
-					employeeOneTimeComponent = (EmployeeOneTimeComponent) commonRepository.findById(employeeOneTimeComponentJson.getEmployeeOneTimeComponentId(), EmployeeOneTimeComponent.class);
+					employeeOneTimeComponent = (EmployeeOneTimeComponent) commonRepository.findById(
+							employeeOneTimeComponentJson.getEmployeeOneTimeComponentId(), EmployeeOneTimeComponent.class);
 				} else {
 					employeeOneTimeComponent = new EmployeeOneTimeComponent();
 				}
@@ -327,7 +389,8 @@ public class EmployeeService {
 			if (employeeEducationalInfoJson != null) {
 				// This is to insert the data to educational Info Table
 				if (employeeEducationalInfoJson.getEmployeeEducationalInfoId() != null) {
-					employeeEducationalInfo = (EmployeeEducationalInfo) commonRepository.findById(employeeEducationalInfoJson.getEmployeeEducationalInfoId(), EmployeeEducationalInfo.class);
+					employeeEducationalInfo = (EmployeeEducationalInfo) commonRepository.findById(
+							employeeEducationalInfoJson.getEmployeeEducationalInfoId(), EmployeeEducationalInfo.class);
 				} else {
 					employeeEducationalInfo = new EmployeeEducationalInfo();
 				}
@@ -348,7 +411,8 @@ public class EmployeeService {
 	public EmployeeProfessionalInfoJson getEmployeeProfessionalInfo(Integer employeeId) {
 		EmployeeProfessionalInfoJson employeeProfessionalInfoJson = null;
 		try {
-			List<EmployeeProfessionalInfo> employeeProfessionalInfoList = (List<EmployeeProfessionalInfo>) commonRepository.findByEmployeeId(employeeId, EmployeeProfessionalInfo.class);
+			List<EmployeeProfessionalInfo> employeeProfessionalInfoList = (List<EmployeeProfessionalInfo>) commonRepository.findByEmployeeId(
+					employeeId, EmployeeProfessionalInfo.class);
 			if (employeeProfessionalInfoList != null && employeeProfessionalInfoList.size() > 0) {
 				employeeProfessionalInfoJson = TransformDomainToJson.getEmployeeProfessionalInfoJson(employeeProfessionalInfoList.get(0));
 			}
@@ -362,7 +426,8 @@ public class EmployeeService {
 	public List<EmployeeExperienceInfoJson> getEmployeeExperienceInfo(Integer employeeId) {
 		List<EmployeeExperienceInfoJson> employeeExperienceInfoJsonList = null;
 		try {
-			List<EmployeeExperienceInfo> employeeExperienceInfoList = (List<EmployeeExperienceInfo>) commonRepository.findByEmployeeId(employeeId, EmployeeExperienceInfo.class);
+			List<EmployeeExperienceInfo> employeeExperienceInfoList = (List<EmployeeExperienceInfo>) commonRepository.findByEmployeeId(employeeId,
+					EmployeeExperienceInfo.class);
 			if (employeeExperienceInfoList != null && employeeExperienceInfoList.size() > 0) {
 				employeeExperienceInfoJsonList = new ArrayList<EmployeeExperienceInfoJson>();
 				for (EmployeeExperienceInfo employeeExperienceInfo : employeeExperienceInfoList) {
@@ -380,7 +445,8 @@ public class EmployeeService {
 	public List<EmployeeEducationalInfoJson> getEmployeeEducationalInfo(Integer employeeId) {
 		List<EmployeeEducationalInfoJson> employeeEducationalInfoJsonList = null;
 		try {
-			List<EmployeeEducationalInfo> employeeEducationalInfoList = (List<EmployeeEducationalInfo>) commonRepository.findByEmployeeId(employeeId, EmployeeEducationalInfo.class);
+			List<EmployeeEducationalInfo> employeeEducationalInfoList = (List<EmployeeEducationalInfo>) commonRepository.findByEmployeeId(employeeId,
+					EmployeeEducationalInfo.class);
 			if (employeeEducationalInfoList != null && employeeEducationalInfoList.size() > 0) {
 				employeeEducationalInfoJsonList = new ArrayList<EmployeeEducationalInfoJson>();
 				for (EmployeeEducationalInfo employeeEducationalInfo : employeeEducationalInfoList) {
@@ -397,7 +463,8 @@ public class EmployeeService {
 	public List<EmployeeOneTimeComponentJson> getEmployeeOneTimeComponent(Integer employeeId) {
 		List<EmployeeOneTimeComponentJson> employeeOneTimeComponentJsonList = null;
 		try {
-			List<EmployeeOneTimeComponent> employeeOneTimeComponentList = (List<EmployeeOneTimeComponent>) commonRepository.findByEmployeeId(employeeId, EmployeeOneTimeComponent.class);
+			List<EmployeeOneTimeComponent> employeeOneTimeComponentList = (List<EmployeeOneTimeComponent>) commonRepository.findByEmployeeId(
+					employeeId, EmployeeOneTimeComponent.class);
 			if (employeeOneTimeComponentList != null && employeeOneTimeComponentList.size() > 0) {
 				employeeOneTimeComponentJsonList = new ArrayList<EmployeeOneTimeComponentJson>();
 				for (EmployeeOneTimeComponent employeeOneTimeComponent : employeeOneTimeComponentList) {
@@ -444,7 +511,8 @@ public class EmployeeService {
 
 	public Boolean deleteEmployeeExperienceInfo(Integer employeeExperienceId) {
 		try {
-			EmployeeExperienceInfo employeeExperienceInfo = (EmployeeExperienceInfo) commonRepository.findById(employeeExperienceId, EmployeeExperienceInfo.class);
+			EmployeeExperienceInfo employeeExperienceInfo = (EmployeeExperienceInfo) commonRepository.findById(employeeExperienceId,
+					EmployeeExperienceInfo.class);
 			if (employeeExperienceInfo != null) {
 				employeeExperienceInfo.setIsDeleted(Boolean.TRUE);
 				commonRepository.update(employeeExperienceInfo);
@@ -457,7 +525,8 @@ public class EmployeeService {
 
 	public Boolean deleteEmployeeOneTimeComponent(Integer employeeOneTimeComponentId) {
 		try {
-			EmployeeOneTimeComponent employeeOneTimeComponent = (EmployeeOneTimeComponent) commonRepository.findById(employeeOneTimeComponentId, EmployeeOneTimeComponent.class);
+			EmployeeOneTimeComponent employeeOneTimeComponent = (EmployeeOneTimeComponent) commonRepository.findById(employeeOneTimeComponentId,
+					EmployeeOneTimeComponent.class);
 			if (employeeOneTimeComponent != null) {
 				employeeOneTimeComponent.setIsDeleted(Boolean.TRUE);
 				commonRepository.update(employeeOneTimeComponent);
