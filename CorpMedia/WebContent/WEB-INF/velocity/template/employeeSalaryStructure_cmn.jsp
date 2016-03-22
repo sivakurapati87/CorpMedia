@@ -1,11 +1,11 @@
-<div class="modal-body"
-					style="float: left;min-height: 430px; height: auto; width: 54%; margin: 0.4%; background: #ddd; border-radius: 0px 0px 10px 10px;">
-					<div class="form-group">
+<div class=""
+					style="float: left;min-height: 400px; height: auto; width: 100%; margin: 0.4%; background: #ddd; border-radius: 10px 10px 10px 10px;">
+					<div class="">
 						<div class="row background_color_LB"
 							style="margin: 0 auto; height: 28px;">
 							<div class="col-sm-6 lable16_Regular padding_top4">Details</div>
-							<div class="col-sm-3 lable16_Regular padding_top4">Monthly</div>
-							<div class="col-sm-3 lable16_Regular padding_top4">Annually</div>
+							<div class="col-sm-3 lable16_Regular padding_top4 text_align_right">Monthly</div>
+							<div class="col-sm-3 lable16_Regular padding_top4 text_align_right">Annually</div>
 						</div>
 						<div class="row background_color_WT"
 							style="margin: 0 auto; height: 28px;"

@@ -20,9 +20,11 @@ App.controller('timesheet_approval_chain_Controller', ['$scope','$location','$ro
 		
 		// get all the roles based on company id
 		$scope.getAllRoles = function(){
+			$scope.isProcessing = true;
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.CompanyRolesController+'/getAllRoles/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
 				$scope.companyRolesJsonList = data;//all the roles of the company
+				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not getAllRoles');
 	        });}

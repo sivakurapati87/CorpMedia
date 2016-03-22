@@ -12,27 +12,29 @@
 			<td width="1%"></td>
 			<td valign="top"><time-and-attendance-module-top></time-and-attendance-module-top>
 				<form ng-submit="saveOrUpdateEmployeeLeaves()">
-					<table class="table" border="1"
-						style="width: 100%; background-color: white">
-						<tr style="height: 20px"></tr>
+					<table class="table mtable" border="0"
+						style="width: 100%; ">
+						<tr><th class="th" colspan="2"><h2>TIMESHEET APPROVAL</h2></th></tr>
 						<tr>
-							<td>Applied timesheets count: {{getLength()}}</td>
-							<td>{{value}}</td>
+							<td><b>Applied timesheets count:<i> {{getLength()}}</i></b></td>
+							<td><b><i>{{value}}</i></b></td>
 						</tr>
 						<tr ng-repeat="(key,value) in empTimesheetMap">
-							<td>
-								<table style="width: 100%">
+							<td colspan="2">
+								<table style="width: 100%; height:40px; text-align:center;;
+								 background:#ede6bc; border: 1px solid #9b9215;" border="0">
 									<tr>
-										<td>Employee Name:</td>
-										<td>{{value[0].displayName}}</td>
-										<td>Email:</td>
-										<td>{{value[0].email}}</td>
+										<td><b>Employee Name:<i> {{value[0].displayName}}</i></b></td>
+										
+										<td><b>Email:<i>{{value[0].email}}</i></b></td>
+										
 									</tr>
 								</table>
+								<div style="height: 10px;"></div>
 								<table style="width: 100%" border="0"
 									class="table table-bordered">
-									<tr>
-										<th>Date</th>
+									<tr class="tdh">
+										<th >Date</th>
 										<th>Spended Time</th>
 									</tr>
 									<tr ng-repeat="emptimesheet in value" ng-class-odd="'odd'"
@@ -46,7 +48,7 @@
 										<td>Comment:</td>
 									</tr>
 									<tr style="height: 10px"></tr>
-									<tr>
+									<tr> 
 										<td><textarea rows="5" style="resize: none; width: 70%"
 												class="form-control ng-pristine  ng-valid ng-valid-required width90"
 												placeholder="Please enter reason for applying leave"
@@ -64,10 +66,11 @@
 										</td>
 									</tr>
 								</table>
-
+							<DIV style="height:20px; width: 100% ; border-bottom: dashed 2px #aaa;  "></DIV>
 							</td>
+							
 						</tr>
-
+					<tr><td class="bth" colspan="2"><h2></h2></td></tr>
 					</table>
 				</form></td>
 		</tr>
