@@ -46,7 +46,7 @@
 					<h4 class="modal-title">Add Salary Details to</h4>
 				</div>
 				<div class="modal-body"
-					style="float: left; height: 400px; width: 44%; margin: 0.4%; background:;">
+					style="float: left; height: 400px; width: 40%; margin: 0.4%; background:#fff;">
 					<form ng-submit="saveOrUpdateEmployeeSalaryInfo()">
 						<div class="form-group"
 							style="float: left; width: 100%; height: 100%;">
@@ -77,8 +77,11 @@
 						</div>
 					</form>
 				</div>
+				<div class="modal-body"
+					style="float: left;min-height: 430px; height: auto; width: 58%; margin: 0.4%; background: #fff; border-radius: 0px 0px 10px 10px; border-left: dotted 2px #ccc;">
 				<employee-salary-structure></employee-salary-structure>
-				<div class="modal-footer" style="background: #bbb;"></div>
+				</div>
+				<div class="modal-footer" style="background: #fff;"></div>
 			</div>
 
 		</div>
@@ -96,11 +99,11 @@
 					<h4 class="modal-title">Add Salary Details to</h4>
 				</div>
 				<div class="modal-body"
-					style="float: left; min-height: 430px; height: auto; width: 44%; margin: 0.4%; background: #eee; border-radius: 5px;">
+					style="float: left; min-height: 430px; height: auto; width: 44%; margin: 0.4%; background: #fff; border-radius: 5px;">
 
 					<form ng-submit="saveOrUpdateEmployeeOneTimeComponent()">
 						<div class="form-group"
-							style="float: left; width: 100%; height: 100%;">
+							style="float: left; width: 100%; height: 100%; ">
 							<div style="width: 98%; min-height: 20px; height: auto;">
 								<table style="width: 100%" border="0"
 									class="table table-bordered">
@@ -188,8 +191,11 @@
 						</div>
 					</form>
 				</div>
+				<div class="modal-body"
+					style="float: left;min-height: 430px; height: auto; width: 54%; margin: 0.4%; background: #fff; border-radius: 0px 0px 10px 10px; border-left: dotted 2px #ccc;" >
 				<employee-salary-structure></employee-salary-structure>
-				<div class="modal-footer" style="background: #bbb;"></div>
+				</div>
+				<div class="modal-footer" style="background: #fff;"></div>
 			</div>
 
 		</div>
