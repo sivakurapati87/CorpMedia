@@ -895,6 +895,13 @@ public class TransformDomainToJson {
 		if (employee_TimeSheet.getTimesheet() != null) {
 			employeeTimeSheetJson.setSpendedTime(employee_TimeSheet.getSpendedTime());
 		}
+		if (employee_TimeSheet.getEmployee() != null) {
+			employeeTimeSheetJson.setDisplayName(employee_TimeSheet.getEmployee().getDisplayName());
+			employeeTimeSheetJson.setEmail(employee_TimeSheet.getEmployee().getEmail());
+		}
+		if (employee_TimeSheet.getTimesheet() != null) {
+			employeeTimeSheetJson.setStrTimeSheetDate(MethodUtil.convertDateToString(employee_TimeSheet.getTimesheet().getTimeSheetDate()));
+		}
 		return employeeTimeSheetJson;
 	}
 

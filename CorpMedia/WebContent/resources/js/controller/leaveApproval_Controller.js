@@ -4,7 +4,7 @@ App.controller('leaveApproval_Controller', ['$scope','$state','$rootScope','$htt
 	 	$scope.state="leaveApproval";
 	 	$scope.left_state = "time_And_attendance";
 		
-		// get all company leave type
+		// get all company applied leaves
 		$scope.getAllAppliedLeavesByCompany = function(){
 			if($rootScope.selectedCompanyObj){
 			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeLeaveController+'/getAllAppliedLeavesByCompany?companyId='+ $rootScope.selectedCompanyObj.companyId).success(function(data) {

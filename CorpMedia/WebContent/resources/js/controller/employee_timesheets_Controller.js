@@ -29,7 +29,6 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
         }
         days.push('Total');
         return days;
-        $scope.isProcessing = false;
     }
     
     $scope.weekDays = fnWeekDays(currentDate);
@@ -53,6 +52,7 @@ App.controller('employee_timesheets_Controller', ['$scope','$http','$rootScope',
 	function getEmployeeLeavesOfTheWeek(employeeId,startingWeekDate){
 		$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.EmployeeLeaveController+'/getEmployeeLeavesOfTheWeek?employeeId='+employeeId+"&startingWeekDate="+startingWeekDate).success(function(data) {
 			$scope.employeeLeaveJsonList = data;
+		    $scope.isProcessing = false;
 		}).error(function() {
       	  console.error('Could not getEmployeeLeavesOfTheWeek');
         });

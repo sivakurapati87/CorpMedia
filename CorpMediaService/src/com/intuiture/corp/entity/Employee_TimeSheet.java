@@ -1,6 +1,7 @@
 package com.intuiture.corp.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,13 +22,23 @@ public class Employee_TimeSheet implements Serializable {
 	private Integer statusId;
 	private Integer projectId;
 	private String spendedTime;
-
+	private String comment;
+	private Integer approveOrRejectedById;
+	private Date approvedOrRejectDate;
 	@ManyToOne
 	@JoinColumn(name = "employeeId", updatable = false, insertable = false, referencedColumnName = "employeeId")
 	private Employee employee;
 	@ManyToOne
 	@JoinColumn(name = "timesheetId", updatable = false, insertable = false, referencedColumnName = "timesheetId")
 	private TimeSheet timesheet;
+
+	public Date getApprovedOrRejectDate() {
+		return approvedOrRejectDate;
+	}
+
+	public void setApprovedOrRejectDate(Date approvedOrRejectDate) {
+		this.approvedOrRejectDate = approvedOrRejectDate;
+	}
 
 	public TimeSheet getTimesheet() {
 		return timesheet;
@@ -87,6 +98,22 @@ public class Employee_TimeSheet implements Serializable {
 
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Integer getApproveOrRejectedById() {
+		return approveOrRejectedById;
+	}
+
+	public void setApproveOrRejectedById(Integer approveOrRejectedById) {
+		this.approveOrRejectedById = approveOrRejectedById;
 	}
 
 }
