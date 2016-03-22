@@ -12,7 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.intuiture.corp.dao.CommonRepository;
 import com.intuiture.corp.dao.EmployeeLeaveRepository;
+import com.intuiture.corp.dao.EmployeeTimeSheetRepository;
 import com.intuiture.corp.entity.Employee_Leave;
+import com.intuiture.corp.entity.Employee_TimeSheet;
 import com.intuiture.corp.entity.Leave;
 import com.intuiture.corp.json.EmployeeLeaveJson;
 import com.intuiture.corp.util.Constants;
@@ -27,12 +29,18 @@ public class EmployeeLeaveService {
 	private CommonRepository commonRepository;
 	@Autowired
 	private EmployeeLeaveRepository employeeLeaveRepository;
+	@Autowired
+	private EmployeeTimeSheetRepository employeeTimeSheetRepository;
+	@Autowired
+	private EmployeeTimeSheetService employeeTimeSheetService;
 
 	public Boolean saveOrUpdateEmployeeLeaves(EmployeeLeaveJson employeeLeaveJson, List<Date> weekDatesList) {
 		try {
 			if (employeeLeaveJson != null) {
 				List<Employee_Leave> employee_LeaveList = employeeLeaveRepository.getEmployeeLeavesOfTheWeek(employeeLeaveJson.getEmployeeId(),
 						weekDatesList);
+				List<Employee_TimeSheet> employee_TimeSheetList = employeeTimeSheetService.getEmployeeTimesheetByweekListAndEmployeeId(
+						employeeLeaveJson.getEmployeeId(), weekDatesList);
 				// If employee leaves are empty
 				if (employee_LeaveList == null || !(employee_LeaveList.size() > 0)) {
 					List<Leave> leaveList = employeeLeaveRepository.getAllLeaves(null, employeeLeaveJson);
@@ -55,7 +63,16 @@ public class EmployeeLeaveService {
 						employee_LeaveList.add(employee_Leave);
 					}
 				}
-				employee_LeaveList = employeeLeaveRepository.getEmployeeApplyLeave(employeeLeaveJson.getEmployeeId(), employeeLeaveJson);
+				// employee_LeaveList =
+				// employeeLeaveRepository.getEmployeeApplyLeave(employeeLeaveJson.getEmployeeId(),
+				// employeeLeaveJson);
+				MethodUtil.getAppliedLeaveDates(employeeLeaveJson, employee_LeaveList);
+				if (employee_TimeSheetList != null && employee_TimeSheetList.size() > 0) {
+					MethodUtil.getAppliedTimesheetDates(employeeLeaveJson, employee_TimeSheetList);
+					for (Employee_TimeSheet timeSheet : employee_TimeSheetList) {
+						timeSheet.setSpendedTime(null);
+					}
+				}
 				if (employee_LeaveList != null && employee_LeaveList.size() > 0) {
 					for (Employee_Leave employee_Leave : employee_LeaveList) {
 						employee_Leave.setLeaveTypeId(employeeLeaveJson.getLeaveTypeId());

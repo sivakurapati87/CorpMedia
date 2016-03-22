@@ -326,4 +326,10 @@ public class TemplateController {// Serves Templates.
 	public String timesheetApproval() {
 		return "template/timesheetApproval";
 	}
+
+	@RequestMapping(value = "/employeePaySlip")
+	public String employeePaySlip() {
+		return "template/employeePaySlip";
+	}
+
 }

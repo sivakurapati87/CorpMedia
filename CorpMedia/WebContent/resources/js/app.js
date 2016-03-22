@@ -734,7 +734,18 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		}
 	})
 	
-	
+	.state('employeePaySlip', {
+		url : "/employeePaySlip",
+		views : {
+			'content' : {
+				templateUrl : 'employeePaySlip',
+				controller : "employeePaySlip_Controller"
+			},
+			'footer' : {
+				templateUrl : 'footer'
+			}
+		}
+	})
 	
 	
 	

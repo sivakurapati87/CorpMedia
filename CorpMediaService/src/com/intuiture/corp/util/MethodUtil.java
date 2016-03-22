@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -24,6 +25,10 @@ import org.apache.log4j.Logger;
 
 import Decoder.BASE64Decoder;
 import Decoder.BASE64Encoder;
+
+import com.intuiture.corp.entity.Employee_Leave;
+import com.intuiture.corp.entity.Employee_TimeSheet;
+import com.intuiture.corp.json.EmployeeLeaveJson;
 
 public class MethodUtil {
 	private static Logger LOG = Logger.getLogger(MethodUtil.class);
@@ -290,5 +295,51 @@ public class MethodUtil {
 		}
 		((SimpleDateFormat) dt).applyPattern(":mm");
 		return new StringBuilder(8).append(milliseconds / 3600000).append(dt.format(new Date(milliseconds))).toString();
+	}
+
+	public static void getAppliedLeaveDates(EmployeeLeaveJson employeeLeaveJson, List<Employee_Leave> employee_LeaveList) {
+		Iterator<Employee_Leave> empLeaveIterator = employee_LeaveList.iterator();
+		if (employeeLeaveJson.getLeaveStartDate() != null && employeeLeaveJson.getLeaveEndDate() != null) {
+			while (empLeaveIterator.hasNext()) {
+				Employee_Leave employee_Leave = empLeaveIterator.next();
+				employee_Leave.getLeave().setLeaveDate(convertStringToDate(convertDateToString(employee_Leave.getLeave().getLeaveDate())));
+				if (!((employee_Leave.getLeave().getLeaveDate().compareTo(employeeLeaveJson.getLeaveStartDate()) >= 0) && (employee_Leave.getLeave()
+						.getLeaveDate().compareTo(employeeLeaveJson.getLeaveEndDate()) <= 0))) {
+					empLeaveIterator.remove();
+				}
+			}
+		} else {
+			while (empLeaveIterator.hasNext()) {
+				Employee_Leave employee_Leave = empLeaveIterator.next();
+				employee_Leave.getLeave().setLeaveDate(convertStringToDate(convertDateToString(employee_Leave.getLeave().getLeaveDate())));
+				if (!(employee_Leave.getLeave().getLeaveDate().equals(employeeLeaveJson.getLeaveStartDate()))) {
+					empLeaveIterator.remove();
+				}
+			}
+		}
+	}
+
+	public static void getAppliedTimesheetDates(EmployeeLeaveJson employeeLeaveJson, List<Employee_TimeSheet> employee_TimeSheets) {
+		Iterator<Employee_TimeSheet> emptimesheetIterator = employee_TimeSheets.iterator();
+		if (employeeLeaveJson.getLeaveStartDate() != null && employeeLeaveJson.getLeaveEndDate() != null) {
+			while (emptimesheetIterator.hasNext()) {
+				Employee_TimeSheet employee_TimeSheet = emptimesheetIterator.next();
+				employee_TimeSheet.getTimesheet().setTimeSheetDate(
+						convertStringToDate(convertDateToString(employee_TimeSheet.getTimesheet().getTimeSheetDate())));
+				if (!((employee_TimeSheet.getTimesheet().getTimeSheetDate().compareTo(employeeLeaveJson.getLeaveStartDate()) >= 0) && (employee_TimeSheet
+						.getTimesheet().getTimeSheetDate().compareTo(employeeLeaveJson.getLeaveEndDate()) <= 0))) {
+					emptimesheetIterator.remove();
+				}
+			}
+		} else {
+			while (emptimesheetIterator.hasNext()) {
+				Employee_TimeSheet employee_TimeSheet = emptimesheetIterator.next();
+				employee_TimeSheet.getTimesheet().setTimeSheetDate(
+						convertStringToDate(convertDateToString(employee_TimeSheet.getTimesheet().getTimeSheetDate())));
+				if (!(employee_TimeSheet.getTimesheet().getTimeSheetDate().equals(employeeLeaveJson.getLeaveStartDate()))) {
+					emptimesheetIterator.remove();
+				}
+			}
+		}
 	}
 }

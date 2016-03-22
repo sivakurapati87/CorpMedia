@@ -18,6 +18,8 @@
 						class="anchor-sm" ui-sref="employee_personal">Personal</a></li>
 					<li ng-class="{'active':(state==='employee_finance')}"><a
 						class="anchor-sm" ui-sref="employee_finance">Finance</a></li>
+					<li ng-class="{'active':(state==='employeePaySlip')}"><a
+						class="anchor-sm" ui-sref="employeePaySlip">My Payslip</a></li>
 					<li ng-class="{'active':(state==='employee_timesheets')}"><a
 						class="anchor-sm" ui-sref="employee_timesheets">Employee
 							Timesheets</a></li>
