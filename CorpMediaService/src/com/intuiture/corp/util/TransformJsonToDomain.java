@@ -32,6 +32,7 @@ import com.intuiture.corp.entity.DailyAllowance;
 import com.intuiture.corp.entity.Deductions;
 import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.DeptWorkHours;
+import com.intuiture.corp.entity.Designation;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.EmployeeAddressInfo;
@@ -92,6 +93,7 @@ import com.intuiture.corp.json.DailyAllowanceJson;
 import com.intuiture.corp.json.DeductionsJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.DeptWorkHoursJson;
+import com.intuiture.corp.json.DesignationJson;
 import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.EmployeeEducationalInfoJson;
 import com.intuiture.corp.json.EmployeeExperienceInfoJson;
@@ -310,6 +312,12 @@ public class TransformJsonToDomain {
 		department.setCreatedOn(new Date());
 		department.setCompanyId(departmentJson.getCompanyId());
 		department.setDepartmentName(departmentJson.getDepartmentName());
+	}
+	
+	public static void getDesignation(Designation designation, DesignationJson designationJson) {
+		designation.setCreatedOn(new Date());
+		designation.setCompanyId(designationJson.getCompanyId());
+		designation.setDesignationName(designationJson.getDesignationName());
 	}
 
 	public static void getCompanyLocation(CompanyLocation companyLocation, CompanyLocationJson companyLocationJson) {

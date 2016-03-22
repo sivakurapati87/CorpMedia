@@ -37,10 +37,10 @@
 				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white">
 					<tr>
-						<th class="th"><h2>Departments</h2></th>
+						<th class="th"><h2>Designation</h2></th>
 					</tr>
 					<tr>
-						<td>Departments are used to group the employees based on
+						<td>Designation are used to group the employees based on
 							certain criteria.</td>
 					</tr>
 					<tr>
@@ -51,21 +51,21 @@
 
 							<div class="row">
 								<div class="col-lg-8" collapse="isCollapse">
-									<form ng-submit="saveDepartment()">
+									<form ng-submit="saveDesignation()">
 										<table border="0">
 											<tr height="10px"></tr>
 											<tr>
-												<td><label> Add Department</label></td>
+												<td><label> Add Designation</label></td>
 											</tr>
 											<tr height="30px"></tr>
 											<tr>
-												<td><label> Department Name</label></td>
+												<td><label> Designation </label></td>
 											</tr>
 											<tr>
 												<td><input id="panNumber" style="width: 200%"
 													class="form-control ng-pristine ng-untouched ng-valid ng-valid-required"
 													type="text" required=""
-													ng-model="department.departmentName" name="panNumber"></td>
+													ng-model="designation.designationName" name="panNumber"></td>
 											</tr>
 											<tr height="30px"></tr>
 											<tr>
@@ -74,7 +74,7 @@
 
 													<button class="btn btn-success" type="submit"
 														style="width: 100px">Save</button>&nbsp;
-													<button class="btn btn-cancel" style="width: 100px" ng-click="cancelCompanyDepartment()"
+													<button class="btn btn-cancel" style="width: 100px" ng-click="cancelCompanyDesignation() "
 														type="button">Cancel</button>
 												</td>
 											</tr>
@@ -86,14 +86,14 @@
 								<div class="col-lg-8">
 									<table style="width: 80%;text-align: center" border="0" class="table table-bordered">
 										
-										<tr ng-repeat="department in companyDepartmentList"
+										<tr ng-repeat="designation in companyDesignationList"
 											ng-class-odd="'odd'" ng-class-even="'even'" style="height: 30px">
-											<td><b>{{department.departmentName}}</b></td>
-											<td><a ng-click="editCompanyDepartment(department)"
+											<td><b>{{designation.designationName}}</b></td>
+											<td><a ng-click="editCompanyDesignation(designation)"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<a
-												ng-click="deleteCompanyDepartment(department.departmentId)"
+												ng-click="deleteCompanyDesignation(designation.designationId)"
 												style="cursor: pointer; font-size: 12px"><i
 													class="fa fa-trash"></i></a></td>
 										</tr>

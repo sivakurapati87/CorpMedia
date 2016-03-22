@@ -326,4 +326,9 @@ public class TemplateController {// Serves Templates.
 	public String timesheetApproval() {
 		return "template/timesheetApproval";
 	}
+
+	@RequestMapping(value = "/company_designation")
+	public String company_Designation_Page() {
+		return "template/company_designation";
+	}
 }

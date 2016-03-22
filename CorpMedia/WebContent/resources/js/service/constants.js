@@ -75,6 +75,7 @@ var constants = {
 	NotifyController : 'NotifyController',
 	ClientWorkHoursController : 'ClientWorkHoursController',
 	DeptWorkHoursController : 'DeptWorkHoursController',
-	SalaryComponentController : 'SalaryComponentController'
+	SalaryComponentController : 'SalaryComponentController',
+	DesignationController:'DesignationController'
 
 };

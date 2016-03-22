@@ -27,6 +27,10 @@
 									<li ng-class="{'active':(state==='department')}"><a
 										class="anchor-sm" ui-sref="company_department">Departments</a>
 									</li>
+									<li ng-class="{'active':(state==='designation')}"><a
+										class="anchor-sm" ui-sref="company_designation">Designation</a>
+									</li>
+									
 								</ul>
 							</div>
 						</td>

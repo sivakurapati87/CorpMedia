@@ -734,6 +734,19 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		}
 	})
 	
+	.state('company_designation', {
+		url : "/company_designation",
+		views : {
+			'content' : {
+				templateUrl : 'company_designation',
+				controller : "Company_Designation_Controller"
+			},
+			'footer' : {
+				templateUrl : 'footer'
+			}
+		}
+	})
+	
 	
 	
 	

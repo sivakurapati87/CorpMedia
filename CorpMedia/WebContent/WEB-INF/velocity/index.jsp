@@ -57,6 +57,7 @@
 <script src="resources/js/controller/Company_Legalentities_Controller.js"></script>
 <script src="resources/js/controller/Company_Locations_Controller.js"></script>
 <script src="resources/js/controller/Company_Department_Controller.js"></script>
+<script src="resources/js/controller/Company_Designation_Controller.js"></script>
 <script src="resources/js/controller/cmpInfo_Controller.js"></script>
 <script src="resources/js/controller/itInfo_Controller.js"></script>
 <script src="resources/js/controller/pfInfo_Controller.js"></script>
@@ -108,6 +109,7 @@
 <script src="resources/js/controller/applyLeave_Controller.js"></script>
 <script src="resources/js/controller/leaveApproval_Controller.js"></script>
 <script src="resources/js/controller/timesheetApproval_Controller.js"></script>
+
 
 <script src="resources/js/service/constants.js"></script>
 <script>

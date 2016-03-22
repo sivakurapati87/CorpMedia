@@ -22,6 +22,7 @@ import com.intuiture.corp.entity.DailyAllowance;
 import com.intuiture.corp.entity.Deductions;
 import com.intuiture.corp.entity.Department;
 import com.intuiture.corp.entity.DeptWorkHours;
+import com.intuiture.corp.entity.Designation;
 import com.intuiture.corp.entity.ESIInfo;
 import com.intuiture.corp.entity.Employee;
 import com.intuiture.corp.entity.EmployeeAddressInfo;
@@ -78,6 +79,7 @@ import com.intuiture.corp.json.DailyAllowanceJson;
 import com.intuiture.corp.json.DeductionsJson;
 import com.intuiture.corp.json.DepartmentJson;
 import com.intuiture.corp.json.DeptWorkHoursJson;
+import com.intuiture.corp.json.DesignationJson;
 import com.intuiture.corp.json.ESIInfoJson;
 import com.intuiture.corp.json.EmployeeEducationalInfoJson;
 import com.intuiture.corp.json.EmployeeExperienceInfoJson;
@@ -340,7 +342,15 @@ public class TransformDomainToJson {
 		departmentJson.setDepartmentName(department.getDepartmentName());
 		return departmentJson;
 	}
-
+	
+	public static DesignationJson getDesignationJson(Designation designation) {
+		DesignationJson designationJson = new DesignationJson();
+		designationJson.setCompanyId(designation.getCompanyId());
+		designationJson.setDesignationId(designation.getDesignationId());
+		designationJson.setDesignationName(designation.getDesignationName());
+		return designationJson;
+	}
+	
 	public static JobTitlesJson getJobTitlesJson(JobTitles jobTitles) {
 		JobTitlesJson jobTitlesJson = new JobTitlesJson();
 		jobTitlesJson.setCompanyId(jobTitles.getCompanyId());
