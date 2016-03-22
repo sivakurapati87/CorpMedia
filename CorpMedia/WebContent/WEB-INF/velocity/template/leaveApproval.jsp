@@ -11,46 +11,42 @@
 			</td>
 			<td width="1%"></td>
 			<td valign="top"><time-and-attendance-module-top></time-and-attendance-module-top>
-				<table class="table" border="1"
+				<table class="table mtable" border="0"
 					style="width: 100%; background-color: white">
-					<tr style="height: 20px"></tr>
-					<tr>
-						<td><div ng-repeat="appliedLeave in appliedLeavesList"
-								ng-class-odd="'odd'" ng-class-even="'even'">
-								<div
-									class="panel-heading col-lg-12 col-md-12 col-sm-12 btn-info"
-									ng-click="appliedLeave.isShowBlock = !appliedLeave.isShowBlock">
-									<h4
-										class="panel-title leave-plan-title col-lg-6 col-md-6 col-sm-6 clear-side-padding">
-										<span class="fa fa-sort-asc"
-											ng-class="appliedLeave.isShowBlock ? 'fa fa-sort-asc' : 'fa fa-sort-desc'"></span>
-										<span class="heading ng-binding">{{appliedLeave.employeeName}}</span>
-										<br> <span> <small class="ng-binding">Leave
-												Type:</small><small class="ng-binding">{{appliedLeave.leaveType}}</small>
-										</span> <br> <span> <small class="ng-binding">Note:</small><small
-											class="ng-binding">{{appliedLeave.note}}</small>
-										</span>
-									</h4>
-									<div class="col-lg-6 col-md-6 col-sm-6 clear-side-padding">
-										<div class="inline-action-menu pull-right vertical-margin">
-											<div>Leave Applied On:</div>
-											<div>{{appliedLeave.strLeaveDates}}</div>
+					<tr ><td class="th"><h2>Leave Approval</h2></td> </tr>
+					<tr ng-repeat="appliedLeave in appliedLeavesList" >
+						<td >
+								<div class="mdiv" ng-click="appliedLeave.isShowBlock = !appliedLeave.isShowBlock">
+									<div class="dl ldiv">
+											<label class="lable16" >
+											<span class="fa fa-sort-asc" ng-class="appliedLeave.isShowBlock ? 'fa fa-sort-asc' : 'fa fa-sort-desc'"></span>
+											<span class="heading ng-binding">{{appliedLeave.employeeName}}</span></label>
+											<br> <span> <small class="ng-binding">Leave Type:</small><small class="ng-binding">{{appliedLeave.leaveType}}</small>
+												</span> 
+											<br> <span> <small class="ng-binding">Note:</small><small class="ng-binding">{{appliedLeave.note}}</small>
+												</span>
+										
+									</div>
+									<div class="dr rdiv">
+										<div class="cal">
+											<div class="calh">Leave Applied On:</div>
+											<div class="cald" style="">{{appliedLeave.strLeaveDates}}</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-12 col-md-12 col-sm-12 btn-info"
+								<div class="subdiv " style=" padding-top: 20px; margin-top:-20px; border-top: none;"
 									ng-if="appliedLeave.isShowBlock">
-									<table style="width: 100%">
+									<table style="width: 100%" >
 										<tr style="height: 10px"></tr>
 										<tr>
 											<td><textarea rows="5" style="resize: none; width: 70%"
 													class="form-control ng-pristine  ng-valid ng-valid-required width90"
-													placeholder="Please enter reason for applying leave"
+													placeholder="Please enter reason for approving leave"
 													ng-model="appliedLeave.comment"></textarea></td>
 										</tr>
 										<tr style="height: 20px"></tr>
 										<tr>
-											<td align="right">
+											<td align="center">
 												<button class="btn btn-success" type="button"
 													ng-click="approveOrRejectAppliedLeaves('Approve',appliedLeave)"
 													style="width: 100px">Approve</button> &nbsp;
@@ -59,12 +55,15 @@
 													type="button">Reject</button>
 											</td>
 										</tr>
-										<tr style="height: 20px"></tr>
+										<tr style="height: 10px"></tr>
 									</table>
 								</div>
-							</div></td>
+								
+							</td>
 					</tr>
-
+					<tr>
+						<td class="bth"><h2></h2></td>
+					</tr>
 				</table></td>
 		</tr>
 	</table>
