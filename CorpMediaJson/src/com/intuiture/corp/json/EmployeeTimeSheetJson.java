@@ -22,6 +22,17 @@ public class EmployeeTimeSheetJson {
 	private Integer statusId;
 	private String totalTimeSpent;
 	private Integer projectId;
+	private String comment;
+	private String approveOrReject;
+	private Integer approveOrRejectedById;
+
+	public String getApproveOrReject() {
+		return approveOrReject;
+	}
+
+	public void setApproveOrReject(String approveOrReject) {
+		this.approveOrReject = approveOrReject;
+	}
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -173,6 +184,22 @@ public class EmployeeTimeSheetJson {
 
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Integer getApproveOrRejectedById() {
+		return approveOrRejectedById;
+	}
+
+	public void setApproveOrRejectedById(Integer approveOrRejectedById) {
+		this.approveOrRejectedById = approveOrRejectedById;
 	}
 
 }

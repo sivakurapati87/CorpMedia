@@ -64,4 +64,34 @@ public class EmployeeTimeSheetRepository extends BaseRepository {
 		return employee_TimeSheet;
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Employee_TimeSheet> getEmployee_TimeSheetByEmpIdAndTimeSheetIds(Integer employeeId, List<Integer> timesheetIds) {
+		List<Employee_TimeSheet> employee_TimeSheetList = null;
+		try {
+			Criteria criteria = getSession().createCriteria(Employee_TimeSheet.class);
+			criteria.add(Restrictions.and(Restrictions.eq("employeeId", employeeId), Restrictions.in("timesheetId", timesheetIds)));
+			employee_TimeSheetList = criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOG.error("Error at EmployeeTimeSheetRepository getEmployee_TimeSheetByEmpIdAndTimeSheetIds()" + e.getMessage(), e);
+		}
+		return employee_TimeSheetList;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Employee_TimeSheet> getAllAppliedTimesheetList(Integer companyId) {
+		List<Employee_TimeSheet> employee_TimeSheetList = null;
+		try {
+			Criteria criteria = getSession().createCriteria(Employee_TimeSheet.class);
+			criteria.createAlias("employee", "employee");
+			criteria.add(Restrictions.and(Restrictions.eq("employee.companyId", companyId), Restrictions.isNull("statusId"),
+					Restrictions.isNotNull("projectId")));
+			employee_TimeSheetList = criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOG.error("Error at EmployeeTimeSheetRepository getEmployee_TimeSheetByEmpIdAndTimeSheetId()" + e.getMessage(), e);
+		}
+		return employee_TimeSheetList;
+	}
+
 }
