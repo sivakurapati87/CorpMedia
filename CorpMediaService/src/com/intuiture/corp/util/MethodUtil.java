@@ -186,6 +186,21 @@ public class MethodUtil {
 		if (dbl != null) {
 			Format format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
 			str = format.format(new BigDecimal(dbl));
+			if (str != null && str.length() > 0) {
+				str = str.split("\\.")[1];
+			}
+		}
+		return str;
+	}
+
+	public static String convertLongToMoney(Long ln) {
+		String str = null;
+		if (ln != null) {
+			Format format = NumberFormat.getCurrencyInstance(new Locale("en", "in"));
+			str = format.format(ln);
+			if (str != null && str.length() > 0) {
+				str = str.split("\\.")[1];
+			}
 		}
 		return str;
 	}

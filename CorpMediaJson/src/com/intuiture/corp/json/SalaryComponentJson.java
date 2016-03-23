@@ -24,9 +24,45 @@ public class SalaryComponentJson {
 	private Double dailyAllowance;
 	private Double gratuityContribution;
 	private Double specialAllowance;
+	private String grossEarningInMoney;
+	private String grossDeductionsInMoney;
+	private String netAmountInMoney;
+	private String netPayInWords;
 
 	public Integer getSalaryComponentId() {
 		return salaryComponentId;
+	}
+
+	public String getGrossEarningInMoney() {
+		return grossEarningInMoney;
+	}
+
+	public void setGrossEarningInMoney(String grossEarningInMoney) {
+		this.grossEarningInMoney = grossEarningInMoney;
+	}
+
+	public String getGrossDeductionsInMoney() {
+		return grossDeductionsInMoney;
+	}
+
+	public void setGrossDeductionsInMoney(String grossDeductionsInMoney) {
+		this.grossDeductionsInMoney = grossDeductionsInMoney;
+	}
+
+	public String getNetAmountInMoney() {
+		return netAmountInMoney;
+	}
+
+	public void setNetAmountInMoney(String netAmountInMoney) {
+		this.netAmountInMoney = netAmountInMoney;
+	}
+
+	public String getNetPayInWords() {
+		return netPayInWords;
+	}
+
+	public void setNetPayInWords(String netPayInWords) {
+		this.netPayInWords = netPayInWords;
 	}
 
 	public void setSalaryComponentId(Integer salaryComponentId) {

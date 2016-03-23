@@ -11,8 +11,8 @@
 			<td valign="top"><employee-info-top></employee-info-top>
 				<table class="table mtable " border="0" style="width: 100%;">
 					<tr>
-						<td style="width: 30%"></td>
-						<td style="width: 70%"><table class="table mtable "
+						<td style="width: 20%"></td>
+						<td style="width: 80%"><table class="table mtable "
 								style="width: 100%;" border="1">
 
 
@@ -32,24 +32,28 @@
 								<tr style="height: 10px"></tr>
 								<tr>
 									<td colspan="3">
-										<table style="width: 100%">
+										<table style="width: 100%" border="1">
 											<tr>
-												<td><label>Employee Name:</label></td>
-												<td><label>{{empObj.firstName}}
-														&nbsp;{{empObj.middleName}} &nbsp;{{empObj.lastName}} </label></td>
+												<td width="15%"><label>Employee Name:</label></td>
+												<td width="20%"><label>{{empObj.firstName}}
+														&nbsp;{{empObj.middleName}} &nbsp;{{empObj.lastName}} adsf</label></td>
 												<td width="10px"></td>
-												<td><label>Designation:</label></td>
-												<td><label>{{empObj.designation}}</label></td>
+												<td width="15%"><label>Designation:</label></td>
+												<td width="20%"><label>{{empObj.designation}}adsf</label></td>
 												<td width="10px"></td>
-												<td><label>Gender:</label></td>
-												<td><label>{{empObj.gender}}</label></td>
+												<td width="15%"><label>Gender:</label></td>
+												<td width="15%"><label>{{empObj.gender}}asdf</label></td>
 											</tr>
 											<tr style="height: 10px"></tr>
 											<tr>
 												<td><label>DOJ:</label></td>
 												<td><label>{{empObj.strDateOfJoining}}</label></td>
 												<td width="10px"></td>
-												<td colspan="5"></td>
+												<td><label>Total Days:</label></td>
+												<td><label>{{empObj.designation}}adsf</label></td>
+												<td width="10px"></td>
+												<td><label>Paid Days:</label></td>
+												<td><label>{{empObj.gender}}asdf</label></td>
 											</tr>
 											<tr style="height: 10px"></tr>
 											<tr>
@@ -76,8 +80,87 @@
 								<tr style="height: 10px"></tr>
 								<tr>
 									<td colspan="3">
-										<table style="width: 100%">
+										<table style="width: 100%" border="1">
 											<tr>
+												<td width="25%"><label>Earnings</label></td>
+												<td width="25%" align="right"><label>Amount</label></td>
+												<td width="5%"></td>
+												<td width="25%"><label>Deductions</label></td>
+												<td width="20%" align="right"><label>Amount</label></td>
+											</tr>
+											<tr style="height: 10px"></tr>
+											<tr>
+												<td colspan="2">
+													<table style="width: 100%" border="1">
+														<tr>
+															<td width="50%"><label>Basic</label></td>
+															<td width="50%" align="right"><label>{{findMonthlyAmount(employeeSalaryInfoJson.salaryComponentJson.basic)}}</label></td>
+														</tr>
+														<tr style="height: 10px"></tr>
+														<tr>
+															<td width="50%"><label>House Rent Allowance</label></td>
+															<td width="50%" align="right"><label>{{findMonthlyAmount(employeeSalaryInfoJson.salaryComponentJson.hra)}}</label></td>
+														</tr>
+														<tr style="height: 10px"></tr>
+														<tr>
+															<td width="50%"><label>Medical Allowance</label></td>
+															<td width="50%" align="right"><label>{{findMonthlyAmount(employeeSalaryInfoJson.salaryComponentJson.medicalReimbursement)}}</label></td>
+														</tr>
+														<tr style="height: 10px"></tr>
+														<tr>
+															<td width="50%"><label>Transport Allowance</label></td>
+															<td width="50%" align="right"><label>{{findMonthlyAmount(employeeSalaryInfoJson.salaryComponentJson.transportAllowance)}}</label></td>
+														</tr>
+														<tr style="height: 10px"></tr>
+														<tr>
+															<td width="50%"><label>Special Allowance</label></td>
+															<td width="50%" align="right"><label>{{findMonthlyAmount(employeeSalaryInfoJson.salaryComponentJson.specialAllowance)}}</label></td>
+														</tr>
+													</table>
+												</td>
+												<td width="5%"></td>
+												<td colspan="2" valign="top">
+													<table style="width: 100%" border="1">
+														<tr>
+															<td width="50%"><label>Provident Fund</label></td>
+															<td width="50%" align="right"><label>{{findMonthlyAmount(employeeSalaryInfoJson.salaryComponentJson.pf)}}</label></td>
+														</tr>
+														<tr style="height: 10px"></tr>
+														<tr>
+															<td width="50%"><label>Tax Deduction</label></td>
+															<td width="50%" align="right"><label>-</label></td>
+														</tr>
+														<tr style="height: 10px"></tr>
+														<tr>
+															<td width="50%"><label>Professional Tax</label></td>
+															<td width="50%" align="right"><label>{{findMonthlyAmount(employeeSalaryInfoJson.salaryComponentJson.professionalAllowance)}}</label></td>
+														</tr>
+														<tr style="height: 10px"></tr>
+														<tr>
+															<td width="50%"><label>Other Deductions</label></td>
+															<td width="50%" align="right"><label>-</label></td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr style="height: 10px"></tr>
+											<tr>
+												<td width="25%"><label>Gross Earnings</label></td>
+												<td width="25%" align="right"><label>{{employeeSalaryInfoJson.salaryComponentJson.grossEarningInMoney}}</label></td>
+												<td width="5%"></td>
+												<td width="25%"><label>Gross Deductions</label></td>
+												<td width="20%" align="right"><label>{{employeeSalaryInfoJson.salaryComponentJson.grossDeductionsInMoney}}</label></td>
+											</tr>
+											<tr style="height: 10px"></tr>
+											<tr>
+												<td width="25%"><label>Net Amount</label></td>
+												<td width="25%" align="right"><label>{{employeeSalaryInfoJson.salaryComponentJson.netAmountInMoney}}</label></td>
+												<td width="5%" colspan="3"></td>
+											</tr>
+											<tr style="height: 10px"></tr>
+											<tr>
+												<td width="25%"><label>Net Pay in words: </label></td>
+												<td width="25%" colspan="4"><label>{{employeeSalaryInfoJson.salaryComponentJson.netPayInWords}}</label></td>
 											</tr>
 										</table>
 									</td>

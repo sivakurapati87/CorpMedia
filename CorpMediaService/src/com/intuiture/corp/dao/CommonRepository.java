@@ -36,7 +36,8 @@ public class CommonRepository extends BaseRepository {
 		List<?> list = null;
 		try {
 			Criteria criteria = getSession().createCriteria(classType);
-			criteria.add(Restrictions.and(Restrictions.eq("companyId", companyId), Restrictions.or(Restrictions.eq("isDeleted", Boolean.FALSE), Restrictions.isNull("isDeleted"))));
+			criteria.add(Restrictions.and(Restrictions.eq("companyId", companyId),
+					Restrictions.or(Restrictions.eq("isDeleted", Boolean.FALSE), Restrictions.isNull("isDeleted"))));
 			list = criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -85,13 +86,35 @@ public class CommonRepository extends BaseRepository {
 		List<?> list = null;
 		try {
 			Criteria criteria = getSession().createCriteria(clazz);
-			criteria.add(Restrictions.and(Restrictions.eq("employeeId", employeeId), Restrictions.or(Restrictions.eq("isDeleted", Boolean.FALSE), Restrictions.isNull("isDeleted"))));
+			criteria.add(Restrictions.and(Restrictions.eq("employeeId", employeeId),
+					Restrictions.or(Restrictions.eq("isDeleted", Boolean.FALSE), Restrictions.isNull("isDeleted"))));
 			list = criteria.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 			LOG.error("Error at EmployeeRepository findByEmployeeId()" + e.getMessage(), e);
 		}
 		return list;
+	}
+
+	/**
+	 * This method is to get all the records based on employee Id
+	 * 
+	 * @param employeeId
+	 * @param clazz
+	 * @return
+	 */
+	public Object getARecordByEmployeeId(Integer employeeId, Class<?> clazz) {
+		Object object = null;
+		try {
+			Criteria criteria = getSession().createCriteria(clazz);
+			criteria.add(Restrictions.and(Restrictions.eq("employeeId", employeeId),
+					Restrictions.or(Restrictions.eq("isDeleted", Boolean.FALSE), Restrictions.isNull("isDeleted"))));
+			object = criteria.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOG.error("Error at EmployeeRepository findByEmployeeId()" + e.getMessage(), e);
+		}
+		return object;
 	}
 
 	/**
