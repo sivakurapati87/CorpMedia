@@ -299,8 +299,15 @@ public class TransformDomainToJson {
 		employeeJson.setRoleId(employee.getRoleId());
 		employeeJson.setStrDateOfJoining(MethodUtil.convertDateToString(employee.getDateOfJoining()));
 		employeeJson.setGenderId(employee.getGenderId());
+		employeeJson.setDesignationId(employee.getDesignationId());
 		if (employee.getCompanyRoles() != null) {
 			employeeJson.setRole(employee.getCompanyRoles().getRoleName());
+		}
+		if (employee.getDesignation() != null) {
+			employeeJson.setDesignation(employee.getDesignation().getDesignationName());
+		}
+		if (employee.getGender() != null) {
+			employeeJson.setGender(employee.getGender().getDescription());
 		}
 		return employeeJson;
 	}
@@ -342,7 +349,7 @@ public class TransformDomainToJson {
 		departmentJson.setDepartmentName(department.getDepartmentName());
 		return departmentJson;
 	}
-	
+
 	public static DesignationJson getDesignationJson(Designation designation) {
 		DesignationJson designationJson = new DesignationJson();
 		designationJson.setCompanyId(designation.getCompanyId());
@@ -350,7 +357,7 @@ public class TransformDomainToJson {
 		designationJson.setDesignationName(designation.getDesignationName());
 		return designationJson;
 	}
-	
+
 	public static JobTitlesJson getJobTitlesJson(JobTitles jobTitles) {
 		JobTitlesJson jobTitlesJson = new JobTitlesJson();
 		jobTitlesJson.setCompanyId(jobTitles.getCompanyId());

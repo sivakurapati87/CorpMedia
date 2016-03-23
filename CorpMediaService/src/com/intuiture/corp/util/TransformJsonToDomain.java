@@ -186,7 +186,8 @@ public class TransformJsonToDomain {
 				if (companyInfoObj.get("Company Name").getAsString().trim().equalsIgnoreCase(companyName.trim())) {
 					companyInfo.setAddress1(companyInfoObj.get("Address 1").getAsString());
 					companyInfo.setAddress2(companyInfoObj.get("Address 2").getAsString());
-					companyInfo.setBoardNumber(companyInfoObj.get("Number of Members(Applicable only in case of company without Share Capital)").getAsString());
+					companyInfo.setBoardNumber(companyInfoObj.get("Number of Members(Applicable only in case of company without Share Capital)")
+							.getAsString());
 					companyInfo.setCity(companyInfoObj.get("City").getAsString());
 					companyInfo.setCompanyType(companyInfoObj.get("Class of Company").getAsString());
 					companyInfo.setD_o_incorporation(CorpoMediaUtil.convertStringToDate(companyInfoObj.get("Date of Incorporation").getAsString()));
@@ -313,7 +314,7 @@ public class TransformJsonToDomain {
 		department.setCompanyId(departmentJson.getCompanyId());
 		department.setDepartmentName(departmentJson.getDepartmentName());
 	}
-	
+
 	public static void getDesignation(Designation designation, DesignationJson designationJson) {
 		designation.setCreatedOn(new Date());
 		designation.setCompanyId(designationJson.getCompanyId());
@@ -395,6 +396,7 @@ public class TransformJsonToDomain {
 		employee.setLocationId(employeeJson.getLocationId());
 		employee.setMiddleName(employeeJson.getMiddleName());
 		employee.setGenderId(employeeJson.getGenderId());
+		employee.setDesignationId(employeeJson.getDesignationId());
 	}
 
 	public static void getDeductions(Deductions deductions, DeductionsJson deductionsJson) {
@@ -461,7 +463,8 @@ public class TransformJsonToDomain {
 		travelReimbursement.setIsDeleted(Boolean.FALSE);
 	}
 
-	public static void getCityCompensatoryAllowance(CityCompensatoryAllowance cityCompensatoryAllowance, CityCompensatoryAllowanceJson cityCompensatoryAllowanceJson) {
+	public static void getCityCompensatoryAllowance(CityCompensatoryAllowance cityCompensatoryAllowance,
+			CityCompensatoryAllowanceJson cityCompensatoryAllowanceJson) {
 		cityCompensatoryAllowance.setCreatedOn(new Date());
 		cityCompensatoryAllowance.setCompanyId(cityCompensatoryAllowanceJson.getCompanyId());
 		cityCompensatoryAllowance.setMaxAnnualLimit(cityCompensatoryAllowanceJson.getMaxAnnualLimit());
@@ -516,7 +519,8 @@ public class TransformJsonToDomain {
 		payrollCycleSettings.setIsDeleted(Boolean.FALSE);
 	}
 
-	public static void getPayrollPeriodCalculation(PayrollPeriodCalculation payrollPeriodCalculation, PayrollPeriodCalculationJson payrollPeriodCalculationJson) {
+	public static void getPayrollPeriodCalculation(PayrollPeriodCalculation payrollPeriodCalculation,
+			PayrollPeriodCalculationJson payrollPeriodCalculationJson) {
 		payrollPeriodCalculation.setCreatedOn(new Date());
 		payrollPeriodCalculation.setCompanyId(payrollPeriodCalculationJson.getCompanyId());
 		payrollPeriodCalculation.setPayDaysInAMonthId(payrollPeriodCalculationJson.getPayDaysInAMonthId());
@@ -545,7 +549,8 @@ public class TransformJsonToDomain {
 		billingRates.setIsDeleted(Boolean.FALSE);
 	}
 
-	public static void getCompanyEmployeeDefaults(CompanyEmployeeDefaults companyEmployeeDefaults, CompanyEmployeeDefaultsJson companyEmployeeDefaultsJson) {
+	public static void getCompanyEmployeeDefaults(CompanyEmployeeDefaults companyEmployeeDefaults,
+			CompanyEmployeeDefaultsJson companyEmployeeDefaultsJson) {
 		companyEmployeeDefaults.setCompanyId(companyEmployeeDefaultsJson.getCompanyId());
 		if (companyEmployeeDefaultsJson.getCompanyEmployeeDefaultsId() != null) {
 			companyEmployeeDefaults.setUpdatedOn(new Date());
@@ -632,7 +637,8 @@ public class TransformJsonToDomain {
 		employeeProject.setRoleId(employeeProjectJson.getRoleId());
 	}
 
-	public static void getEmployeeProfessionalInfo(EmployeeProfessionalInfo employeeProfessionalInfo, EmployeeProfessionalInfoJson employeeProfessionalInfoJson) {
+	public static void getEmployeeProfessionalInfo(EmployeeProfessionalInfo employeeProfessionalInfo,
+			EmployeeProfessionalInfoJson employeeProfessionalInfoJson) {
 		employeeProfessionalInfo.setCompanyId(employeeProfessionalInfoJson.getCompanyId());
 		if (employeeProfessionalInfoJson.getEmployeeProfessionalInfoId() != null) {
 			employeeProfessionalInfo.setUpdatedOn(new Date());
@@ -662,7 +668,8 @@ public class TransformJsonToDomain {
 		employeeExperienceInfo.setDescription(employeeExperienceInfoJson.getDescription());
 	}
 
-	public static void getEmployeeEducationalInfo(EmployeeEducationalInfo employeeEducationalInfo, EmployeeEducationalInfoJson employeeEducationalInfoJson) {
+	public static void getEmployeeEducationalInfo(EmployeeEducationalInfo employeeEducationalInfo,
+			EmployeeEducationalInfoJson employeeEducationalInfoJson) {
 		employeeEducationalInfo.setCompanyId(employeeEducationalInfoJson.getCompanyId());
 		if (employeeEducationalInfoJson.getEmployeeEducationalInfoId() != null) {
 			employeeEducationalInfo.setUpdatedOn(new Date());
@@ -922,7 +929,8 @@ public class TransformJsonToDomain {
 		employeeSalaryInfo.setEffectiveFrom(employeeSalaryInfoJson.getEffectiveFrom());
 	}
 
-	public static void getEmployeeOneTimeComponent(EmployeeOneTimeComponent employeeOneTimeComponent, EmployeeOneTimeComponentJson employeeOneTimeComponentJson) {
+	public static void getEmployeeOneTimeComponent(EmployeeOneTimeComponent employeeOneTimeComponent,
+			EmployeeOneTimeComponentJson employeeOneTimeComponentJson) {
 		if (employeeOneTimeComponentJson.getEmployeeOneTimeComponentId() == null) {
 			employeeOneTimeComponent.setCreatedOn(new Date());
 		} else {

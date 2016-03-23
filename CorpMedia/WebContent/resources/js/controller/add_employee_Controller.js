@@ -31,6 +31,7 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 				$scope.employeeJsonList = data;
 				$scope.getAllRoles();    
 				$scope.getAllCompanyLocations();
+				$scope.getAllDesignationsList();
 				$scope.isProcessing = false;
 			}).error(function() {
 	      	  console.error('Could not get All Employees List');
@@ -94,6 +95,15 @@ App.controller('add_employee_Controller', ['$scope','$location','$rootScope','$h
 		// cancel employee educational information
 		$scope.cancelEmployee = function() {
 			$scope.isEmpCollapse = true;
+		};
+		
+		$scope.getAllDesignationsList = function(){
+			if($rootScope.selectedCompanyObj){
+			$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.DesignationController+'/getAllDesignationsList/'+ $rootScope.selectedCompanyObj.companyId).success(function(data) {
+				$scope.companyDesignationList = data;
+			}).error(function() {
+	      	  console.error('Could not getAllDesignationsList');
+	        });}
 		};
 		
 		$scope.getAllEmployeesList();

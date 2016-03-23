@@ -11,8 +11,31 @@
 			<td valign="top"><employee-info-top></employee-info-top>
 				<table class="table mtable " border="0" style="width: 100%;">
 					<tr>
-						<td style="width: 20%"></td>
-						<td style="width: 80%"><table class="table mtable "
+						<td style="width: 20%">
+							<table style="width: 100%">
+								<tr>
+									<td width="50%" align="center"><label>Month</label></td>
+									<td width="50%" align="center">Year</td>
+								</tr>
+								<tr style="height: 10px"></tr>
+								<tr>
+									<td width="50%" align="center"><select
+										class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+										required ng-model="companyBank.bankId"
+										ng-options="bank.lookupDetailId as bank.description for bank in  lookup.monthList">
+											<option value="" disabled selected>Name of the Bank</option>
+									</select></td>
+									<td width="50%" align="center"><select
+										class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+										required ng-model="companyBank.bankId"
+										ng-options="bank.lookupDetailId as bank.description for bank in  lookup.yearList">
+											<option value="" disabled selected>Name of the Bank</option>
+									</select></td>
+								</tr>
+							</table>
+
+						</td>
+						<td style="width: 80%"><table class="table mtable"
 								style="width: 100%;" border="1">
 
 
@@ -36,13 +59,13 @@
 											<tr>
 												<td width="15%"><label>Employee Name:</label></td>
 												<td width="20%"><label>{{empObj.firstName}}
-														&nbsp;{{empObj.middleName}} &nbsp;{{empObj.lastName}} adsf</label></td>
+														&nbsp;{{empObj.middleName}} &nbsp;{{empObj.lastName}} </label></td>
 												<td width="10px"></td>
 												<td width="15%"><label>Designation:</label></td>
-												<td width="20%"><label>{{empObj.designation}}adsf</label></td>
+												<td width="20%"><label>{{empObj.designation}}</label></td>
 												<td width="10px"></td>
 												<td width="15%"><label>Gender:</label></td>
-												<td width="15%"><label>{{empObj.gender}}asdf</label></td>
+												<td width="15%"><label>{{empObj.gender}}</label></td>
 											</tr>
 											<tr style="height: 10px"></tr>
 											<tr>
@@ -50,10 +73,10 @@
 												<td><label>{{empObj.strDateOfJoining}}</label></td>
 												<td width="10px"></td>
 												<td><label>Total Days:</label></td>
-												<td><label>{{empObj.designation}}adsf</label></td>
+												<td><label>{{empObj.designation}}</label></td>
 												<td width="10px"></td>
 												<td><label>Paid Days:</label></td>
-												<td><label>{{empObj.gender}}asdf</label></td>
+												<td><label>{{empObj.gender}}</label></td>
 											</tr>
 											<tr style="height: 10px"></tr>
 											<tr>

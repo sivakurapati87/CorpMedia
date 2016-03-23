@@ -27,6 +27,7 @@ public class LookupBean {
 	private List<LookUpDetailJson> monthQuerertyList;
 	private List<LookUpDetailJson> paymentStatusList;
 	private List<LookUpDetailJson> reasonTypeList;
+	private List<LookUpDetailJson> yearList;
 
 	public List<LookUpDetailJson> getBanksList() {
 		return banksList;
@@ -194,6 +195,14 @@ public class LookupBean {
 
 	public void setPaymentStatusList(List<LookUpDetailJson> paymentStatusList) {
 		this.paymentStatusList = paymentStatusList;
+	}
+
+	public List<LookUpDetailJson> getYearList() {
+		return yearList;
+	}
+
+	public void setYearList(List<LookUpDetailJson> yearList) {
+		this.yearList = yearList;
 	}
 
 }

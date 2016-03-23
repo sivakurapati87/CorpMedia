@@ -15,6 +15,7 @@ public class Constants {
 	public static final String RELATION = "RELATION";
 	public static final String TRUEORFALSE = "TRUEORFALSE";
 	public static final String MONTH = "MONTH";
+	public static final String MONTHS = "MONTHS";
 	public static final String DAY = "DAY";
 	public static final String PAYDAYINAMONTH = "PAYDAYINAMONTH";
 	public static final String CURRENCY = "CURRENCY";
@@ -24,6 +25,7 @@ public class Constants {
 	public static final String MQHS = "MQHS";
 	public static final String PAYMENT_STATUS = "PAYMENT_STATUS";
 	public static final String REASONTYPE = "REASONTYPE";
+	public static final String YEAR = "YEAR";
 
 	public static final ResourceBundle RB = ResourceBundle.getBundle("config");
 	public static final String SERVICEURL = RB.getString("RESTWebServiceUrl");

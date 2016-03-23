@@ -31,12 +31,24 @@ public class Employee implements Serializable {
 	private Integer companyId;
 	private Boolean isDeleted;
 	private Integer genderId;
+	private Integer designationId;
 	@ManyToOne
 	@JoinColumn(name = "roleId", insertable = false, updatable = false)
 	private CompanyRoles companyRoles;
+	@ManyToOne
+	@JoinColumn(name = "designationId", insertable = false, updatable = false)
+	private Designation designation;
+	@ManyToOne
+	@JoinColumn(name = "genderId", insertable = false, updatable = false)
+	private LookUpDetails gender;
 
-	// @OneToMany(mappedBy = "employee")
-	// private List<Employee_TimeSheet> employee_TimeSheets;
+	public Designation getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(Designation designation) {
+		this.designation = designation;
+	}
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -156,6 +168,22 @@ public class Employee implements Serializable {
 
 	public void setGenderId(Integer genderId) {
 		this.genderId = genderId;
+	}
+
+	public Integer getDesignationId() {
+		return designationId;
+	}
+
+	public void setDesignationId(Integer designationId) {
+		this.designationId = designationId;
+	}
+
+	public LookUpDetails getGender() {
+		return gender;
+	}
+
+	public void setGender(LookUpDetails gender) {
+		this.gender = gender;
 	}
 
 	// public List<Employee_TimeSheet> getEmployee_TimeSheets() {

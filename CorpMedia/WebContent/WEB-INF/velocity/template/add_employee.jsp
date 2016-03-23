@@ -117,7 +117,7 @@
 
 										<tr>
 											<td><label class="lable16_Regular">Gender </label></td>
-											<td></td>
+											<td><label class="lable16_Regular">Designation </label></td>
 										</tr>
 										<tr>
 											<td><select
@@ -126,9 +126,21 @@
 												ng-options="gender.lookupDetailId as gender.description for gender in  lookup.genderList">
 													<option value="" disabled selected>Select</option>
 											</select></td>
-											<td></td>
+											<td>
+											<select
+												class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
+												required ng-model="employeeJson.designationId"
+												ng-options="designation.designationId as designation.designationName for designation in  companyDesignationList">
+													<option value="" disabled selected>Select</option>
+											</select>
+											
+											</td>
 
 										</tr>
+										
+										
+										
+										
 										<tr>
 											<td colspan="2" align="right">
 
