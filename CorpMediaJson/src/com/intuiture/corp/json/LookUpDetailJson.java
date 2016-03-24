@@ -8,6 +8,17 @@ public class LookUpDetailJson {
 	private Integer indexOfTheMonth;
 	private Integer daysOfTheMonth;
 	private String payDayPeriod;
+	private String strPayDayDate;
+	private String strPayCycleStartDay;
+	private String strPayCycleEndDay;
+
+	public String getStrPayDayDate() {
+		return strPayDayDate;
+	}
+
+	public void setStrPayDayDate(String strPayDayDate) {
+		this.strPayDayDate = strPayDayDate;
+	}
 
 	public Integer getIndexOfTheMonth() {
 		return indexOfTheMonth;
@@ -63,6 +74,22 @@ public class LookUpDetailJson {
 
 	public void setPayDayPeriod(String payDayPeriod) {
 		this.payDayPeriod = payDayPeriod;
+	}
+
+	public String getStrPayCycleStartDay() {
+		return strPayCycleStartDay;
+	}
+
+	public void setStrPayCycleStartDay(String strPayCycleStartDay) {
+		this.strPayCycleStartDay = strPayCycleStartDay;
+	}
+
+	public String getStrPayCycleEndDay() {
+		return strPayCycleEndDay;
+	}
+
+	public void setStrPayCycleEndDay(String strPayCycleEndDay) {
+		this.strPayCycleEndDay = strPayCycleEndDay;
 	}
 
 }

@@ -11,73 +11,45 @@
 			<td width="20%" valign="top" bgcolor="white"><left-menu></left-menu>
 			</td>
 			<td width="1%"></td>
-			<td valign="top">
-
-				<table class="table" border="0" style="width: 100%;">
-					<tr>
-						<td>
-							<div class="sub-page-navigation">
-								<ul>
-
-									<li ng-class="{'active':(state==='general_payroll_settings')}"><a
-										class="anchor-sm" ui-sref="general_payroll_settings">Payroll
-											settings</a></li>
-									<li ng-class="{'active':(state==='adhoc_components')}"><a
-										class="anchor-sm" ui-sref="adhoc_components">Adhoc
-											Components</a></li>
-									<li
-										ng-class="{'active':(state==='salary_component_structure')}"><a
-										class="anchor-sm" ui-sref="salary_component_structure">Salary
-											Structure</a></li>
-									<li ng-class="{'active':(state==='provident_fund')}"><a
-										class="anchor-sm" ui-sref="provident_fund">Provident Fund</a></li>
-									<li ng-class="{'active':(state==='legal_and_bank')}"><a
-										class="anchor-sm" ui-sref="legal_and_bank">Legal and Bank</a></li>
-									<li ng-class="{'active':(state==='employee_loan_settings')}"><a
-										class="anchor-sm" ui-sref="employee_loan_settings">Loan
-											Settings</a></li>
-
-
-
-
-								</ul>
-							</div>
-						</td>
-					</tr>
-				</table>
+			<td valign="top"><payroll-info-top></payroll-info-top>
 				<table class="table mtable  " border="0"
 					style="width: 100%; background-color: white">
-					<tr><th class="th"> <h2>Salary components </h2><a ui-sref="Salary_component" href="#">click here </a> </th> </tr>
+					<tr>
+						<th class="th">
+							<h2>Salary components</h2> <a ui-sref="Salary_component">click
+								here </a>
+						</th>
+					</tr>
 					<tr>
 						<td>
 
 
 
 							<div class="cont">
-								
-									
-									<p class="dis_block">
-										<font size="2"><b>In this section,you can set up
-												and define properties for salary components.</b></font>
-									</p>
-								
 
-							
-								
-									<p class="dis_block">
-										<font size="3">Basic components</font>
-									</p>
-									<p>
-										<font size="2">Basic, HRA & PF are auto calculated
-											based on the individual salary structure to optimize tax
-											savings. Special allowance is used as a bucket for allocating
-											the balance of salary left after allocating all the other
-											allowances and components. You can edit the name of Special
-											Allowance to suit your needs. </font>
-									</p>
-								
 
-							</div> 
+								<p class="dis_block">
+									<font size="2"><b>In this section,you can set up and
+											define properties for salary components.</b></font>
+								</p>
+
+
+
+
+								<p class="dis_block">
+									<font size="3">Basic components</font>
+								</p>
+								<p>
+									<font size="2">Basic, HRA & PF are auto calculated based
+										on the individual salary structure to optimize tax savings.
+										Special allowance is used as a bucket for allocating the
+										balance of salary left after allocating all the other
+										allowances and components. You can edit the name of Special
+										Allowance to suit your needs. </font>
+								</p>
+
+
+							</div>
 							<div class="cont">
 								<div class="col-md-2 " style="background-color: #dedede;">
 									<p></p>
@@ -100,42 +72,39 @@
 								</div>
 
 
-							</div> 
-
-
-							<div class="cont">
-								
-									<p class="dis_block">
-										<font size="3">Recurring Salary Heads</font>
-									</p>
-									<p class="dis_block">
-										<font size="2">Allowances are the salary components
-											within an Employee Gross Salary. All Statutory tax-exempt
-											allowances are already provided and for most part you do not
-											have to make any changes here. Salary components such as
-											Basic, HRA etc are auto calculated by the system optimized
-											for each employee.</font>
-									</p>
-								
 							</div>
 
 
 							<div class="cont">
-								<div style="background: #fff; padding:10px;">
-									
-										<h4>STANDARD ALLOWANCES</h4>
-									
+
+								<p class="dis_block">
+									<font size="3">Recurring Salary Heads</font>
+								</p>
+								<p class="dis_block">
+									<font size="2">Allowances are the salary components
+										within an Employee Gross Salary. All Statutory tax-exempt
+										allowances are already provided and for most part you do not
+										have to make any changes here. Salary components such as
+										Basic, HRA etc are auto calculated by the system optimized for
+										each employee.</font>
+								</p>
+
+							</div>
+
+
+							<div class="cont">
+								<div style="background: #fff; padding: 10px;">
+
+									<h4>STANDARD ALLOWANCES</h4>
+
 
 									<!--this is first box for medical allowance-->
-									<div class="abc" >
-										<label>Medical reimbursement</label>
-										<span  class="dis_block">Tax Free,Max limit:
-												Rs.{{medicalreimbursement.maxAnnualLimit}} 
-											<a href="" data-toggle="modal"
-												data-target="#medicalmodelpopupid "><i class="fa fa-cog lrspace_10"></i>
-											</a>
-										</sapn>
-										
+									<div class="abc">
+										<label>Medical reimbursement</label> <span class="dis_block">Tax
+											Free,Max limit: Rs.{{medicalreimbursement.maxAnnualLimit}} <a
+											href="" data-toggle="modal"
+											data-target="#medicalmodelpopupid "><i
+												class="fa fa-cog lrspace_10"></i> </a> </sapn>
 									</div>
 
 
@@ -189,16 +158,15 @@
 
 									<!--this is second box for transport allowance-->
 									<p></p>
-									<div class="abc" >
-										
-										<label>Transport allowance</label>
-										<span class="dis_block">Tax Free, Max Limit :
-												Rs.{{transportallowance.maxAnnualLimit}}
-												<a href="" data-toggle="modal"
-												data-target="#transportmodelpopupid"><i
+									<div class="abc">
+
+										<label>Transport allowance</label> <span class="dis_block">Tax
+											Free, Max Limit : Rs.{{transportallowance.maxAnnualLimit}} <a
+											href="" data-toggle="modal"
+											data-target="#transportmodelpopupid"><i
 												class="fa fa-cog lrspace_10"></i></a>
 										</span>
-										
+
 									</div>
 
 
@@ -252,13 +220,12 @@
 
 									<!--this is third box for professional allowance-->
 									<p></p>
-									<div class="abc" >
-										<label>Professional allowance</label>
-										<span class="dis_block">Tax Free, Max Limit:
-												Rs.{{professionalallowance.maxAnnualLimit}}
-												<a href="" data-toggle="modal"
-												data-target="#professionalmodelpopupid">
-												<i class="fa fa-cog lrspace_10"></i></a>
+									<div class="abc">
+										<label>Professional allowance</label> <span class="dis_block">Tax
+											Free, Max Limit: Rs.{{professionalallowance.maxAnnualLimit}}
+											<a href="" data-toggle="modal"
+											data-target="#professionalmodelpopupid"> <i
+												class="fa fa-cog lrspace_10"></i></a>
 										</span>
 									</div>
 
@@ -307,15 +274,13 @@
 
 									<!--this is fourth box for travel reimbursement-->
 									<p></p>
-									<div class="abc" >
-										 <label>Travel reimbursement</label>
-										 <span class="dis_block">Tax Free, Max Limit:
-												Rs.{{travelreimbursement.maxAnnualLimit}}
-												<a href="" data-toggle="modal"
-												data-target="#travelmodelpopupid">
+									<div class="abc">
+										<label>Travel reimbursement</label> <span class="dis_block">Tax
+											Free, Max Limit: Rs.{{travelreimbursement.maxAnnualLimit}} <a
+											href="" data-toggle="modal" data-target="#travelmodelpopupid">
 												<i class="fa fa-cog lrspace_10 "></i>
-												</a>
-											</span>
+										</a>
+										</span>
 									</div>
 
 
@@ -364,12 +329,11 @@
 
 									<!--this is fifth box for food allowance-->
 									<p></p>
-									<div class="abc" >
-										<label>Food coupons</label>
-										<span class="dis_block">Tax Free, Max Limit:
-												Rs.{{foodcoupons.maxAnnualLimit}}
-											<a href="" data-toggle="modal" data-target="#foodmodelpopupid">
-											<i class="fa fa-cog lrspace_10"></i></a>
+									<div class="abc">
+										<label>Food coupons</label> <span class="dis_block">Tax
+											Free, Max Limit: Rs.{{foodcoupons.maxAnnualLimit}} <a href=""
+											data-toggle="modal" data-target="#foodmodelpopupid"> <i
+												class="fa fa-cog lrspace_10"></i></a>
 										</span>
 									</div>
 
@@ -417,14 +381,13 @@
 
 									<!--this is sixth box for compensatory allowance-->
 									<p></p>
-									<div class="abc" >
-									
-										<label>City compensatory allowance</label>
-										<span class="dis_block">
-											Tax Free, Max Limit:
-												Rs.{{citycompensatoryallowance.maxAnnualLimit}}
-												<a href="" data-toggle="modal" data-target="#citymodelpopupid">
-												<i class="fa fa-cog lrspace_10"></i></a>
+									<div class="abc">
+
+										<label>City compensatory allowance</label> <span
+											class="dis_block"> Tax Free, Max Limit:
+											Rs.{{citycompensatoryallowance.maxAnnualLimit}} <a href=""
+											data-toggle="modal" data-target="#citymodelpopupid"> <i
+												class="fa fa-cog lrspace_10"></i></a>
 										</span>
 									</div>
 
@@ -474,14 +437,13 @@
 
 									<!--this is seventh box for daily allowance-->
 									<p></p>
-									<div class="abc" >
-										
-										<label>Daily allowance</label>
-										<span class="dis_block">
-											Tax Free, Max Limit:
-												Rs.{{dailyallowance.maxAnnualLimit}}
-												<a href="" data-toggle="modal" data-target="#dailymodelpopupid">
-												<i class="fa fa-cog lrspace_10"></i></a>
+									<div class="abc">
+
+										<label>Daily allowance</label> <span class="dis_block">
+											Tax Free, Max Limit: Rs.{{dailyallowance.maxAnnualLimit}} <a
+											href="" data-toggle="modal" data-target="#dailymodelpopupid">
+												<i class="fa fa-cog lrspace_10"></i>
+										</a>
 										</span>
 									</div>
 
@@ -539,14 +501,13 @@
 
 
 								<!--this is the second half of the row(right hand side part)-->
-								<div class="" >
+								<div class="">
 
 									<p></p>
 									<p>
 										<b><font size="3">CUSTOM ALLOWANCES</font></b>
 									</p>
-									<div class=""
-										style="background-color: #fffff">
+									<div class="" style="background-color: #fffff">
 										<br>
 										<!--making it a link since we need to trigger bootstrap modal-->
 										<a href="" data-toggle="modal"
@@ -559,128 +520,120 @@
 											</p>
 										</a>
 										<table style="width: 40%" border="0"
-												class="table table-bordered" >
-												<tr>
-													<th>Name</th>
-													<th>Actions</th>
-												</tr>
-												<tr ng-repeat="customallowance in customAllowanceList"
-													ng-class-odd="'odd'" ng-class-even="'even'"
-													style="height: 30px">
-													<td>{{customallowance.Name}}</td>
-													<td><a ng-click="editCustomAllowance(customallowance)"
-														tooltip="edit" style="cursor: pointer; font-size: 12px"><i
-															class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
-														tooltip="delete"
-														ng-click="deleteCustomAllowance(customallowance.customAllowanceId)"
-														style="cursor: pointer; font-size: 12px"><i
-															class="fa fa-trash"></i></a></td>
-												</tr>
-											</table>
-										
+											class="table table-bordered">
+											<tr>
+												<th>Name</th>
+												<th>Actions</th>
+											</tr>
+											<tr ng-repeat="customallowance in customAllowanceList"
+												ng-class-odd="'odd'" ng-class-even="'even'"
+												style="height: 30px">
+												<td>{{customallowance.Name}}</td>
+												<td><a ng-click="editCustomAllowance(customallowance)"
+													tooltip="edit" style="cursor: pointer; font-size: 12px"><i
+														class="fa fa-pencil-square-o"></i></a> &nbsp;&nbsp;<a
+													tooltip="delete"
+													ng-click="deleteCustomAllowance(customallowance.customAllowanceId)"
+													style="cursor: pointer; font-size: 12px"><i
+														class="fa fa-trash"></i></a></td>
+											</tr>
+										</table>
+
 
 									</div>
+								</div>
+							</div> <!--bootstrap modal for adding custom allowances--> <!-- Modal -->
+							<div class="modal fade" id="custommodelpopupid" role="dialog">
+								<div class="modal-dialog">
+									<form ng-submit="saveCustomAllowance()" class="form-horizontal"
+										role="form">
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Add Custom Component</h4>
+											</div>
+											<div class="modal-body">
+												<div class="row">
+
+													<div class="form-group">
+														<label class="control-label col-sm-4" for="name">Name</label>
+														<div class="col-sm-6">
+															<input type="text" class="form-control" id="name"
+																ng-model="customallowance.Name" placeholder="Enter name" />
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="control-label col-sm-4" for="name">Maximum
+															annual limit</label>
+														<div class="col-sm-6">
+															<input type="number"
+																ng-model="customallowance.maxAnnualLimit" />
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="control-label col-sm-4" for="benefit">Has
+															tax benefits</label>
+														<div class="col-sm-6">
+															<select class="form-control" id="sel1"
+																ng-model="customallowance.taxBenefitId"
+																ng-options="bank.lookupDetailId as bank.description for bank in  lookup.trueorfalseList">
+																<option value="" disabled selected>Select</option>
+															</select>
+														</div>
+													</div>
+
+
+													<div class="form-group">
+														<label class="control-label col-sm-4" for="bill">Requires
+															submit of bill</label>
+														<div class="col-sm-6">
+															<select class="form-control" id="bill"
+																ng-model="customallowance.submitBillId"
+																ng-options="bank.lookupDetailId as bank.description for bank in  lookup.trueorfalseList">
+																<option value="" disabled selected>Select</option>
+															</select>
+														</div>
+													</div>
+
+
+												</div>
+											</div>
+
+
+											<div class="modal-footer">
+												<p>
+													<button type="submit" class="btn btn-primary">Save</button>
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">Close</button>
+												</p>
+											</div>
+										</div>
+									</form>
+
 								</div>
 							</div>
 
 
-										<!--bootstrap modal for adding custom allowances-->
-										<!-- Modal -->
-										<div class="modal fade" id="custommodelpopupid" role="dialog">
-											<div class="modal-dialog">
-												<form ng-submit="saveCustomAllowance()"
-													class="form-horizontal" role="form">
-													<!-- Modal content-->
-													<div class="modal-content">
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal">&times;</button>
-															<h4 class="modal-title">Add Custom Component</h4>
-														</div>
-														<div class="modal-body">
-															<div class="row">
-
-																<div class="form-group">
-																	<label class="control-label col-sm-4" for="name">Name</label>
-																	<div class="col-sm-6">
-																		<input type="text" class="form-control" id="name"
-																			ng-model="customallowance.Name"
-																			placeholder="Enter name" />
-																	</div>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-sm-4" for="name">Maximum
-																		annual limit</label>
-																	<div class="col-sm-6">
-																		<input type="number"
-																			ng-model="customallowance.maxAnnualLimit" />
-																	</div>
-																</div>
-
-																<div class="form-group">
-																	<label class="control-label col-sm-4" for="benefit">Has
-																		tax benefits</label>
-																	<div class="col-sm-6">
-																		<select class="form-control" id="sel1"
-																			ng-model="customallowance.taxBenefitId"
-																			ng-options="bank.lookupDetailId as bank.description for bank in  lookup.trueorfalseList">
-																			<option value="" disabled selected>Select</option>
-																		</select>
-																	</div>
-																</div>
 
 
-																<div class="form-group">
-																	<label class="control-label col-sm-4" for="bill">Requires
-																		submit of bill</label>
-																	<div class="col-sm-6">
-																		<select class="form-control" id="bill"
-																			ng-model="customallowance.submitBillId"
-																			ng-options="bank.lookupDetailId as bank.description for bank in  lookup.trueorfalseList">
-																			<option value="" disabled selected>Select</option>
-																		</select>
-																	</div>
-																</div>
 
-
-															</div>
-														</div>
-
-
-														<div class="modal-footer">
-															<p>
-																<button type="submit" class="btn btn-primary">Save</button>
-																<button type="button" class="btn btn-default"
-																	data-dismiss="modal">Close</button>
-															</p>
-														</div>
-													</div>
-												</form>
-
-											</div>
-										</div>
-									
-										
-											
-							
-							
 							<div class="cont" style="margin-top: 50px;">
-							
+
 								<label>CONTRIBUTIONS</label>
-								<div class="abc" >
-										
-										<label>Employee Gratuity contribution</label>
-										<span class="dis_block">
-											Gratuity :
-												Rs.{{gratuitycontribution.maxAnnualLimit}}
-												<a href="" data-toggle="modal" data-target="#myModal_gratuity"><i
-												class="fa fa-cog lrspace_10"></i></a>
-										</span>
-									</div>
-									
-							</div>	
-								
-							 <!--bootstrap modal for the gratuity box-->
+								<div class="abc">
+
+									<label>Employee Gratuity contribution</label> <span
+										class="dis_block"> Gratuity :
+										Rs.{{gratuitycontribution.maxAnnualLimit}} <a href=""
+										data-toggle="modal" data-target="#myModal_gratuity"><i
+											class="fa fa-cog lrspace_10"></i></a>
+									</span>
+								</div>
+
+							</div> <!--bootstrap modal for the gratuity box-->
 							<div class="modal fade" id="myModal_gratuity" role="dialog">
 								<div class="modal-dialog">
 									<form ng-submit="saveGratuityContribution()">
@@ -746,12 +699,11 @@
 
 
 
-				<tr>
+					<tr>
 						<td class="bth"><h2></h2></td>
 					</tr>
 
-				</table>
-			</td>
+				</table></td>
 		</tr>
 	</table>
 </div>

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,8 +21,11 @@ public class EmployeeSalaryInfo {
 	private Boolean isDeleted;
 	private Date createdOn;
 	private Date updatedOn;
-	private Double annualSalary;
+	private Long annualSalary;
 	private Date effectiveFrom;
+	@ManyToOne
+	@JoinColumn(name = "employeeId", insertable = false, updatable = false)
+	private Employee employee;
 
 	public Integer getEmployeeSalaryInfoId() {
 		return employeeSalaryInfoId;
@@ -70,11 +75,11 @@ public class EmployeeSalaryInfo {
 		this.updatedOn = updatedOn;
 	}
 
-	public Double getAnnualSalary() {
+	public Long getAnnualSalary() {
 		return annualSalary;
 	}
 
-	public void setAnnualSalary(Double annualSalary) {
+	public void setAnnualSalary(Long annualSalary) {
 		this.annualSalary = annualSalary;
 	}
 
@@ -84,6 +89,14 @@ public class EmployeeSalaryInfo {
 
 	public void setEffectiveFrom(Date effectiveFrom) {
 		this.effectiveFrom = effectiveFrom;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 }

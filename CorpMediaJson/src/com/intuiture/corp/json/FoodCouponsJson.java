@@ -3,7 +3,7 @@ package com.intuiture.corp.json;
 public class FoodCouponsJson {
 
 	private Integer foodCouponsId;
-	private Double maxAnnualLimit;
+	private Long maxAnnualLimit;
 	private Integer requireSubmissionId;
 	private Integer companyId;
 
@@ -15,11 +15,11 @@ public class FoodCouponsJson {
 		this.foodCouponsId = foodCouponsId;
 	}
 
-	public Double getMaxAnnualLimit() {
+	public Long getMaxAnnualLimit() {
 		return maxAnnualLimit;
 	}
 
-	public void setMaxAnnualLimit(Double maxAnnualLimit) {
+	public void setMaxAnnualLimit(Long maxAnnualLimit) {
 		this.maxAnnualLimit = maxAnnualLimit;
 	}
 

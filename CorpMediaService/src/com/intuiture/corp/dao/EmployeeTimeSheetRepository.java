@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.intuiture.corp.entity.Employee_TimeSheet;
 import com.intuiture.corp.entity.TimeSheet;
+import com.intuiture.corp.util.EnumUtils;
 
 @Repository
 public class EmployeeTimeSheetRepository extends BaseRepository {
@@ -31,6 +32,24 @@ public class EmployeeTimeSheetRepository extends BaseRepository {
 		} catch (Exception e) {
 			e.printStackTrace();
 			LOG.error("Error at EmployeeTimeSheetRepository getEmployeeTimesheetOfTheWeek()" + e.getMessage(), e);
+		}
+		return employee_TimeSheetList;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Employee_TimeSheet> getAllTimeSheetsByEmployeeIdsAndTimeDuration(List<Integer> employeeIds, Date startDate, Date endDate) {
+		List<Employee_TimeSheet> employee_TimeSheetList = null;
+		try {
+			Criteria criteria = getSession().createCriteria(Employee_TimeSheet.class);
+			criteria.createAlias("timesheet", "timesheet");
+			criteria.add(Restrictions.and(Restrictions.in("employeeId", employeeIds),
+					Restrictions.and(Restrictions.ge("timesheet.timeSheetDate", startDate), Restrictions.le("timesheet.timeSheetDate", endDate))));
+			criteria.add(Restrictions.eq("statusId", EnumUtils.APPROVE.getValue()));
+			criteria.addOrder(Order.asc("timesheet.timeSheetDate"));
+			employee_TimeSheetList = criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOG.error("Error at EmployeeTimeSheetRepository getAllTimeSheetsByEmployeeIdsAndTimeDuration()" + e.getMessage(), e);
 		}
 		return employee_TimeSheetList;
 	}

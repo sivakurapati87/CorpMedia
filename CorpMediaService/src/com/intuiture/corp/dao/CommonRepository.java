@@ -103,6 +103,27 @@ public class CommonRepository extends BaseRepository {
 	 * @param clazz
 	 * @return
 	 */
+	public List<?> findByEmployeeIds(List<Integer> employeeIds, Class<?> clazz) {
+		List<?> list = null;
+		try {
+			Criteria criteria = getSession().createCriteria(clazz);
+			criteria.add(Restrictions.and(Restrictions.in("employeeId", employeeIds),
+					Restrictions.or(Restrictions.eq("isDeleted", Boolean.FALSE), Restrictions.isNull("isDeleted"))));
+			list = criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOG.error("Error at EmployeeRepository findByEmployeeId()" + e.getMessage(), e);
+		}
+		return list;
+	}
+
+	/**
+	 * This method is to get all the records based on employee Id
+	 * 
+	 * @param employeeId
+	 * @param clazz
+	 * @return
+	 */
 	public Object getARecordByEmployeeId(Integer employeeId, Class<?> clazz) {
 		Object object = null;
 		try {

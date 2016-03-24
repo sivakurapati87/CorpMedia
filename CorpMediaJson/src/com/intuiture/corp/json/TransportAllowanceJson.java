@@ -3,7 +3,7 @@ package com.intuiture.corp.json;
 public class TransportAllowanceJson {
 
 	private Integer transportAllowanceId;
-	private Double maxAnnualLimit;
+	private Long maxAnnualLimit;
 	private Integer requireSubmissionId;
 	private Integer companyId;
 
@@ -15,11 +15,11 @@ public class TransportAllowanceJson {
 		this.transportAllowanceId = transportAllowanceId;
 	}
 
-	public Double getMaxAnnualLimit() {
+	public Long getMaxAnnualLimit() {
 		return maxAnnualLimit;
 	}
 
-	public void setMaxAnnualLimit(Double maxAnnualLimit) {
+	public void setMaxAnnualLimit(Long maxAnnualLimit) {
 		this.maxAnnualLimit = maxAnnualLimit;
 	}
 

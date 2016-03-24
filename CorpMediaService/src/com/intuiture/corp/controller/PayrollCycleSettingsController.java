@@ -23,7 +23,7 @@ public class PayrollCycleSettingsController {
 
 	@RequestMapping(value = "/savePayrollCycleSettings", method = RequestMethod.POST)
 	@ResponseBody
-	public Boolean savePayrollCycleSettings(HttpServletRequest request, HttpServletResponse response, @RequestBody PayrollCycleSettingsJson payrollCycleSettingsJson) {
+	public PayrollCycleSettingsJson savePayrollCycleSettings(HttpServletRequest request, HttpServletResponse response, @RequestBody PayrollCycleSettingsJson payrollCycleSettingsJson) {
 		return payrollCycleSettingsService.savePayrollCycleSettings(payrollCycleSettingsJson);
 	}
 

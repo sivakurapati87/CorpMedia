@@ -514,8 +514,11 @@ public class TransformJsonToDomain {
 		payrollCycleSettings.setCompanyId(payrollCycleSettingsJson.getCompanyId());
 		payrollCycleSettings.setPayFrequency(payrollCycleSettingsJson.getPayFrequency());
 		payrollCycleSettings.setPayCycleMonthId(payrollCycleSettingsJson.getPayCycleMonthId());
-		payrollCycleSettings.setPayPeriodEndDayId(MethodUtil.convertStringToInteger(payrollCycleSettingsJson.getStrPayPeriodEndDayId()));
+		payrollCycleSettings.setStrPayPeriodEndDay(payrollCycleSettingsJson.getStrPayPeriodEndDay());
 		payrollCycleSettings.setPayDay(payrollCycleSettingsJson.getPayDay());
+		payrollCycleSettings.setPayDate(MethodUtil.convertStringToDate(payrollCycleSettingsJson.getStrPayDate()));
+		payrollCycleSettings.setPayCycleStartDate(MethodUtil.convertStringToDate(payrollCycleSettingsJson.getStrPayCycleStartDate()));
+		payrollCycleSettings.setPayCycleEndDate(MethodUtil.convertStringToDate(payrollCycleSettingsJson.getStrPayCycleEndDate()));
 		payrollCycleSettings.setIsDeleted(Boolean.FALSE);
 	}
 

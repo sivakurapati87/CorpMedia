@@ -17,6 +17,7 @@ App.controller('general_payroll_settings_Controller', ['$scope','$location','$ro
 			if($rootScope.selectedCompanyObj){
 				$scope.payrollcyclesettings.companyId = $rootScope.selectedCompanyObj.companyId;
 			$http.post(constants.localhost_port+"/"+constants.service_context+'/'+constants.PayrollCycleSettingsController+'/savePayrollCycleSettings', $scope.payrollcyclesettings).success(function(data) {
+				$scope.payrollcyclesettings = data;
 				$scope.isProcessing = false;
 	        }).error(function() {
 	      	  console.error('Could not save or update payrollcyclesettings');
@@ -61,9 +62,9 @@ App.controller('general_payroll_settings_Controller', ['$scope','$location','$ro
 		
 		//This function is to get the list of pay days
 		$scope.payPeriodEndComboAction = function(){
-			if($scope.payrollcyclesettings.strPayPeriodEndDayId && $scope.payrollcyclesettings.payCycleMonthId != null){
-				var payPeriodEndDay = $scope.payrollcyclesettings.strPayPeriodEndDayId;
-				if($scope.payrollcyclesettings.strPayPeriodEndDayId == constants.LastDayOfTheMonth){
+			if($scope.payrollcyclesettings.strPayPeriodEndDay && $scope.payrollcyclesettings.payCycleMonthId != null){
+				var payPeriodEndDay = $scope.payrollcyclesettings.strPayPeriodEndDay;
+				if($scope.payrollcyclesettings.strPayPeriodEndDay == constants.LastDayOfTheMonth){
 					payPeriodEndDay = constants.MAXENDOF_DAY;
 				}
 				$http.get(constants.localhost_port+"/"+constants.service_context+'/'+constants.LookUpController+'/findPayDay?payCycleMonth='+$scope.payrollcyclesettings.payCycleMonthId+'&payPeriodEnd='+payPeriodEndDay).success(function(data) {
@@ -77,7 +78,17 @@ App.controller('general_payroll_settings_Controller', ['$scope','$location','$ro
 			}
 		};
 		
-        
+        $scope.onchangePayDay = function(){
+        	//payrollcyclesettings.payDay
+        	
+        	angular.forEach($scope.payDayList, function(obj, key){
+				if(obj.description == $scope.payrollcyclesettings.payDay){
+					$scope.payrollcyclesettings.strPayDate = obj.strPayDayDate;
+					$scope.payrollcyclesettings.strPayCycleStartDate = obj.strPayCycleStartDay;
+					$scope.payrollcyclesettings.strPayCycleEndDate = obj.strPayCycleEndDay;
+				}
+	          });
+        };
           
        // get the company payroll cycle
   		$scope.getPayrollCycleSettingsJson = function(){
@@ -93,7 +104,7 @@ App.controller('general_payroll_settings_Controller', ['$scope','$location','$ro
   	        });}
   		};
 
-
+  		//init
   		$scope.getPayrollCycleSettingsJson();
   		
           

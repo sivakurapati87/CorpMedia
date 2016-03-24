@@ -279,12 +279,12 @@ public class TemplateController {// Serves Templates.
 
 	@RequestMapping(value = "/employeeModuleTop")
 	public String employeeModuleTop() {
-		return "template/employeeModuleTop";
+		return "template/pageTop/employeeModuleTop";
 	}
 
 	@RequestMapping(value = "/employeeInfoTop")
 	public String employeeInfoTop() {
-		return "template/employeeInfoTop";
+		return "template/pageTop/employeeInfoTop";
 	}
 
 	@RequestMapping(value = "/employee_info")
@@ -299,7 +299,7 @@ public class TemplateController {// Serves Templates.
 
 	@RequestMapping(value = "/employeeSalaryStructure_cmn")
 	public String employeeSalaryStructure_cmn() {
-		return "template/employeeSalaryStructure_cmn";
+		return "template/pageTop/employeeSalaryStructure_cmn";
 	}
 
 	@RequestMapping(value = "/employee_projects")
@@ -314,7 +314,7 @@ public class TemplateController {// Serves Templates.
 
 	@RequestMapping(value = "/timeAndAttendanceModuleTop")
 	public String timeAndAttendanceModuleTop() {
-		return "template/timeAndAttendanceModuleTop";
+		return "template/pageTop/timeAndAttendanceModuleTop";
 	}
 
 	@RequestMapping(value = "/leaveApproval")
@@ -327,7 +327,6 @@ public class TemplateController {// Serves Templates.
 		return "template/timesheetApproval";
 	}
 
-
 	@RequestMapping(value = "/company_designation")
 	public String company_Designation_Page() {
 		return "template/company_designation";
@@ -336,6 +335,16 @@ public class TemplateController {// Serves Templates.
 	@RequestMapping(value = "/employeePaySlip")
 	public String employeePaySlip() {
 		return "template/employeePaySlip";
+	}
+
+	@RequestMapping(value = "/payrollInfoTop")
+	public String payrollInfoTop() {
+		return "template/pageTop/payrollInfoTop";
+	}
+
+	@RequestMapping(value = "/run_payroll")
+	public String run_payroll() {
+		return "template/run_payroll";
 	}
 
 }

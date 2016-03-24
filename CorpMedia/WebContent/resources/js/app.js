@@ -16,6 +16,8 @@ App.directive("autoSubmit", function($timeout) {
     }
 });
 
+
+
 App.directive('leftMenu', function() {
 	  return {
 	      restrict: 'E',
@@ -50,6 +52,14 @@ App.directive('timeAndAttendanceModuleTop', function() {
 	      templateUrl: 'timeAndAttendanceModuleTop'
 	    };
 });
+App.directive('payrollInfoTop', function() {
+	  return {
+	      restrict: 'E',
+	      templateUrl: 'payrollInfoTop'
+	    };
+});
+
+
 
 App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 	
@@ -753,6 +763,18 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 			'content' : {
 				templateUrl : 'employeePaySlip',
 				controller : "employeePaySlip_Controller"
+			},
+			'footer' : {
+				templateUrl : 'footer'
+			}
+		}
+	})
+	.state('run_payroll', {
+		url : "/run_payroll",
+		views : {
+			'content' : {
+				templateUrl : 'run_payroll',
+				controller : "run_payroll_Controller"
 			},
 			'footer' : {
 				templateUrl : 'footer'

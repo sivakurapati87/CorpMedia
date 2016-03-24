@@ -5,13 +5,32 @@ public class PayrollCycleSettingsJson {
 	private Integer payrollCycleSettingsId;
 	private String payFrequency;
 	private Integer payCycleMonthId;
-	private Integer payPeriodEndDayId;
 	private Integer companyId;
 	private String payDay;
-	private String strPayPeriodEndDayId;
+	private String strPayPeriodEndDay;
+	private String strPayDate;
+	private Integer noOfDaysOfTheMonth;
+	private String strPayCycleStartDate;
+	private String strPayCycleEndDate;
 
 	public String getPayFrequency() {
 		return payFrequency;
+	}
+
+	public String getStrPayDate() {
+		return strPayDate;
+	}
+
+	public void setStrPayDate(String strPayDate) {
+		this.strPayDate = strPayDate;
+	}
+
+	public String getStrPayCycleStartDate() {
+		return strPayCycleStartDate;
+	}
+
+	public void setStrPayCycleStartDate(String strPayCycleStartDate) {
+		this.strPayCycleStartDate = strPayCycleStartDate;
 	}
 
 	public void setPayFrequency(String payFrequency) {
@@ -24,14 +43,6 @@ public class PayrollCycleSettingsJson {
 
 	public void setPayCycleMonthId(Integer payCycleMonthId) {
 		this.payCycleMonthId = payCycleMonthId;
-	}
-
-	public Integer getPayPeriodEndDayId() {
-		return payPeriodEndDayId;
-	}
-
-	public void setPayPeriodEndDayId(Integer payPeriodEndDayId) {
-		this.payPeriodEndDayId = payPeriodEndDayId;
 	}
 
 	public Integer getCompanyId() {
@@ -58,12 +69,28 @@ public class PayrollCycleSettingsJson {
 		this.payrollCycleSettingsId = payrollCycleSettingsId;
 	}
 
-	public String getStrPayPeriodEndDayId() {
-		return strPayPeriodEndDayId;
+	public String getStrPayCycleEndDate() {
+		return strPayCycleEndDate;
 	}
 
-	public void setStrPayPeriodEndDayId(String strPayPeriodEndDayId) {
-		this.strPayPeriodEndDayId = strPayPeriodEndDayId;
+	public void setStrPayCycleEndDate(String strPayCycleEndDate) {
+		this.strPayCycleEndDate = strPayCycleEndDate;
+	}
+
+	public String getStrPayPeriodEndDay() {
+		return strPayPeriodEndDay;
+	}
+
+	public void setStrPayPeriodEndDay(String strPayPeriodEndDay) {
+		this.strPayPeriodEndDay = strPayPeriodEndDay;
+	}
+
+	public Integer getNoOfDaysOfTheMonth() {
+		return noOfDaysOfTheMonth;
+	}
+
+	public void setNoOfDaysOfTheMonth(Integer noOfDaysOfTheMonth) {
+		this.noOfDaysOfTheMonth = noOfDaysOfTheMonth;
 	}
 
 }

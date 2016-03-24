@@ -3,7 +3,7 @@ package com.intuiture.corp.json;
 public class GratuityContributionJson {
 
 	private Integer gratuityContributionId;
-	private Double maxAnnualLimit;
+	private Long maxAnnualLimit;
 	private Integer companyId;
 
 	public Integer getGratuityContributionId() {
@@ -14,11 +14,11 @@ public class GratuityContributionJson {
 		this.gratuityContributionId = gratuityContributionId;
 	}
 
-	public Double getMaxAnnualLimit() {
+	public Long getMaxAnnualLimit() {
 		return maxAnnualLimit;
 	}
 
-	public void setMaxAnnualLimit(Double maxAnnualLimit) {
+	public void setMaxAnnualLimit(Long maxAnnualLimit) {
 		this.maxAnnualLimit = maxAnnualLimit;
 	}
 

@@ -10,7 +10,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.intuiture.corp.entity.Employee_Leave;
-import com.intuiture.corp.entity.Employee_TimeSheet;
 import com.intuiture.corp.entity.Leave;
 import com.intuiture.corp.json.EmployeeLeaveJson;
 
@@ -111,6 +110,23 @@ public class EmployeeLeaveRepository extends BaseRepository {
 		} catch (Exception e) {
 			e.printStackTrace();
 			LOG.error("Error at EmployeeLeaveRepository getAllLeavesByCompany()" + e.getMessage(), e);
+		}
+		return employee_LeaveList;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Employee_Leave> getAllLeavesByEmployeeIdsAndTimeDuration(List<Integer> employeeIds, Date startDate, Date endDate) {
+		List<Employee_Leave> employee_LeaveList = null;
+		try {
+			Criteria criteria = getSession().createCriteria(Employee_Leave.class);
+			criteria.createAlias("leave", "leave");
+			criteria.add(Restrictions.and(Restrictions.in("employeeId", employeeIds),
+					Restrictions.and(Restrictions.ge("leave.leaveDate", startDate), Restrictions.le("leave.leaveDate", endDate))));
+			criteria.addOrder(Order.asc("leave.leaveDate"));
+			employee_LeaveList = criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			LOG.error("Error at EmployeeLeaveRepository getAllLeavesByEmployeeIdsAndTimeDuration()" + e.getMessage(), e);
 		}
 		return employee_LeaveList;
 	}
