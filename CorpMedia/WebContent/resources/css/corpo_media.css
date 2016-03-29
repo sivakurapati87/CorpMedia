@@ -1557,11 +1557,13 @@ col-lg-6 col-md-6 col-sm-6 clear-side-padding    inline-action-menu pull-right v
 .l1{padding: 5px 10px; border:solid 1px #789; display:inline-block; border-radius:10px;}
 
 .mdiv{ width:100%; min-height:100px; height:auto; background:#ecebcc; border: solid 1px #9b9215; border-radius:10px; padding:5px;
-		box-shadow:inset 0px 0px 30px #ede6bc; -moz-box-shadow:inset 0px 0px 30px #45550f; }
+		 
+		box-shadow: 0px 3px 0px #d1bf56; -moz-box-shadow: 0px 3px 0px #d1bf56;
+		}
 .subdiv{
 	width:100%; min-height:90px; height:auto; background:#fff; border-left: solid 1px #9b9215; border-right: solid 1px #9b9215; border-bottom: solid 1px #9b9215; 
-		border-radius:0px 0px 10px 10px; padding:5px;
-		box-shadow:inset 0px 0px 30px #ede6bc; -moz-box-shadow:inset 0px 0px 30px #45550f;
+		border-radius:0px 0px 10px 10px; padding:15px;
+		box-shadow:inset 0px 0px 30px #d1cf83; -moz-box-shadow:inset 0px 0px 30px #ecebcc;
 }		
 .dl{ float: left;}
 .dr{ float: right;}
@@ -1576,6 +1578,21 @@ padding:5px; font-family: 20px;}
  .cal{ background:#; border: solid 1px #bdbd93; border-radius:10px; width: 50%; float: right;  display: inline-block;}
  .calh{ background:#005b00; color: #fff; text-align: center; padding: 2px; border-radius:10px 10px 0px 0px }
  .cald{ background:#fff; color: #000; border-radius:0px 0px 10px 10px}
+ .row1{width: 100%; height:40px; text-align:center; background:#ede6bc;  border: 1px solid #9b9215;}
+ 
+ .row2{width: 100%;    }
+.row2 .tdh1{ text-align: left;  }
+.row2 .tdv1{ text-align: right; }
+.row2 .tdh1 label{font-size:15px; color: #000; font-family: serif;}
+.row2 .tdv1 label{ font-size:15px;color: #9e9e9e; font-family: serif;}
+/*------------------------------log in page -----------*/
+	.log{ width:400px; height: 250px; background: #efefef;  margin: 0 auto; border-radius:10px; opacity:0.9; padding:10px ; border: solid 1px #aaa;
+	box-shadow: 0px 0px 10px #5e6463; -moz-box-shadow: 0px 0px 10px #5e6463;
+	}
+	.center{ text-align: center;}
+
+/*------------------------------log in page -----------*/
+								 
  
 
 

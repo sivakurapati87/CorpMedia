@@ -64,16 +64,50 @@
     </style>
 
 <div class="container-fluid"
-	style="width: 100%;background-image: url('resources/images/corpo_bg.jpg'); background-repeat: no-repeat; background-size: cover; height: 696px">
+	style="width: 100%;background-image: url('resources/images/finance.png'); background-repeat: no-repeat; background-size: cover; height: 696px">
 	<table class="table" border="0">
 	<tr style="height: 100px"></tr>
 	<tr>
 	<td colspan="2" align="center">
-	<label class="lable60_blue">Corp</label>
-	<label class="lable60_green"> Media </label>
+	<label class="lable60_blue">Payz</label>
+	<label class="lable60_green">Payz  </label>
 	</td>
 	</tr>
-		<tr>
+	<tr>
+		<td>
+				<div class="log">
+				<form action="post">
+					<div style="width: 100%;height:20px; "></div>
+					<div class="row2">
+						
+							<label >Email address</label>
+   							 <input type="text" class="form-control"  placeholder="Email" required="required" title="Enter a Valied E-mail Id" 
+   							 pattern="^[A-Za-z0-9._]*\@[A-Za-z]*\.[A-Za-z]{2,50}" maxlength="49"
+   							 >
+						
+						
+					</div>
+					<div style="width: 100%;height:20px; "></div>
+					<div class="row2">
+						
+							<label >Password</label>
+   							 <input type="password" class="form-control"  placeholder="password">
+						
+						
+					</div>
+					<div style="width: 100%;height:20px; "></div>
+					<div class="row2 center">
+						<input type="submit" value="Submit" class="btn btn-success lrspace_10">  
+						<input type="button" value="Reset" class="btn btn-primary lrspace_10">
+						
+												
+						
+					</div>
+					</form>
+				</div>
+		</td>
+	</tr>
+		<!-- <tr>
 			<td width="100%" style="padding-top: 60px" align="center">
 				<table border="0" style="width: 70%;" >
 					<tr>
@@ -109,7 +143,7 @@
 					</tr>
 				</table>
 		</td>
-		</tr>
+		</tr> -->
 		<tr style="height: 60px;"></tr>
 		<tr>
 			<td align="center" width="100%">
