@@ -15,7 +15,7 @@ public class DailyAllowance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer dailyAllowanceId;
-	private Double maxAnnualLimit;
+	private Long maxAnnualLimit;
 	private Integer requireSubmissionId;
 	private Boolean isDeleted;
 	private Date createdOn;
@@ -30,11 +30,11 @@ public class DailyAllowance {
 		this.dailyAllowanceId = dailyAllowanceId;
 	}
 
-	public Double getMaxAnnualLimit() {
+	public Long getMaxAnnualLimit() {
 		return maxAnnualLimit;
 	}
 
-	public void setMaxAnnualLimit(Double maxAnnualLimit) {
+	public void setMaxAnnualLimit(Long maxAnnualLimit) {
 		this.maxAnnualLimit = maxAnnualLimit;
 	}
 

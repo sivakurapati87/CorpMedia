@@ -224,11 +224,11 @@ public class EmployeeService {
 				if (salaryComponent.getPf() != null) {
 					salaryComponentJson.setPf(salaryComponent.getPf() * employeeSalaryInfoJson.getAnnualSalary());
 				}
-				Double totalAllowances = salaryComponentJson.getBasic() + salaryComponentJson.getHra() + salaryComponentJson.getPf()
-						+ salaryComponentJson.getMedicalReimbursement() + salaryComponentJson.getTransportAllowance()
+				Long totalAllowances = MethodUtil.convertDoubleToLong(salaryComponentJson.getBasic() + salaryComponentJson.getHra()
+						+ salaryComponentJson.getPf() + salaryComponentJson.getMedicalReimbursement() + salaryComponentJson.getTransportAllowance()
 						+ salaryComponentJson.getProfessionalAllowance() + salaryComponentJson.getTransportAllowance()
 						+ salaryComponentJson.getFoodCoupons() + salaryComponentJson.getCityCompensatoryAllowance()
-						+ salaryComponentJson.getDailyAllowance() + salaryComponentJson.getGratuityContribution();
+						+ salaryComponentJson.getDailyAllowance() + salaryComponentJson.getGratuityContribution());
 				salaryComponentJson.setSpecialAllowance(employeeSalaryInfoJson.getAnnualSalary() - totalAllowances);
 				employeeSalaryInfoJson.setSalaryComponentJson(salaryComponentJson);
 				employeeSalaryInfoJson.setEmployeeOneTimeComponentJsonList(getEmployeeOneTimeComponent(employeeId));
@@ -251,7 +251,7 @@ public class EmployeeService {
 						SalaryComponent.class);
 				SalaryComponentJson salaryComponentJson = TransformDomainToJson.getSalaryComponentJson(salaryComponent);
 				if (salaryComponent.getBasic() != null) {
-					salaryComponentJson.setBasic(salaryComponent.getBasic() * employeeSalaryInfoJson.getAnnualSalary());
+					salaryComponentJson.setBasic((salaryComponent.getBasic() * employeeSalaryInfoJson.getAnnualSalary()));
 					if (salaryComponent.getHra() != null) {
 						salaryComponentJson.setHra(salaryComponent.getHra() * salaryComponentJson.getBasic());
 					}
@@ -260,20 +260,19 @@ public class EmployeeService {
 					salaryComponentJson.setPf(salaryComponent.getPf() * employeeSalaryInfoJson.getAnnualSalary());
 				}
 
-				Double totalEarningsWithOutSpecialAll = salaryComponentJson.getBasic() + salaryComponentJson.getHra()
-						+ salaryComponentJson.getMedicalReimbursement() + salaryComponentJson.getTransportAllowance();
+				Long totalEarningsWithOutSpecialAll = MethodUtil.convertDoubleToLong(salaryComponentJson.getBasic() + salaryComponentJson.getHra()
+						+ salaryComponentJson.getMedicalReimbursement() + salaryComponentJson.getTransportAllowance());
 
-				Double totalDeductions = salaryComponentJson.getPf() + salaryComponentJson.getProfessionalAllowance();
+				Long totalDeductions = MethodUtil.convertDoubleToLong(salaryComponentJson.getPf() + salaryComponentJson.getProfessionalAllowance());
 
 				salaryComponentJson
 						.setSpecialAllowance((employeeSalaryInfoJson.getAnnualSalary() - totalDeductions) - totalEarningsWithOutSpecialAll);
 
-				Double totalEarnings = totalEarningsWithOutSpecialAll + salaryComponentJson.getSpecialAllowance();
+				Long totalEarnings = totalEarningsWithOutSpecialAll + salaryComponentJson.getSpecialAllowance();
 
-				salaryComponentJson.setGrossEarningInMoney(MethodUtil.convertLongToMoney(Math.round(totalEarnings / 12)));
-				salaryComponentJson.setGrossDeductionsInMoney(MethodUtil.convertLongToMoney(Math.round(totalDeductions / 12)));
-				salaryComponentJson
-						.setNetAmountInMoney(MethodUtil.convertLongToMoney(((Math.round(totalEarnings) - Math.round(totalDeductions)) / 12)));
+				salaryComponentJson.setGrossEarningInMoney(MethodUtil.convertLongToMoney(totalEarnings / 12));
+				salaryComponentJson.setGrossDeductionsInMoney(MethodUtil.convertLongToMoney(totalDeductions / 12));
+				salaryComponentJson.setNetAmountInMoney(MethodUtil.convertLongToMoney((totalEarnings - totalDeductions) / 12));
 				salaryComponentJson.setNetPayInWords(ConvertNumberToWord.convertNumberToWords((Math.round(totalEarnings) - Math
 						.round(totalDeductions)) / 12));
 				employeeSalaryInfoJson.setSalaryComponentJson(salaryComponentJson);

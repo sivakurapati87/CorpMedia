@@ -3,7 +3,7 @@ package com.intuiture.corp.json;
 public class CityCompensatoryAllowanceJson {
 
 	private Integer cityCompensatoryAllowanceId;
-	private Double maxAnnualLimit;
+	private Long maxAnnualLimit;
 	private Integer requireSubmissionId;
 	private Integer companyId;
 
@@ -15,11 +15,11 @@ public class CityCompensatoryAllowanceJson {
 		this.cityCompensatoryAllowanceId = cityCompensatoryAllowanceId;
 	}
 
-	public Double getMaxAnnualLimit() {
+	public Long getMaxAnnualLimit() {
 		return maxAnnualLimit;
 	}
 
-	public void setMaxAnnualLimit(Double maxAnnualLimit) {
+	public void setMaxAnnualLimit(Long maxAnnualLimit) {
 		this.maxAnnualLimit = maxAnnualLimit;
 	}
 

@@ -50,6 +50,13 @@ public class MethodUtil {
 		}
 	}
 
+	public static Long getMonthlyAmount(Long amount) {
+		if (amount != null) {
+			amount = amount / 12;
+		}
+		return amount;
+	}
+
 	public static List<Date> getWeeklyDatesList(String startingWeekDate) {
 		Date startingWeekDay = convertStringToDate(startingWeekDate);
 		return calculateWeeklyDatesList(startingWeekDay);
@@ -191,6 +198,14 @@ public class MethodUtil {
 			}
 		}
 		return str;
+	}
+
+	public static Long convertDoubleToLong(Double dbl) {
+		Long value = null;
+		if (dbl != null) {
+			value = dbl.longValue();
+		}
+		return value;
 	}
 
 	public static String convertLongToMoney(Long ln) {

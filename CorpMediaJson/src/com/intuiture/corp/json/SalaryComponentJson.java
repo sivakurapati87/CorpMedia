@@ -15,19 +15,47 @@ public class SalaryComponentJson {
 	private Integer cityCompensatoryAllowanceId;
 	private Integer dailyAllowanceId;
 	private Integer gratuityContributionId;
-	private Double medicalReimbursement;
-	private Double transportAllowance;
-	private Double professionalAllowance;
-	private Double travelReimbursement;
-	private Double foodCoupons;
-	private Double cityCompensatoryAllowance;
-	private Double dailyAllowance;
-	private Double gratuityContribution;
-	private Double specialAllowance;
+	private Long medicalReimbursement;
+	private Long transportAllowance;
+	private Long professionalAllowance;
+	private Long travelReimbursement;
+	private Long foodCoupons;
+	private Long cityCompensatoryAllowance;
+	private Long dailyAllowance;
+	private Long gratuityContribution;
+	private Long specialAllowance;
 	private String grossEarningInMoney;
 	private String grossDeductionsInMoney;
 	private String netAmountInMoney;
 	private String netPayInWords;
+	// Extra fields to display
+	private Integer noOfTimeSheet;
+	private Integer leavesApplied;
+	private Integer pendingLeaveToGrant;
+
+	public Integer getNoOfTimeSheet() {
+		return noOfTimeSheet;
+	}
+
+	public void setNoOfTimeSheet(Integer noOfTimeSheet) {
+		this.noOfTimeSheet = noOfTimeSheet;
+	}
+
+	public Integer getLeavesApplied() {
+		return leavesApplied;
+	}
+
+	public void setLeavesApplied(Integer leavesApplied) {
+		this.leavesApplied = leavesApplied;
+	}
+
+	public Integer getPendingLeaveToGrant() {
+		return pendingLeaveToGrant;
+	}
+
+	public void setPendingLeaveToGrant(Integer pendingLeaveToGrant) {
+		this.pendingLeaveToGrant = pendingLeaveToGrant;
+	}
 
 	public Integer getSalaryComponentId() {
 		return salaryComponentId;
@@ -173,75 +201,75 @@ public class SalaryComponentJson {
 		this.gratuityContributionId = gratuityContributionId;
 	}
 
-	public Double getMedicalReimbursement() {
+	public Long getMedicalReimbursement() {
 		return medicalReimbursement;
 	}
 
-	public void setMedicalReimbursement(Double medicalReimbursement) {
+	public void setMedicalReimbursement(Long medicalReimbursement) {
 		this.medicalReimbursement = medicalReimbursement;
 	}
 
-	public Double getTransportAllowance() {
+	public Long getTransportAllowance() {
 		return transportAllowance;
 	}
 
-	public void setTransportAllowance(Double transportAllowance) {
+	public void setTransportAllowance(Long transportAllowance) {
 		this.transportAllowance = transportAllowance;
 	}
 
-	public Double getProfessionalAllowance() {
+	public Long getProfessionalAllowance() {
 		return professionalAllowance;
 	}
 
-	public void setProfessionalAllowance(Double professionalAllowance) {
+	public void setProfessionalAllowance(Long professionalAllowance) {
 		this.professionalAllowance = professionalAllowance;
 	}
 
-	public Double getTravelReimbursement() {
+	public Long getTravelReimbursement() {
 		return travelReimbursement;
 	}
 
-	public void setTravelReimbursement(Double travelReimbursement) {
+	public void setTravelReimbursement(Long travelReimbursement) {
 		this.travelReimbursement = travelReimbursement;
 	}
 
-	public Double getFoodCoupons() {
+	public Long getFoodCoupons() {
 		return foodCoupons;
 	}
 
-	public void setFoodCoupons(Double foodCoupons) {
+	public void setFoodCoupons(Long foodCoupons) {
 		this.foodCoupons = foodCoupons;
 	}
 
-	public Double getCityCompensatoryAllowance() {
+	public Long getCityCompensatoryAllowance() {
 		return cityCompensatoryAllowance;
 	}
 
-	public void setCityCompensatoryAllowance(Double cityCompensatoryAllowance) {
+	public void setCityCompensatoryAllowance(Long cityCompensatoryAllowance) {
 		this.cityCompensatoryAllowance = cityCompensatoryAllowance;
 	}
 
-	public Double getDailyAllowance() {
+	public Long getDailyAllowance() {
 		return dailyAllowance;
 	}
 
-	public void setDailyAllowance(Double dailyAllowance) {
+	public void setDailyAllowance(Long dailyAllowance) {
 		this.dailyAllowance = dailyAllowance;
 	}
 
-	public Double getGratuityContribution() {
+	public Long getGratuityContribution() {
 		return gratuityContribution;
 	}
 
-	public void setGratuityContribution(Double gratuityContribution) {
+	public void setGratuityContribution(Long gratuityContribution) {
 		this.gratuityContribution = gratuityContribution;
 	}
 
-	public Double getSpecialAllowance() {
+	public Long getSpecialAllowance() {
 		return specialAllowance;
 	}
 
-	public void setSpecialAllowance(Double specialAllowance) {
+	public void setSpecialAllowance(Long specialAllowance) {
 		this.specialAllowance = specialAllowance;
 	}
 

@@ -3,7 +3,7 @@ package com.intuiture.corp.json;
 public class TravelReimbursementJson {
 
 	private Integer travelReimbursementId;
-	private Double maxAnnualLimit;
+	private Long maxAnnualLimit;
 	private Integer requireSubmissionId;
 	private Integer companyId;
 
@@ -15,11 +15,11 @@ public class TravelReimbursementJson {
 		this.travelReimbursementId = travelReimbursementId;
 	}
 
-	public Double getMaxAnnualLimit() {
+	public Long getMaxAnnualLimit() {
 		return maxAnnualLimit;
 	}
 
-	public void setMaxAnnualLimit(Double maxAnnualLimit) {
+	public void setMaxAnnualLimit(Long maxAnnualLimit) {
 		this.maxAnnualLimit = maxAnnualLimit;
 	}
 

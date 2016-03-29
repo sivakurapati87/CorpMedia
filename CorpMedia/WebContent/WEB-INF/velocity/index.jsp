@@ -110,6 +110,7 @@
 <script src="resources/js/controller/leaveApproval_Controller.js"></script>
 <script src="resources/js/controller/timesheetApproval_Controller.js"></script>
 <script src="resources/js/controller/employeePaySlip_Controller.js"></script>
+<script src="resources/js/controller/run_payroll_Controller.js"></script>
 
 
 <script src="resources/js/service/constants.js"></script>

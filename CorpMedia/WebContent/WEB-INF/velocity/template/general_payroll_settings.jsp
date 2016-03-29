@@ -11,39 +11,7 @@
 			<td width="20%" valign="top" bgcolor="white"><left-menu></left-menu>
 			</td>
 			<td width="1%"></td>
-			<td valign="top">
-
-				<table class="table" border="0" style="width: 100%;">
-					<tr>
-						<td>
-							<div class="sub-page-navigation">
-								<ul>
-
-									<li ng-class="{'active':(state==='general_payroll_settings')}"><a
-										class="anchor-sm" ui-sref="general_payroll_settings">Payroll
-											settings</a></li>
-									<li ng-class="{'active':(state==='adhoc_components')}"><a
-										class="anchor-sm" ui-sref="adhoc_components">Adhoc
-											Components</a></li>
-									<li
-										ng-class="{'active':(state==='salary_component_structure')}"><a
-										class="anchor-sm" ui-sref="salary_component_structure">Salary
-											Structure</a></li>
-									<li ng-class="{'active':(state==='provident_fund')}"><a
-										class="anchor-sm" ui-sref="provident_fund">Provident Fund</a></li>
-
-									<li ng-class="{'active':(state==='employee_loan_settings')}"><a
-										class="anchor-sm" ui-sref="employee_loan_settings">Loan
-											Settings</a></li>
-
-
-
-
-								</ul>
-							</div>
-						</td>
-					</tr>
-				</table>
+			<td valign="top"><payroll-info-top></payroll-info-top>
 				<table class="table mtable " border="0"
 					style="width: 100%; background-color: white">
 					<tr><th class="th"><h2>PAYROLL CYCLE SETTINGS</h2></th></tr><tr>
@@ -123,7 +91,7 @@
 													<div class="col-md-5">
 														<select
 															class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-															ng-model="payrollcyclesettings.strPayPeriodEndDayId"
+															ng-model="payrollcyclesettings.strPayPeriodEndDay"
 															ng-change="payPeriodEndComboAction()"
 															ng-options="bank.description as bank.description for bank in  lookup.daysList">
 															<option value="" disabled selected>Day</option>
@@ -143,7 +111,7 @@
 													<div class="col-md-5">
 														<select
 															class="form-control ng-pristine ng-valid ng-valid-required ng-touched"
-															ng-model="payrollcyclesettings.payDay"
+															ng-model="payrollcyclesettings.payDay" ng-change="onchangePayDay()"
 															ng-options="bank.description as bank.description for bank in  payDayList">
 															<option value="" disabled selected>Pick Pay Day</option>
 

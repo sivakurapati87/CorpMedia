@@ -17,12 +17,12 @@ public class PayrollCycleSettingsService {
 	@Autowired
 	private CommonRepository commonRepository;
 
-	public Boolean savePayrollCycleSettings(PayrollCycleSettingsJson payrollCycleSettingsJson) {
+	public PayrollCycleSettingsJson savePayrollCycleSettings(PayrollCycleSettingsJson payrollCycleSettingsJson) {
 		PayrollCycleSettings payrollCycleSettings = null;
-
 		try {
 			if (payrollCycleSettingsJson.getPayrollCycleSettingsId() != null) {
-				payrollCycleSettings = (PayrollCycleSettings) commonRepository.findById(payrollCycleSettingsJson.getPayrollCycleSettingsId(), PayrollCycleSettings.class);
+				payrollCycleSettings = (PayrollCycleSettings) commonRepository.findById(payrollCycleSettingsJson.getPayrollCycleSettingsId(),
+						PayrollCycleSettings.class);
 			} else {
 				payrollCycleSettings = new PayrollCycleSettings();
 			}
@@ -32,16 +32,18 @@ public class PayrollCycleSettingsService {
 			} else {
 				commonRepository.persist(payrollCycleSettings);
 			}
+			payrollCycleSettingsJson = TransformDomainToJson.getPayrollCycleSettingsJson(payrollCycleSettings);
 		} catch (Exception e) {
-			return false;
+			e.printStackTrace();
 		}
-		return true;
+		return payrollCycleSettingsJson;
 	}
 
 	public PayrollCycleSettingsJson getPayrollCycleSettingsJson(Integer companyId) {
 		PayrollCycleSettingsJson payrollCycleSettingsJson = null;
 		try {
-			PayrollCycleSettings payrollCycleSettings = (PayrollCycleSettings) commonRepository.getRecordByCompanyId(companyId, PayrollCycleSettings.class);
+			PayrollCycleSettings payrollCycleSettings = (PayrollCycleSettings) commonRepository.getRecordByCompanyId(companyId,
+					PayrollCycleSettings.class);
 			if (payrollCycleSettings != null) {
 				payrollCycleSettingsJson = TransformDomainToJson.getPayrollCycleSettingsJson(payrollCycleSettings);
 			}

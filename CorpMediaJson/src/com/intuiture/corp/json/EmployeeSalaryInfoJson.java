@@ -8,9 +8,10 @@ public class EmployeeSalaryInfoJson {
 	private Integer employeeId;
 	private Integer companyId;
 	private Boolean isDeleted;
-	private Double annualSalary;
+	private Long annualSalary;
 	private Date effectiveFrom;
 	private String strEffectiveFrom;
+	private EmployeeJson employeeJson;
 	private SalaryComponentJson salaryComponentJson;
 	private List<EmployeeOneTimeComponentJson> employeeOneTimeComponentJsonList;
 
@@ -46,11 +47,11 @@ public class EmployeeSalaryInfoJson {
 		this.isDeleted = isDeleted;
 	}
 
-	public Double getAnnualSalary() {
+	public Long getAnnualSalary() {
 		return annualSalary;
 	}
 
-	public void setAnnualSalary(Double annualSalary) {
+	public void setAnnualSalary(Long annualSalary) {
 		this.annualSalary = annualSalary;
 	}
 
@@ -84,6 +85,14 @@ public class EmployeeSalaryInfoJson {
 
 	public void setEmployeeOneTimeComponentJsonList(List<EmployeeOneTimeComponentJson> employeeOneTimeComponentJsonList) {
 		this.employeeOneTimeComponentJsonList = employeeOneTimeComponentJsonList;
+	}
+
+	public EmployeeJson getEmployeeJson() {
+		return employeeJson;
+	}
+
+	public void setEmployeeJson(EmployeeJson employeeJson) {
+		this.employeeJson = employeeJson;
 	}
 
 }

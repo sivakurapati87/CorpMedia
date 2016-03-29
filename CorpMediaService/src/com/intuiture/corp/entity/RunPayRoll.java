@@ -1,5 +1,6 @@
 package com.intuiture.corp.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,22 +10,38 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "payrollcyclesettings")
-public class PayrollCycleSettings {
+@Table(name = "runpayroll")
+public class RunPayRoll implements Serializable {
+	private static final long serialVersionUID = -9119525567146423370L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer payrollCycleSettingsId;
-	private String payFrequency;
-	private Integer payCycleMonthId;
-	private String strPayPeriodEndDay;
+	private Integer runPayRollId;
+	private Integer companyId;
 	private Boolean isDeleted;
 	private Date createdOn;
 	private Date updatedOn;
-	private Integer companyId;
+	private Date payRollExecutedDate;
+	private Integer payrollCycleSettingsId;
 	private String payDay;
 	private Date payDate;
 	private Date payCycleStartDate;
 	private Date payCycleEndDate;
+
+	public String getPayDay() {
+		return payDay;
+	}
+
+	public void setPayDay(String payDay) {
+		this.payDay = payDay;
+	}
+
+	public Date getPayDate() {
+		return payDate;
+	}
+
+	public void setPayDate(Date payDate) {
+		this.payDate = payDate;
+	}
 
 	public Date getPayCycleStartDate() {
 		return payCycleStartDate;
@@ -42,20 +59,20 @@ public class PayrollCycleSettings {
 		this.payCycleEndDate = payCycleEndDate;
 	}
 
-	public String getPayFrequency() {
-		return payFrequency;
+	public Integer getRunPayRollId() {
+		return runPayRollId;
 	}
 
-	public void setPayFrequency(String payFrequency) {
-		this.payFrequency = payFrequency;
+	public void setRunPayRollId(Integer runPayRollId) {
+		this.runPayRollId = runPayRollId;
 	}
 
-	public Integer getPayCycleMonthId() {
-		return payCycleMonthId;
+	public Integer getCompanyId() {
+		return companyId;
 	}
 
-	public void setPayCycleMonthId(Integer payCycleMonthId) {
-		this.payCycleMonthId = payCycleMonthId;
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
 	}
 
 	public Boolean getIsDeleted() {
@@ -82,20 +99,12 @@ public class PayrollCycleSettings {
 		this.updatedOn = updatedOn;
 	}
 
-	public Integer getCompanyId() {
-		return companyId;
+	public Date getPayRollExecutedDate() {
+		return payRollExecutedDate;
 	}
 
-	public void setCompanyId(Integer companyId) {
-		this.companyId = companyId;
-	}
-
-	public String getPayDay() {
-		return payDay;
-	}
-
-	public void setPayDay(String payDay) {
-		this.payDay = payDay;
+	public void setPayRollExecutedDate(Date payRollExecutedDate) {
+		this.payRollExecutedDate = payRollExecutedDate;
 	}
 
 	public Integer getPayrollCycleSettingsId() {
@@ -104,22 +113,6 @@ public class PayrollCycleSettings {
 
 	public void setPayrollCycleSettingsId(Integer payrollCycleSettingsId) {
 		this.payrollCycleSettingsId = payrollCycleSettingsId;
-	}
-
-	public Date getPayDate() {
-		return payDate;
-	}
-
-	public void setPayDate(Date payDate) {
-		this.payDate = payDate;
-	}
-
-	public String getStrPayPeriodEndDay() {
-		return strPayPeriodEndDay;
-	}
-
-	public void setStrPayPeriodEndDay(String strPayPeriodEndDay) {
-		this.strPayPeriodEndDay = strPayPeriodEndDay;
 	}
 
 }

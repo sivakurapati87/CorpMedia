@@ -413,6 +413,9 @@ public class TransformDomainToJson {
 		employeeSalaryInfoJson.setAnnualSalary(employeeSalaryInfo.getAnnualSalary());
 		employeeSalaryInfoJson.setEmployeeSalaryInfoId(employeeSalaryInfo.getEmployeeSalaryInfoId());
 		employeeSalaryInfoJson.setStrEffectiveFrom(MethodUtil.convertDateToString(employeeSalaryInfo.getEffectiveFrom()));
+		if (employeeSalaryInfo.getEmployee() != null) {
+			employeeSalaryInfoJson.setEmployeeJson(getEmployeeJson(employeeSalaryInfo.getEmployee()));
+		}
 		return employeeSalaryInfoJson;
 	}
 
@@ -804,9 +807,11 @@ public class TransformDomainToJson {
 		payrollCycleSettingsJson.setPayCycleMonthId(payrollCycleSettings.getPayCycleMonthId());
 		payrollCycleSettingsJson.setPayDay(payrollCycleSettings.getPayDay());
 		payrollCycleSettingsJson.setPayFrequency(payrollCycleSettings.getPayFrequency());
-		payrollCycleSettingsJson.setPayPeriodEndDayId(payrollCycleSettings.getPayPeriodEndDayId());
 		payrollCycleSettingsJson.setPayrollCycleSettingsId(payrollCycleSettings.getPayrollCycleSettingsId());
-		payrollCycleSettingsJson.setStrPayPeriodEndDayId(MethodUtil.convertIntegerToString(payrollCycleSettings.getPayPeriodEndDayId()));
+		payrollCycleSettingsJson.setStrPayDate(MethodUtil.convertDateToString(payrollCycleSettings.getPayDate()));
+		payrollCycleSettingsJson.setStrPayCycleStartDate(MethodUtil.convertDateToString(payrollCycleSettings.getPayCycleStartDate()));
+		payrollCycleSettingsJson.setStrPayCycleEndDate(MethodUtil.convertDateToString(payrollCycleSettings.getPayCycleEndDate()));
+		payrollCycleSettingsJson.setStrPayPeriodEndDay(payrollCycleSettings.getStrPayPeriodEndDay());
 		return payrollCycleSettingsJson;
 	}
 
@@ -861,42 +866,42 @@ public class TransformDomainToJson {
 		if (salaryComponent.getCityCompensatoryAllowance() != null) {
 			salaryComponentJson.setCityCompensatoryAllowance(salaryComponent.getCityCompensatoryAllowance().getMaxAnnualLimit());
 		} else {
-			salaryComponentJson.setCityCompensatoryAllowance(0d);
+			salaryComponentJson.setCityCompensatoryAllowance(0l);
 		}
 		if (salaryComponent.getDailyAllowance() != null) {
 			salaryComponentJson.setDailyAllowance(salaryComponent.getDailyAllowance().getMaxAnnualLimit());
 		} else {
-			salaryComponentJson.setDailyAllowance(0d);
+			salaryComponentJson.setDailyAllowance(0l);
 		}
 		if (salaryComponent.getFoodCoupons() != null) {
 			salaryComponentJson.setFoodCoupons(salaryComponent.getFoodCoupons().getMaxAnnualLimit());
 		} else {
-			salaryComponentJson.setFoodCoupons(0d);
+			salaryComponentJson.setFoodCoupons(0l);
 		}
 		if (salaryComponent.getGratuityContribution() != null) {
 			salaryComponentJson.setGratuityContribution(salaryComponent.getGratuityContribution().getMaxAnnualLimit());
 		} else {
-			salaryComponentJson.setGratuityContribution(0d);
+			salaryComponentJson.setGratuityContribution(0l);
 		}
 		if (salaryComponent.getMedicalReimbursement() != null) {
 			salaryComponentJson.setMedicalReimbursement(salaryComponent.getMedicalReimbursement().getMaxAnnualLimit());
 		} else {
-			salaryComponentJson.setMedicalReimbursement(0d);
+			salaryComponentJson.setMedicalReimbursement(0l);
 		}
 		if (salaryComponent.getProfessionalAllowance() != null) {
 			salaryComponentJson.setProfessionalAllowance(salaryComponent.getProfessionalAllowance().getMaxAnnualLimit());
 		} else {
-			salaryComponentJson.setProfessionalAllowance(0d);
+			salaryComponentJson.setProfessionalAllowance(0l);
 		}
 		if (salaryComponent.getTransportAllowance() != null) {
 			salaryComponentJson.setTransportAllowance(salaryComponent.getTransportAllowance().getMaxAnnualLimit());
 		} else {
-			salaryComponentJson.setTransportAllowance(0d);
+			salaryComponentJson.setTransportAllowance(0l);
 		}
 		if (salaryComponent.getTravelReimbursement() != null) {
 			salaryComponentJson.setTravelReimbursement(salaryComponent.getTravelReimbursement().getMaxAnnualLimit());
 		} else {
-			salaryComponentJson.setTravelReimbursement(0d);
+			salaryComponentJson.setTravelReimbursement(0l);
 		}
 		salaryComponentJson.setSalaryComponentId(salaryComponent.getSalaryComponentId());
 		salaryComponentJson.setPf(salaryComponent.getPf());
