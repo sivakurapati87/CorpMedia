@@ -32,6 +32,7 @@ public class SalaryComponentJson {
 	private Integer noOfTimeSheet;
 	private Integer leavesApplied;
 	private Integer pendingLeaveToGrant;
+	private Integer noOfRejectedLeaves;
 
 	public Integer getNoOfTimeSheet() {
 		return noOfTimeSheet;
@@ -271,6 +272,14 @@ public class SalaryComponentJson {
 
 	public void setSpecialAllowance(Long specialAllowance) {
 		this.specialAllowance = specialAllowance;
+	}
+
+	public Integer getNoOfRejectedLeaves() {
+		return noOfRejectedLeaves;
+	}
+
+	public void setNoOfRejectedLeaves(Integer noOfRejectedLeaves) {
+		this.noOfRejectedLeaves = noOfRejectedLeaves;
 	}
 
 }

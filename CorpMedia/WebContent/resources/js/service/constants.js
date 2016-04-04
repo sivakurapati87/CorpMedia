@@ -1,6 +1,6 @@
 var constants = {
 
-	localhost_port : 'http://localhost:8080',
+	localhost_port : 'http://49.207.9.29:8090',
 	// contexts
 	web_context : 'payz',
 	service_context : 'CorpMediaService',

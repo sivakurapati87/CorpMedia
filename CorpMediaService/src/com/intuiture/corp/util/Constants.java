@@ -13,4 +13,6 @@ public class Constants {
 	public static final Double HRA = 0.5d;
 	public static final Double PF = 0.048d;
 	public static final String LEAVETIME = "08:00";
+	public static final String REJECTED = "REJECTED";
+	public static final String PENDING = "PENDING";
 }

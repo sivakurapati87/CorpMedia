@@ -21,8 +21,9 @@
 						</tr>
 						<tr ng-repeat="(key,value) in empTimesheetMap">
 							<td colspan="2">
-								<table class="table" border="0">
-									<tr class="row1">
+								<table style="width: 100%; height:40px; text-align:center;;
+								 background:#ede6bc; border: 1px solid #9b9215;" border="0">
+									<tr>
 										<td><b>Employee Name:<i> {{value[0].displayName}}</i></b></td>
 										
 										<td><b>Email:<i>{{value[0].email}}</i></b></td>

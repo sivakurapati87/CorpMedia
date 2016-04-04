@@ -34,7 +34,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="subdiv " style=" padding-top: 20px; margin-top:-10px; border-top: none;"
+								<div class="subdiv " style=" padding-top: 20px; margin-top:-20px; border-top: none;"
 									ng-if="appliedLeave.isShowBlock">
 									<table style="width: 100%" >
 										<tr style="height: 10px"></tr>

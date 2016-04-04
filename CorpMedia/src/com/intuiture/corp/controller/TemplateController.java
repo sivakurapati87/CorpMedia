@@ -327,7 +327,6 @@ public class TemplateController {// Serves Templates.
 		return "template/timesheetApproval";
 	}
 
-
 	@RequestMapping(value = "/company_designation")
 	public String company_Designation_Page() {
 		return "template/company_designation";
@@ -338,7 +337,6 @@ public class TemplateController {// Serves Templates.
 		return "template/employeePaySlip";
 	}
 
-
 	@RequestMapping(value = "/payrollInfoTop")
 	public String payrollInfoTop() {
 		return "template/pageTop/payrollInfoTop";
@@ -348,4 +346,5 @@ public class TemplateController {// Serves Templates.
 	public String run_payroll() {
 		return "template/run_payroll";
 	}
+
 }

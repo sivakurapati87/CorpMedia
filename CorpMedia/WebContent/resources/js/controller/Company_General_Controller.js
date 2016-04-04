@@ -22,7 +22,7 @@ App.controller('Company_General_Controller', ['$scope','$rootScope','$http', fun
 	$scope.fileChanged = function(e) {  
 		  
 		  var files = e.target.files;
-		  
+		  $scope.isProcessing = true;
 		 
 		   var fileReader = new FileReader();
 		  fileReader.readAsDataURL(files[0]);  
@@ -30,20 +30,20 @@ App.controller('Company_General_Controller', ['$scope','$rootScope','$http', fun
 		  fileReader.onload = function(e) {
 			  $scope.companyLogo = this.result;
 		   $scope.$apply();
-		   
+		   $scope.isProcessing = false;
 		  };
 		 };
 		 
 		 
 		 $scope.init = function(){
-			 
+			 $scope.isProcessing = true;
 			 $scope.companyJson = {};
 			 if($rootScope.selectedCompanyObj){
 				 $scope.companyJson.companyId = $rootScope.selectedCompanyObj.companyId;
 				 $scope.companyJson.base64logo = $rootScope.selectedCompanyObj.base64logo;
 				 $scope.companyJson.shortName = $rootScope.selectedCompanyObj.shortName;
 			 }
-			 
+			 $scope.isProcessing = false;
 		 }
 		 $scope.init();
 }]);

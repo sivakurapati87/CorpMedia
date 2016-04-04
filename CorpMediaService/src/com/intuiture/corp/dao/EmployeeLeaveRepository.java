@@ -120,7 +120,7 @@ public class EmployeeLeaveRepository extends BaseRepository {
 		try {
 			Criteria criteria = getSession().createCriteria(Employee_Leave.class);
 			criteria.createAlias("leave", "leave");
-			criteria.add(Restrictions.and(Restrictions.in("employeeId", employeeIds),
+			criteria.add(Restrictions.and(Restrictions.in("employeeId", employeeIds), Restrictions.isNotNull("leaveTime"),
 					Restrictions.and(Restrictions.ge("leave.leaveDate", startDate), Restrictions.le("leave.leaveDate", endDate))));
 			criteria.addOrder(Order.asc("leave.leaveDate"));
 			employee_LeaveList = criteria.list();

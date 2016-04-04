@@ -1,6 +1,6 @@
 'use strict';
 
-App.controller('HomeController', ['$scope','$http', function($scope,$http) {
+App.controller('HomeController', ['$scope','$http','$state', function($scope,$http,$state) {
 	 $scope.loading = true;
 	 var self = this;
 	 $scope.selectedCompany=null;
@@ -23,4 +23,13 @@ App.controller('HomeController', ['$scope','$http', function($scope,$http) {
                 console.log('cleared');
               }
             };
+            
+          //getting the selected companyId from auto complete
+            $scope.submitAction = function() {
+            			$http.get(constants.localhost_port+"/"+constants.web_context+'/'+constants.CompanyInfoController+'/setSelectedCompanyId/'+ 3).success(function(data) {
+            				$state.go("company_legalentities.mainInfo",{legEntity:'cmpInfo'});
+            			}).error(function() {
+            	      	  console.error('Could not save selected companyId');
+            	        });
+              };
 }]);

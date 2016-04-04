@@ -19,7 +19,7 @@
 					<span class="subnav-item-title">Payroll</span>  <span class="subnav-item-description"> Payroll cycle,salary
 								components etc <span class="glyphicon glyphicon-menu-right dis_block float_right " ></span>
 						</span>
-					</a></li>					</a></li>
+					</a></li>					
 					<li ng-class="{'active':(left_state==='leaves_&_holidays')}"><a
 						class="anchor-sm" ui-sref="leave_plans" href="#"> <span
 							class="subnav-item-title">Leaves & Holidays</span>  <span

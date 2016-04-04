@@ -21,7 +21,9 @@ import com.intuiture.corp.entity.SalaryComponent;
 import com.intuiture.corp.json.EmployeeSalaryInfoJson;
 import com.intuiture.corp.json.PayrollCycleSettingsJson;
 import com.intuiture.corp.json.SalaryComponentJson;
+import com.intuiture.corp.util.Constants;
 import com.intuiture.corp.util.ConvertNumberToWord;
+import com.intuiture.corp.util.EnumUtils;
 import com.intuiture.corp.util.MethodUtil;
 import com.intuiture.corp.util.TransformDomainToJson;
 
@@ -81,27 +83,40 @@ public class RunPayRollService {
 					}
 
 					Long totalEarningsWithOutSpecialAll = MethodUtil.convertDoubleToLong(salaryComponentJson.getBasic()
-							+ salaryComponentJson.getHra() + MethodUtil.getMonthlyAmount(salaryComponentJson.getMedicalReimbursement())
-							+ MethodUtil.getMonthlyAmount(salaryComponentJson.getTransportAllowance()));
+							+ salaryComponentJson.getHra() + salaryComponentJson.getMedicalReimbursement()
+							+ salaryComponentJson.getTransportAllowance());
 
 					Long totalDeductions = MethodUtil.convertDoubleToLong(salaryComponentJson.getPf()
-							+ MethodUtil.getMonthlyAmount(salaryComponentJson.getProfessionalAllowance()));
+							+ salaryComponentJson.getProfessionalAllowance());
 
-					Long specialAllowance = MethodUtil.convertDoubleToLong(MethodUtil.getMonthlyAmount(employeeSalaryInfoJson.getAnnualSalary())
-							- (salaryComponentJson.getBasic() + salaryComponentJson.getHra() + salaryComponentJson.getTransportAllowance()));
+					Long specialAllowance = MethodUtil.getMonthlyAmount(employeeSalaryInfoJson.getAnnualSalary())
+							- (totalEarningsWithOutSpecialAll + totalDeductions);
 
 					salaryComponentJson.setSpecialAllowance(specialAllowance);
 
-					Long totalEarnings = totalEarningsWithOutSpecialAll + salaryComponentJson.getSpecialAllowance();
-
-					// salaryComponentJson.setNoOfTimeSheet(employee_TimeSheetMap.get(employeeSalaryInfo.getEmployeeId()).size());
-					// salaryComponentJson.setLeavesApplied(employee_LeaveMap.get(key));
-
+					Long totalEarnings = totalEarningsWithOutSpecialAll + specialAllowance;
 					salaryComponentJson.setGrossEarningInMoney(MethodUtil.convertLongToMoney(totalEarnings));
 					salaryComponentJson.setGrossDeductionsInMoney(MethodUtil.convertLongToMoney(totalDeductions));
 					salaryComponentJson.setNetAmountInMoney(MethodUtil.convertLongToMoney(totalEarnings - totalDeductions));
 					salaryComponentJson.setNetPayInWords(ConvertNumberToWord.convertNumberToWords(totalEarnings - totalDeductions));
 					employeeSalaryInfoJson.setSalaryComponentJson(salaryComponentJson);
+
+					if (employee_TimeSheetMap != null && employee_TimeSheetMap.get(employeeSalaryInfo.getEmployeeId()) != null) {
+						salaryComponentJson.setNoOfTimeSheet(employee_TimeSheetMap.get(employeeSalaryInfo.getEmployeeId()).size());
+					} else {
+						salaryComponentJson.setNoOfTimeSheet(0);
+					}
+					if (employee_LeaveMap != null && employee_LeaveMap.get(employeeSalaryInfo.getEmployeeId()) != null) {
+						salaryComponentJson.setLeavesApplied(employee_LeaveMap.get(employeeSalaryInfo.getEmployeeId()).size());
+						Map<String, Integer> pendingAndRejectedLeavesMap = findNoOfPendingLeaves(employee_LeaveMap.get(employeeSalaryInfo
+								.getEmployeeId()));
+						salaryComponentJson.setPendingLeaveToGrant(pendingAndRejectedLeavesMap.get(Constants.PENDING));
+						salaryComponentJson.setNoOfRejectedLeaves(pendingAndRejectedLeavesMap.get(Constants.REJECTED));
+
+					} else {
+						salaryComponentJson.setLeavesApplied(0);
+					}
+
 					employeeSalaryInfoJsonList.add(employeeSalaryInfoJson);
 				}
 			}
@@ -111,6 +126,30 @@ public class RunPayRollService {
 			LOG.error("Error in viewEmployeesPayRollByCompanyId() in RunPayRollService-->" + e.getMessage(), e);
 		}
 		return employeeSalaryInfoJsonList;
+	}
+
+	public Map<String, Integer> findNoOfPendingLeaves(List<Employee_Leave> employee_LeaveList) {
+		Map<String, Integer> pendingAndRejectedLeavesMap = null;
+		if (employee_LeaveList != null && employee_LeaveList.size() > 0) {
+			pendingAndRejectedLeavesMap = new HashMap<String, Integer>();
+			for (Employee_Leave employee_Leave : employee_LeaveList) {
+				if (employee_Leave.getStatusId() == null) {
+					if (pendingAndRejectedLeavesMap.get(Constants.PENDING) != null) {
+						pendingAndRejectedLeavesMap.put(Constants.PENDING, pendingAndRejectedLeavesMap.get(Constants.PENDING) + 1);
+					} else {
+						pendingAndRejectedLeavesMap.put(Constants.PENDING, 1);
+					}
+				} else if (employee_Leave.getStatusId().equals(EnumUtils.REJECT.getValue())) {
+					if (pendingAndRejectedLeavesMap.get(Constants.REJECTED) != null) {
+						pendingAndRejectedLeavesMap.put(Constants.REJECTED, pendingAndRejectedLeavesMap.get(Constants.REJECTED) + 1);
+					} else {
+						pendingAndRejectedLeavesMap.put(Constants.REJECTED, 1);
+					}
+				}
+			}
+		}
+
+		return pendingAndRejectedLeavesMap;
 	}
 
 	/**

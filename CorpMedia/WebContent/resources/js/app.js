@@ -744,6 +744,7 @@ App.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		}
 	})
 	
+
 	.state('company_designation', {
 		url : "/company_designation",
 		views : {
